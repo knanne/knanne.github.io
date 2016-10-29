@@ -1,0 +1,40 @@
+<header>
+
+    <nav class="navbar navbar-default">
+
+          <div clas='navbar-header'>
+
+            <!-- define title with icon -->
+            <a class="navbar-brand" href="{{ site.url }}">
+              <!-- <span> defaults to inline -->
+              <span>
+                <img src="{{ site.avatar }}" width="50" height="55" alt="">
+                {{ site.title }}
+              </span>
+            </a>
+
+            <!-- button for navbar items when collapsed -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <!-- collapsable navbar items -->
+            <div class="collapse navbar-collapse" id="navigationbar">
+              <!-- loops thru navbar items in config.yaml -->
+              <ul class="nav navbar-nav navbar-right">
+                {% for link in site.nav-links %}
+                  <li>
+                    <a href="{{ site.baseurl }}/{{ link[1] }}">{{ link[0] }}</a>
+                  </li>
+                {% endfor %}
+              </ul>      
+            </div>
+
+          </div>
+          
+    </nav>
+
+</header>
