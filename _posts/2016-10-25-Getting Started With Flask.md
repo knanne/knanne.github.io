@@ -15,28 +15,32 @@ Notes on using Flask, a microframework for creating apps in Python.
 
 ## Getting Started
 
-*create app environment*
+*create app environment*  
+
 ```shell
 md flask_app
 cd flask_app
 virtual env
 ```
 
-*activate app from scripts*
+*activate app from scripts*  
+
 ```shell
 cd env
 cd Scripts
 activate
 ```
 
-*install flask in root*
+*install flask in root*  
+
 ```shell
 cd ..
 cd ..
 pip install flask
 ```
 
-*write app in python*
+*write app in python*  
+
 ```python
 from flask import Flask
 
@@ -50,7 +54,8 @@ if __name__ == '__main__':
 	app.run()
 ```
 
-*run app*
+*run app*  
+
 ```shell
 python app.py
 ```

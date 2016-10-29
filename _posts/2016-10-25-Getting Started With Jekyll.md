@@ -27,6 +27,7 @@ source: [jekyllrb](https://jekyllrb.com/docs/windows/#installation),
 [jwillmer](https://jwillmer.de/blog/tutorial/how-to-install-jekyll-and-pages-gem-on-windows-10-x46#install-github-gem)
 
 ### init blog
+
 ```shell
 >>> jekyll new myBlog
 ```
@@ -34,6 +35,7 @@ source: [jekyllrb](https://jekyllrb.com/docs/windows/#installation),
 This will install github-pages default files, including the [minima](https://github.com/jekyll/minima) theme.
 
 ### serve blog
+
 ```shell
 >>> jekyll serve
 ```

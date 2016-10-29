@@ -16,12 +16,14 @@ Notes on GitHub.
 
 ## Getting Started
 
-Easiest way to start is create a repository on [Github](https://github.com), then clone it to local.
+Easiest way to start is create a repository on [Github](https://github.com), then clone it to local.  
+
 ```shell 
 git clone https://github.com/username/repo
 ```
 
-Alternatively, we could initialize a new local directory, and add the repo as remote origin.
+Alternatively, we could initialize a new local directory, and add the repo as remote origin.  
+
 ```shell
 md repo
 cd repo
@@ -29,7 +31,8 @@ git init
 git remote add origin https://github.com/user/repo.git
 ```
 
-Make some changes, and push all to master.
+Make some changes, and push all to master.  
+
 ```shell
 echo "Hello World" > index.html
 git add --all
