@@ -1,6 +1,5 @@
 ---
 layout: post
-image: /assets/img/posts/github.png
 categories: [tech]
 tags: [github, tutorial]
 ---
@@ -40,11 +39,8 @@ git commit -m "initial commit"
 git push -u origin master
 ```
 
-### proper workflow
+### Proper Workflow
 
-Download the github [workflow.pdf](https://guides.github.com/pdfs/githubflow-online.pdf) or view it [online](https://guides.github.com/introduction/flow/)
+Download the GitHub [workflow.pdf](https://guides.github.com/pdfs/githubflow-online.pdf) or view it [online](https://guides.github.com/introduction/flow/)  
 
-1. create new branch
-2. make and commit changes to branch
-3. create a [pull request](https://help.github.com/articles/creating-a-pull-request/)
-4. merge pull request with master
+See guide on [Contributing to Open Source](https://guides.github.com/activities/contributing-to-open-source/)  

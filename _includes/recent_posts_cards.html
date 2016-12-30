@@ -1,0 +1,19 @@
+<div id="container" class="container">
+	
+	<h4>Recent Posts</h4>
+	<hr>
+	
+	<div class="subcontainer">
+
+		{% for post in site.posts limit : 3 %}
+			<a href="{{ site.baseurl }}{{ post.url }}">
+				<div class="card card-hover post-card">
+					<h4>{{ post.title }}</h4>
+					<p class="text-muted">{{ post.date | date: "%b %-d, %Y" }}</p>
+				</div>
+			</a>
+		{% endfor %}
+
+	</div>
+
+</div>

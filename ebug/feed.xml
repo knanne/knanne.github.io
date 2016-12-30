@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2016-12-30T15:52:12-06:00</updated><id>http://localhost:4000//</id><title type="html">knanne</title><subtitle>Expert traveler, amateur farmer, beer/wine enthusiast...with a data science problem
+</subtitle><author><name>Kain Nanne</name></author><entry><title type="html">Notes on windows</title><link href="http://localhost:4000/tech/2016/12/28/Notes-on-Windows.html" rel="alternate" type="text/html" title="Notes on windows" /><published>2016-12-28T00:00:00-06:00</published><updated>2016-12-28T00:00:00-06:00</updated><id>http://localhost:4000/tech/2016/12/28/Notes%20on%20Windows</id><content type="html" xml:base="http://localhost:4000/tech/2016/12/28/Notes-on-Windows.html">&lt;p&gt;Notes on windows using platform.&lt;/p&gt;
+
+&lt;!--excerpt separator --&gt;
+
+&lt;h3 id=&quot;windows-command-prompt&quot;&gt;windows command prompt&lt;/h3&gt;
+
+&lt;h4 id=&quot;dir-info&quot;&gt;dir info&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dir
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;list-subfolders&quot;&gt;list subfolders&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dir /b
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;show-entire-tree-of-subfolders&quot;&gt;show entire tree of subfolders&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tree
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;list-all-files-in-subfolders&quot;&gt;list all files in subfolders&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dir /s
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name>Kain Nanne</name></author><category term="windows" /><category term="tutorial" /><summary type="html">Notes on windows using platform.</summary></entry><entry><title type="html">Notes on sublime</title><link href="http://localhost:4000/tech/2016/10/28/Notes-on-Sublime.html" rel="alternate" type="text/html" title="Notes on sublime" /><published>2016-10-28T00:00:00-05:00</published><updated>2016-10-28T00:00:00-05:00</updated><id>http://localhost:4000/tech/2016/10/28/Notes%20on%20Sublime</id><content type="html" xml:base="http://localhost:4000/tech/2016/10/28/Notes-on-Sublime.html">&lt;p&gt;Notes on using Sublime, a handy text editor I use for coding.&lt;/p&gt;
+
+&lt;!--excerpt separator --&gt;
+
+&lt;h2 id=&quot;intro-to-sublime&quot;&gt;Intro to Sublime&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;download from the &lt;a href=&quot;https://www.sublimetext.com/&quot;&gt;website&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;keyboard-shortcuts&quot;&gt;Keyboard Shortcuts&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;function&lt;/th&gt;
+      &lt;th&gt;command&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;switch tabs&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl&lt;/code&gt;+&lt;code class=&quot;highlighter-rouge&quot;&gt;tab&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;toggle higlight whitespace&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl&lt;/code&gt;+&lt;code class=&quot;highlighter-rouge&quot;&gt;alt&lt;/code&gt;+&lt;code class=&quot;highlighter-rouge&quot;&gt;w&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;installing-packages&quot;&gt;Installing Packages&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;show the console using &lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl&lt;/code&gt;+&lt;code class=&quot;highlighter-rouge&quot;&gt; &lt;/code&gt; `&lt;/li&gt;
+  &lt;li&gt;open the command pallete using &lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl&lt;/code&gt;+&lt;code class=&quot;highlighter-rouge&quot;&gt;shift&lt;/code&gt;+&lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;type “Package Control: Install Package” and hit &lt;code class=&quot;highlighter-rouge&quot;&gt;enter&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;search for package and hit &lt;code class=&quot;highlighter-rouge&quot;&gt;enter&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;highlight-white-spaces--tabs&quot;&gt;Highlight White Spaces &amp;amp; Tabs&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;use this &lt;a href=&quot;https://github.com/disq/HighlightWhitespaces&quot;&gt;plugin&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;install:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;navigate to &lt;code class=&quot;highlighter-rouge&quot;&gt;Packages&lt;/code&gt; directory under Sublime’s AppData folder&lt;/li&gt;
+  &lt;li&gt;git clone the package here&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\U&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\U&lt;/span&gt;SERNAME&lt;span class=&quot;se&quot;&gt;\A&lt;/span&gt;ppData&lt;span class=&quot;se&quot;&gt;\R&lt;/span&gt;oaming&lt;span class=&quot;se&quot;&gt;\S&lt;/span&gt;ublime Text 3&lt;span class=&quot;se&quot;&gt;\P&lt;/span&gt;ackages&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;git clone git://github.com/disq/HighlightWhitespaces.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name>Kain Nanne</name></author><category term="sublime" /><category term="tutorial" /><summary type="html">Notes on using Sublime, a handy text editor I use for coding.</summary></entry><entry><title type="html">Notes on markdown</title><link href="http://localhost:4000/tech/2016/10/25/Notes-on-Markdown.html" rel="alternate" type="text/html" title="Notes on markdown" /><published>2016-10-25T00:00:00-05:00</published><updated>2016-10-25T00:00:00-05:00</updated><id>http://localhost:4000/tech/2016/10/25/Notes%20on%20Markdown</id><content type="html" xml:base="http://localhost:4000/tech/2016/10/25/Notes-on-Markdown.html">&lt;p&gt;Notes on Markdown.&lt;/p&gt;
+
+&lt;!--excerpt separator --&gt;
+
+&lt;h2 id=&quot;intro-to-markdown&quot;&gt;Intro to Markdown&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;read GitHub’s &lt;a href=&quot;https://guides.github.com/features/mastering-markdown/&quot;&gt;guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;download the &lt;a href=&quot;https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf&quot;&gt;cheatsheet.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;render-markdown&quot;&gt;Render Markdown&lt;/h2&gt;
+
+&lt;p&gt;use https://markdownpad.com/&lt;/p&gt;
+
+&lt;p&gt;or&lt;/p&gt;
+
+&lt;p&gt;An easy way to render markdown is using this &lt;a href=&quot;https://chrome.google.com/webstore/detail/markdown-preview-plus/febilkbfcbhebfnokafefeacimjdckgl&quot;&gt;chrome extension&lt;/a&gt;, which allows you to open &lt;code class=&quot;highlighter-rouge&quot;&gt;.md&lt;/code&gt; files in chrome. It also auto updates in 3 seconds and works offline&lt;/p&gt;</content><author><name>Kain Nanne</name></author><category term="markdown" /><category term="tutorial" /><summary type="html">Notes on Markdown.</summary></entry><entry><title type="html">Notes on jekyll</title><link href="http://localhost:4000/tech/2016/10/25/Notes-on-Jekyll.html" rel="alternate" type="text/html" title="Notes on jekyll" /><published>2016-10-25T00:00:00-05:00</published><updated>2016-10-25T00:00:00-05:00</updated><id>http://localhost:4000/tech/2016/10/25/Notes%20on%20Jekyll</id><content type="html" xml:base="http://localhost:4000/tech/2016/10/25/Notes-on-Jekyll.html">&lt;p&gt;Notes on using Jekyll for creating a website on GitHub pages.&lt;/p&gt;
+
+&lt;!--excerpt separator --&gt;
+
+&lt;h2 id=&quot;intro-to-jekyll&quot;&gt;Intro to Jekyll&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyll website&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://pages.github.com/&quot;&gt;github pages&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h2&gt;
+
+&lt;p&gt;jekyll provides specific &lt;a href=&quot;http://jekyll.tips/jekyll-casts/install-jekyll-on-windows/&quot;&gt;install instructions&lt;/a&gt; for windows, but for current github pages integration, use the following&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;install chocolatory&lt;/li&gt;
+  &lt;li&gt;install ruby 2.2.4, or downgrade&lt;/li&gt;
+  &lt;li&gt;cofigure ruby installation&lt;/li&gt;
+  &lt;li&gt;install gem github-pages&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;source: &lt;a href=&quot;https://jekyllrb.com/docs/windows/#installation&quot;&gt;jekyllrb&lt;/a&gt;,
+&lt;a href=&quot;https://jwillmer.de/blog/tutorial/how-to-install-jekyll-and-pages-gem-on-windows-10-x46#install-github-gem&quot;&gt;jwillmer&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;init-blog&quot;&gt;init blog&lt;/h3&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;jekyll new myBlog
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This will install github-pages default files, including the &lt;a href=&quot;https://github.com/jekyll/minima&quot;&gt;minima&lt;/a&gt; theme.&lt;/p&gt;
+
+&lt;h3 id=&quot;serve-blog&quot;&gt;serve blog&lt;/h3&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;jekyll serve
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;find the app hosted at &lt;a href=&quot;http://127.0.0.1:4000&quot;&gt;http://localhost:4000/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;add &lt;code class=&quot;highlighter-rouge&quot;&gt;-watch&lt;/code&gt; for auto updates, &lt;strong&gt;currently not supported in windows&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;customization&quot;&gt;Customization&lt;/h2&gt;
+
+&lt;h3 id=&quot;theme&quot;&gt;theme&lt;/h3&gt;
+
+&lt;p&gt;To remove the default theme, remove the &lt;code class=&quot;highlighter-rouge&quot;&gt;gem 'minima'&lt;/code&gt; in Gemfile, and remove &lt;code class=&quot;highlighter-rouge&quot;&gt;theme='minima'&lt;/code&gt; settings in _config.yml.&lt;/p&gt;
+
+&lt;h3 id=&quot;harnessing-jekyll-engine&quot;&gt;harnessing jekyll engine&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;refer to jekyll &lt;a href=&quot;http://jekyll.tips/jekyll-cheat-sheet/&quot;&gt;cheat sheet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;using-liquid&quot;&gt;using liquid&lt;/h4&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“Liquid is an open-source template language created by Shopify and written in Ruby.”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ref liquid &lt;a href=&quot;https://shopify.github.io/liquid/&quot;&gt;website&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;get recent posts and print title, dates and excerpts&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post-link&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/tech/2016/12/28/Notes-on-Windows.html&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Notes on windows&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text-muted&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Dec 28, 2016&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Notes on windows using platform.
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post-link&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/tech/2016/10/28/Notes-on-Sublime.html&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Notes on sublime&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text-muted&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Oct 28, 2016&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Notes on using Sublime, a handy text editor I use for coding.
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post-link&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/tech/2016/10/25/Notes-on-Markdown.html&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Notes on markdown&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text-muted&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Oct 25, 2016&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Notes on Markdown.
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;get all posts organized by category&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&amp;gt;&lt;/span&gt;tech&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
+    
+        
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text-muted&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;font-size: 12px&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+        
+    
+        
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/tech/2016/12/28/Notes-on-Windows.html&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Notes on windows&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text-muted&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;font-size: 12px&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Dec 28, 2016&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+        
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/tech/2016/10/28/Notes-on-Sublime.html&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Notes on sublime&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text-muted&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;font-size: 12px&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Oct 28, 2016&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+        
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/tech/2016/10/25/Notes-on-Markdown.html&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Notes on markdown&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text-muted&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;font-size: 12px&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Oct 25, 2016&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+        
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/tech/2016/10/25/Notes-on-Jekyll.html&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Notes on jekyll&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text-muted&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;font-size: 12px&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Oct 25, 2016&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+        
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/tech/2016/10/25/Notes-on-GitHub.html&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Notes on github&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text-muted&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;font-size: 12px&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Oct 25, 2016&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+        
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/tech/2016/10/25/Notes-on-Git.html&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Notes on git&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text-muted&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;font-size: 12px&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Oct 25, 2016&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+        
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/tech/2016/10/25/Notes-on-Flask.html&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Notes on flask&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text-muted&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;font-size: 12px&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Oct 25, 2016&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+        
+    
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name>Kain Nanne</name></author><category term="jekyll" /><category term="tutorial" /><summary type="html">Notes on using Jekyll for creating a website on GitHub pages.</summary></entry><entry><title type="html">Notes on github</title><link href="http://localhost:4000/tech/2016/10/25/Notes-on-GitHub.html" rel="alternate" type="text/html" title="Notes on github" /><published>2016-10-25T00:00:00-05:00</published><updated>2016-10-25T00:00:00-05:00</updated><id>http://localhost:4000/tech/2016/10/25/Notes%20on%20GitHub</id><content type="html" xml:base="http://localhost:4000/tech/2016/10/25/Notes-on-GitHub.html">&lt;p&gt;Notes on GitHub.&lt;/p&gt;
+
+&lt;!--excerpt separator --&gt;
+
+&lt;h2 id=&quot;intro-to-github&quot;&gt;Intro to Github&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Check out &lt;a href=&quot;https://guides.github.com/&quot;&gt;GitHub Guides&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;GitHub’s &lt;a href=&quot;https://guides.github.com/activities/hello-world/&quot;&gt;guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h2&gt;
+
+&lt;p&gt;Easiest way to start is create a repository on &lt;a href=&quot;https://github.com&quot;&gt;Github&lt;/a&gt;, then clone it to local.&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/username/repo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Alternatively, we could initialize a new local directory, and add the repo as remote origin.&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;md repo
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;repo
+git init
+git remote add origin https://github.com/user/repo.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Make some changes, and push all to master.&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hello World&quot;&lt;/span&gt; &amp;gt; index.html
+git add --all
+git commit -m &lt;span class=&quot;s2&quot;&gt;&quot;initial commit&quot;&lt;/span&gt;
+git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;proper-workflow&quot;&gt;Proper Workflow&lt;/h3&gt;
+
+&lt;p&gt;Download the GitHub &lt;a href=&quot;https://guides.github.com/pdfs/githubflow-online.pdf&quot;&gt;workflow.pdf&lt;/a&gt; or view it &lt;a href=&quot;https://guides.github.com/introduction/flow/&quot;&gt;online&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;See guide on &lt;a href=&quot;https://guides.github.com/activities/contributing-to-open-source/&quot;&gt;Contributing to Open Source&lt;/a&gt;&lt;/p&gt;</content><author><name>Kain Nanne</name></author><category term="github" /><category term="tutorial" /><summary type="html">Notes on GitHub.</summary></entry><entry><title type="html">Notes on git</title><link href="http://localhost:4000/tech/2016/10/25/Notes-on-Git.html" rel="alternate" type="text/html" title="Notes on git" /><published>2016-10-25T00:00:00-05:00</published><updated>2016-10-25T00:00:00-05:00</updated><id>http://localhost:4000/tech/2016/10/25/Notes%20on%20Git</id><content type="html" xml:base="http://localhost:4000/tech/2016/10/25/Notes-on-Git.html">&lt;p&gt;Notes on Git.&lt;/p&gt;
+
+&lt;!--excerpt separator --&gt;
+
+&lt;h1 id=&quot;intro-to-git&quot;&gt;Intro to Git&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;great easy documenatation from &lt;a href=&quot;https://docs.gitlab.com/ce/gitlab-basics&quot;&gt;GitLab&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://git-scm.com/book/en/v2/Getting-Started-Installing-Git&quot;&gt;download&lt;/a&gt; git for windows&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;check-install&quot;&gt;check install&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git --version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;config-credentials&quot;&gt;config credentials&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git config --global user.name &quot;Kain Nanne&quot;
+git config --global user.email &quot;kain.nanne@gmail.com&quot;
+git config --global --list
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;create-ssh-key&quot;&gt;create SSH key&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh-keygen -t rsa -C &quot;kain.nane@gmail.com&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h2&gt;
+
+&lt;h4 id=&quot;clone-remote-repo&quot;&gt;clone remote repo&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone HTTPS
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Since we have cloned repo, replace REMOTE with &lt;code class=&quot;highlighter-rouge&quot;&gt;origin&lt;/code&gt; in the folloing commands.&lt;/p&gt;
+
+&lt;h4 id=&quot;fetch-all-pull-branch&quot;&gt;fetch all, pull branch&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git fetch REMOTE
+git pull
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;navigate-to-branch-eg-master&quot;&gt;navigate to branch (e.g. master)&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout BRANCH
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;create-a-branch&quot;&gt;create a branch&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout -b BRANCH
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;check-status-of-changes&quot;&gt;check status of changes&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git status
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;add-changes&quot;&gt;add changes&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git add .
+git commit -m &quot;MESSAGE&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;push-changes-to-repo&quot;&gt;push changes to repo&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git push REMOTE BRANCH
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;merge-changes&quot;&gt;merge changes&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout BRANCH
+git merge master
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;example-situations&quot;&gt;Example Situations&lt;/h1&gt;
+
+&lt;h2 id=&quot;branch-is-behind-master&quot;&gt;branch is behind master&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;commit changes to branch&lt;/li&gt;
+  &lt;li&gt;pull latest master&lt;/li&gt;
+  &lt;li&gt;rebase on master&lt;/li&gt;
+  &lt;li&gt;resolve conflicts if any&lt;/li&gt;
+  &lt;li&gt;force push branch (if already on remote)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;totally-screwed-up-local-repo&quot;&gt;totally screwed up local repo&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;reset hard to remote master&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Kain Nanne</name></author><category term="git" /><category term="tutorial" /><summary type="html">Notes on Git.</summary></entry><entry><title type="html">Notes on flask</title><link href="http://localhost:4000/tech/2016/10/25/Notes-on-Flask.html" rel="alternate" type="text/html" title="Notes on flask" /><published>2016-10-25T00:00:00-05:00</published><updated>2016-10-25T00:00:00-05:00</updated><id>http://localhost:4000/tech/2016/10/25/Notes%20on%20Flask</id><content type="html" xml:base="http://localhost:4000/tech/2016/10/25/Notes-on-Flask.html">&lt;p&gt;Notes on using Flask, a microframework for creating apps in Python.&lt;/p&gt;
+
+&lt;!--excerpt separator --&gt;
+
+&lt;h2 id=&quot;intro-to-flask&quot;&gt;Intro to Flask&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://flask.pocoo.org/&quot;&gt;flask docs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;create app environment&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;md flask_app
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;flask_app
+virtual env
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;activate app from scripts&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;env
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;Scripts
+activate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;install flask in root&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ..
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ..
+pip install flask
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;write app in python&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;flask&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@app.route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Hello World'&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'__main__'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;run app&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python app.py
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;navigate to &lt;a href=&quot;http://127.0.0.1:5000/&quot;&gt;localhost:5000&lt;/a&gt;&lt;/p&gt;</content><author><name>Kain Nanne</name></author><category term="flask" /><category term="tutorial" /><summary type="html">Notes on using Flask, a microframework for creating apps in Python.</summary></entry></feed>

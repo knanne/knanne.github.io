@@ -1,14 +1,15 @@
 <div id="container" class="container">
 	
 	<h4>All Posts</h4>
+	<hr>
 	
 	<div class="subcontainer">
 
-		<div class="panel-group" id="accordion">
+		<div class="card panel-group" id="accordion">
 	        {% for category in site.categories %}
 	            <div class="panel panel-default">
 	                <div class="panel-heading">
-	                    <h4 class="panel-title"> 
+	                    <h4 class="panel-title">
 	                        <a data-toggle="collapse" data-parent="#accordion" href="#{{ category | first }}">
 	                        {{ category | first }}</a>
 	                    </h4>

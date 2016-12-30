@@ -1,6 +1,5 @@
 ---
 layout: post
-image: /assets/img/posts/flask.png
 categories: [tech]
 tags: [flask, tutorial]
 ---

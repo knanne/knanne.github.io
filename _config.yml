@@ -46,6 +46,7 @@ kramdown:
 
 gems:
   - jekyll-feed
+  - jekyll-gist
 
 exclude:
   - Gemfile

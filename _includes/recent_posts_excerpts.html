@@ -1,6 +1,7 @@
 <div id="container" class="container">
 	
 	<h4>Recent Posts</h4>
+	<hr>
 	
 	<div class="subcontainer">
 
@@ -8,19 +9,21 @@
 	    	{% for post in site.posts limit : 3 %}
 		    	<li>
 
-			        <!-- title -->
-			        <h3>
-			          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-			        </h3>
-			        
-			        <!-- date -->
-			        <p class="text-muted">{{ post.date | date: "%b %-d, %Y" }}</p>
+			        <div class="card"
+				        <!-- title -->
+				        <h3>
+				          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+				        </h3>
+				        
+				        <!-- date -->
+				        <p class="text-muted">{{ post.date | date: "%b %-d, %Y" }}</p>
 
-			        <!-- excerpt -->
-			        <p>{{ post.excerpt | strip_html }}</p>
+				        <!-- excerpt -->
+				        <p>{{ post.excerpt | strip_html }}</p>
 
-			        <!-- buffer next post -->
-			        <br>
+				        <!-- buffer next post -->
+				        <br>
+				    </div>
 
 		      	</li>
 	    	{% endfor %}

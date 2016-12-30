@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="/assets/img/bill.png">
+    <title>Notes on markdown</title>
+  
+    <meta name="author" content="" />
+    <meta name="description" content="Notes on Markdown.">
+
+    <link rel="canonical" href="http://localhost:4000/tech/2016/10/25/Notes-on-Markdown.html">
+    <link rel="alternate" type="application/rss+xml" title="knanne" href="/feed.xml">
+  
+    <!-- Import Style Sheet -->
+    <link rel='stylesheet' href='/assets/css/index.css' type='text/css'></style>
+
+    <!-- Import Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> 
+
+    
+
+</head>
+
+  <body>
+
+    <header>
+
+    <nav class="navbar navbar-default">
+
+          <div clas='navbar-header'>
+
+            <!-- define title with icon -->
+            <a class="navbar-brand" href="http://localhost:4000">
+              <!-- <span> defaults to inline -->
+              <span>
+                <img src="/assets/img/bill.png" width="50" height="55" alt="">
+                knanne
+              </span>
+            </a>
+
+            <!-- button for navbar items when collapsed -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <!-- collapsable navbar items -->
+            <div class="collapse navbar-collapse" id="navigationbar">
+              <!-- loops thru navbar items in config.yaml -->
+              <ul class="nav navbar-nav navbar-right">
+                
+                  <li>
+                    <a href="/">Home</a>
+                  </li>
+                
+                  <li>
+                    <a href="/posts">Posts</a>
+                  </li>
+                
+                  <li>
+                    <a href="/feed.xml">RSS</a>
+                  </li>
+                
+              </ul>      
+            </div>
+
+          </div>
+          
+    </nav>
+
+</header>
+  
+    <div class="container">
+        
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header card">
+    <h1 class="post-title" itemprop="name headline">Notes on markdown</h1>
+    <p class="post-meta">
+      <time datetime="2016-10-25T00:00:00-05:00" itemprop="datePublished">Oct 25, 2016</time>
+    </p>
+  </header>
+
+  <br>
+
+  <div class="post-box">
+    <div class="post-content" itemprop="articleBody">
+      <p>Notes on Markdown.</p>
+
+<!--excerpt separator -->
+
+<h2 id="intro-to-markdown">Intro to Markdown</h2>
+
+<ul>
+  <li>read GitHub’s <a href="https://guides.github.com/features/mastering-markdown/">guide</a></li>
+  <li>download the <a href="https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf">cheatsheet.pdf</a></li>
+</ul>
+
+<h2 id="render-markdown">Render Markdown</h2>
+
+<p>use https://markdownpad.com/</p>
+
+<p>or</p>
+
+<p>An easy way to render markdown is using this <a href="https://chrome.google.com/webstore/detail/markdown-preview-plus/febilkbfcbhebfnokafefeacimjdckgl">chrome extension</a>, which allows you to open <code class="highlighter-rouge">.md</code> files in chrome. It also auto updates in 3 seconds and works offline</p>
+
+    </div>
+  </div>
+
+  <br>
+
+  <footer class="post-footer card">
+    <p class="post-meta">
+      <a class='text-muted'> Last Modified: Dec 30, 2016 at 15:39 </a>
+      <br>
+      <b>Tags:</b>
+      
+        <a ref="markdown">#markdown</a>
+      
+        <a ref="tutorial">#tutorial</a>
+      
+    </p>
+  </footer>
+
+  
+
+</article>
+      
+    </div>
+    
+    <footer class='footer'>
+
+  <div clas='navbar-footer'>
+
+    <div class='social'>
+      <span>
+        <a href="https://github.com/knanne">
+          <img src="/assets/img/github.png" width="18px" height="18px" />
+        </a>
+          
+        <a href="https://twitter.com/knanne">
+          <img src="/assets/img/twitter.png" width="18px" height="18px" />
+        </a>
+        
+        <a href="https://linkedin.com/in/kainnanne">
+          <img src="/assets/img/linkedin.png" width="18px" height="18px" />
+        </a>
+      </span>
+    </div>
+
+    <div class='footer_text'>
+      <p class='text-muted'>&copy; 2016 Kain Nanne</p>
+    </div>
+
+  </div>
+
+</footer>
+    <scripts class="scripts">
+
+	<!-- Import jQuery -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+
+	<!-- Import Bootstrap Javascript -->
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">></script>
+
+	<!-- MathJax -->
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+</scripts>
+
+<!-- Auto Hide Navbar -->
+<script type='text/javascript'>
+
+	$(window).scroll(function() {
+	   	
+	   	var navbarHeight = $('header').outerHeight();
+
+	   	// pass header
+	   	if($(window).scrollTop() > navbarHeight) {
+	   		//remove footer, header
+	   		$('header').removeClass('navbar-header').addClass('nav-up');
+		    $('footer').removeClass('navbar-footer').addClass('nav-down');
+	   	}
+		// scroll to top
+		if($(window).scrollTop() < navbarHeight) {
+			//add footer, header
+			$('header').removeClass('nav-up').addClass('navbar-header');
+		    $('footer').removeClass('nav-down').addClass('navbar-footer');
+		}
+		// scroll to bottom
+	   	//if($(window).scrollTop() + $(window).innerHeight() == $(document).height()) {
+	    	// add footer
+	    //	$('footer').removeClass('nav-down').addClass('navbar-footer');
+	   	//}
+
+	});
+
+</script>
+
+  </body>
+
+</html>

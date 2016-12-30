@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="/assets/img/bill.png">
+    <title>Notes on jekyll</title>
+  
+    <meta name="author" content="" />
+    <meta name="description" content="Notes on using Jekyll for creating a website on GitHub pages.">
+
+    <link rel="canonical" href="http://localhost:4000/tech/2016/10/25/Notes-on-Jekyll.html">
+    <link rel="alternate" type="application/rss+xml" title="knanne" href="/feed.xml">
+  
+    <!-- Import Style Sheet -->
+    <link rel='stylesheet' href='/assets/css/index.css' type='text/css'></style>
+
+    <!-- Import Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> 
+
+    
+
+</head>
+
+  <body>
+
+    <header>
+
+    <nav class="navbar navbar-default">
+
+          <div clas='navbar-header'>
+
+            <!-- define title with icon -->
+            <a class="navbar-brand" href="http://localhost:4000">
+              <!-- <span> defaults to inline -->
+              <span>
+                <img src="/assets/img/bill.png" width="50" height="55" alt="">
+                knanne
+              </span>
+            </a>
+
+            <!-- button for navbar items when collapsed -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <!-- collapsable navbar items -->
+            <div class="collapse navbar-collapse" id="navigationbar">
+              <!-- loops thru navbar items in config.yaml -->
+              <ul class="nav navbar-nav navbar-right">
+                
+                  <li>
+                    <a href="/">Home</a>
+                  </li>
+                
+                  <li>
+                    <a href="/posts">Posts</a>
+                  </li>
+                
+                  <li>
+                    <a href="/feed.xml">RSS</a>
+                  </li>
+                
+              </ul>      
+            </div>
+
+          </div>
+          
+    </nav>
+
+</header>
+  
+    <div class="container">
+        
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header card">
+    <h1 class="post-title" itemprop="name headline">Notes on jekyll</h1>
+    <p class="post-meta">
+      <time datetime="2016-10-25T00:00:00-05:00" itemprop="datePublished">Oct 25, 2016</time>
+    </p>
+  </header>
+
+  <br>
+
+  <div class="post-box">
+    <div class="post-content" itemprop="articleBody">
+      <p>Notes on using Jekyll for creating a website on GitHub pages.</p>
+
+<!--excerpt separator -->
+
+<h2 id="intro-to-jekyll">Intro to Jekyll</h2>
+
+<ul>
+  <li><a href="https://jekyllrb.com/">jekyll website</a></li>
+  <li><a href="https://pages.github.com/">github pages</a></li>
+</ul>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<p>jekyll provides specific <a href="http://jekyll.tips/jekyll-casts/install-jekyll-on-windows/">install instructions</a> for windows, but for current github pages integration, use the following</p>
+
+<ol>
+  <li>install chocolatory</li>
+  <li>install ruby 2.2.4, or downgrade</li>
+  <li>cofigure ruby installation</li>
+  <li>install gem github-pages</li>
+</ol>
+
+<p>source: <a href="https://jekyllrb.com/docs/windows/#installation">jekyllrb</a>,
+<a href="https://jwillmer.de/blog/tutorial/how-to-install-jekyll-and-pages-gem-on-windows-10-x46#install-github-gem">jwillmer</a></p>
+
+<h3 id="init-blog">init blog</h3>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">&gt;&gt;&gt; </span>jekyll new myBlog
+</code></pre>
+</div>
+
+<p>This will install github-pages default files, including the <a href="https://github.com/jekyll/minima">minima</a> theme.</p>
+
+<h3 id="serve-blog">serve blog</h3>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">&gt;&gt;&gt; </span>jekyll serve
+</code></pre>
+</div>
+
+<p>find the app hosted at <a href="http://127.0.0.1:4000">http://localhost:4000/</a></p>
+
+<p>add <code class="highlighter-rouge">-watch</code> for auto updates, <strong>currently not supported in windows</strong></p>
+
+<h2 id="customization">Customization</h2>
+
+<h3 id="theme">theme</h3>
+
+<p>To remove the default theme, remove the <code class="highlighter-rouge">gem 'minima'</code> in Gemfile, and remove <code class="highlighter-rouge">theme='minima'</code> settings in _config.yml.</p>
+
+<h3 id="harnessing-jekyll-engine">harnessing jekyll engine</h3>
+
+<ul>
+  <li>refer to jekyll <a href="http://jekyll.tips/jekyll-cheat-sheet/">cheat sheet</a></li>
+</ul>
+
+<h4 id="using-liquid">using liquid</h4>
+
+<blockquote>
+  <p>“Liquid is an open-source template language created by Shopify and written in Ruby.”</p>
+</blockquote>
+
+<ul>
+  <li>ref liquid <a href="https://shopify.github.io/liquid/">website</a></li>
+</ul>
+
+<p>get recent posts and print title, dates and excerpts</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code>
+    <span class="nt">&lt;h3&gt;&lt;a</span> <span class="na">class=</span><span class="s">"post-link"</span> <span class="na">href=</span><span class="s">"/tech/2016/12/28/Notes-on-Windows.html"</span><span class="nt">&gt;</span>Notes on windows<span class="nt">&lt;/a&gt;&lt;/h3&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Dec 28, 2016<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Notes on windows using platform.
+
+<span class="nt">&lt;/p&gt;</span>
+
+    <span class="nt">&lt;h3&gt;&lt;a</span> <span class="na">class=</span><span class="s">"post-link"</span> <span class="na">href=</span><span class="s">"/tech/2016/10/28/Notes-on-Sublime.html"</span><span class="nt">&gt;</span>Notes on sublime<span class="nt">&lt;/a&gt;&lt;/h3&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Oct 28, 2016<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Notes on using Sublime, a handy text editor I use for coding.
+
+<span class="nt">&lt;/p&gt;</span>
+
+    <span class="nt">&lt;h3&gt;&lt;a</span> <span class="na">class=</span><span class="s">"post-link"</span> <span class="na">href=</span><span class="s">"/tech/2016/10/25/Notes-on-Markdown.html"</span><span class="nt">&gt;</span>Notes on markdown<span class="nt">&lt;/a&gt;&lt;/h3&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Oct 25, 2016<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Notes on Markdown.
+
+<span class="nt">&lt;/p&gt;</span>
+
+</code></pre>
+</div>
+
+<p>get all posts organized by category</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code>
+    <span class="nt">&lt;h3&gt;</span>tech<span class="nt">&lt;/h3&gt;</span>
+    
+        
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"text-muted"</span> <span class="na">style=</span><span class="s">"font-size: 12px"</span><span class="nt">&gt;&lt;/a&gt;</span>
+        
+    
+        
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/tech/2016/12/28/Notes-on-Windows.html"</span><span class="nt">&gt;</span>Notes on windows<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"text-muted"</span> <span class="na">style=</span><span class="s">"font-size: 12px"</span><span class="nt">&gt;</span>Dec 28, 2016<span class="nt">&lt;/a&gt;</span>
+        
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/tech/2016/10/28/Notes-on-Sublime.html"</span><span class="nt">&gt;</span>Notes on sublime<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"text-muted"</span> <span class="na">style=</span><span class="s">"font-size: 12px"</span><span class="nt">&gt;</span>Oct 28, 2016<span class="nt">&lt;/a&gt;</span>
+        
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/tech/2016/10/25/Notes-on-Markdown.html"</span><span class="nt">&gt;</span>Notes on markdown<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"text-muted"</span> <span class="na">style=</span><span class="s">"font-size: 12px"</span><span class="nt">&gt;</span>Oct 25, 2016<span class="nt">&lt;/a&gt;</span>
+        
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/tech/2016/10/25/Notes-on-Jekyll.html"</span><span class="nt">&gt;</span>Notes on jekyll<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"text-muted"</span> <span class="na">style=</span><span class="s">"font-size: 12px"</span><span class="nt">&gt;</span>Oct 25, 2016<span class="nt">&lt;/a&gt;</span>
+        
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/tech/2016/10/25/Notes-on-GitHub.html"</span><span class="nt">&gt;</span>Notes on github<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"text-muted"</span> <span class="na">style=</span><span class="s">"font-size: 12px"</span><span class="nt">&gt;</span>Oct 25, 2016<span class="nt">&lt;/a&gt;</span>
+        
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/tech/2016/10/25/Notes-on-Git.html"</span><span class="nt">&gt;</span>Notes on git<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"text-muted"</span> <span class="na">style=</span><span class="s">"font-size: 12px"</span><span class="nt">&gt;</span>Oct 25, 2016<span class="nt">&lt;/a&gt;</span>
+        
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/tech/2016/10/25/Notes-on-Flask.html"</span><span class="nt">&gt;</span>Notes on flask<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"text-muted"</span> <span class="na">style=</span><span class="s">"font-size: 12px"</span><span class="nt">&gt;</span>Oct 25, 2016<span class="nt">&lt;/a&gt;</span>
+        
+    
+
+</code></pre>
+</div>
+
+    </div>
+  </div>
+
+  <br>
+
+  <footer class="post-footer card">
+    <p class="post-meta">
+      <a class='text-muted'> Last Modified: Dec 30, 2016 at 15:48 </a>
+      <br>
+      <b>Tags:</b>
+      
+        <a ref="jekyll">#jekyll</a>
+      
+        <a ref="tutorial">#tutorial</a>
+      
+    </p>
+  </footer>
+
+  
+
+</article>
+      
+    </div>
+    
+    <footer class='footer'>
+
+  <div clas='navbar-footer'>
+
+    <div class='social'>
+      <span>
+        <a href="https://github.com/knanne">
+          <img src="/assets/img/github.png" width="18px" height="18px" />
+        </a>
+          
+        <a href="https://twitter.com/knanne">
+          <img src="/assets/img/twitter.png" width="18px" height="18px" />
+        </a>
+        
+        <a href="https://linkedin.com/in/kainnanne">
+          <img src="/assets/img/linkedin.png" width="18px" height="18px" />
+        </a>
+      </span>
+    </div>
+
+    <div class='footer_text'>
+      <p class='text-muted'>&copy; 2016 Kain Nanne</p>
+    </div>
+
+  </div>
+
+</footer>
+    <scripts class="scripts">
+
+	<!-- Import jQuery -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+
+	<!-- Import Bootstrap Javascript -->
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">></script>
+
+	<!-- MathJax -->
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+</scripts>
+
+<!-- Auto Hide Navbar -->
+<script type='text/javascript'>
+
+	$(window).scroll(function() {
+	   	
+	   	var navbarHeight = $('header').outerHeight();
+
+	   	// pass header
+	   	if($(window).scrollTop() > navbarHeight) {
+	   		//remove footer, header
+	   		$('header').removeClass('navbar-header').addClass('nav-up');
+		    $('footer').removeClass('navbar-footer').addClass('nav-down');
+	   	}
+		// scroll to top
+		if($(window).scrollTop() < navbarHeight) {
+			//add footer, header
+			$('header').removeClass('nav-up').addClass('navbar-header');
+		    $('footer').removeClass('nav-down').addClass('navbar-footer');
+		}
+		// scroll to bottom
+	   	//if($(window).scrollTop() + $(window).innerHeight() == $(document).height()) {
+	    	// add footer
+	    //	$('footer').removeClass('nav-down').addClass('navbar-footer');
+	   	//}
+
+	});
+
+</script>
+
+  </body>
+
+</html>

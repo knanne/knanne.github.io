@@ -3,7 +3,7 @@ layout: default
 ---
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header">
+  <header class="post-header card">
     <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
     <p class="post-meta">
       <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
@@ -12,7 +12,7 @@ layout: default
 
   <br>
 
-  <div class="post-block">
+  <div class="post-box">
     <div class="post-content" itemprop="articleBody">
       {{ content }}
     </div>
@@ -20,7 +20,7 @@ layout: default
 
   <br>
 
-  <footer class="post-footer">
+  <footer class="post-footer card">
     <p class="post-meta">
       <a class='text-muted'> Last Modified: {{ page.last-modified-date | date: "%b %-d, %Y at %H:%M" }} </a>
       <br>
