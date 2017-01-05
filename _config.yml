@@ -21,7 +21,7 @@ email: kain.nanne@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   Expert traveler, amateur farmer, beer/wine enthusiast...with a data science problem
 
-avatar: "/assets/img/bill.png"
+avatar: "/assets/img/favicon-space-shuttle.ico"
 #credit - http://rockinghorsebureau.com/work/illustrations
 
 baseurl: "" # the subpath of your site, e.g. /blog

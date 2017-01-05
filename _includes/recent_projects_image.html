@@ -1,25 +1,19 @@
-<div id="container" class="container">
+<h4>Recent Projects</h4>
+<hr>
 	
-	<h4>Recent Projects</h4>
-	<hr>
-	
-	<div class="subcontainer">
-
-		<ul class="projects-list">
-	    	{% for project in site.data.projects limit : 3 %}
-		    	{% if project.publish == true %}
-			    	<li>
-				        <div class="card">
-					        <a href="{{ project.url }}">
-						        <h3>{{ project.project }}</h3>
-						        <img src="{{ site.baseurl }}{{ project.image }}" alt="Preview" style="width:auto;height:400px;">
-						    </a>
-					    </div>
-			      	</li>
-			      {% endif %}
-	    	{% endfor %}
-	  	</ul>
-
-	</div>
-
+<div class="subcontainer">
+	<ul class="projects-list">
+		{% for project in site.data.projects limit : 3 %}
+		    {% if project.publish == true %}
+			    <li>
+				    <div class="card">
+						<a href="{{ project.url }}">
+							<h3>{{ project.project }}</h3>
+						    <img src="{{ site.baseurl }}{{ project.image }}" alt="Preview" style="width:auto;height:400px;">
+						</a>
+					</div>
+			    </li>
+			{% endif %}
+	    {% endfor %}
+	</ul>
 </div>

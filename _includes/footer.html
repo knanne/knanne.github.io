@@ -1,27 +1,27 @@
 <footer class='footer'>
-
   <div clas='navbar-footer'>
 
     <div class='social'>
       <span>
         <a href="https://github.com/{{ site.github_username }}">
-          <img src="{{ site.baseurl }}/assets/img/github.png" width="18px" height="18px" />
+          <i class="fa fa-github fa-lg" aria-hidden="true"></i>
         </a>
-          
+        &nbsp;&nbsp;
         <a href="https://twitter.com/{{ site.twitter_username }}">
-          <img src="{{ site.baseurl }}/assets/img/twitter.png" width="18px" height="18px" />
+          <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
         </a>
-        
+        &nbsp;&nbsp;
         <a href="https://linkedin.com/in/{{ site.linkedin_username }}">
-          <img src="{{ site.baseurl }}/assets/img/linkedin.png" width="18px" height="18px" />
+          <i class="fa fa-linkedin fa-lg" aria-hidden="true"></i>
         </a>
       </span>
     </div>
 
-    <div class='footer_text'>
-      <p class='text-muted'>&copy; {{ site.time | date: '%Y' }} Kain Nanne</p>
-    </div>
+    <p>
+      <small>
+        &copy; {{ site.time | date: '%Y' }} Kain Nanne
+      </small>
+    </p>
 
   </div>
-
 </footer>
