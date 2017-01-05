@@ -10,23 +10,15 @@ Notes on windows using platform.
 
 ### windows command prompt
 
-#### dir info  
 ```
+# dir info  
 dir
-```
-
-#### list subfolders  
-```
+# list subfolders  
 dir /b
-```
-
-#### show entire tree of subfolders  
-```
+# show entire tree of subfolders  
 tree
-```
-
-#### list all files in subfolders  
-```
+# list all files in subfolders  
 dir /s
 ```
+
 
