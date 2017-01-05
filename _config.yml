@@ -34,6 +34,7 @@ linkedin_username: kainnanne
 nav-links:
   Home: ""
   Posts: "posts"
+  Projects: "projects"
   RSS: "feed.xml"
 
 excerpt_separator: <!--excerpt separator -->
