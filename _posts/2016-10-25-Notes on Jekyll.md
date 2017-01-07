@@ -83,4 +83,5 @@ get all posts organized by category
 
 #### search engine optimazation
 
-- [seo gem](https://help.github.com/articles/search-engine-optimization-for-github-pages/)
+- use the [jekyll seo gem](https://help.github.com/articles/search-engine-optimization-for-github-pages/)
+- create a [jekyll sitemap](https://github.com/jekyll/jekyll-sitemap)
