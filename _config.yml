@@ -18,17 +18,15 @@ title: knanne
 author: Kain Nanne
 email: kain.nanne@gmail.com
 
-description: > # this means to ignore newlines until "baseurl:"
-  Expert traveler, amateur farmer, beer/wine enthusiast...with a data science problem
+description: Expert traveler, amateur farmer, beer/wine enthusiast...with a data science problem
 
 avatar: "/assets/img/favicon-space-shuttle.ico"
-#credit - http://rockinghorsebureau.com/work/illustrations
 
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/" # the subpath of your site, e.g. /blog
+url: "https://knanne.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 twitter_username: knanne
-github_username:  knanne
+github_username: knanne
 linkedin_username: kainnanne
 
 nav-links:
