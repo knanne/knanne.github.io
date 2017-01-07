@@ -80,3 +80,8 @@ get all posts organized by category
     {% endfor %}
 {% endfor %}
 ```
+
+#### search engine optimazation
+
+- [seo gem](https://help.github.com/articles/search-engine-optimization-for-github-pages/)
+- [custom search](https://cse.google.com/)

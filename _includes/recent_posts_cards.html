@@ -1,8 +1,7 @@
 <h4>Recent Posts</h4>
 <hr>
-	
-<div class="subcontainer">
 
+<div class="subcontainer">
 	{% for post in site.posts limit : 3 %}
 		<a href="{{ site.baseurl }}{{ post.url }}">
 			<div class="card card-hover post-card">
@@ -11,5 +10,4 @@
 			</div>
 		</a>
 	{% endfor %}
-
 </div>

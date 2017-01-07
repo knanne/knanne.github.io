@@ -18,9 +18,16 @@ p {
 h1, h2, h3, h4 {
   text-transform: capitalize;
 }
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
 
 
 /* CONTAINERS */
+.container {
+}
 .subcontainer {
   display: block;
   text-align: center;
@@ -68,13 +75,6 @@ h1, h2, h3, h4 {
   bottom: -50px;
 }
 
-/* LISTS */
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
 /* POSTS */
 .post-box {
   display: block;
@@ -85,6 +85,10 @@ ul {
   width: 60%;
   font-size: 14px;
   text-align: justify;
+}
+.post-content ul {
+  list-style-type: circle;
+  padding-left: 25px;
 }
 .post-meta {
   font-size: 12px;
@@ -98,12 +102,14 @@ ul {
 
 /* MATERIAL */
 .card {
+  display: block;
+  text-align: center;
+  height: auto;
+  margin: 1%;
+  padding: 0;
   background:#FFF;
   box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);
   border-radius:3px;
-  margin: 1%;
-  padding: 1%
-  text-align: center;
 }
 .card-hover:hover {
   box-shadow: 0 2px 4px rgba(0,0,0,0.10), 0 2px 12px rgba(0,0,0,0.20);
@@ -112,14 +118,12 @@ ul {
 /* SOCIAL CARDS */
 .twitter-card {
   display: inline-block;
-  text-align: center;
   width: 40%;
   min-width: 200px;
   height: auto;
 }
 .instagram-card {
   display: inline-block;
-  text-align: center;
   width: 40%;
   min-width: 200px;
   height: auto;
@@ -129,10 +133,24 @@ ul {
 /* RECENT POSTS CARDS */
 .post-card {
   display: inline-block;
-  text-align: center;
   width: 25%;
   min-width: 200px;
-  height: auto;
+}
+
+/* SEARCH */
+.nav-search-link .nav-search-icon {
+  display: none;
+}
+.nav-search-link .nav-search-text {
+  display: inline;
+}
+@media only screen and (min-width: 768px) {
+  .nav-search-link .nav-search-icon {
+    display: inline;
+  }
+  .nav-search-link .nav-search-text {
+    display: none;
+  }
 }
 
 /* ------------ END CUSTOM ------------ */
