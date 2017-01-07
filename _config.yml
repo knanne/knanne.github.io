@@ -22,7 +22,7 @@ description: Expert traveler, amateur farmer, beer/wine enthusiast...with a data
 
 avatar: "/assets/img/favicon-space-shuttle.ico"
 
-baseurl: "/" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://knanne.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 twitter_username: knanne
