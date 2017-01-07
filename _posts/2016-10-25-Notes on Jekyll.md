@@ -85,3 +85,5 @@ get all posts organized by category
 
 - [seo gem](https://help.github.com/articles/search-engine-optimization-for-github-pages/)
 - [custom search](https://cse.google.com/)
+- get your site on google, [resources](https://support.google.com/webmasters/answer/6259634?hl=en)
+    + credit [this post](https://jasdumas.github.io/2016-05-07-adding-gcse-to-beautiful-jekyll/)
