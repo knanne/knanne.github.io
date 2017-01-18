@@ -20,7 +20,11 @@ email: kain.nanne@gmail.com
 description: Expert traveler, amateur farmer, beer/wine enthusiast...with a data science problem
 
 avatar: "/assets/img/favicon-space-shuttle.ico"
-logo: 
+logo: "/assets/img/favicon-space-shuttle.ico"
+
+twitter_username: knanne
+github_username: knanne
+linkedin_username: kainnanne
 
 twitter:
   username: knanne
@@ -34,12 +38,13 @@ social:
     - https://github.com/knanne
     - https://keybase.io/knanne
 
+google_analytics: UA-90589325-1
+
+disqus:
+  shortname: 
+
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://knanne.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-
-twitter_username: knanne
-github_username: knanne
-linkedin_username: kainnanne
 
 nav-links:
   Home: ""
