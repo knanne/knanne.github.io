@@ -25,16 +25,16 @@ jekyll provides specific [install instructions](http://jekyll.tips/jekyll-casts/
 source: [jekyllrb](https://jekyllrb.com/docs/windows/#installation),
 [jwillmer](https://jwillmer.de/blog/tutorial/how-to-install-jekyll-and-pages-gem-on-windows-10-x46#install-github-gem)  
 
-### init blog  
+###### init blog  
 ```shell
->>> jekyll new myBlog
+jekyll new myBlog
 ```
 
 This will install github-pages default files, including the [minima](https://github.com/jekyll/minima) theme.  
 
-### serve blog  
+###### serve blog  
 ```shell
->>> jekyll serve
+jekyll serve
 ```
 
 find the app hosted at [http://localhost:4000/](http://127.0.0.1:4000)  
@@ -43,11 +43,11 @@ add `-watch` for auto updates, **currently not supported in windows**
 
 ## Customization  
 
-### theme  
+#### theme  
 
 To remove the default theme, remove the `gem 'minima'` in Gemfile, and remove `theme='minima'` settings in _config.yml.  
 
-### harnessing jekyll engine  
+#### harnessing jekyll engine  
 
 - refer to jekyll [cheat sheet](http://jekyll.tips/jekyll-cheat-sheet/)  
 
@@ -57,20 +57,18 @@ To remove the default theme, remove the `gem 'minima'` in Gemfile, and remove `t
 
 - ref liquid [website](https://shopify.github.io/liquid/)  
 
-get recent posts and print title, dates and excerpts  
-
+###### get recent posts and print title, dates and excerpts  
 ```html
-{% for post in site.posts limit : 3 %}
+{% raw %}{% for post in site.posts limit : 3 %}
     <h3><a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
     <p class="text-muted">{{ post.date | date: "%b %-d, %Y" }}</p>
     <p>{{ post.excerpt | strip_html }}</p>
-{% endfor %}
+{% endfor %}{% endraw %}
 ```
 
-get all posts organized by category  
-
+###### get all posts organized by category  
 ```html
-{% for category in site.categories %}
+{% raw %}{% for category in site.categories %}
     <h3>{{ category | first }}</h3>
     {% for posts in category %}
         {% for post in posts %}
@@ -78,7 +76,7 @@ get all posts organized by category
             <a class="text-muted" style="font-size: 12px">{{ post.date | date: "%b %-d, %Y" }}</a>
         {% endfor %}
     {% endfor %}
-{% endfor %}
+{% endfor %}{% endraw %}
 ```
 
 #### search engine optimazation

@@ -5,32 +5,31 @@
 	
 	<div class="subcontainer">
 
-		<div class="card panel-group" id="accordion">
+		<div id="accordion" role="tablist" aria-multiselectable="true">
 	        {% for category in site.categories %}
-	            <div class="panel panel-default">
-	                <div class="panel-heading">
-	                    <h4 class="panel-title">
-	                        <a data-toggle="collapse" data-parent="#accordion" href="#{{ category | first }}">
-	                        {{ category | first }}</a>
-	                    </h4>
-	                </div>
-	                <div id="{{ category | first }}" class="panel-collapse collapse">
-	                    <div class="panel-body">
-	                        <ul>
-	                            {% for posts in category %}
-	                                {% for post in posts %}
-	                                	<li>
-		                                    <span>
-			                                    <a href="{{ post.url }}">{{ post.title }}</a>
-			                                    <a class="text-muted" style="font-size: 12px">{{ post.date | date: "%b %-d, %Y" }}</a>
-			                                </span>
-		                                </li>
-	                                {% endfor %}
-	                            {% endfor %}
-	                        </ul>
-	                    </div>
-	                </div>
-	            </div>
+				<div class="card accordion-card">
+		        	<div class="card-header" role="tab" id="heading_{{ category | first }}">
+		            	<h5 class="accordian-title card-title">
+			            	<a data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="{{ category | first }}" href="#{{ category | first }}">{{ category | first }}
+			            	</a>
+			            </h5>
+			        </div>
+			        <div id="{{ category | first }}" class="collapse show" role="tabpanel" aria-labelledby="heading_{{ category | first }}">
+      					<div class="card-block">
+			            	<ul>
+			                	{% for posts in category %}
+			                    	{% for post in posts %}
+			                        	<li>
+				                        	<span>
+					                        	<a href="{{ post.url }}">{{ post.title }} <small class="text-muted">{{ post.date | date: "%b %-d, %Y" }}</small></a>
+					                        </span>
+				                        </li>
+			                        {% endfor %}
+			                    {% endfor %}
+			                </ul>
+			            </div>
+			        </div>
+			    </div>
 	        {% endfor %}
 	    </div>
 

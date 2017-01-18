@@ -8,13 +8,14 @@ layout: default
     <p class="post-meta">
       <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
     </p>
+    <p class="lead">{{ page.excerpt | strip_html }}</p>
   </header>
 
   <br>
 
   <div class="post-box">
     <div class="post-content" itemprop="articleBody">
-      {{ content }}
+      {{ page.content | remove: page.excerpt }}
     </div>
   </div>
 
