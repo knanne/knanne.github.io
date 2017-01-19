@@ -13,9 +13,13 @@ Notes on using Jekyll for creating a website on GitHub pages.
 - [jekyll website](https://jekyllrb.com/)  
 - [github pages](https://pages.github.com/)  
 
+## Resources
+
+- a guy named Michael Lee is writing [Field Guide to Jekyll](https://michaelsoolee.com/jekyll-field-guide/)
+
 ## Getting Started
 
-jekyll provides specific [install instructions](http://jekyll.tips/jekyll-casts/install-jekyll-on-windows/) for windows, but for current github pages integration, use the following
+jekyll provides specific [install instructions](http://jekyll.tips/jekyll-casts/install-jekyll-on-windows/) for windows, but for current github pages integration, uses the following
 
 1. install chocolatory  
 2. install ruby 2.2.4, or downgrade  
@@ -35,6 +39,9 @@ This will install github-pages default files, including the [minima](https://git
 ###### serve blog  
 ```shell
 jekyll serve
+# alternately, if you receive an error due to inconsitent installations
+# between system and gemfile.lock (required dependencies)
+bundle exec jekyll serve
 ```
 
 find the app hosted at [http://localhost:4000/](http://127.0.0.1:4000)  

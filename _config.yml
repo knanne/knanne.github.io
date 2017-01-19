@@ -41,13 +41,13 @@ social:
 google_analytics: UA-90589325-1
 
 disqus:
-  shortname: 
+  active: False
+  shortname: knanne
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://knanne.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 nav-links:
-  Home: ""
   Posts: "posts"
   Projects: "projects"
 

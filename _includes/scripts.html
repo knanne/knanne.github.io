@@ -3,6 +3,9 @@
 	<!-- Import jQuery -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 
+	<!-- Import Tether -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
 	<!-- Import Bootstrap Javascript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
@@ -11,23 +14,21 @@
 
 </scripts>
 
-<!-- Auto Hide Navbar -->
+<!-- Auto Hide Navbar - ONLY FOOTER Implemented -->
 <script type='text/javascript'>
-
 	$(window).scroll(function() {
 	   	
 	   	var navbarHeight = $('header').outerHeight();
-
 	   	// pass header
 	   	if($(window).scrollTop() > navbarHeight) {
 	   		// remove footer, header
-	   		$('header').removeClass('navbar-header').addClass('nav-up');
+	   		//$('header').removeClass('navbar-header').addClass('nav-up');
 		    $('footer').removeClass('navbar-footer').addClass('nav-down');
 	   	}
 		// scroll to top
 		if($(window).scrollTop() < navbarHeight) {
 			// add footer, header
-			$('header').removeClass('nav-up').addClass('navbar-header');
+			//$('header').removeClass('nav-up').addClass('navbar-header');
 		    $('footer').removeClass('nav-down').addClass('navbar-footer');
 		}
 		// scroll to bottom
@@ -35,7 +36,5 @@
 	    	// add footer
 	    //	$('footer').removeClass('nav-down').addClass('navbar-footer');
 	   	//}
-
 	});
-
 </script>

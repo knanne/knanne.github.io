@@ -6,7 +6,8 @@
 
 /* GLOBAL */
 body {
-  margin-bottom: 50px !important;
+  /* margin bottom by footer height */
+  margin-bottom: 60px !important;
 }
 /* Global Font to Google */
 html *
@@ -38,34 +39,18 @@ ul {
 
 
 /* HEADER */
-.header {
-  position: fixed;
-  top: 0%;
-  width: 100%;
-  transition: top 0.2s ease-in-out;
-  max-height: 50px;
-  margin-bottom: 50px;
-}
-.navbar-header {
-  width: 100%;
-}
-.nav-up {
-  top: -50px;
-}
 
 
 /* FOOTER */
 .footer {
   position: fixed;
-  background-color: #f5f5f5;
+  background-color: #fafafa;
   bottom: 0%;
   width: 100%;
   text-align: center;
   transition: bottom 0.2s ease-in-out;
-  max-height: 50px;
-  margin-top: 50px;
-  padding: 10px;
-  font-size: 12px;
+  max-height: 60px;
+  line-height: 30px;
   color: #777;
 }
 .footer a {
@@ -75,7 +60,7 @@ ul {
   width: 100%;
 }
 .nav-down {
-  bottom: -50px;
+  bottom: -60px;
 }
 
 
@@ -136,12 +121,14 @@ ul {
   margin: 2%;
 }
 
+
 /* RECENT POSTS CARDS */
 .post-card {
   display: inline-block;
   width: 25%;
   min-width: 200px;
 }
+
 
 /* ALL POSTS ACCORDIAN */
 .accordian-card {
@@ -175,6 +162,8 @@ ul {
     display: none;
   }
 }
+
+
 /* FIX FORMATTING FOR GOOGLE CUSTOM SEARCH */
 #gcse {
 	line-height: 1.8em;

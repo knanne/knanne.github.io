@@ -32,8 +32,10 @@ layout: default
     </p>
   </footer>
 
-  {% if site.disqus.shortname %}
-    {% include disqus_comments.html %}
+  {% if site.disqus.active %}
+    {% if page.comments %}
+      {% include disqus_comments.html %}
+    {% endif %}
   {% endif %}
 
 </article>
