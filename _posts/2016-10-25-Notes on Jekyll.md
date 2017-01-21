@@ -105,3 +105,4 @@ Other notable options I have seen include:
 - Google +1 [button](https://developers.google.com/+/web/+1button/)
 - Twitter Tweet [button](https://dev.twitter.com/web/tweet-button)
 - Facebook like [button](https://developers.facebook.com/docs/plugins/like-button)
+- LinkedIn various [buttons](https://developer.linkedin.com/plugins)
