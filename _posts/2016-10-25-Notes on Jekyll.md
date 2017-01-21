@@ -1,7 +1,7 @@
 ---
 layout: post  
 categories: [tech]  
-tags: [jekyll, tutorial]  
+tags: [ruby, jekyll, static site generator]
 ---
 
 Notes on using Jekyll for creating a website on GitHub pages.  
@@ -86,7 +86,22 @@ To remove the default theme, remove the `gem 'minima'` in Gemfile, and remove `t
 {% endfor %}{% endraw %}
 ```
 
-#### search engine optimazation
+## Search Engine Optimization
 
 - use the [jekyll seo gem](https://help.github.com/articles/search-engine-optimization-for-github-pages/)
 - create a [jekyll sitemap](https://github.com/jekyll/jekyll-sitemap)
+
+## Blog Post Comments
+
+This blog implements the comments powered by Google Plus (see bottom of post). I have not found any official documentation on their [web API site](https://developers.google.com/+/web/), but found sample code [here](https://gist.github.com/chuckbutler/fce8077a0161cff6b489), and a blog post describing the implementation [here](https://floaternet.com/gcomments).
+
+Other notable options I have seen include:
+- [Disqus](https://disqus.com/)
+- [Facebook](https://developers.facebook.com/docs/plugins/comments)
+
+## Blog Social buttons
+
+- GitHub various [buttons](https://buttons.github.io/)
+- Google +1 [button](https://developers.google.com/+/web/+1button/)
+- Twitter Tweet [button](https://dev.twitter.com/web/tweet-button)
+- Facebook like [button](https://developers.facebook.com/docs/plugins/like-button)

@@ -1,7 +1,7 @@
 ---
 layout: post
 categories: [tech]
-tags: [markdown, tutorial]
+tags: [markdown]
 ---
 
 Notes on Markdown.  

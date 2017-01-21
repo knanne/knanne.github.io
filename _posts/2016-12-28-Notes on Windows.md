@@ -1,14 +1,14 @@
 ---
 layout: post
 categories: [tech]
-tags: [windows, tutorial]
+tags: [windows]
 ---
 
-Notes on windows using platform.
+Notes on using windows for development.
 
 <!--excerpt separator -->
 
-### windows command prompt
+## windows command prompt
 
 ```
 # dir info  
@@ -20,5 +20,3 @@ tree
 # list all files in subfolders  
 dir /s
 ```
-
-

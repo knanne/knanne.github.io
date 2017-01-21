@@ -89,7 +89,15 @@ ul {
 .post-footer {
   border-top: 1px solid #ccc;
 }
-
+.post-comments {
+  display: block;
+  text-align: center;
+}
+.post-social {
+  display: inline-block;
+  text-align: left;
+  margin: 2%;
+}
 
 /* MATERIAL */
 .card {
@@ -119,6 +127,13 @@ ul {
   min-width: 200px;
   height: auto;
   margin: 2%;
+}
+.linkedin-card {
+  display: inline-block;
+  text-align: left;
+  width: 400px;
+  height: auto;
+  margin: 0% !important;
 }
 
 

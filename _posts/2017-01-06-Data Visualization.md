@@ -1,18 +1,18 @@
 ---
 layout: post
 categories: [tech]
-tags: [data, visualization]
+tags: [data visualization]
 ---
 
 A compilation of notes and resources on data visualization.
 
 <!--excerpt separator -->
 
-### choosing which visualization
+## choosing which visualization
 
 - [datavizcatalogue](http://datavizcatalogue.com/) is a great resource to find descriptions and examples of various visualization methods  
 
-### notable open source tools
+## notable open source tools
 
 - [D3](https://d3js.org/)
 - Python

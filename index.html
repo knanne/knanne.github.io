@@ -3,14 +3,38 @@ layout: page
 title: User Site
 ---
 
-<div id="container" class="container">
+<div class="container">
 
 	<h4>About</h4>
 	<hr>
-	<p>
-		This is a user site for Kain Nanne.
 
-		The site is a test bed for my web development skills, and a collection of other notes.
+	<p>This is a user site for Kain Nanne.</p>
+
+	<!-- LinkedIn Profile Card -->
+	<a href="https://www.linkedin.com/in/{{ site.linkedin_username }}">
+		<div class="card linkedin-card card-hover">
+			<div class="card-block">
+					<h4 class="card-title">
+						<img class="card-img" src="\assets\img\In-2C-34px-R.png">
+						<a class="text-primary">Kain Nanne</a>
+					</h4>
+					<p class="card-text">
+						<strong>Data Analyst Consultant</strong><small> - Des Moines, Iowa</small>
+						<br>
+						<a class="text-muted">MSc. Information Sciences</a>
+					</p>
+			</div>
+		</div>
+	</a>
+
+	<p>
+		<br>
+		This site was built using Jekyll and Github Pages. It serves as a test bed for my web development skills, and a collection of other public notes. If you like the site, please show some appreciation by starring the project on GitHub.
+		<br>
+		<br>
+		<!-- GitHub Star -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <a class="github-button" href="https://github.com/knanne/knanne.github.io" data-style="mega" data-count-href="/knanne/knanne.github.io/stargazers" data-count-api="/repos/knanne/knanne.github.io#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star knanne/knanne.github.io on GitHub">Star</a>
 	</p>
 
 	<br>
@@ -20,7 +44,7 @@ title: User Site
 
 	<h4>Social</h4>
 	<hr>
-	
+
 	<div class="subcontainer">
 
 		<h5>Latest tweet from <a class='text-primary' href="https://twitter.com/knanne/">@knanne</a></h5>
@@ -34,7 +58,7 @@ title: User Site
 		</div>
 
 	</div>
-		
+
 	<script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
 
 </div>

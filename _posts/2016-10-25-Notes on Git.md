@@ -1,7 +1,7 @@
 ---
 layout: post
 categories: [tech]
-tags: [git, tutorial]
+tags: [git]
 ---
 
 A quick compilation of notes on git.
@@ -109,4 +109,3 @@ git clean -f
 ```shell
 git reset --hard
 ```
-
