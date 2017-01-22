@@ -12,31 +12,4 @@
 	<!-- MathJax -->
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
-
-
 </scripts>
-
-<!-- Auto Hide Navbar - ONLY FOOTER Implemented -->
-<script type='text/javascript'>
-	$(window).scroll(function() {
-
-	   	var navbarHeight = $('header').outerHeight();
-	   	// pass header
-	   	if($(window).scrollTop() > navbarHeight) {
-	   		// remove footer, header
-	   		//$('header').removeClass('navbar-header').addClass('nav-up');
-		    $('footer').removeClass('navbar-footer').addClass('nav-down');
-	   	}
-		// scroll to top
-		if($(window).scrollTop() < navbarHeight) {
-			// add footer, header
-			//$('header').removeClass('nav-up').addClass('navbar-header');
-		    $('footer').removeClass('nav-down').addClass('navbar-footer');
-		}
-		// scroll to bottom
-	   	//if($(window).scrollTop() + $(window).innerHeight() >= $(document).height()) {
-	    	// add footer
-	    //	$('footer').removeClass('nav-down').addClass('navbar-footer');
-	   	//}
-	});
-</script>

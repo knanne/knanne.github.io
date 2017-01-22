@@ -4,7 +4,7 @@
 <div class="subcontainer">
 	{% for project in site.data.projects limit : 3 %}
 		{% if project.publish == true %}
-			<a href="{{ project.url }}">
+			<a href="{{ project.url }}" rel="tooltip" title="View Project on GitHub">
 				<div class="card card-hover d-inline-flex justify-content-center">
 					<div class="card-block">
 						<h4 class="card-title">{{ project.project }}</h4>
