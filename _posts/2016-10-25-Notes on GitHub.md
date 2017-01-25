@@ -6,7 +6,7 @@ tags: [github]
 
 A compilation of notes on GitHub.
 
-<!--excerpt separator -->
+<!-- excerpt separator -->
 
 ## Intro to Github
 

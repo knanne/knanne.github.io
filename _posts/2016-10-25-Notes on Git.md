@@ -6,7 +6,7 @@ tags: [git]
 
 A quick compilation of notes on git.
 
-<!--excerpt separator -->
+<!-- excerpt separator -->
 
 ## getting started
 

@@ -6,7 +6,7 @@ tags: [markdown]
 
 Notes on Markdown.  
 
-<!--excerpt separator -->  
+<!-- excerpt separator -->
 
 ## Intro to Markdown  
 

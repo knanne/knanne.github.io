@@ -7,7 +7,7 @@ comments: true
 
 Notes on Search Engine Optimization (SEO) for this site, and related Google resources.
 
-<!--excerpt separator -->
+<!-- excerpt separator -->
 
 ## Registering on Google
 

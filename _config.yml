@@ -51,7 +51,7 @@ nav-links:
   Posts: "posts"
   Projects: "projects"
 
-excerpt_separator: <!--excerpt separator -->
+excerpt_separator: <!-- excerpt separator -->
 
 # Build settings
 markdown: kramdown

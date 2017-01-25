@@ -6,7 +6,7 @@ tags: [ruby, jekyll, static site generator]
 
 Notes on using Jekyll for creating a website on GitHub pages.  
 
-<!--excerpt separator -->
+<!-- excerpt separator -->
 
 ## Intro to Jekyll
 

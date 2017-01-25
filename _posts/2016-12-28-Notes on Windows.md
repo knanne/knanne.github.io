@@ -6,7 +6,7 @@ tags: [windows]
 
 Notes on using windows for development.
 
-<!--excerpt separator -->
+<!-- excerpt separator -->
 
 ## windows command prompt
 

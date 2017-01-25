@@ -2,11 +2,12 @@
 layout: post
 categories: [tech]
 tags: [software]
+author: Kain Nanne
 ---
 
 Some notes from my daily software use (currently on Windows)
 
-<!--excerpt separator -->  
+<!-- excerpt separator -->
 
 ## Text Editor
 

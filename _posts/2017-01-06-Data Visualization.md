@@ -6,7 +6,7 @@ tags: [data visualization]
 
 A compilation of notes and resources on data visualization.
 
-<!--excerpt separator -->
+<!-- excerpt separator -->
 
 ## choosing which visualization
 

@@ -32,7 +32,7 @@ layout: default
             <br>
             <b>Tags:</b>
             {% for tag in page.tags %}
-              <a href="{{ site.base_url }}/tags/#{{ tag }}">#{{ tag }}</a>
+              <a class="badge badge-default" href="{{ site.base_url }}/tags/#{{ tag }}">#{{ tag }}</a>
             {% endfor %}
           </p>
         </footer>

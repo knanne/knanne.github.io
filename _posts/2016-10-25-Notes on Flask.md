@@ -6,7 +6,7 @@ tags: [python, flask]
 
 Notes on using Flask, a microframework for creating apps in Python.
 
-<!--excerpt separator -->
+<!-- excerpt separator -->
 
 ## Intro to Flask
 
