@@ -3,14 +3,10 @@
 
 /* ------------ BEGIN CUSTOM ------------ */
 
-
 /* GLOBAL */
-body {
-  /* margin bottom by footer height */
-}
-/* Global Font to Google */
 html *
 {
+  /* Font to Google */
   font-family: 'Raleway', sans-serif;
 }
 p {
@@ -21,18 +17,12 @@ h1, h2, h3, h4 {
 }
 
 /* CONTAINERS */
-.container {
-}
 .subcontainer {
   display: block;
   text-align: center;
   margin: 2%;
   padding: 2%;
 }
-
-
-/* HEADER */
-
 
 /* FOOTER */
 .footer {
@@ -47,25 +37,16 @@ h1, h2, h3, h4 {
 .footer a {
   color: #777;
 }
-.navbar-footer {
-  width: 100%;
-}
-.nav-down {
-  bottom: -60px;
-}
-
 
 /* POSTS */
-.post {
-}
 .post-sidebar {
   background-color: #fafafa;
   height: auto;
-  padding: 2%;
+  padding: 1%;
 }
 .post-box {
   display: block;
-  padding: 2%;
+  padding: 1%;
   text-align: center;
   background-color: #fafafa;
 }
@@ -92,13 +73,9 @@ h1, h2, h3, h4 {
   text-align: center;
   width: auto;
 }
-.post-comments.comments {
-  width: auto;
-}
 .post-social {
   display: inline-block;
   text-align: left;
-  margin: 2%;
 }
 
 /* MATERIAL */
@@ -110,7 +87,6 @@ h1, h2, h3, h4 {
   box-shadow: 0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);
   /* box-shadow: 0 2px 4px rgba(0,0,0,0.10), 0 2px 12px rgba(0,0,0,0.20); */
 }
-
 
 /* SOCIAL CARDS */
 .twitter-card {
@@ -134,14 +110,12 @@ h1, h2, h3, h4 {
   margin: 0% !important;
 }
 
-
 /* RECENT POSTS CARDS */
 .post-card {
   display: inline-block;
   width: 25%;
   min-width: 200px;
 }
-
 
 /* ALL POSTS ACCORDIAN */
 .accordian-card {
@@ -159,7 +133,6 @@ h1, h2, h3, h4 {
   content: "\f077"; /* fa-chevron-up */
 }
 
-
 /* SEARCH */
 .nav-search-link .nav-search-icon {
   display: none;
@@ -176,7 +149,6 @@ h1, h2, h3, h4 {
   }
 }
 
-
 /* FIX FORMATTING FOR GOOGLE CUSTOM SEARCH */
 #gcse {
 	line-height: 1.8em;
@@ -184,7 +156,6 @@ h1, h2, h3, h4 {
 	background-image: inherit;
 	box-sizing: content-box;
 }
-
 
 /* ------------ END CUSTOM ------------ */
 

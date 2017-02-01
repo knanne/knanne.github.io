@@ -1,0 +1,42 @@
+<div class="container">
+
+  <h5>About The Author</h5>
+  <div class="card">
+    <div class="card-block">
+      <h5 class="card-title"><strong>{{ site.author }}</strong></h5>
+      <p class="card-text"><em>{{ site.description }}</em></p>
+      <a class="card-link" href="https://github.com/{{ site.github_username }}" rel="tooltip" title="knanne on GitHub"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a>
+      <a class="card-link" href="https://linkedin.com/in/{{ site.linkedin_username }}" rel="tooltip" title="knanne on LinkedIn"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a>
+      <a class="card-link" href="https://twitter.com/{{ site.twitter_username }}" rel="tooltip" title="knanne on Twitter"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
+    </div>
+  </div>
+
+  <br>
+
+  <h5>Categories</h5>
+  <small>
+    <div class="list-group">
+      {% for category in site.categories %}
+        <a href="{{ site.base_url }}/posts/#{{ category | first}}" class="list-group-item list-group-item-action justify-content-between">
+            {{ category | first }}
+            <span class="badge badge-default badge-pill">{{ category[1] | size }}</span>
+        </a>
+      {% endfor %}
+    </ul>
+  </small>
+
+  <br>
+
+  <h5>Tags</h5>
+  <small>
+    <div class="list-group">
+      {% for tag in site.tags %}
+      <a href="{{ site.base_url }}/tags/#{{ tag | first}}">
+        {{ tag | first }}
+        <span class="badge badge-default badge-pill">{{ tag[1] | size }} </span>
+      </a>
+      {% endfor %}
+    </ul>
+  </small>
+
+</div>

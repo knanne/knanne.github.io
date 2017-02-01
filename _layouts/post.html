@@ -2,9 +2,14 @@
 layout: default
 ---
 
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-12 col-md-9 post">
+
+    <nav class="col-lg-3 push-lg-9 hidden-md-down post-sidebar">
+      {% include sidebar.html %}
+    </nav>
+
+    <div class="col-lg-9 pull-lg-3 post">
 
       <article itemscope itemtype="http://schema.org/BlogPosting">
 
@@ -28,81 +33,38 @@ layout: default
 
         <footer class="post-footer">
           <p class="post-meta">
-            <a class='text-muted'> Last Modified: {{ page.last-modified-date | date: "%b %-d, %Y at %H:%M" }} </a>
+            <time class='text-muted' datetime="{{ page.last-modified-date | date_to_xmlschema }}" itemprop="dateModified">Last Modified: {{ page.last-modified-date | date: "%b %-d, %Y at %H:%M" }}</time>
             <br>
             <b>Tags:</b>
             {% for tag in page.tags %}
-              <a class="badge badge-default" href="{{ site.base_url }}/tags/#{{ tag }}">#{{ tag }}</a>
+              <a class="badge badge-default" href="{{ site.base_url }}/tags/#{{ tag }}" itemprop="keywords">#{{ tag }}</a>
             {% endfor %}
           </p>
         </footer>
 
       </article>
 
+      <!-- Social Buttons
       <span class="post-social">
-        <!-- Twitter Tweet button -->
         <a href="https://twitter.com/share?text={{ page.title }}&via={{ site.twitter_username }}&url={{ site.url }}{{ page.url }}" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-        <!-- Google +1 button -->
         <script src="https://apis.google.com/js/platform.js"></script>
         <div class="g-plusone"></div>
       </span>
+      -->
 
+      <!-- Google Plus comments
       <div class="post-comments">
-        <!-- Google Plus comments -->
         <script src="https://apis.google.com/js/plusone.js"></script>
         <div id="comments" class="comments"></div>
         <script>
           gapi.comments.render('comments', {
               href: window.location,
-              width: '624',
               first_party_property: 'BLOGGER',
               view_type: 'FILTERED_POSTMOD'
           });
         </script>
       </div>
-
-    </div>
-
-    <div class="col-12 col-md-3 post-sidebar">
-
-      <h5>About The Author</h5>
-      <div class="card">
-        <div class="card-block">
-          <h5 class="card-title"><strong>{{ site.author }}</strong></h5>
-          <p class="card-text"><em>{{ site.description }}</em></p>
-          <a class="card-link" href="https://github.com/{{ site.github_username }}" rel="tooltip" title="knanne on GitHub"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a>
-          <a class="card-link" href="https://linkedin.com/in/{{ site.linkedin_username }}" rel="tooltip" title="knanne on LinkedIn"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a>
-          <a class="card-link" href="https://twitter.com/{{ site.twitter_username }}" rel="tooltip" title="knanne on Twitter"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
-        </div>
-      </div>
-
-      <br>
-
-      <h5>Categories</h5>
-      <small>
-        <div class="list-group">
-          {% for category in site.categories %}
-            <a href="{{ site.base_url }}/categories/#{{ category | first}}" class="list-group-item list-group-item-action justify-content-between">
-                {{ category | first }}
-                <span class="badge badge-default badge-pill">{{ category[1] | size }}</span>
-            </a>
-          {% endfor %}
-        </ul>
-      </small>
-
-      <br>
-
-      <h5>Tags</h5>
-      <small>
-        <div class="list-group">
-          {% for tag in site.tags %}
-          <a href="{{ site.base_url }}/tags/#{{ tag | first}}" class="list-group-item list-group-item-action justify-content-between">
-            {{ tag | first }}
-            <span class="badge badge-default badge-pill">{{ tag[1] | size }}</span>
-          </a>
-          {% endfor %}
-        </ul>
-      </small>
+    -->
 
     </div>
 

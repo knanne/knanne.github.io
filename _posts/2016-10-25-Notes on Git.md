@@ -105,7 +105,19 @@ git clean -n
 git clean -f
 ```
 
-###### hard reset to remote master **this will remove any untracked changes*
+###### hard reset to remote master *this will remove any untracked changes*
 ```shell
 git reset --hard
+```
+
+## handy commands
+
+###### list all committed files
+```shell
+git ls-tree --name-only BRANCH
+```
+
+###### list all uncommitted files
+```shell
+git ls-files --others
 ```
