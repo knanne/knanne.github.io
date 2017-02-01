@@ -33,7 +33,11 @@ layout: default
 
         <footer class="post-footer">
           <p class="post-meta">
-            <time class='text-muted' datetime="{{ page.last-modified-date | date_to_xmlschema }}" itemprop="dateModified">Last Modified: {{ page.last-modified-date | date: "%b %-d, %Y at %H:%M" }}</time>
+            {% if page.last-modified-date == nil %}
+              <time class='text-muted' datetime="{{ page.date | date_to_xmlschema }}" itemprop="dateModified">Last Modified: {{ page.date | date: "%b %-d, %Y at %H:%M" }}</time>
+            {% else %}
+              <time class='text-muted' datetime="{{ page.last-modified-date | date_to_xmlschema }}" itemprop="dateModified">Last Modified: {{ page.last-modified-date | date: "%b %-d, %Y at %H:%M" }}</time>
+            {% endif %}
             <br>
             <b>Tags:</b>
             {% for tag in page.tags %}
