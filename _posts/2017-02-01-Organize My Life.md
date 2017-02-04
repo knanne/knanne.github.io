@@ -31,3 +31,9 @@ Whether you are tracking Habits, Tasks, Goals, Activities or Achievements many a
 - add [Goals](https://blog.google/products/calendar/find-time-goals-google-calendar/) (e.g. workout) in Google Calendar
 
 - use [Google Keep](https://keep.google.com/) to manage lists of single-occurrence tasks (e.g. fix this) and associate a reminder in Google Calendar
+
+The UI of Google Calendar does not provide the best view of tracking X's over time, but it does cross out the Goals and To Dos that have been marked as done, and deletes those that have been dismissed - so i find it effective
+
+## Time Tracking
+
+[Toggle](https://toggle.com/) offers [Google Calendar integration](https://toggl.com/google-calendar-timer-integration) and [beautiful reports](https://support.toggl.com/category/reporting/)

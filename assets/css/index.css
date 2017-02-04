@@ -1,7 +1,9 @@
 ---
 ---
 
-/* ------------ BEGIN CUSTOM ------------ */
+/*
+* based on github-pages theme "minima" default
+*/
 
 /* GLOBAL */
 html *
@@ -41,14 +43,13 @@ h1, h2, h3, h4 {
 /* POSTS */
 .post-sidebar {
   background-color: #fafafa;
-  height: auto;
   padding: 1%;
 }
 .post-box {
   display: block;
   padding: 1%;
   text-align: center;
-  background-color: #fafafa;
+  /*background-color: #fafafa;*/
 }
 .post-content {
   display: inline-block;
@@ -57,7 +58,7 @@ h1, h2, h3, h4 {
 }
 .post-content ul {
   list-style-type: circle;
-  padding-left: 25px;
+  padding-left: 15px;
 }
 .post-meta {
   font-size: 12px;
@@ -157,48 +158,38 @@ h1, h2, h3, h4 {
 	box-sizing: content-box;
 }
 
-/* ------------ END CUSTOM ------------ */
-
-/*
-everything below is github-pages minima default
-*/
-
-/**
- * Images
- */
+/* IMAGES */
 img {
   max-width: 100%;
   vertical-align: middle; }
 
-/**
- * Code formatting
- */
+/*
+* MARKDOWN-specific below
+*/
+
+/* BLOCKQUOTES */
+  blockquote {
+    border-left: 4px solid #FaFaFa;
+    margin: 25px;
+    padding-left: 15px;
+    font-style: italic;
+  }
+
+/* CODE */
 pre,
 code {
-  font-size: 15px;
   border: 1px solid #ccc;
   border-radius: 3px;
-  background-color: #FaFaFa; }
-
-code {
-  padding: 1px 5px; }
+  background-color: #FaFaFa;
+  padding: 1px 1px; }
 
 pre {
-  padding: 8px 12px;
+  padding: 8px;
   overflow-x: auto; }
   pre > code {
     border: 0;
     padding-right: 0;
     padding-left: 0; }
-
-/**
- * Icons
- */
-.icon > svg {
-  display: inline-block;
-  vertical-align: middle; }
-  .icon > svg path {
-    fill: #828282; }
 
 /**
  * Syntax highlighting styles

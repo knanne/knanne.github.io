@@ -11,9 +11,9 @@ The site can be found at [knanne.github.io](https://knanne.github.io)
     ```yaml
     ---
     layout: post
-    categories: []
-    tags: []
-    author: Kain Nann
+    categories: [cat]
+    tags: [tag]
+    author: Kain Nanne
     ---
     ```
 
