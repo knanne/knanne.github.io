@@ -1,0 +1,215 @@
+---
+# required
+---
+
+/*
+* this style sheet uses the default github-pages theme "minima"
+* and then includes custom changes on top
+* https://github.com/jekyll/minima
+*/
+
+/*
+* some other custom styles come from Google
+* Noto Sans font from https://fonts.google.com/
+* Typography rules from https://material.io/guidelines/style/typography.html#
+* Color rules from https://material.io/guidelines/style/color.html#color-color-palette
+*/
+
+@charset "utf-8";
+
+// minima variables
+$base-font-size:   14px;
+$base-font-weight: 400;
+$small-font-size:  $base-font-size * 0.90;
+$base-line-height: 1.5;
+
+$spacing-unit:     30px;
+
+$text-color:       #000000;
+$background-color: #fdfdfd;
+$brand-color:      #2a7ae2;
+
+$border-color:     lighten($text-color, 87%);
+
+$grey-color:       lighten($text-color, 54%);
+$grey-color-light: lighten($text-color, 87%);
+$grey-color-dark:  lighten($text-color, 12%);
+
+// Width of the content area
+$content-width:    800px;
+
+$on-palm:          600px;
+$on-laptop:        800px;
+
+// Import partials from the `minima` theme.
+@import "minima";
+
+/*
+* Custom changes on top of github-pages theme "minima"
+*/
+
+/* GLOBAL */
+html *
+{
+  /* Font to Google */
+  font-family: 'Noto Sans', sans-serif;
+}
+h1, h2, h3, h4 {
+  text-transform: capitalize;
+}
+
+/* CONTAINERS */
+.subcontainer {
+  display: block;
+  text-align: center;
+  margin: 2%;
+  padding: 2%;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 4%;
+  bottom: 0%;
+  width: 100% !important;
+  height: 60px;
+  text-align: center;
+  line-height: 30px;
+  color: #777;
+}
+.footer a {
+  color: #777;
+}
+
+// POSTS
+.post-sidebar {
+  background-color: #fafafa;
+  padding: 1%;
+  height: auto;
+}
+.post-box {
+  display: block;
+  padding: 1%;
+  text-align: center;
+  /*background-color: #fafafa;*/
+}
+.post-content {
+  display: inline-block;
+  font-size: $base-font-size;
+  text-align: justify;
+}
+.post-content ul {
+  list-style-type: circle;
+  padding-left: 15px;
+}
+.post-header {
+  border-bottom: 1px solid $border-color;
+}
+.post-footer {
+  border-top: 1px solid $border-color;
+}
+.post-comments {
+  display: block;
+  text-align: center;
+  width: auto;
+}
+.post-social {
+  display: inline-block;
+  text-align: left;
+}
+
+// MATERIAL CARDS
+.card {
+  text-align: center;
+  margin: 2%;
+}
+.card-hover:hover {
+  box-shadow: 0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);
+  /* box-shadow: 0 2px 4px rgba(0,0,0,0.10), 0 2px 12px rgba(0,0,0,0.20); */
+}
+
+// SOCIAL CARDS
+.twitter-card {
+  display: inline-block;
+  width: 40%;
+  min-width: 200px;
+  height: auto;
+}
+.instagram-card {
+  display: inline-block;
+  width: 40%;
+  min-width: 200px;
+  height: auto;
+  margin: 2%;
+}
+.linkedin-card {
+  display: inline-block;
+  text-align: left;
+  max-width: 400px;
+  height: auto;
+  margin: 0% !important;
+}
+
+// RECENT POSTS CARDS
+.post-card {
+  display: inline-block;
+  width: 25%;
+  min-width: 200px;
+}
+
+// ALL POSTS ACCORDIAN
+.accordian-card {
+  padding: 1%;
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+}
+.accordian-title > a:after {
+  content: "\f078"; /* fa-chevron-down */
+  font-family: 'FontAwesome';
+  position: absolute;
+  right: 1%;
+}
+.accordian-title > a[aria-expanded="true"]:after {
+  content: "\f077"; /* fa-chevron-up */
+}
+
+// SEARCH
+.nav-search-link .nav-search-icon {
+  display: none;
+}
+.nav-search-link .nav-search-text {
+  display: inline;
+}
+@media only screen and (min-width: 768px) {
+  .nav-search-link .nav-search-icon {
+    display: inline;
+  }
+  .nav-search-link .nav-search-text {
+    display: none;
+  }
+}
+
+// FIX FORMATTING FOR GOOGLE CUSTOM SEARCH
+#gcse {
+	line-height: 1.8em;
+	font: 27px/18px arial, sans-serif;
+	background-image: inherit;
+	box-sizing: content-box;
+}
+
+// IMAGES
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+/*
+* MARKDOWN-specific below
+*/
+
+// Blockquotes
+blockquote {
+  font-size: $base-font-size * 1.10;
+  border-left: 4px solid $border-color;
+  letter-spacing: 0px;
+  opacity: .87;
+}

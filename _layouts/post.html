@@ -41,7 +41,7 @@ layout: default
             <br>
             <b>Tags:</b>
             {% for tag in page.tags %}
-              <a class="badge badge-default" href="{{ site.base_url }}/tags/#{{ tag }}" itemprop="keywords">#{{ tag }}</a>
+              <a href="{{ site.base_url }}/tags/#{{ tag }}" rel="tooltip" title="Go to Tag"><span class="badge badge-default" itemprop="keywords">#{{ tag }}</span></a>
             {% endfor %}
           </p>
         </footer>

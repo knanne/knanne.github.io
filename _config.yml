@@ -54,17 +54,16 @@ nav-links:
 excerpt_separator: <!-- excerpt separator -->
 
 # Build settings
+theme: minima
 markdown: kramdown
 kramdown:
   input: GFM
   syntax_highlighter: rouge
-
 gems:
   - jekyll-feed
   - jekyll-gist
   - jekyll-seo-tag
   - jekyll-sitemap
-
 exclude:
   - Gemfile
   - Gemfile.lock
