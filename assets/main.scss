@@ -2,22 +2,19 @@
 # required
 ---
 
-/*
-* this style sheet uses the default github-pages theme "minima"
-* and then includes custom changes on top
-* https://github.com/jekyll/minima
-*/
+// this style sheet uses the default github-pages theme "minima"
+// and includes custom changes on top
+// https://github.com/jekyll/minima
 
-/*
-* some other custom styles come from Google
-* Noto Sans font from https://fonts.google.com/
-* Typography rules from https://material.io/guidelines/style/typography.html#
-* Color rules from https://material.io/guidelines/style/color.html#color-color-palette
-*/
+// some other custom styles come from Google
+// Noto Sans font from https://fonts.google.com/
+// Typography rules from https://material.io/guidelines/style/typography.html#
+// Color rules from https://material.io/guidelines/style/color.html#color-color-palette
 
 @charset "utf-8";
 
 // minima variables
+$base-font-family: 'Noto Sans', sans-serif;
 $base-font-size:   14px;
 $base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.90;
@@ -51,8 +48,7 @@ $on-laptop:        800px;
 /* GLOBAL */
 html *
 {
-  /* Font to Google */
-  font-family: 'Noto Sans', sans-serif;
+  font-family: $base-font-family;
 }
 h1, h2, h3, h4 {
   text-transform: capitalize;
