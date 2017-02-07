@@ -116,33 +116,10 @@ h1, h2, h3, h4 {
 // MATERIAL CARDS
 .card {
   text-align: center;
-  margin: 2%;
 }
 .card-hover:hover {
   box-shadow: 0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);
   /* box-shadow: 0 2px 4px rgba(0,0,0,0.10), 0 2px 12px rgba(0,0,0,0.20); */
-}
-
-// SOCIAL CARDS
-.twitter-card {
-  display: inline-block;
-  width: 40%;
-  min-width: 200px;
-  height: auto;
-}
-.instagram-card {
-  display: inline-block;
-  width: 40%;
-  min-width: 200px;
-  height: auto;
-  margin: 2%;
-}
-.linkedin-card {
-  display: inline-block;
-  text-align: left;
-  max-width: 400px;
-  height: auto;
-  margin: 0% !important;
 }
 
 // RECENT POSTS CARDS

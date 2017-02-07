@@ -42,9 +42,9 @@ install [postgresql]()
 
 default user on installation is `postgres`. if you don't specify user with `-U <USER>` it defaults to windows user which is not an actual postgres user  
 
-add the necessary environment variables to `~/mappy/config/settings/.env` (see related [issue #490](https://github.com/pydanny/cookiecutter-django/issues/490))
+add the necessary environment variables to `~/mappy/config/settings/.env` (see related [issue #490](https://github.com/pydanny/cookiecutter-django/issues/490))  
 
-<mark>also, make sure this `.env` file is in your `.gitignore`</mark>
+<mark>also, make sure this `.env` file is in your `.gitignore`</mark>  
 
 initialize a project database  
 
@@ -66,28 +66,31 @@ python manage.py startapp polls
 
 you will now see a new app called polls under `mappy/polls/` with appropriate django tree files  
 
-> What’s the difference between a project and an app? An app is a Web application that does something – e.g., a Weblog system, a database of public records or a simple poll app. A project is a collection of configuration and apps for a particular website. A project can contain multiple apps. An app can be in multiple projects. - [Django docs](https://docs.djangoproject.com/en/1.10/intro/tutorial01/)
+> What’s the difference between a project and an app? An app is a Web application that does something – e.g., a Weblog system, a database of public records or a simple poll app. A project is a collection of configuration and apps for a particular website. A project can contain multiple apps. An app can be in multiple projects. - [Django docs](https://docs.djangoproject.com/en/1.10/intro/tutorial01/)  
 
 #### configure the new app
 
 now we need to configure our app to work with the rest of this cookiecutter project  
 
-register the app in `polls/app.py` by changing it to  
+configure the app to the project  
 
+###### `polls/app.py`
 ```python
 class MappyConfig(AppConfig):
     name = 'mappy.polls'
 ```
 
-add your local app to 'mappy/config/settings/common.py' with  
+configure your new local app in project common  
 
+###### `mappy/config/settings/common.py`
 ```python
 # Your stuff: custom apps go here
 'mappy.polls.apps.PollsConfig'
 ```
 
-add your local app urls to 'mappy/config/urls.py' with  
+add your local app urls to
 
+###### `mappy/config/urls.py`  
 ```python
 # Your stuff: custom urls includes go here
 url(r'^polls/', include('mappy.polls.urls', namespace='logs')),
@@ -95,8 +98,9 @@ url(r'^polls/', include('mappy.polls.urls', namespace='logs')),
 
 #### code your new app
 
-add a base view to `polls/views.py`
+add a base view  
 
+###### `polls/views.py`  
 ```python
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -105,8 +109,9 @@ def polls(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 ```
 
-add the corresponding urls for the app to `polls/urls.py`
+add the corresponding urls for the app  
 
+###### `polls/urls.py`  
 ```python
 from django.conf.urls import url
 from . import views
@@ -120,8 +125,9 @@ urlpatterns = [
 ]
 ```
 
-add your models to `polls/models.py`
+add your models
 
+###### `polls/models.py`  
 ```python
 from django.db import models
 
@@ -130,8 +136,9 @@ class Record(models.Model):
     text = models.CharField(max_length=200)
 ```
 
-allow django-admin to configure new app in `polls/admin.py`  
+configure django-admin to new app    
 
+###### `polls/admin.py`  
 ```python
 from django.contrib import admin
 from .models import Record
@@ -139,16 +146,18 @@ from .models import Record
 admin.site.register(Record)
 ```
 
-**update the database with your new model**d
+update the database with your new models  
 
 ```shell
+# create migrations for model changes
 python manage.py makemigrations
+# apply changes to database
 python manage.py migrate
 ```
 
-> Migrations are very powerful and let you change your models over time, as you develop your project, without the need to delete your database or tables and make new ones - it specializes in upgrading your database live, without losing data. - [Django docs](https://docs.djangoproject.com/en/1.10/intro/tutorial02/)
+> Migrations are very powerful and let you change your models over time, as you develop your project, without the need to delete your database or tables and make new ones - it specializes in upgrading your database live, without losing data. - [Django docs](https://docs.djangoproject.com/en/1.10/intro/tutorial02/)  
 
-**run your app**
+run your app  
 
 ```shell
 python manage.py runserver
@@ -156,7 +165,7 @@ python manage.py runserver
 
 ## some helpful commands
 
-**delete all data in databases**
+delete all data in databases  
 
 ```shell
 python manage.py flush

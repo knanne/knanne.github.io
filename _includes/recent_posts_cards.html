@@ -2,21 +2,27 @@
 <hr>
 
 <div class="subcontainer">
+	<div class="row">
 		{% for post in site.posts limit : 3 %}
-			<a href="{{ site.baseurl }}{{ post.url }}" rel="tooltip" title="View Post">
-				<div class="card card-hover d-inline-flex justify-content-center">
-					<div class="card-block">
-						<h4 class="card-title">{{ post.title }}</h4>
-						<p class="card-text">
-							<small class="text-muted">{{ post.date | date: "%b %-d, %Y" }}</small>
-						</p>
-						<small class="card-tags">
-							{% for tag in post.tags %}
-								<span class="badge badge-default" href="{{ site.base_url }}/tags/#{{ tag }}" rel="tooltip" title="View Tag">#{{ tag }} </span>
-							{% endfor %}
-						</small>
+			<div class="col-sm-4">
+				<a href="{{ site.baseurl }}{{ post.url }}" rel="tooltip" title="View Post">
+					<div class="card card-hover d-inline-flex justify-content-center">
+						<div class="card-block">
+							<h4 class="card-title">{{ post.title }}</h4>
+							<p class="card-text">
+								<small class="text-muted">{{ post.date | date: "%b %-d, %Y" }}</small>
+							</p>
+							<small class="card-tags">
+								{% for tag in post.tags %}
+									<span class="badge badge-default" href="{{ site.base_url }}/tags/#{{ tag }}" rel="tooltip" title="View Tag">#{{ tag }} </span>
+								{% endfor %}
+							</small>
+						</div>
 					</div>
-				</div>
-			</a>
+				</a>
+			</div>
 		{% endfor %}
+	</div>
 </div>
+
+<p class="text-right"><a href="{{ site.base_url }}/posts/">Go to all posts</a></p>
