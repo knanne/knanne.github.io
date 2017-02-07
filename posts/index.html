@@ -14,7 +14,7 @@ title: Posts by Category
 
   {% for category in sortedcategories %}
   {% assign cat = category | replace: '+', ' ' %}
-    <h4 id="{{ category }}">{{ cat }}</h4>
+    <h5 id="{{ category }}">{{ cat }}</h5>
     <hr>
     <ul>
     {% for post in site.categories[cat] %}
@@ -25,5 +25,7 @@ title: Posts by Category
     {% endfor %}
     </ul>
   {% endfor %}
+
+  <p class="text-right"><a href="{{ site.base_url }}/tags/">View posts by tag</a></p>
 
 </div>

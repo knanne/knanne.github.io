@@ -24,6 +24,7 @@ $spacing-unit:     30px;
 
 $text-color:       #000000;
 $background-color: #fdfdfd;
+$background-color-grey: #fafafa;
 $brand-color:      #2a7ae2;
 
 $border-color:     lighten($text-color, 87%);
@@ -50,7 +51,7 @@ html *
 {
   font-family: $base-font-family;
 }
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
   text-transform: capitalize;
 }
 
@@ -78,15 +79,14 @@ h1, h2, h3, h4 {
 
 // POSTS
 .post-sidebar {
-  background-color: #fafafa;
+  background-color: $background-color-grey;
   padding: 1%;
-  height: auto;
 }
 .post-box {
   display: block;
   padding: 1%;
   text-align: center;
-  /*background-color: #fafafa;*/
+  /*background-color: $background-color-grey;*/
 }
 .post-content {
   display: inline-block;
@@ -114,9 +114,9 @@ h1, h2, h3, h4 {
 }
 
 // MATERIAL CARDS
-.card {
-  text-align: center;
-}
+//.card {
+//  text-align: center;
+//}
 .card-hover:hover {
   box-shadow: 0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);
   /* box-shadow: 0 2px 4px rgba(0,0,0,0.10), 0 2px 12px rgba(0,0,0,0.20); */

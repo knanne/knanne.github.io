@@ -24,7 +24,7 @@ This post contains my notes while going through the cookiecutter-django [docs](h
 assuming you have both django and cookiecutter installed, if not run  
 
 ```shell
-pip  install django
+pip install django
 pip install cookiecutter
 ```
 
@@ -157,7 +157,7 @@ python manage.py migrate
 
 > Migrations are very powerful and let you change your models over time, as you develop your project, without the need to delete your database or tables and make new ones - it specializes in upgrading your database live, without losing data. - [Django docs](https://docs.djangoproject.com/en/1.10/intro/tutorial02/)  
 
-run your app  
+#### run your new app  
 
 ```shell
 python manage.py runserver

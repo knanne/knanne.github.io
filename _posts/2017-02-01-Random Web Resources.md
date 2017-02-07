@@ -5,7 +5,7 @@ tags: [research, internet]
 author: Kain Nanne
 ---
 
-This is an semi-structured list of web resources I value. Naturally they are tailored to my interests (Technology, and the Environment)
+A semi-structured list of valuable web resources, tailored to my interests (Technology, and the Environment)
 
 <!-- excerpt separator -->
 

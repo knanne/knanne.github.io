@@ -41,7 +41,7 @@ layout: default
             <br>
             <b>Tags:</b>
             {% for tag in page.tags %}
-              <a href="{{ site.base_url }}/tags/#{{ tag }}" rel="tooltip" title="Go to Tag"><span class="badge badge-default" itemprop="keywords">#{{ tag }}</span></a>
+              <a href="{{ site.base_url }}/tags/#{{ tag }}" rel="tooltip" title="Go to Tag" itemprop="keywords">{{ tag }}{% unless forloop.last %}, {% endunless %}</a>
             {% endfor %}
           </p>
         </footer>
