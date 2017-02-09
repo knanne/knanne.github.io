@@ -60,14 +60,16 @@ sass:
   style: compressed
 
 markdown: kramdown
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
+highlighter: rouge
+
+ampdir: amp
+
 gems:
   - jekyll-feed
   - jekyll-gist
   - jekyll-seo-tag
   - jekyll-sitemap
+  - amp-jekyll
 exclude:
   - Gemfile
   - Gemfile.lock

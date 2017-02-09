@@ -1,6 +1,6 @@
 ---
 layout: post
-categories: [tech, environment]
+categories: [tech]
 tags: [research, internet]
 author: Kain Nanne
 ---

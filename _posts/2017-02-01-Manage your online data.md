@@ -1,6 +1,6 @@
 ---
 layout: post
-categories: [tech, personal]
+categories: [personal]
 tags: [data, internet]
 author: Kain Nanne
 ---

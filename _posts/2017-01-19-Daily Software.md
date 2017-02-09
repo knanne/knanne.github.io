@@ -56,12 +56,20 @@ deactivate
 
 ## Chrome
 
+Notable commands:  
   - open new window 'Ctrl + N'
   - open new window in incognito mode 'Ctrl + Shift + N'
   - open new tab 'Ctrl + T'
   - toggle between open tabs `Ctrl + Tab`
   - open developer tools `Ctrl + Shift + J`
 
-[source](https://support.google.com/chrome/answer/157179?)  
+Google [source](https://support.google.com/chrome/answer/157179?)  
 
 ## Windows
+
+Notable commands:  
+  - open task view with `Windows + Tab`
+    - press `Tab` the arrow keys within task view to toggle between desktops
+  -  lock the computer with `Windows + L`
+
+Microsoft [source](https://support.microsoft.com/en-us/help/12445/windows-keyboard-shortcuts)
