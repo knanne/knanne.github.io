@@ -5,32 +5,42 @@ layout: default
 <div class="container-fluid">
   <div class="row">
 
+    <!--
     <nav class="col-lg-3 push-lg-9 hidden-md-down post-sidebar">
       {% include sidebar.html %}
     </nav>
+    -->
 
-    <div class="col-lg-9 pull-lg-3 post">
-
+    <div class="post"> <!-- col-lg-9 pull-lg-3 -->
       <article itemscope itemtype="http://schema.org/BlogPosting">
-
         <header class="post-header">
           <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
           <p class="post-meta">
-            <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
+            <b>Category:</b>
+            {% for cat in page.categories %}
+              <a href="{{ site.base_url }}/posts/#{{ cat }}" rel="tooltip" title="Go to Category" itemprop="genre">{{ cat }}{% unless forloop.last %}, {% endunless %}</a>
+            {% endfor %}
+            <time class="pull-right" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
           </p>
-          <p class="lead">{{ page.excerpt | strip_html }}</p>
+          <!-- post excerpt used only in cards
+          <p class="lead" itemprop="about">{{ page.excerpt | strip_html }}</p> -->
         </header>
 
-        <br>
+        <nav id="post-nav" class="navbar post-nav flex">
+          <ul class="nav justify-content-center">
+            {% for section in page.sections %}
+              <li class="nav-item">
+                <a class="nav-link {% if forloop.first %}active{% endif %}" href="#{{ section | replace: ' ', '_' | downcase }}">{{ section }}</a>
+              </li>
+              <br>
+            {% endfor %}
+          </ul>
+        </nav>
 
-        <div class="post-box">
-          <div class="post-content" itemprop="articleBody">
-            {{ page.content | remove: page.excerpt }}
-          </div>
+        <div class="post-content" itemprop="articleBody">
+          {{ page.content | remove: page.excerpt }}
         </div>
-
         <br>
-
         <footer class="post-footer">
           <p class="post-meta">
             {% if page.last-modified-date == nil %}
@@ -38,14 +48,14 @@ layout: default
             {% else %}
               <time class='text-muted' datetime="{{ page.last-modified-date | date_to_xmlschema }}" itemprop="dateModified">Last Modified: {{ page.last-modified-date | date: "%b %-d, %Y at %H:%M" }}</time>
             {% endif %}
-            <br>
-            <b>Tags:</b>
-            {% for tag in page.tags %}
-              <a href="{{ site.base_url }}/tags/#{{ tag }}" rel="tooltip" title="Go to Tag" itemprop="keywords">{{ tag }}{% unless forloop.last %}, {% endunless %}</a>
-            {% endfor %}
+            <span class="pull-right">
+              <b>Tags:</b>
+              {% for tag in page.tags %}
+                <a href="{{ site.base_url }}/tags/#{{ tag }}" rel="tooltip" title="Go to Tag" itemprop="keywords">{{ tag }}{% unless forloop.last %}, {% endunless %}</a>
+              {% endfor %}
+            </span>
           </p>
         </footer>
-
       </article>
 
       <!-- Social Buttons
@@ -68,9 +78,8 @@ layout: default
           });
         </script>
       </div>
-    -->
+      -->
 
     </div>
-
   </div>
 </div>

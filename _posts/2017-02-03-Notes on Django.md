@@ -3,13 +3,15 @@ layout: post
 categories: [tech]
 tags: [django, python]
 author: Kain Nanne
+sections: [Getting Started, Initialize Project, Setup Database, Develop, Run App]
 ---
 
 Notes on building a Django app in Python using a cookie-cutter
 
 <!-- excerpt separator -->
 
-## Intro
+<div id="getting_started"></div>
+## Getting Started
 
 This post contains my notes while going through the [cookiecutter-django docs](http://cookiecutter-django.readthedocs.io/en/latest/) and the official [django docs](https://docs.djangoproject.com/) simultaneously to setup an app  
 
@@ -21,16 +23,7 @@ This post contains my notes while going through the [cookiecutter-django docs](h
 
 > Powered by Cookiecutter, Cookiecutter Django is a framework for jumpstarting production-ready Django projects quickly. - [website](https://github.com/pydanny/cookiecutter-django)
 
-#### Contents
-- [Intialize Project](#initialize_project)
-- [Setup Database](#setup_database)
-- [Develop](#develop)
-- [Run App](#run_app)
-
-<br>
-<br>
-
-<a id="initialize_project"></a>
+<div id="initialize_project"></div>
 ## initialize project
 
 Assuming you have both django and cookiecutter installed, if not run the following:  
@@ -48,7 +41,7 @@ cookiecutter https://github.com/pydanny/cookiecutter-django
 
 Answer the questions regarding packages to include in your cookiecutter, otherwise hit enter to use defaults. on initial run, you may need to `pip install` some requirements you don't have.  
 
-<a id="setup_database"></a>
+<div id="setup_database"></div>
 ## setup database
 
 Install [postgresql]()  
@@ -69,7 +62,7 @@ python manage.py createsuperuser
 
 You can now run the app using `python manage.py runserver`, navigate to [localhost:8000](http://127.0.0.1:8000/) and login  
 
-<a id="develop"></a>
+<div id="develop"></div>
 ## develop
 
 Create a new `app` within your project  
@@ -171,7 +164,7 @@ python manage.py migrate
 
 > Migrations are very powerful and let you change your models over time, as you develop your project, without the need to delete your database or tables and make new ones - it specializes in upgrading your database live, without losing data. - [Django docs](https://docs.djangoproject.com/en/1.10/intro/tutorial02/)  
 
-<a id="run_app"></a>
+<div id="run_app"></div>
 ## run app  
 
 ```shell

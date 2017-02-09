@@ -9,3 +9,26 @@
 
 	<!-- MathJax -->
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+<script>
+
+	// add Bootstrap Scrollspy to post navigation
+	$('body').scrollspy({target: ".post-nav", offset: 50});
+
+	// fix post navbar on scroll past
+	var distanceFromTop = $('.post-nav').offset().top;
+	$(window).scroll(function() {
+		var currentScroll = $(window).scrollTop();
+		if (currentScroll >= distanceFromTop) {
+				$('.post-nav').css({
+						position: 'fixed',
+						top: '0'
+				});
+		} else {
+			$('.post-nav').css({
+				position: 'relative'
+			});
+		}
+	});
+
+</script>

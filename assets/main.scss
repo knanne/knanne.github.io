@@ -54,6 +54,12 @@ html *
 h1, h2, h3, h4, h5 {
   text-transform: capitalize;
 }
+body {
+  position: relative;
+}
+.active {
+  color: $brand-color;
+}
 
 /* CONTAINERS */
 .subcontainer {
@@ -82,35 +88,39 @@ h1, h2, h3, h4, h5 {
   background-color: $background-color-grey;
   padding: 1%;
 }
-.post-box {
-  display: block;
-  padding: 1%;
-  text-align: center;
-  /*background-color: $background-color-grey;*/
+.post-header {
+  border-bottom: 1px solid $border-color;
+}
+.post-nav {
+  width: 100%;
+  z-index: 10;
+  background-color: $background-color;
+}
+.post-nav a {
+  color: $text-color;
+  max-height: 50px;
+}
+.post-nav a:hover, a:active {
+  color: $brand-color;
+  border-bottom: 1px solid $brand-color;
 }
 .post-content {
+  margin-top: 50px;
   display: inline-block;
   font-size: $base-font-size;
   text-align: justify;
 }
-.post-content ul {
-  list-style-type: circle;
-  padding-left: 15px;
-}
-.post-header {
-  border-bottom: 1px solid $border-color;
-}
 .post-footer {
   border-top: 1px solid $border-color;
+}
+.post-social {
+  display: inline-block;
+  text-align: left;
 }
 .post-comments {
   display: block;
   text-align: center;
   width: auto;
-}
-.post-social {
-  display: inline-block;
-  text-align: left;
 }
 
 // MATERIAL CARDS
