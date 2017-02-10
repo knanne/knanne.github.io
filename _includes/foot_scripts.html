@@ -20,14 +20,16 @@
 	$(window).scroll(function() {
 		var currentScroll = $(window).scrollTop();
 		if (currentScroll >= distanceFromTop) {
-				$('.post-nav').css({
-						position: 'fixed',
-						top: '0'
-				});
+				$('.post-nav').addClass('fixed-top');
+				//$('.post-nav').css({
+				//		position: 'fixed',
+				//		top: '0'
+				//});
 		} else {
-			$('.post-nav').css({
-				position: 'relative'
-			});
+			$('.post-nav').removeClass('fixed-top');
+			//$('.post-nav').css({
+			//	position: 'relative'
+			//});
 		}
 	});
 

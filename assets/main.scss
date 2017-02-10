@@ -14,7 +14,7 @@
 @charset "utf-8";
 
 // minima variables
-$base-font-family: 'Noto Sans', sans-serif;
+$base-font-family: 'Roboto', sans-serif;
 $base-font-size:   14px;
 $base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.90;
@@ -23,7 +23,9 @@ $base-line-height: 1.5;
 $spacing-unit:     30px;
 
 $text-color:       #000000;
+$text-color-muted: #777;
 $background-color: #fdfdfd;
+$background-color-white: #FFFFFF;
 $background-color-grey: #fafafa;
 $brand-color:      #2a7ae2;
 
@@ -46,6 +48,11 @@ $on-laptop:        800px;
 * Custom changes on top of github-pages theme "minima"
 */
 
+/* DEVICE - Specific */
+@media only screen and (max-width: 760px) {
+  #post-nav { display: none; } //hide on mobile
+}
+
 /* GLOBAL */
 html *
 {
@@ -55,11 +62,25 @@ h1, h2, h3, h4, h5 {
   text-transform: capitalize;
 }
 body {
+  background-color: $background-color !important;
   position: relative;
 }
-.active {
-  color: $brand-color;
+
+/* NAVS */
+nav {
+  background-color: $background-color-grey !important;
 }
+nav a.active {
+  border-bottom: 1px solid $brand-color !important;
+}
+nav a:hover {
+  color: $brand-color !important;
+}
+/* FOOTER */
+footer {
+  background-color: $background-color !important;
+}
+
 
 /* CONTAINERS */
 .subcontainer {
@@ -77,10 +98,10 @@ body {
   height: 60px;
   text-align: center;
   line-height: 30px;
-  color: #777;
+  color: $text-color-muted;
 }
 .footer a {
-  color: #777;
+  color: $text-color-muted;
 }
 
 // POSTS
@@ -92,23 +113,21 @@ body {
   border-bottom: 1px solid $border-color;
 }
 .post-nav {
+  max-height: 50px;
   width: 100%;
   z-index: 10;
-  background-color: $background-color;
 }
 .post-nav a {
   color: $text-color;
-  max-height: 50px;
-}
-.post-nav a:hover, a:active {
-  color: $brand-color;
-  border-bottom: 1px solid $brand-color;
 }
 .post-content {
-  margin-top: 50px;
   display: inline-block;
   font-size: $base-font-size;
   text-align: justify;
+}
+.post-content .heading {
+  padding-top: 50px; // clear post-nav
+  color: $brand-color;
 }
 .post-footer {
   border-top: 1px solid $border-color;

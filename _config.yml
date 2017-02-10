@@ -52,6 +52,20 @@ nav-links:
   Posts: "posts"
   Projects: "projects"
 
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: Kain Nanne
+
 excerpt_separator: <!-- excerpt separator -->
 
 theme: minima
