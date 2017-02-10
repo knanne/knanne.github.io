@@ -35,11 +35,13 @@ The site can be found at [knanne.github.io](https://knanne.github.io)
     <!-- excerpt separator -->
 
     <div class="heading" id="introduction"></div>
+
     ## Introduction
 
     Some text...
 
     <div class="heading" id="first_paragraph"></div>
+    
     ## First Paragraph
 
     Some more text...

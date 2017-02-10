@@ -8,7 +8,9 @@ Notes on building a Django app in Python using a cookie-cutter
 
 <!-- excerpt separator -->
 
-<div class="heading" id="getting_started"></div> ## Getting Started
+<div class="heading" id="getting_started"></div>
+
+## Getting Started
 
 This post contains my notes while going through the [cookiecutter-django docs](http://cookiecutter-django.readthedocs.io/en/latest/) and the official [django docs](https://docs.djangoproject.com/) simultaneously to setup an app  
 
@@ -40,7 +42,7 @@ cookiecutter https://github.com/pydanny/cookiecutter-django
 Answer the questions regarding packages to include in your cookiecutter, otherwise hit enter to use defaults. on initial run, you may need to `pip install` some requirements you don't have.  
 
 <div class="heading" id="setup_database"></div>
-<br>
+
 ## setup database
 
 Install [postgresql]()  
@@ -62,7 +64,6 @@ python manage.py createsuperuser
 You can now run the app using `python manage.py runserver`, navigate to [localhost:8000](http://127.0.0.1:8000/) and login  
 
 <div class="heading" id="develop"></div>
-
 
 ## develop
 
@@ -166,6 +167,7 @@ python manage.py migrate
 > Migrations are very powerful and let you change your models over time, as you develop your project, without the need to delete your database or tables and make new ones - it specializes in upgrading your database live, without losing data. - [Django docs](https://docs.djangoproject.com/en/1.10/intro/tutorial02/)  
 
 <div class="heading" id="run_app"></div>
+
 ## run app  
 
 ```shell
