@@ -2,44 +2,61 @@
 layout: post
 categories: [tech]
 tags: [python, flask]
+sections:
+- Flask Intro
+- Resources
+- Simple setup
+- Advanced
 ---
 
 Notes on using Flask, a microframework for creating apps in Python.
 
 <!-- excerpt separator -->
 
-## Intro to Flask
+<div class="heading" id="flask_intro"></div>
 
-- [flask docs](http://flask.pocoo.org/)
+## Flask Intro
 
-#### resources
+**Flask**
+
+> Flask is a micro webdevelopment framework for Python - [website](http://flask.pocoo.org/)
+
+<div class="heading" id="resources"></div>
+
+## Resources
 
 [This guy](https://blog.miguelgrinberg.com/category/Flask) has some pretty good blog posts on Flask, and wrote a [book](http://flaskbook.com/) on it
 
-## Getting Started
+<div class="heading" id="simple setup"></div>
 
-###### create app environment
+## Simple Setup
+
+Create app environment  
+
 ```shell
 md flask_app
 cd flask_app
 virtual env
 ```
 
-###### activate app from scripts
+Activate app from scripts  
+
 ```shell
 cd env
 cd Scripts
 activate
 ```
 
-###### install flask in root
+Install flask in root  
+
 ```shell
 cd ..
 cd ..
 pip install flask
 ```
 
-###### write app in python
+Write app in python  
+
 ```python
 from flask import Flask
 
@@ -53,14 +70,17 @@ if __name__ == '__main__':
 	app.run()
 ```
 
-###### run app
+Run app  
+
 ```shell
 python app.py
 ```
 
-navigate to [localhost:5000](http://127.0.0.1:5000/)
+navigate to [localhost:5000](http://127.0.0.1:5000/)  
 
-## App Jobs
+<div class="heading" id="advanced"></div>
+
+## Advanced
 
 A more complex web app which needs to perform time consuming tasks like send emails, make external API calls or do long computations will require a background processing. Enter [celery](http://www.celeryproject.org/)
 

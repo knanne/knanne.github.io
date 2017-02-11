@@ -2,17 +2,7 @@
 layout: default
 ---
 
-
-<div class="container">
-  <div class="row">
-
-    <!--
-    <nav class="col-lg-3 push-lg-9 hidden-md-down post-sidebar">
-      {% include sidebar.html %}
-    </nav>
-    -->
-
-    <div class="post"> <!-- col-lg-9 pull-lg-3 -->
+    <div class="post">
       <article itemscope itemtype="http://schema.org/BlogPosting">
         <header class="post-header">
           <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
@@ -61,14 +51,17 @@ layout: default
       </article>
 
       <!-- Social Buttons
-      <span class="post-social">
+      <br>
+      <span class="post-social d-flex justify-content-end">
         <a href="https://twitter.com/share?text={{ page.title }}&via={{ site.twitter_username }}&url={{ site.url }}{{ page.url }}" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        &nbsp;
         <script src="https://apis.google.com/js/platform.js"></script>
         <div class="g-plusone"></div>
       </span>
       -->
 
       <!-- Google Plus comments
+      <br>
       <div class="post-comments">
         <script src="https://apis.google.com/js/plusone.js"></script>
         <div id="comments" class="comments"></div>
@@ -83,6 +76,3 @@ layout: default
       -->
 
     </div>
-
-  </div>
-</div>

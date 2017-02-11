@@ -2,17 +2,27 @@
 layout: post
 categories: [tech]
 tags: [git]
+sections:
+- Getting Started
+- Resources
+- Workflow
+- Sticky Situations
+- Notable Commands
 ---
 
-A quick compilation of notes on git.
+A quick compilation of notes on Git
 
 <!-- excerpt separator -->
+
+<div class="heading" id="getting_started"></div>
 
 ## getting started
 
 - official [documentation](https://git-scm.com/)  
 - great easy documenatation from [GitLab](https://docs.gitlab.com/ce/gitlab-basics)  
 - [download](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) git  
+
+<div class="heading" id="resources"></div>
 
 ## resources
 
@@ -21,71 +31,88 @@ A quick compilation of notes on git.
 - try GitHub's [educational challenge](https://try.github.io/)
 - [GitHub Guides](https://guides.github.com/) has many friendly tutorials
 
-###### check install  
+Check install  
+
 ```shell
 git --version
 ```
 
-###### config credentials  
+Configure credentials  
+
 ```shell
 git config --global user.name "Kain Nanne"
 git config --global user.email "kain.nanne@gmail.com"
 git config --global --list
 ```
 
-###### create SSH key  
+Create SSH key  
+
 ```shell
 ssh-keygen -t rsa -C "kain.nane@gmail.com"
 ```
 
-## start working
+<div class="heading" id="workflow"></div>
 
-###### clone remote repo  
+## workflow
+
+Clone remote repo  
+
 ```shell
 git clone HTTPS
 ```
 
 Since we have cloned a repo, replace REMOTE with `origin` in the folloing commands.
 
-###### fetch all, pull branch  
+Fetch all or pull remote branch    
+
 ```shell
 git fetch REMOTE
 git pull
 ```
 
-###### navigate to branch (e.g. master)  
-```shell
-git checkout BRANCH
-```
+Create a branch  
 
-###### create a branch  
 ```shell
 git checkout -b BRANCH
 ```
 
-###### check status of changes  
+Navigate to branch (e.g. master)  
+
 ```shell
-git status
+git checkout BRANCH
 ```
 
-###### add changes  
+Now make some changes in the repo, and add those changes  
+
 ```shell
 git add .
 git commit -m "MESSAGE"
 ```
 
-###### push changes to repo  
+Check status of changes  
+
+```shell
+git status
+```
+
+Push changes to repo  
+
 ```shell
 git push REMOTE BRANCH
 ```
 
-###### merge changes  
+Merge changes  
+
 ```shell
 git checkout BRANCH
 git merge master
 ```
 
-## example situations  
+<div class="heading" id="sticky_situations"></div>
+
+## sticky situations  
+
+Below are some scenarios that you may find yourself in, and some helpful tips on how to get out.
 
 #### branch is behind master
 
@@ -97,7 +124,8 @@ git merge master
 
 #### totally screwed up local repo
 
-###### remove untracked changes
+Remove untracked changes and revert to last local commit  
+
 ```shell
 # show to be deleted
 git clean -n
@@ -105,19 +133,24 @@ git clean -n
 git clean -f
 ```
 
-###### hard reset to remote master *this will remove any untracked changes*
+Hard reset to state of remote master - *this will remove any untracked changes*  
+
 ```shell
 git reset --hard
 ```
 
-## handy commands
+<div class="heading" id="notable_commands"></div>
 
-###### list all committed files
+## notable commands
+
+list all committed files  
+
 ```shell
 git ls-tree --name-only BRANCH
 ```
 
-###### list all uncommitted files
+list all uncommitted files  
+
 ```shell
 git ls-files --others
 ```

@@ -36,10 +36,9 @@ $grey-color-light: lighten($text-color, 87%);
 $grey-color-dark:  lighten($text-color, 12%);
 
 // Width of the content area
-$content-width:    800px;
-
-$on-palm:          600px;
-$on-laptop:        800px;
+$content-width:    auto;
+$on-palm:          auto;
+$on-laptop:        auto;
 
 // Import partials from the `minima` theme.
 @import "minima";
@@ -113,7 +112,6 @@ footer {
   border-bottom: 1px solid $border-color;
 }
 .post-nav {
-  max-height: 50px;
   width: 100%;
   z-index: 10;
 }
@@ -121,13 +119,13 @@ footer {
   color: $text-color;
 }
 .post-content {
+  width: 100%;
   display: inline-block;
   font-size: $base-font-size;
   text-align: justify;
 }
 .post-content .heading {
-  padding-top: 50px; // clear post-nav
-  color: $brand-color;
+  padding-top: 70px; // clear post-nav
 }
 .post-footer {
   border-top: 1px solid $border-color;

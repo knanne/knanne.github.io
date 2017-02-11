@@ -26,7 +26,7 @@ Notable commands:
   - open a new window with `Ctrl + Shift + N`
   - open a project folder with 'Ctrl + Shift + A'
   - unhide auto-hidden menu with `Alt`  
-  - open command palette with `Ctrl + Shift + P
+  - open command palette with `Ctrl + Shift + P`
 
 Packages I use include:  
   - [autocomplete-python](https://atom.io/packages/autocomplete-python)

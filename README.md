@@ -26,7 +26,9 @@ The site can be found at [knanne.github.io](https://knanne.github.io)
     ---
     categories: [category]
     tags: [tag1, tag2]
-    sections: [Section One, Section Two]
+    sections:
+      - Section One
+      - Section Two
     ---
     ```
     ```html
@@ -41,7 +43,7 @@ The site can be found at [knanne.github.io](https://knanne.github.io)
     Some text...
 
     <div class="heading" id="first_paragraph"></div>
-    
+
     ## First Paragraph
 
     Some more text...

@@ -1,7 +1,11 @@
 ---
 categories: [tech]
 tags: [django, python]
-sections: [Getting Started, Initialize Project, Setup Database, Develop, Run App]
+sections:
+- Getting Started
+- Initialize Project
+- Setup Database-Develop
+- Run App
 ---
 
 Notes on building a Django app in Python using a cookie-cutter
