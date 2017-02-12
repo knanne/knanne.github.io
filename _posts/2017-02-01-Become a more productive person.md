@@ -3,13 +3,18 @@ layout: post
 categories: [personal]
 tags: [organization, data, google]
 author: Kain Nanne
+sections:
+- X Effect
+- Time Tracking
 ---
 
 Notes on how to become more productive person, and some helpful tools
 
 <!-- excerpt separator -->
 
-## The X Effect
+<div class="heading" id="x_effect"></div>
+
+## X Effect
 
 I'm not sure where this originated, but the [internet](https://www.reddit.com/r/getdisciplined/comments/1x99m6/im_a_piece_of_shit_no_more_games_no_more_lies_no/cf9dz72/) has decided that streaks of X's on cards are the most effective way to start or break habits. The effect seems to work similarly for starting new habits.
 
@@ -37,6 +42,8 @@ Whether you are tracking Habits, Tasks, Goals, Activities or Achievements many a
 - use [Google Keep](https://keep.google.com/) to manage lists of single-occurrence tasks (e.g. fix this) and associate a reminder in Google Calendar
 
 The UI of Google Calendar does not provide the best view of tracking X's over time, but it does offer Goals and To Dos in addition to normal events and crosses out those that have been marked as done, and reschedules those that have been dismissed
+
+<div class="heading" id="time_tracking"></div>
 
 ## Time Tracking
 

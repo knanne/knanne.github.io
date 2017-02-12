@@ -35,11 +35,9 @@ layout: default
         <br>
         <footer class="post-footer">
           <p class="post-meta">
-            {% if page.last-modified-date == nil %}
-              <time class='text-muted' datetime="{{ page.date | date_to_xmlschema }}" itemprop="dateModified">Last Modified: {{ page.date | date: "%b %-d, %Y at %H:%M" }}</time>
-            {% else %}
+            {% unless page.last-modified-date == nil %}
               <time class='text-muted' datetime="{{ page.last-modified-date | date_to_xmlschema }}" itemprop="dateModified">Last Modified: {{ page.last-modified-date | date: "%b %-d, %Y at %H:%M" }}</time>
-            {% endif %}
+            {% endunless %}
             <span class="pull-right">
               <b>Tags:</b>
               {% for tag in page.tags %}
@@ -50,29 +48,18 @@ layout: default
         </footer>
       </article>
 
-      <!-- Social Buttons
       <br>
-      <span class="post-social d-flex justify-content-end">
-        <a href="https://twitter.com/share?text={{ page.title }}&via={{ site.twitter_username }}&url={{ site.url }}{{ page.url }}" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-        &nbsp;
-        <script src="https://apis.google.com/js/platform.js"></script>
-        <div class="g-plusone"></div>
-      </span>
-      -->
+      <br>
 
-      <!-- Google Plus comments
+      {% if page.share %}
+        {% include post_share_buttons.html %}
+      {% endif %}
+
       <br>
-      <div class="post-comments">
-        <script src="https://apis.google.com/js/plusone.js"></script>
-        <div id="comments" class="comments"></div>
-        <script>
-          gapi.comments.render('comments', {
-              href: window.location,
-              first_party_property: 'BLOGGER',
-              view_type: 'FILTERED_POSTMOD'
-          });
-        </script>
-      </div>
-      -->
+      <br>
+
+      {% if page.comments %}
+        {% include post_comments.html %}
+      {% endif %}
 
     </div>

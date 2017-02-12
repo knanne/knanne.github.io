@@ -1,15 +1,24 @@
 ---
 layout: post
-categories: [tech]
+categories: [data analysis]
 tags: [python, pandas]
 author: Kain Nanne
+sections:
+- Strings
 ---
 
-Saving some handy code snippets so I don't have to search stackoverflow every time
+A compilation of handy code snippets  
 
 <!-- excerpt separator -->
 
-###### Filter dataframe on list of string keys in text column
+This list will hopefully save me time from not having to search stackoverflow again.
+
+<div class="heading" id="strings"></div>
+
+## Strings
+
+#### Filter dataframe on text column, by list of keys
+
 ```Python
 # create dataframe with some text field
 df = pd.DataFrame({'text' : ['somekey1blah',

@@ -56,4 +56,6 @@ The site can be found at [knanne.github.io](https://knanne.github.io)
 
 # To Do:
   - configure and test posts as Accelerated Mobile Pages ([AMP](https://www.ampproject.org/)) using [amp-jekyll](https://github.com/juusaw/amp-jekyll)
-  -
+  - write a plugin to automate post navigation further
+    - automate the creation of href div, and frontmatter list for all major headings in post
+    - create a post paramter navigation, default to True

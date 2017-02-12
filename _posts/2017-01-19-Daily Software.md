@@ -1,37 +1,56 @@
 ---
 layout: post
-categories: [tech]
+categories: [technology]
 tags: [software]
 author: Kain Nanne
+sections:
+- Command Console
+- Text Editor
+- Python
+- Internet
+- Operating System
 ---
 
 Some notes from my daily software use on Windows 10
 
 <!-- excerpt separator -->
 
-## Cmder
+<div class="heading" id="command_console"></div>
+
+## Command Console
+
+#### Cmder
 
 > Cmder is a software package created out of pure frustration over the absence of nice console emulators on Windows. It is based on amazing software, and spiced up with the Monokai color scheme and a custom prompt layout, looking sexy from the start.
 > - [download it](http://cmder.net/)  
 
-Notable commands:
+Notable commands:  
+
   - summons from taskbar with ``Ctrl + ` ``
   - open a new tab with `Ctrl + Tab`
 
-## Atom
+<div class="heading" id="text_editor"></div>
+
+## Text Editor
+
+#### Atom
 
 Atom is a text editor made by the guys at GitHub so it has some fancy native integrations. Refer to the [Atom Flight Manual](http://flight-manual.atom.io/getting-started/sections/atom-basics/) for basic documentation.
 
-Notable commands:
+Notable commands:  
+
   - open a new window with `Ctrl + Shift + N`
   - open a project folder with 'Ctrl + Shift + A'
   - unhide auto-hidden menu with `Alt`  
   - open command palette with `Ctrl + Shift + P`
 
 Packages I use include:  
+
   - [autocomplete-python](https://atom.io/packages/autocomplete-python)
 
-## Python for Data Analysis
+<div class="heading" id="python"></div>
+
+## Python
 
 #### Jupyter Notebook
 
@@ -54,9 +73,14 @@ workon APP
 deactivate
 ```
 
-## Chrome
+<div class="heading" id="internet"></div>
+
+## Internet
+
+#### Chrome
 
 Notable commands:  
+
   - open new window 'Ctrl + N'
   - open new window in incognito mode 'Ctrl + Shift + N'
   - open new tab 'Ctrl + T'
@@ -65,11 +89,29 @@ Notable commands:
 
 Google [source](https://support.google.com/chrome/answer/157179?)  
 
-## Windows
+<div class="heading" id="operating_system"></div>
+
+## Operating System
+
+#### Windows
 
 Notable commands:  
+
   - open task view with `Windows + Tab`
     - press `Tab` the arrow keys within task view to toggle between desktops
   -  lock the computer with `Windows + L`
 
 Microsoft [source](https://support.microsoft.com/en-us/help/12445/windows-keyboard-shortcuts)
+
+If you are using the native cmd console on Windows, the following commands are helpful.
+
+```shell
+# dir info  
+dir
+# show entire tree of subfolders  
+tree
+# list files and subfolders  
+dir /b
+# list all files in subfolders  
+dir /s
+```

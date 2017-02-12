@@ -1,6 +1,6 @@
 ---
 layout: post
-categories: [tech]
+categories: [programming]
 tags: [git]
 sections:
 - Getting Started

@@ -1,6 +1,6 @@
 ---
 layout: post
-categories: [tech]
+categories: [web development]
 tags: [python, flask]
 sections:
 - Flask Intro

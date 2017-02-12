@@ -65,6 +65,8 @@ defaults:
     values:
       layout: "post"
       author: Kain Nanne
+      share: True
+      comments: True
 
 excerpt_separator: <!-- excerpt separator -->
 

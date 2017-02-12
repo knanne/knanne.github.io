@@ -115,29 +115,21 @@ footer {
   width: 100%;
   z-index: 10;
 }
-.post-nav a {
-  color: $text-color;
-}
 .post-content {
+  padding-top: 2%;
   width: 100%;
   display: inline-block;
   font-size: $base-font-size;
   text-align: justify;
 }
 .post-content .heading {
-  padding-top: 70px; // clear post-nav
+  padding-top: 50px; // clear post-nav
 }
 .post-footer {
   border-top: 1px solid $border-color;
 }
-.post-social {
-  display: inline-block;
-  text-align: left;
-}
 .post-comments {
   display: block;
-  text-align: center;
-  width: auto;
 }
 
 // MATERIAL CARDS

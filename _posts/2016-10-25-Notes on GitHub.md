@@ -1,6 +1,6 @@
 ---
 layout: post
-categories: [tech]
+categories: [programming]
 tags: [github]
 sections:
 - GitHub Intro
@@ -10,7 +10,7 @@ sections:
 - Notable Commands
 ---
 
-A compilation of notes on GitHub.
+A compilation of helpful notes on GitHub
 
 <!-- excerpt separator -->
 
