@@ -67,6 +67,7 @@ defaults:
       author: Kain Nanne
       share: True
       comments: True
+      permalink: /:categories/:title.html
 
 excerpt_separator: <!-- excerpt separator -->
 
