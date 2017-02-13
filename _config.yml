@@ -78,7 +78,7 @@ defaults:
 # https://jekyllrb.com/docs/collections/
 collections:
   posts:
-    permalink: /posts/:categories/:slug
+    permalink: /posts/:slug
   projects:
     output: True
     permalink: /projects/:title

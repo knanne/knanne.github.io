@@ -145,16 +145,16 @@ nav a:hover {
   display: none;
   position:fixed;
   right: $spacing-unit / 2;
-  bottom: $footer-height + $spacing-unit / 2;
+  bottom: $spacing-unit / 2;
   cursor:pointer;
   font-size: 48px;
   color: $grey-color;
-  opacity: .25;
+  opacity: .5;
   transform: rotate(180deg);
 }
 #back2top:hover {
   color: $brand-color;
-  opacity: .75;
+  opacity: 1;
 }
 // MATERIAL CARDS
 //.card {
