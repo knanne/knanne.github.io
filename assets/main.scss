@@ -22,6 +22,8 @@ $base-line-height: 1.5;
 
 $spacing-unit:     30px;
 
+$footer-height: 60px;
+
 $text-color:       #000000;
 $text-color-muted: #777;
 $background-color: #fdfdfd;
@@ -76,7 +78,7 @@ nav a:hover {
   color: $brand-color !important;
 }
 /* FOOTER */
-footer {
+.footer {
   background-color: $background-color !important;
 }
 
@@ -94,13 +96,16 @@ footer {
   margin-top: 4%;
   bottom: 0%;
   width: 100% !important;
-  height: 60px;
+  height: $footer-height;
   text-align: center;
-  line-height: 30px;
+  line-height: $footer-height / 2;
   color: $text-color-muted;
 }
 .footer a {
   color: $text-color-muted;
+}
+.footer i:hover {
+  color: $brand-color;
 }
 
 // POSTS
@@ -135,6 +140,22 @@ footer {
   display: block;
 }
 
+/* BackToTop button css */
+#back2top {
+  display: none;
+  position:fixed;
+  right: $spacing-unit / 2;
+  bottom: $footer-height + $spacing-unit / 2;
+  cursor:pointer;
+  font-size: 48px;
+  color: $grey-color;
+  opacity: .25;
+  transform: rotate(180deg);
+}
+#back2top:hover {
+  color: $brand-color;
+  opacity: .75;
+}
 // MATERIAL CARDS
 //.card {
 //  text-align: center;

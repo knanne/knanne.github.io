@@ -12,18 +12,35 @@
 
 <script>
 
-	// add Bootstrap Scrollspy to post navigation
-	$('body').scrollspy({target: ".post-nav", offset: 50});
+	$(document).ready(function(){
 
-	// fix post navbar on scroll past
-	var distanceFromTop = $('.post-nav').offset().top;
-	$(window).scroll(function() {
-		var currentScroll = $(window).scrollTop();
-		if (currentScroll >= distanceFromTop) {
-				$('.post-nav').addClass('fixed-top');
-		} else {
-			$('.post-nav').removeClass('fixed-top');
-		}
+		// add scrollspy to post navigation
+		$('body').scrollspy({target: ".post-nav", offset: 50});
+
+		// fix post navbar on scroll past
+		var distanceFromTop = $('.post-nav').offset().top;
+		$(window).scroll(function() {
+			var currentScroll = $(window).scrollTop();
+			if (currentScroll >= distanceFromTop) {
+					$('.post-nav').addClass('fixed-top');
+			} else {
+				$('.post-nav').removeClass('fixed-top');
+			}
+		});
+
+		// dynamically add navigation button (go to top) if scrolled to bottom
+		$(window).scroll(function(){
+				if ($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
+						$('#back2top').fadeIn();
+				} else {
+						$('#back2top').fadeOut();
+				}
+		});
+		$('#back2top').click(function(){
+				$("html, body").animate({ scrollTop: 0 }, 600);
+				return false;
+		});
+
 	});
 
 </script>
