@@ -43,9 +43,13 @@ Whether you are tracking Habits, Tasks, Goals, Activities or Achievements many a
 
 The UI of Google Calendar does not provide the best view of tracking X's over time, but it does offer Goals and To Dos in addition to normal events and crosses out those that have been marked as done, and reschedules those that have been dismissed
 
+{% youtube qnZZInDyrZo %}
+
 <div class="heading" id="time_tracking"></div>
 
 ## Time Tracking
+
+#### Toggle
 
 Time tracking is another effective way to keep yourself on task and make sure to get the important things done before diverging down a rabbit hole of internet links
 

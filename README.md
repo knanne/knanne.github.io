@@ -18,6 +18,8 @@ The site can be found at [knanne.github.io](https://knanne.github.io)
     - remove sections from post properties to ignore navigation
   4. embed content
     - using markdown syntax
+    - add photos with `![<IMAGE>]({{ site.baseurl }}/assets/img/posts/<IMAGE>.png)`
+    - add youtube videos with `{% youtube <ID> %}`, which renders as embbedded iframe using `_plugins/youtube.rb`
     - add gists from GitHub use the liquid tag `{% gist <ID> %}` with the gist ID  
 
   ## sample
