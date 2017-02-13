@@ -52,6 +52,7 @@ nav-links:
   Posts: "posts"
   Projects: "projects"
 
+# https://jekyllrb.com/docs/configuration/#front-matter-defaults
 defaults:
   -
     scope:
@@ -67,7 +68,20 @@ defaults:
       author: Kain Nanne
       share: True
       comments: True
-      permalink: /:categories/:title
+  -
+    scope:
+      path: "_projects"
+      type: "projects"
+    values:
+      layout: "page"
+
+# https://jekyllrb.com/docs/collections/
+collections:
+  posts:
+    permalink: /posts/:categories/:slug
+  projects:
+    output: True
+    permalink: /projects/:title
 
 excerpt_separator: <!-- excerpt separator -->
 

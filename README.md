@@ -3,7 +3,7 @@ This is a user site for knanne
 
 The site can be found at [knanne.github.io](https://knanne.github.io)
 
-# Writing Procedure
+# Writing Posts Procedure
 
   1. create new markdown file in `/_posts` directory with filename format `YYYY-MM-DD-Title.md`
     - title and date are inherited from filename
@@ -13,7 +13,7 @@ The site can be found at [knanne.github.io](https://knanne.github.io)
   2. include an excerpt followed by `<!-- excerpt separator -->`
     - excerpt should be short and concise (not full sentence), it is used as post description in html cards
   3. utilize post navigation with sections
-    - include `sections: [Section One, Section Two]` in post yaml frontmatter
+    - include `sections: [Section One, Section Two]` in post yaml front matter
     - prepend each markdown heading with `<div class="heading" id="section_one"></div>`
     - remove sections from post properties to ignore navigation
   4. embed content
@@ -49,6 +49,8 @@ The site can be found at [knanne.github.io](https://knanne.github.io)
     Some more text...
     ```
 
+# Creating Projects Procedure
+
 # Publishing Procedure
 
   - commit and push to remote repo (no need to `jekll build`, GitHub pages takes care of this)  
@@ -57,5 +59,6 @@ The site can be found at [knanne.github.io](https://knanne.github.io)
 # To Do:
   - configure and test posts as Accelerated Mobile Pages ([AMP](https://www.ampproject.org/)) using [amp-jekyll](https://github.com/juusaw/amp-jekyll)
   - write a plugin to automate post navigation further
-    - automate the creation of href div, and frontmatter list for all major headings in post
-    - create a post paramter navigation, default to True
+    - automate the creation of linked div, and front matter list for all major headings in post
+    - create a post parameter navigation, default to True
+  - continue projects procedure
