@@ -1,8 +1,6 @@
 ---
-layout: post
 categories: [personal]
 tags: [organization, data, google]
-author: Kain Nanne
 ---
 
 Notes on how to become more productive person, and some helpful tools

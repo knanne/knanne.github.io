@@ -66,8 +66,8 @@ defaults:
     values:
       layout: "post"
       author: Kain Nanne
-      share: True
-      comments: True
+      share: True # include social sharing buttons, True by default
+      comments: True # include comments section, True by default
   -
     scope:
       path: "_projects"

@@ -1,8 +1,6 @@
 ---
-layout: post
 categories: [personal]
 tags: [data, internet, privacy]
-author: Kain Nanne
 ---
 
 Sites to keep you updated on your online activity and privacy

@@ -1,4 +1,5 @@
 - project: VU Social Web
+  date: March, 2016
   category: Academic
   publish: True
   url: https://knanne.github.io/vu_socialweb_2016
@@ -6,6 +7,7 @@
   description: Developed a web app for analyzing social web data, to meet requirements of VU The Social Web Master course project. The dashboard integrates multiple D3 visualizations into a dynamic webpage for exploring connections between members of The Network Institute research group.
 
 - project: UVA Info Visualization
+  date: March, 2016
   category: Academic
   publish: True
   url: https://knanne.github.io/uva_infoviz_2016
@@ -13,6 +15,7 @@
   description: Fully implemented a data analysis project from design to development. The final visualization dashboard demonstrates methods of analysis that can be used to improve energy labels in The Netherlands.
 
 - project: Framework for Personal Financial Monitoring
+  date: March, 2017
   category: Personal
   publish: False
   url: https://knanne.github.io/financial_analysis

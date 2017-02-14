@@ -1,5 +1,4 @@
 ---
-layout: post
 categories: [web development]
 tags: [jekyll, jquery, bootstrap, kramdown]
 ---
@@ -19,7 +18,9 @@ So the goal here was to create some sort of navigation that would show post cont
 
 My initial idea was a second fixed navbar above post content, as I like Bootstrap and find it easy to implement. I then found [Scrollspy](http://v4-alpha.getbootstrap.com/components/scrollspy/) within the Bootstrap docs and thought that was cool. OK, so go for a fixed navbar with scrolsspy functionality.  
 
-**TL;DR**: skip to [Implementation](https://knanne.github.io/posts/how-to-create-custom-post-navigation-in-jekyll#implementation) to simply steal my code
+#### TL;DR
+
+Skip down to the  [Implementation](https://knanne.github.io/posts/how-to-create-custom-post-navigation-in-jekyll#implementation) section to simply steal my code
 
 ## attempt 1
 
@@ -81,9 +82,9 @@ I quickly realized I didn't want this because I had re list each section in the 
 
 In researching a way to make the above easier, I started to build plugin in Ruby to auto-generate the post front-matter by iterating through posts and finding all the headings. But I still needed to link to the headings.  
 
-Also, I stopped the idea of jekyll plugin as soon as I found out, [according to the Jekyll docs](http://jekyllrb.com/docs/plugins/), custom `.rb` files do not run during build on GitHub pages since it is built in `--safe` mode.  
+I stopped the idea of jekyll plugin as soon as I found out, according to the [Jekyll docs on plugins](http://jekyllrb.com/docs/plugins/), custom `.rb` files do not run during build on GitHub pages since it is built in `--safe` mode. Since this site is served on GitHub pages, this was out for now (unless I wanted to go to all the work to publish a gem for this, eh)
 
-Then I found the default markdown-converter used in Jekyll [auto-generates IDs for headings ](https://kramdown.gettalong.org/converter/html) Could I get these and use them to build a front matter dictionary of sections and section IDs???  
+Then I found the default markdown-converter used in Jekyll [auto-generates IDs for headings ](https://kramdown.gettalong.org/converter/html). Could I get these and use them to build a front matter dictionary of sections and section IDs?  
 
 ...more research, thinking, research...Ah, Magic is found!  
 
@@ -91,11 +92,23 @@ Kramdown automatically generations a ["Table of Contents"](https://kramdown.gett
 
 I document how to use this feature in [this post](https://knanne.github.io/posts/creating-a-website-with-jekyll-and-github-pages#code-snippets)
 
-This looks very similar to what I wanted to do (I should have thought of "Table of Contents" from the beginning) ...OK so how can I use it???  
+This looks very similar to what I wanted to do (I should have thought of "Table of Contents" from the beginning) ...OK. So how can I use it?
 
 ## implementation
 
-So now I just needed to figure out how to utilize the automatically-generated table of contents div, and apply the appropriate formatting and styling to utilize scrollspy, and look just how I wanted. Below each part is documented for you to replicate it.  
+So after knowing what I want the final navigation to look like, and finding half the work doen for me by an automatically-generated table of contents from Kramdown, I knew the tools existed to fully automate this how i orginally planned.  
+
+I just needed to figure out how to harness the hidden TOC div, and apply the appropriate formatting to utilize scrollspy. Then style it how I wanted.  
+
+My steps from here would be the following:  
+
+1. use **Kramdown** TOC to auto generate table of contents from markdown headings
+2. open a console of a live post, disect the TOC object to figure out how to access it
+3. use **jQuery** to access the elements and apply the neccesary **Bootstrap** elements to implement **Scrollspy**
+4. apply some dynamic styling in jQuery to fix nav bar in place when scrolling
+5. set some static styling in **CSS**
+
+Below each part is documented for you to replicate it.  
 
 #### include auto TOC in post
 

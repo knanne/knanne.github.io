@@ -1,8 +1,6 @@
 ---
-layout: post
 categories: [technology]
 tags: [software]
-author: Kain Nanne
 ---
 
 Some notes from my daily software use on Windows 10

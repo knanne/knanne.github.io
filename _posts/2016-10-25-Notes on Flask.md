@@ -1,5 +1,4 @@
 ---
-layout: post
 categories: [web development]
 tags: [python, flask]
 ---

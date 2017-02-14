@@ -48,6 +48,7 @@ $on-laptop:        auto;
 
 /*
 * Custom changes on top of github-pages theme "minima"
+* I got a little wild on !important - to ensure it applies over minima
 */
 
 /* DEVICE - Specific */
@@ -72,12 +73,16 @@ body {
 nav {
   background-color: $background-color-grey !important;
 }
+.nav a, p, i {
+  color: $text-color-muted;
+}
 nav a.active {
   border-bottom: 1px solid $brand-color !important;
 }
-nav a:hover {
+nav a:hover, i:hover {
   color: $brand-color !important;
 }
+
 /* FOOTER */
 .footer {
   background-color: $background-color !important;
@@ -101,12 +106,6 @@ nav a:hover {
   text-align: center;
   line-height: $footer-height / 2;
   color: $text-color-muted;
-}
-.footer a {
-  color: $text-color-muted;
-}
-.footer i:hover {
-  color: $brand-color;
 }
 
 // POSTS
@@ -149,6 +148,7 @@ nav a:hover {
   color: $grey-color;
   opacity: .5;
   transform: rotate(180deg);
+  z-index: 10px;
 }
 #back2top:hover {
   color: $brand-color;
@@ -161,6 +161,9 @@ nav a:hover {
 .card-hover:hover {
   box-shadow: 0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);
   /* box-shadow: 0 2px 4px rgba(0,0,0,0.10), 0 2px 12px rgba(0,0,0,0.20); */
+}
+.icon-3d {
+  text-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 // RECENT POSTS CARDS

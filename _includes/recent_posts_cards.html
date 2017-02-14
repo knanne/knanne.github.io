@@ -10,9 +10,13 @@
 						<div class="card-header text-left">
 							<h5 class="card-title">{{ post.title }}</h5>
 							<small class="text-muted">{{ post.date | date: "%b %-d, %Y" }}</small>
+							<br>
+							{% for category in post.categories limit: 1 %}
+								<span class="badge badge-warning">{{ category }}</span>
+							{% endfor %}
 						</div>
 						<div class="card-block text-center">
-							<span class="text-muted">{{ post.excerpt }}</span>
+							<span class="card-text text-muted">{{ post.excerpt }}</span>
 						</div>
 						<div class="card-footer text-right">
 							<small class="card-tags">

@@ -1,5 +1,4 @@
 ---
-layout: post  
 categories: [web development]  
 tags: [ruby, jekyll, github, static site generator]  
 ---

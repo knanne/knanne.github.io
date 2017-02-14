@@ -50,6 +50,8 @@
 
 		// dynamically add navigation button (go to top) if scrolled to bottom
 		$(window).scroll(function(){
+				// if distance from top, plus window height greater than document height minus buffer
+				// i.e. if bottom of screen is within 200 pixels from bottom of document
 				if ($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
 						$('#back2top').fadeIn();
 				} else {
@@ -57,7 +59,7 @@
 				}
 		});
 		$('#back2top').click(function(){
-				$("html, body").animate({ scrollTop: 0 }, 600);
+				$("html, body").animate({ scrollTop: 0 }, 400);
 				return false;
 		});
 

@@ -1,8 +1,6 @@
 ---
-layout: post
 categories: [data analysis]
 tags: [python, pandas]
-author: Kain Nanne
 ---
 
 A compilation of handy code snippets  
