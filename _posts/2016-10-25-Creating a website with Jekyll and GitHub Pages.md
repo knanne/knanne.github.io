@@ -72,6 +72,14 @@ To remove the default theme, remove the `gem 'minima'` in Gemfile, and remove `t
 
 > "Liquid is an open-source template language created by Shopify and written in Ruby." - [website](https://shopify.github.io/liquid/)  
 
+#### plugins
+
+Plugins written in Ruby and either store in your `_plugins` dir or installed with a gem are able to add a lot of convenience and features to a site.
+
+But, [according to the Jekyll docs](http://jekyllrb.com/docs/plugins/), custom `.rb` files do not run during build on GitHub pages since it is built in `--safe` mode.
+
+Therefore only install from gem for now if you are hosting on GitHub pages.
+
 #### search engine optimization
 
 - use the [jekyll seo gem](https://help.github.com/articles/search-engine-optimization-for-github-pages/)

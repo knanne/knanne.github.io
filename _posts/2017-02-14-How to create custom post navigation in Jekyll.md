@@ -19,7 +19,7 @@ So the goal here was to create some sort of navigation that would show post cont
 
 My initial idea was a second fixed navbar above post content, as I like Bootstrap and find it easy to implement. I then found [Scrollspy](http://v4-alpha.getbootstrap.com/components/scrollspy/) within the Bootstrap docs and thought that was cool. OK, so go for a fixed navbar with scrolsspy functionality.  
 
-**TL;DR**: skip to [Implementation]({{ site.base_url }}{{ page.url }}#implementation) to simply steal my code
+**TL;DR**: skip to [Implementation](https://knanne.github.io/posts/how-to-create-custom-post-navigation-in-jekyll#implementation) to simply steal my code
 
 ## attempt 1
 
