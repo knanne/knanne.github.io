@@ -23,9 +23,12 @@ layout: default
         <br>
         <footer class="post-footer">
           <p class="post-meta">
+            <a class="pull-left" href="https://github.com/knanne/knanne.github.io/commits/master/{{ page.path }}" rel="tooltip" title="View History on GitHub" ><span class="text-muted">revision history</span></a>
+            <!-- last-modified-date Plugin Not Available on GitHub Pages
             {% unless page.last-modified-date == nil %}
               <time class='text-muted' datetime="{{ page.last-modified-date | date_to_xmlschema }}" itemprop="dateModified">Last Modified: {{ page.last-modified-date | date: "%b %-d, %Y at %H:%M" }}</time>
             {% endunless %}
+            -->
             <span class="pull-right">
               <b>Tags:</b>
               {% for tag in page.tags %}
