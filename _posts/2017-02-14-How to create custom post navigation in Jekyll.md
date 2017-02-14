@@ -19,7 +19,7 @@ So the goal here was to create some sort of navigation that would show post cont
 
 My initial idea was a second fixed navbar above post content, as I like Bootstrap and find it easy to implement. I then found [Scrollspy](http://v4-alpha.getbootstrap.com/components/scrollspy/) within the Bootstrap docs and thought that was cool. OK, so go for a fixed navbar with scrolsspy functionality.  
 
-**TL;DR**: skip to [Implementation]({{ site.base_url }}{{ page.url }}/#implementation) to simply steal my code
+**TL;DR**: skip to [Implementation]({{ site.base_url }}{{ page.url }}#implementation) to simply steal my code
 
 ## attempt 1
 
@@ -80,6 +80,8 @@ I quickly realized I didn't want this because I had re list each section in the 
 ## more research
 
 In researching a way to make the above easier, I started to build plugin in Ruby to auto-generate the post front-matter by iterating through posts and finding all the headings. But I still needed to link to the headings.  
+
+Also, I stopped the idea of jekyll plugin as soon as I found out, [according to the Jekyll docs](http://jekyllrb.com/docs/plugins/), custom `.rb` files do not run during build on GitHub pages since it is built in `--safe` mode.  
 
 Then I found the default markdown-converter used in Jekyll [auto-generates IDs for headings ](https://kramdown.gettalong.org/converter/html) Could I get these and use them to build a front matter dictionary of sections and section IDs???  
 
