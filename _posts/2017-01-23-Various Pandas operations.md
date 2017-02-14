@@ -3,21 +3,22 @@ layout: post
 categories: [data analysis]
 tags: [python, pandas]
 author: Kain Nanne
-sections:
-- Strings
 ---
 
 A compilation of handy code snippets  
 
 <!-- excerpt separator -->
 
+* AUTO TABLE OF CONTENTS
+{:toc}
+
+## introduction
+
 This list will hopefully save me time from not having to search stackoverflow again.
 
-<div class="heading" id="strings"></div>
+## strings
 
-## Strings
-
-#### Filter dataframe on text column, by list of keys
+#### filter dataframe on text column, by list of keys
 
 ```Python
 # create dataframe with some text field

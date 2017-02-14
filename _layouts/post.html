@@ -17,18 +17,6 @@ layout: default
           <p class="lead" itemprop="about">{{ page.excerpt | strip_html }}</p> -->
         </header>
 
-        {% if page.sections %}
-          <nav id="post-nav" class="navbar post-nav">
-            <ul class="nav justify-content-center">
-              {% for section in page.sections %}
-                <li class="nav-item">
-                  <a class="nav-link {% if forloop.first %}active{% endif %}" href="#{{ section | replace: ' ', '_' | downcase }}">{{ section }}</a>
-                </li>
-              {% endfor %}
-            </ul>
-          </nav>
-        {% endif %}
-
         <div class="post-content" itemprop="articleBody">
           {{ page.content | remove: page.excerpt }}
         </div>

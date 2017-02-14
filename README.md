@@ -12,10 +12,11 @@ The site can be found at [knanne.github.io](https://knanne.github.io)
     - utilize `/_drafts` folder for unpublished posts (also ignored by git)
   2. include an excerpt followed by `<!-- excerpt separator -->`
     - excerpt should be short and concise (not full sentence), it is used as post description in html cards
-  3. utilize post navigation with sections
-    - include `sections: [Section One, Section Two]` in post yaml front matter
-    - prepend each markdown heading with `<div class="heading" id="section_one"></div>`
-    - remove sections from post properties to ignore navigation
+  3. utilize post navigation with Auto TOC and Scrollspy
+    - include `* AUTO TABLE OF CONTENTS` followed by `{:toc}` on a new line
+    - this utilized kramdown auto toc generation
+    - and applies jQuery to style a fixed navbar for each post
+    - and utilizes bootstrap scrollspy for follow-along navigation
   4. embed content
     - using markdown syntax
     - add photos with `![<IMAGE>]({{ site.baseurl }}/assets/img/posts/<IMAGE>.png)`
@@ -28,9 +29,6 @@ The site can be found at [knanne.github.io](https://knanne.github.io)
     ---
     categories: [category]
     tags: [tag1, tag2]
-    sections:
-      - Section One
-      - Section Two
     ---
     ```
     ```html
@@ -38,16 +36,13 @@ The site can be found at [knanne.github.io](https://knanne.github.io)
 
     <!-- excerpt separator -->
 
-    <div class="heading" id="introduction"></div>
+    * AUTO TABLE OF CONTENTS
+    {:toc}
 
     ## Introduction
-
     Some text...
 
-    <div class="heading" id="first_paragraph"></div>
-
     ## First Paragraph
-
     Some more text...
     ```
 
@@ -60,7 +55,5 @@ The site can be found at [knanne.github.io](https://knanne.github.io)
 
 # To Do:
   - configure and test posts as Accelerated Mobile Pages ([AMP](https://www.ampproject.org/)) using [amp-jekyll](https://github.com/juusaw/amp-jekyll)
-  - write a plugin to automate post navigation further
-    - automate the creation of linked div, and front matter list for all major headings in post
-    - create a post parameter navigation, default to True
   - continue projects procedure
+  - move some jQuery scripts to only run on post html

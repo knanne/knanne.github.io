@@ -3,19 +3,14 @@ layout: post
 categories: [technology]
 tags: [software]
 author: Kain Nanne
-sections:
-- Command Console
-- Text Editor
-- Python
-- Internet
-- Operating System
 ---
 
 Some notes from my daily software use on Windows 10
 
 <!-- excerpt separator -->
 
-<div class="heading" id="command_console"></div>
+* AUTO TABLE OF CONTENTS
+{:toc}
 
 ## Command Console
 
@@ -28,8 +23,6 @@ Notable commands:
 
   - summons from taskbar with ``Ctrl + ` ``
   - open a new tab with `Ctrl + Tab`
-
-<div class="heading" id="text_editor"></div>
 
 ## Text Editor
 
@@ -47,8 +40,6 @@ Notable commands:
 Packages I use include:  
 
   - [autocomplete-python](https://atom.io/packages/autocomplete-python)
-
-<div class="heading" id="python"></div>
 
 ## Python
 
@@ -72,8 +63,6 @@ workon APP
 # deactivate env
 deactivate
 ```
-
-<div class="heading" id="internet"></div>
 
 ## Internet
 

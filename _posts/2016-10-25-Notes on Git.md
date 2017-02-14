@@ -2,27 +2,20 @@
 layout: post
 categories: [programming]
 tags: [git]
-sections:
-- Getting Started
-- Resources
-- Workflow
-- Sticky Situations
-- Notable Commands
 ---
 
 A quick compilation of notes on Git
 
 <!-- excerpt separator -->
 
-<div class="heading" id="getting_started"></div>
+* AUTO TABLE OF CONTENTS
+{:toc}
 
 ## getting started
 
 - official [documentation](https://git-scm.com/)  
 - great easy documenatation from [GitLab](https://docs.gitlab.com/ce/gitlab-basics)  
 - [download](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) git  
-
-<div class="heading" id="resources"></div>
 
 ## resources
 
@@ -50,8 +43,6 @@ Create SSH key
 ```shell
 ssh-keygen -t rsa -C "kain.nane@gmail.com"
 ```
-
-<div class="heading" id="workflow"></div>
 
 ## workflow
 
@@ -108,8 +99,6 @@ git checkout BRANCH
 git merge master
 ```
 
-<div class="heading" id="sticky_situations"></div>
-
 ## sticky situations  
 
 Below are some scenarios that you may find yourself in, and some helpful tips on how to get out.
@@ -138,8 +127,6 @@ Hard reset to state of remote master - *this will remove any untracked changes*
 ```shell
 git reset --hard
 ```
-
-<div class="heading" id="notable_commands"></div>
 
 ## notable commands
 

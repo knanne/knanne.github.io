@@ -3,16 +3,14 @@ layout: post
 categories: [personal]
 tags: [organization, data, google]
 author: Kain Nanne
-sections:
-- X Effect
-- Time Tracking
 ---
 
 Notes on how to become more productive person, and some helpful tools
 
 <!-- excerpt separator -->
 
-<div class="heading" id="x_effect"></div>
+* AUTO TABLE OF CONTENTS
+{:toc}
 
 ## X Effect
 
@@ -42,10 +40,6 @@ Whether you are tracking Habits, Tasks, Goals, Activities or Achievements many a
 - use [Google Keep](https://keep.google.com/) to manage lists of single-occurrence tasks (e.g. fix this) and associate a reminder in Google Calendar
 
 The UI of Google Calendar does not provide the best view of tracking X's over time, but it does offer Goals and To Dos in addition to normal events and crosses out those that have been marked as done, and reschedules those that have been dismissed
-
-{% youtube qnZZInDyrZo %}
-
-<div class="heading" id="time_tracking"></div>
 
 ## Time Tracking
 

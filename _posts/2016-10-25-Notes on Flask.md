@@ -2,18 +2,14 @@
 layout: post
 categories: [web development]
 tags: [python, flask]
-sections:
-- Flask Intro
-- Resources
-- Simple setup
-- Advanced
 ---
 
 Notes on using Flask, a microframework for creating apps in Python.
 
 <!-- excerpt separator -->
 
-<div class="heading" id="flask_intro"></div>
+* AUTO TABLE OF CONTENTS
+{:toc}
 
 ## Flask Intro
 
@@ -21,13 +17,9 @@ Notes on using Flask, a microframework for creating apps in Python.
 
 > Flask is a micro webdevelopment framework for Python - [website](http://flask.pocoo.org/)
 
-<div class="heading" id="resources"></div>
-
 ## Resources
 
 [This guy](https://blog.miguelgrinberg.com/category/Flask) has some pretty good blog posts on Flask, and wrote a [book](http://flaskbook.com/) on it
-
-<div class="heading" id="simple setup"></div>
 
 ## Simple Setup
 
@@ -77,8 +69,6 @@ python app.py
 ```
 
 navigate to [localhost:5000](http://127.0.0.1:5000/)  
-
-<div class="heading" id="advanced"></div>
 
 ## Advanced
 

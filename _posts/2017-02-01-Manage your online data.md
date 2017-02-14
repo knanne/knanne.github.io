@@ -3,17 +3,14 @@ layout: post
 categories: [personal]
 tags: [data, internet, privacy]
 author: Kain Nanne
-sections:
-- Google
-- Social
-- Cleaning
 ---
 
 Sites to keep you updated on your online activity and privacy
 
 <!-- excerpt separator -->
 
-<div class="heading" id="google"></div>
+* AUTO TABLE OF CONTENTS
+{:toc}
 
 ## Google
 
@@ -22,8 +19,6 @@ Manage your account privacy settings on [myaccount.google.com](https://myaccount
   - Explore your data at [myactivity.google.com](https://myactivity.google.com/myactivity)
   - See all your location data on a [google.com/maps/timeline](https://www.google.com/maps/timeline)
   - Trends on your search history at [history.google.com/history](https://www.history.google.com/history)
-
-<div class="heading" id="social"></div>
 
 ## Social
 
@@ -42,8 +37,6 @@ Manage your account privacy settings on [myaccount.google.com](https://myaccount
 
   - answer from the [help pages](https://www.linkedin.com/help/linkedin/answer/50191/accessing-your-account-data)
   - download archive at [linkedin.com/settings/data-export-page](https://www.linkedin.com/settings/data-export-page)
-
-<div class="heading" id="cleaning"></div>
 
 ## Cleaning
 

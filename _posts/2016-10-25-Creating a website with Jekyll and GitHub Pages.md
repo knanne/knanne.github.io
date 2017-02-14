@@ -2,19 +2,14 @@
 layout: post  
 categories: [web development]  
 tags: [ruby, jekyll, github, static site generator]  
-sections:
-- Introduction
-- Resources
-- Getting Started
-- Customization
-- Code Snippets
 ---
 
 Notes on using Jekyll for creating a website on GitHub pages  
 
 <!-- excerpt separator -->
 
-<div class="heading" id="intro"></div>
+* AUTO TABLE OF CONTENTS
+{:toc}
 
 ## Introduction
 
@@ -28,15 +23,11 @@ So what is this all about...
 
 > GitHub Pages is a static site hosting service, and is designed to host your personal, organization, or project pages directly from a GitHub repository. - [website](https://pages.github.com/)  
 
-<div class="heading" id="resources"></div>
-
 ## Resources
 
 - a guy named Michael Lee is writing [Field Guide to Jekyll](https://michaelsoolee.com/jekyll-field-guide/)
 - refer to the Jekyll [docs](https://jekyllrb.com/docs/home/)
 - get help from GitHub Pages [docs](https://help.github.com/categories/github-pages-basics/)
-
-<div class="heading" id="getting_started"></div>
 
 ## Getting Started
 
@@ -62,8 +53,6 @@ bundle exec jekyll serve
 ```
 
 Find the app hosted at [http://localhost:4000/](http://127.0.0.1:4000)  
-
-<div class="heading" id="customization"></div>
 
 ## Customization  
 
@@ -103,8 +92,6 @@ Other notable options I have seen include:
 - Twitter Tweet [button](https://dev.twitter.com/web/tweet-button)
 - Facebook like [button](https://developers.facebook.com/docs/plugins/like-button)
 - LinkedIn various [buttons](https://developer.linkedin.com/plugins)
-
-<div class="heading" id="code_snippets"></div>
 
 ## Code Snippets
 
@@ -159,73 +146,24 @@ Here are some code snippets that may come in handy when trying to code your own 
 {% endfor %}{% endraw %}
 ```
 
-#### include post navigation
+#### automatic table of contents
 
-I thought it would be nice to implement a dynamic navigation element for when scrolling through posts on this site, as I have seen this throughout the web for documentation and tutorials. So I built an automated post navigation myself using tools that were already integrated in the site (Liquid, YAML, JavaScript, Bootstrap). Below is the template.  
+The default markdown converter for Jekyll is **Kramdown**, which generates IDs by default for headings and allows for the auto generation of a table of contents. Simply include the following snipped in your markdown post file.  
 
-Include a sections list in your post frontmatter, like this post for example:  
+```Markdown
+# Contents
+{:.no_toc}
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+```
+
+[source](https://kramdown.gettalong.org/converter/html.html#toc) from Kramdown docs  
+
+You can specify which headings to be used in the TOC in your `config.yml`  
 
 ```yaml
-sections:
-- Introduction
-- Resources
-- Getting Started
-- Customization
-- Code Snippets
-```
-
-Then include an html element to ID each heading for navigation. Be sure to include a space in between the div and the heading. ID of heading needs to be lowercase, and spaces should be replaced with "_".  
-
-```html
-<div class="heading" id="code_snippets"></div>
-
-## Code Snippets
-```
-
-Include a naviation in your `post.html` layout using Liquid to access the post sections. The included IF statement allows to ignore navigation if you don't include sections in your post frontmatter.  
-
-```html
-{% raw %}{% if page.sections %}
-  <nav id="post-nav" class="navbar post-nav">
-    <ul class="nav justify-content-center">
-      {% for section in page.sections %}
-        <li class="nav-item">
-          <a class="nav-link {% if forloop.first %}active{% endif %}" href="#{{ section | replace: ' ', '_' | downcase }}">{{ section }}</a>
-        </li>
-      {% endfor %}
-    </ul>
-  </nav>
-{% endif %}{% endraw %}
-```
-
-This site utilizes Bootstrap Scrollspy for navigating the post on scroll. Therefore I chose to fix the post navigation bar when scrolling a post, and highlight the appropriate section.  
-
-To do this I first include some JavaScript to apply the scrollspy to the post content, as well as fix the post navigation bar after scrolling past it.
-
-```javascript
-// add Bootstrap Scrollspy to post navigation
-$('body').scrollspy({target: ".post-nav", offset: 50});
-
-// fix post navbar on scroll past
-var distanceFromTop = $('.post-nav').offset().top;
-$(window).scroll(function() {
-  var currentScroll = $(window).scrollTop();
-  if (currentScroll >= distanceFromTop) {
-    $('.post-nav').addClass('fixed-top');
-  }
-  else {
-    $('.post-nav').removeClass('fixed-top');
-  }
-});
-```
-
-Lastly I included some CSS to apply two style change. First to identify which section is being viewed by underlining it. And second to pad the top of each heading, so it is not covered by the fixed navbar when navigated to.
-
-```css
-nav a.active {
-  border-bottom: 1px solid #2a7ae2;
-}
-.post-content .heading {
-  padding-top: 70px;
-}
+markdown: kramdown
+kramdown:
+  toc_levels: 1..4 # only using h1 thru h4 to generate table of contents in posts
 ```
