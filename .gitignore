@@ -1,4 +1,10 @@
 _site
+
 .sass-cache
 .jekyll-metadata
+
 _drafts
+
+node_modules
+gulpfile.js
+package.json

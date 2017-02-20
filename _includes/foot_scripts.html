@@ -11,43 +11,6 @@
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 <script>
-
-	$(document).ready(function(){
-
-		// CREATE CUSTOM POST NAVIGATION
-		// use kramdown auto generated TOC - https://kramdown.gettalong.org/converter/html.html#toc
-		// transform into bootstrap nav, and apply scrollspy
-
-		// wrap markdown-toc in navbar div
-		$('#markdown-toc').wrapAll('<nav id="post-nav" class="navbar post-nav">');
-		// add scrollspy to post navigation
-		$('body').scrollspy({target: "#post-nav", offset: 50});
-		// format toc objects with classes for custom scrollspy
-		$('#markdown-toc').addClass('nav justify-content-center');
-		$('#markdown-toc li').addClass('nav-item');
-		$('#markdown-toc a').addClass('nav-link');
-		// capitalize headings - because I do not in markdown
-		$('#markdown-toc a').css({"text-transform": "capitalize"});
-		// loop thru toc list, get headings
-		// pad each heading to clear post-nav when linked
-		$('#markdown-toc li a').each(function(index) {
-			heading = $(this).attr('id');
-			// remove auto pre text from toc id
-			heading = heading.replace("markdown-toc-", "")
-			$("#"+heading).css({"padding-top": "50px"});
-		});
-
-		// fix post navbar on scroll past
-		var distanceFromTop = $('#post-nav').offset().top;
-		$(window).scroll(function() {
-			var currentScroll = $(window).scrollTop();
-			if (currentScroll >= distanceFromTop) {
-				$('#post-nav').addClass('fixed-top');
-			} else {
-				$('#post-nav').removeClass('fixed-top');
-			}
-		});
-
 		// dynamically add navigation button (go to top) if scrolled to bottom
 		$(window).scroll(function(){
 				// if distance from top, plus window height greater than document height minus buffer
@@ -62,7 +25,65 @@
 				$("html, body").animate({ scrollTop: 0 }, 400);
 				return false;
 		});
-
-	});
-
 </script>
+
+{% if page.is_home %}
+	{% include rss_feeds.html %}
+	<script>
+		window.onload = function() {
+			feeds = ['https://news.google.com/news?topic=tc&output=rss', // google news - technology
+				// 'https://news.google.com/news/section?topic=snc&output=rss', // google news - science
+				// 'https://news.google.com/news/section?topic=b&output=rss', // google news - business
+				// 'http://feeds.feedburner.com/GDBcode', // google developer blog
+				// 'http://feeds.feedburner.com/blogspot/gJZg', // google research blog
+				'https://www.technologyreview.com/stories.rss', // mit tech all stories
+				'https://medium.com/feed/tag/tech' // medium posts tagged tech
+				// 'https://www.reddit.com/r/technology/.rss' // subreddit tech
+			]
+
+			feeds.forEach(function (url, i) {
+				buildFeedCard(url, '#feeds', i);
+			});
+		};
+	</script>
+{% endif %}
+
+{% if page.is_post %}
+	<script>
+		window.onload = function() {
+			// CREATE CUSTOM POST NAVIGATION
+			// use kramdown auto generated TOC - https://kramdown.gettalong.org/converter/html.html#toc
+			// transform into bootstrap nav, and apply scrollspy
+
+			// wrap markdown-toc in navbar div
+			$('#markdown-toc').wrapAll('<nav id="post-nav" class="navbar post-nav">');
+			// add scrollspy to post navigation
+			$('body').scrollspy({target: "#post-nav", offset: 50});
+			// format toc objects with classes for custom scrollspy
+			$('#markdown-toc').addClass('nav justify-content-center');
+			$('#markdown-toc li').addClass('nav-item');
+			$('#markdown-toc a').addClass('nav-link');
+			// capitalize headings - because I do not in markdown
+			$('#markdown-toc a').css({"text-transform": "capitalize"});
+			// loop thru toc list, get headings
+			// pad each heading to clear post-nav when linked
+			$('#markdown-toc li a').each(function(index) {
+				heading = $(this).attr('id');
+				// remove auto pre text from toc id
+				heading = heading.replace("markdown-toc-", "")
+				$("#"+heading).css({"padding-top": "50px"});
+			});
+
+			// fix post navbar on scroll past
+			var distanceFromTop = $('#post-nav').offset().top;
+			$(window).scroll(function() {
+				var currentScroll = $(window).scrollTop();
+				if (currentScroll >= distanceFromTop) {
+					$('#post-nav').addClass('fixed-top');
+				} else {
+					$('#post-nav').removeClass('fixed-top');
+				}
+			});
+		};
+	</script>
+{% endif %}

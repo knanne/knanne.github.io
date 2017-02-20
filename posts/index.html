@@ -1,9 +1,24 @@
 ---
 layout: page
-title: Posts by Category
+title: Posts
 ---
 
 <div class="container">
+
+  <h4>Recent Posts</h4>
+  <hr>
+
+	{% include recent_posts_cards.html %}
+
+</div>
+
+<div class="container">
+
+  <h4>All Posts by Category</h4>
+  <hr>
+
+  <br>
+  <br>
 
   {% capture categories %}
     {% for category in site.categories %}

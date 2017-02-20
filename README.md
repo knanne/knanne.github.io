@@ -17,11 +17,12 @@ The site can be found at [knanne.github.io](https://knanne.github.io)
     - this utilized kramdown auto toc generation
     - and applies jQuery to style a fixed navbar for each post
     - and utilizes bootstrap scrollspy for follow-along navigation
-  4. embed content
+  4. embed content by:
     - using markdown syntax
-    - add photos with `![<IMAGE>]({{ site.baseurl }}/assets/img/posts/<IMAGE>.png)`
-    - add youtube videos with `{% youtube <ID> %}`, which renders as embbedded iframe using `_plugins/youtube.rb`
-    - add gists from GitHub use the liquid tag `{% gist <ID> %}` with the gist ID  
+    - adding photos with `![<IMAGE>]({{ site.baseurl }}/assets/img/posts/<IMAGE>.png)`
+    - adding youtube videos with `{% youtube <ID> %}`, which renders as embbedded iframe using `_plugins/youtube.rb`
+    - adding gists from GitHub use the liquid tag `{% gist <ID> %}` with the gist ID  
+  5. always use `<div class="d-flex justify-content-center">` when embedding html  
 
   ## sample
 
@@ -57,3 +58,5 @@ The site can be found at [knanne.github.io](https://knanne.github.io)
   - configure and test posts as Accelerated Mobile Pages ([AMP](https://www.ampproject.org/)) using [amp-jekyll](https://github.com/juusaw/amp-jekyll)
   - continue projects procedure
   - move some jQuery scripts to only run on post html
+  - create GitHub pages branch and serve locally-generated `_site` from there (to restore plugin functionality)
+  - use bower to manage assets

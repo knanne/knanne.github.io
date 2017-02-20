@@ -1,0 +1,93 @@
+<script>
+
+	// function to transform rss streams into cards
+
+	// YQL: https://developer.yahoo.com/yql/
+	// Google news guidelines https://support.google.com/news/publisher/answer/4203?hl=en
+
+	function buildFeedCard(url, container, feednum) {
+			// call yahoo for json from rss feed
+			var query = 'https://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('select * from feednormalizer where url="' + url + '"') + '&format=json';
+
+			// define date format
+			var date_options = { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'};
+
+			// define card creation functions
+			function make_cardheader(container, title, link, description) {
+				$(container).append('\
+				<div class="card-header text-left card-title" title="' + description + '">\
+					<h5><a href="' + link + '">' + title + '</a></h5>\
+				</div>');
+			};
+			function make_cardblock(link, title, date, source) {
+				$(subcontainer).append('\
+				<div class="card-block text-center">\
+					<div class="card-text text-muted">\
+						<h6><a href="' + link + '">' + title + '</a></h6>\
+						<small>' + date + '</small>\
+						' + ( source ? '<br><b>' + source + '</b>' : '' ) + '\
+					</div>\
+				</div>');
+			};
+
+			// parse json
+	    $.getJSON(query, function (data, status, errorThrown) {
+	        if (status === 'success') {
+
+							// console.log(data);
+
+							// create a feed card
+							$(container).append('<card id="feed_' + feednum + '" class="card">');
+
+							// define new card container
+							subcontainer = '#feed_'+ feednum;
+
+							// get rss channel content from feed
+							var content = data.query.results.rss.channel;
+							var title = content.title;
+							var link = (content.link.constructor === Array ? content.link[0].href || content.link[0] : content.link);
+							var description = content.description;
+
+							// append feed title to card header
+		          make_cardheader(subcontainer, title, link, description);
+
+							// loop thru each content entry
+							$.each(content.item, function(i, entry) {
+
+									// get item content
+									if (content.description == "Google News") {
+										var title = entry.title.split(" - ")[0];
+										var source = entry.title.split(" - ")[1];
+									}
+									else {
+										var title = entry.title;
+										var source;
+									}
+									var date = new Date(entry.pubDate);
+									date = date.toLocaleDateString('en-US', date_options);
+		              //var text = $(entry.description).text().substring(0, 60)+"...";
+
+									//append content to card
+									make_cardblock(link, title, date, source);
+
+									// dynamic trailing spacer
+									if ( i < 2 ) { $(subcontainer).append('<hr>'); } else { $(subcontainer).append('<br>'); };
+
+									// limit feed to 3 entries
+									return i < 2;
+							});
+
+							$(subcontainer).append('\
+								<div class="card-footer">\
+									<small></small>\
+								</div>\
+							</card>'
+							);
+
+	        } else if (status === 'error' || status === 'parsererror') {
+	            console.log(errorThrown);
+	        }
+	    });
+	}
+
+</script>

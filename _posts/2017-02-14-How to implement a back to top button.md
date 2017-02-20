@@ -1,6 +1,6 @@
 ---
 categories: [web development]
-tags: [jekyll, jquery, bootstrap, kramdown]
+tags: [jquery]
 ---
 
 A documentation on how I created a simple back to top button for posts on this site

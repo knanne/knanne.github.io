@@ -61,9 +61,10 @@ defaults:
       layout: "default"
   -
     scope:
-      path: ""
+      path: "_posts"
       type: "posts"
     values:
+      is_post: True
       layout: "post"
       author: Kain Nanne
       share: True # include social sharing buttons, True by default
@@ -108,3 +109,6 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
+  - package.json
+  - node_modules
+  - gulpfile.js

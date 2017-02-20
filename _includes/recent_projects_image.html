@@ -7,12 +7,12 @@
 			<a href="{{ project.url }}" rel="tooltip" title="View Project">
 				<div class="card card-hover d-inline-flex justify-content-center">
 					<div class="card-header text-left">
-						<h5 class="card-title">{{ project.project }}</h5>
-						<span class="badge badge-warning">{{ project.category }}</span>
 						<p><small class="text-muted">{{ project.date | date: "%B, %Y" }}</small></p>
 					</div>
 					<div class="card-block text-center">
-						<span class="card-text text-muted">{{ project.description }}</span>
+						<h5 class="card-title">{{ project.project }}</h5>
+						<span class="badge badge-warning">{{ project.category }}</span>
+						<p class="card-text text-muted">{{ project.description }}</p>
 					</div>
 					<div class="card-img-bottom">
 						<img src="{{ site.baseurl }}{{ project.image }}" alt="Card image cap" style="width:auto;height:400px;">
