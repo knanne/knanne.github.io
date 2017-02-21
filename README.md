@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/knanne/knanne.github.io.svg?branch=master)](https://travis-ci.org/knanne/knanne.github.io)
+
 # About
 This is a user site for knanne
 
