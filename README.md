@@ -67,7 +67,6 @@ run `rake test`
   - continue projects procedure
   - create `gh-pages` branch and auto push travis-approved build
   - use bower to manage assets
-  - clean up `_includes` folder
   - create `tests` procedure
   - implement test for html-proofer
   - add lint test
