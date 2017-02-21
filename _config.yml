@@ -45,7 +45,7 @@ disqus:
   shortname: knanne
 
 baseurl: "" # root of site, e.g. /blog
-url: "https://knanne.github.io" # hostname & protocol of site
+url: "" # https://knanne.github.io
 
 nav-links:
   About: "about"

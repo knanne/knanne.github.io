@@ -49,6 +49,10 @@ The site can be found at [knanne.github.io](https://knanne.github.io)
 
 # Creating Projects Procedure
 
+# Test Procedure
+
+run `rake test`  
+
 # Publishing Procedure
 
   - commit and push to remote repo (no need to `jekll build`, GitHub pages takes care of this)  
@@ -57,7 +61,9 @@ The site can be found at [knanne.github.io](https://knanne.github.io)
 # To Do:
   - configure and test posts as Accelerated Mobile Pages ([AMP](https://www.ampproject.org/)) using [amp-jekyll](https://github.com/juusaw/amp-jekyll)
   - continue projects procedure
-  - create GitHub pages branch and serve locally-generated `_site` from there (to restore plugin functionality)
+  - create `gh-pages` branch and auto push travis-approved build
   - use bower to manage assets
-  - clean up includes folder
-  - create test procedure
+  - clean up `_includes` folder
+  - create `tests` procedure
+  - implement test for html-proofer
+  - add lint test
