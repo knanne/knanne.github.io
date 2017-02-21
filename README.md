@@ -5,6 +5,8 @@ This is a user site for knanne
 
 The site can be found at [knanne.github.io](https://knanne.github.io)
 
+Below are my notes on how to mantain this site  
+
 # Writing Posts Procedure
 
   1. create new markdown file in `/_posts` directory with filename format `YYYY-MM-DD-Title.md`

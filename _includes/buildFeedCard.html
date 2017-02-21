@@ -15,8 +15,8 @@
 			// define card creation functions
 			function make_cardheader(container, title, link, description) {
 				$(container).append('\
-				<div class="card-header text-left card-title" title="' + description + '">\
-					<h5><a href="' + link + '">' + title + '</a></h5>\
+				<div class="card-header text-left">\
+					<h5 class="card-title" title="' + description + '"><a href="' + link + '">' + title + '</a></h5>\
 				</div>');
 			};
 			function make_cardblock(link, title, date, source) {
@@ -37,7 +37,7 @@
 							console.log(data);
 
 							// create a feed card
-							$(container).append('<card id="feed_' + feednum + '" class="card">');
+							$(container).append('<div class="col-sm-4"><div id="feed_' + feednum + '" class="card d-inline-flex justify-content-center">');
 
 							// define new card container
 							subcontainer = '#feed_'+ feednum;
@@ -82,10 +82,11 @@
 							last_updated = last_updated.replace("T", " ").replace("Z", " ");
 
 							$(subcontainer).append('\
-								<div class="card-footer">\
-									<small>Last Updated: ' + last_updated + '</small>\
+									<div class="card-footer">\
+										<small>Last Updated: ' + last_updated + '</small>\
+									</div>\
 								</div>\
-							</card>'
+							</div>'
 							);
 
 	        } else if (status === 'error' || status === 'parsererror') {

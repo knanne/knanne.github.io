@@ -83,12 +83,6 @@ nav a:hover, i:hover {
   color: $brand-color !important;
 }
 
-/* FOOTER */
-.footer {
-  background-color: $background-color !important;
-}
-
-
 /* CONTAINERS */
 .subcontainer {
   display: block;
@@ -99,6 +93,7 @@ nav a:hover, i:hover {
 
 /* FOOTER */
 .footer {
+  background-color: $background-color !important;
   margin-top: 4%;
   bottom: 0%;
   width: 100% !important;
@@ -136,14 +131,31 @@ nav a:hover, i:hover {
 .post-comments {
   display: block;
 }
+.header-link {
+  position: absolute;
+  left: -0.5em;
+  opacity: 0;
+  \-webkit-transition: opacity 0.2s ease-in-out 0.1s;
+  \-moz-transition: opacity 0.2s ease-in-out 0.1s;
+  \-ms-transition: opacity 0.2s ease-in-out 0.1s;
+}
+.post-content
+h2:hover .header-link,
+h3:hover .header-link,
+h4:hover .header-link,
+h5:hover .header-link,
+h6:hover .header-link {
+  opacity: 1;
+}
+
 
 /* BackToTop button css */
 #back2top {
   display: none;
-  position:fixed;
+  position: fixed;
   right: $spacing-unit / 2;
   bottom: $spacing-unit / 2;
-  cursor:pointer;
+  cursor: pointer;
   font-size: 48px;
   color: $grey-color;
   opacity: .5;
@@ -154,30 +166,20 @@ nav a:hover, i:hover {
   color: $brand-color;
   opacity: 1;
 }
-// MATERIAL CARDS
+
+// MATERIAL
+.card {
+  margin: 2% !important;
+}
 .card-hover:hover {
   box-shadow: 0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);
-  /* box-shadow: 0 2px 4px rgba(0,0,0,0.10), 0 2px 12px rgba(0,0,0,0.20); */
 }
 .icon-3d {
   text-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
-
-// RECENT POSTS CARDS
-.post-card {
-  display: inline-block;
-  width: 25%;
-  min-width: 200px;
-}
-
-// CARD COLUMNS
-.card-columns {
-  @media-breakpoint-only(lg) {
-    column-count: 4;
-  }
-  @media-breakpoint-only(xl) {
-    column-count: 5;
-  }
+button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);
 }
 
 // ALL POSTS ACCORDIAN
