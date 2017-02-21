@@ -57,6 +57,7 @@ The site can be found at [knanne.github.io](https://knanne.github.io)
 # To Do:
   - configure and test posts as Accelerated Mobile Pages ([AMP](https://www.ampproject.org/)) using [amp-jekyll](https://github.com/juusaw/amp-jekyll)
   - continue projects procedure
-  - move some jQuery scripts to only run on post html
   - create GitHub pages branch and serve locally-generated `_site` from there (to restore plugin functionality)
   - use bower to manage assets
+  - clean up includes folder
+  - create test procedure
