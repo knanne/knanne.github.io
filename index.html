@@ -6,11 +6,12 @@ is_home: True
 
 <div class="container">
 
-	<h4>RSS News</h4>
+	<h4 class="text-left">RSS News</h4>
 	<hr>
+	<div class="d-flex justify-content-end"><button type="button" class="btn btn-outline-primary btn-sm" onclick="get_feeds()">Refresh</button></div>
 
 	<div id="subcontainer">
-		<div id="feeds" class="card-deck">
+		<div id="feeds" class="card-columns">
 		</div>
 	</div>
 

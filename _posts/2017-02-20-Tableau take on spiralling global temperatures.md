@@ -18,7 +18,8 @@ It all started with a tweet. **[Ed Hawkins](https://twitter.com/ed_hawkins)**, a
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Spiralling global temperatures from 1850-2016 (full animation) <a href="https://t.co/YETC5HkmTr">https://t.co/YETC5HkmTr</a> <a href="https://t.co/Ypci717AHq">pic.twitter.com/Ypci717AHq</a></p>&mdash; Ed Hawkins (@ed_hawkins) <a href="https://twitter.com/ed_hawkins/status/729753441459945474">May 9, 2016</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
-> The animated spiral presents global temperature change in a visually appealing and straightforward way. The pace of change is immediately obvious, especially over the past few decades. The relationship between current global temperatures and the internationally discussed target limits are also clear without much complex interpretation needed.
+
+> The animated spiral presents global temperature change in a visually appealing and straightforward way. The pace of change is immediately obvious, especially over the past few decades. The relationship between current global temperatures and the internationally discussed target limits are also clear without much complex interpretation needed. - [Ed Hawkins](http://www.climate-lab-book.ac.uk/2016/spiralling-global-temperatures/)
 
 **Read his follow up post** [here](http://www.climate-lab-book.ac.uk/spirals/)  
 

@@ -34,7 +34,7 @@
 	    $.getJSON(query, function (data, status, errorThrown) {
 	        if (status === 'success') {
 
-							// console.log(data);
+							console.log(data);
 
 							// create a feed card
 							$(container).append('<card id="feed_' + feednum + '" class="card">');
@@ -63,6 +63,7 @@
 										var title = entry.title;
 										var source;
 									}
+									var link = (entry.link.constructor === Array ? entry.link[0].href || entry.link[0] : entry.link);
 									var date = new Date(entry.pubDate);
 									date = date.toLocaleDateString('en-US', date_options);
 		              //var text = $(entry.description).text().substring(0, 60)+"...";
@@ -77,9 +78,12 @@
 									return i < 2;
 							});
 
+							var last_updated = data.query.created;
+							last_updated = last_updated.replace("T", " ").replace("Z", " ");
+
 							$(subcontainer).append('\
 								<div class="card-footer">\
-									<small></small>\
+									<small>Last Updated: ' + last_updated + '</small>\
 								</div>\
 							</card>'
 							);
