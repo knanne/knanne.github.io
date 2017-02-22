@@ -16,7 +16,7 @@
 			function make_cardheader(container, title, link, description) {
 				$(container).append('\
 				<div class="card-header text-left">\
-					<h5 class="card-title" title="' + description + '"><a href="' + link + '">' + title + '</a></h5>\
+					<h5 class="card-title"' + (description ? 'title="' + description + '"' : '' ) + '><a href="' + link + '">' + title + '</a></h5>\
 				</div>');
 			};
 			function make_cardblock(link, title, date, source) {
@@ -24,8 +24,8 @@
 				<div class="card-block text-center">\
 					<div class="card-text text-muted">\
 						<h6><a href="' + link + '">' + title + '</a></h6>\
-						<small>' + date + '</small>\
-						' + ( source ? '<br><b>' + source + '</b>' : '' ) + '\
+						<small>' + date + '<br>\
+						' + ( source ? '<b> - ' + source + '</b>' : '' ) + '</small>\
 					</div>\
 				</div>');
 			};
@@ -37,22 +37,23 @@
 							console.log(data);
 
 							// create a feed card
-							$(container).append('<div class="col-sm-4"><div id="feed_' + feednum + '" class="card d-inline-flex justify-content-center">');
+							$(container).append('<div id="feed_' + feednum + '" class="card d-inline-flex justify-content-center">');
 
 							// define new card container
 							subcontainer = '#feed_'+ feednum;
 
 							// get rss channel content from feed
-							var content = data.query.results.rss.channel;
+							var content = (data.query.results.hasOwnProperty('rss') ? data.query.results.rss.channel : data.query.results.feed);
 							var title = content.title;
-							var link = (content.link.constructor === Array ? content.link[0].href || content.link[0] : content.link);
-							var description = content.description;
+							console.log(title);
+							var link = (content.link.constructor === Array ? content.link[0].href || content.link[0] : content.link.href || content.link);
+							var description = (content.description ? content.description : null);
 
 							// append feed title to card header
 		          make_cardheader(subcontainer, title, link, description);
 
 							// loop thru each content entry
-							$.each(content.item, function(i, entry) {
+							$.each(content.item || content.entry, function(i, entry) {
 
 									// get item content
 									if (content.description == "Google News") {
@@ -61,12 +62,14 @@
 									}
 									else {
 										var title = entry.title;
-										var source;
+										var source = (entry.hasOwnProperty('creator') ? entry.creator : (entry.hasOwnProperty('author') ? entry.author.name : null));
 									}
-									var link = (entry.link.constructor === Array ? entry.link[0].href || entry.link[0] : entry.link);
-									var date = new Date(entry.pubDate);
+									var link = (entry.link.constructor === Array ? entry.link[0].href || entry.link[0] : entry.link.href || entry.link);
+									console.log(entry.pubDate || entry.updated);
+									var date = new Date(Date.parse(entry.pubDate)) || new Date(entry.updated);
 									date = date.toLocaleDateString('en-US', date_options);
-		              //var text = $(entry.description).text().substring(0, 60)+"...";
+
+									//var text = $(entry.description).text().substring(0, 60)+"...";
 
 									//append content to card
 									make_cardblock(link, title, date, source);
@@ -78,13 +81,14 @@
 									return i < 2;
 							});
 
-							var last_updated = data.query.created;
-							last_updated = last_updated.replace("T", " ").replace("Z", " ");
+							var last_updated = new Date(Date.parse(data.query.created));
+							last_updated = last_updated.toLocaleDateString('en-US', date_options);
+							// var last_updated = data.query.created;
+							// last_updated = last_updated.replace("T", " ").replace("Z", " ");
 
 							$(subcontainer).append('\
-									<div class="card-footer">\
-										<small>Last Updated: ' + last_updated + '</small>\
-									</div>\
+								<div class="card-footer">\
+									<small>Last Updated: ' + last_updated + '</small>\
 								</div>\
 							</div>'
 							);

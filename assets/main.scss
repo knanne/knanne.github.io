@@ -148,8 +148,7 @@ h6:hover .header-link {
   opacity: 1;
 }
 
-
-/* BackToTop button css */
+// BackToTop button
 #back2top {
   display: none;
   position: fixed;
@@ -182,6 +181,7 @@ button:hover {
   box-shadow: 0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);
 }
 
+// SNIPPETS
 // ALL POSTS ACCORDIAN
 .accordian-card {
   padding: 1%;
@@ -196,6 +196,12 @@ button:hover {
 }
 .accordian-title > a[aria-expanded="true"]:after {
   content: "\f077"; /* fa-chevron-up */
+}
+
+// INTEGRATIONS
+.instagram-media {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 // SEARCH
