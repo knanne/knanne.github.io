@@ -31,8 +31,6 @@
 	{% include functions/buildFeedCard.html %}
 	<script>
 		feeds = ['https://news.google.com/news?topic=tc&output=rss', // google news - technology
-			'https://news.google.com/news/section?topic=snc&output=rss', // google news - science
-			'https://news.google.com/news/section?topic=b&output=rss', // google news - business
 			// feedburner NOT WORKING 'http://feeds.feedburner.com/GDBcode', // google developer blog
 			// feedburner NOT WORKING 'http://feeds.feedburner.com/blogspot/gJZg', // google research blog
 			// feedburner NOT WORKING 'http://feeds.feedburner.com/TechCrunch/', //techcrunch
@@ -40,15 +38,16 @@
 			'https://medium.com/feed/tag/tech', // medium posts tagged tech
 			'https://www.reddit.com/r/technology/.rss', // subreddit tech
 			'https://github.com/blog.atom', // github blog
+			'http://planetpython.org/rss20.xml', //python community updates
 			'https://www.xda-developers.com/feed/', // xda-developers blog
 			'https://www.wired.com/category/gear/feed/', //wired tech
 			'http://www.theverge.com/rss/index.xml' // the verge all
 		]
 
 		function get_feeds() {
-			console.log("clearing feeds");
+			// console.log("clearing feeds");
 			$('#feeds').empty();
-			console.log("getting feeds");
+			// console.log("getting feeds");
 			feeds.forEach(function (url, i) {
 				buildFeedCard(url, '#feeds', i);
 			});

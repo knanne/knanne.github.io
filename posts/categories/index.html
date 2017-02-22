@@ -1,0 +1,33 @@
+---
+layout: page
+title: Posts by Category
+---
+
+<div class="container">
+
+  {% capture categories %}
+    {% for category in site.categories %}
+      {{ category[0] | url_encode }}
+    {% endfor %}
+  {% endcapture %}
+  {% assign sortedcategories = categories | split:' ' | sort %}
+
+  {% for category in sortedcategories %}
+  {% assign cat = category | replace: '+', ' ' %}
+    <h5 id="{{ category }}">{{ cat }}</h5>
+    <hr>
+    <ul>
+    {% for post in site.categories[cat] %}
+      <li>
+        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+        <span class="text-muted"><small>Published: {{ post.date | date: "%b %-d, %Y" }}</small></span>
+      </li>
+    {% endfor %}
+    </ul>
+  {% endfor %}
+
+  <br>
+  <br>
+  <p class="text-right"><a href="{{ site.base_url }}/posts/tags/">View posts by tag</a></p>
+
+</div>

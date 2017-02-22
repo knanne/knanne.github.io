@@ -34,7 +34,7 @@
 	    $.getJSON(query, function (data, status, errorThrown) {
 	        if (status === 'success') {
 
-							console.log(data);
+							// console.log(data);
 
 							// create a feed card
 							$(container).append('<div id="feed_' + feednum + '" class="card d-inline-flex justify-content-center">');
@@ -45,7 +45,7 @@
 							// get rss channel content from feed
 							var content = (data.query.results.hasOwnProperty('rss') ? data.query.results.rss.channel : data.query.results.feed);
 							var title = content.title;
-							console.log(title);
+							// console.log(title);
 							var link = (content.link.constructor === Array ? content.link[0].href || content.link[0] : content.link.href || content.link);
 							var description = (content.description ? content.description : null);
 
@@ -65,7 +65,7 @@
 										var source = (entry.hasOwnProperty('creator') ? entry.creator : (entry.hasOwnProperty('author') ? entry.author.name : null));
 									}
 									var link = (entry.link.constructor === Array ? entry.link[0].href || entry.link[0] : entry.link.href || entry.link);
-									console.log(entry.pubDate || entry.updated);
+									// console.log(entry.pubDate || entry.updated);
 									var date = new Date(Date.parse(entry.pubDate)) || new Date(entry.updated);
 									date = date.toLocaleDateString('en-US', date_options);
 
