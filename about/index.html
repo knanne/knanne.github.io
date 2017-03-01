@@ -5,17 +5,6 @@ title: About
 
 <div class="container">
 
-	<h4>Profile</h4>
-	<hr>
-
-	{% include integrations/linkedin_card.html %}
-	<br>
-	<br>
-
-</div>
-
-<div class="container">
-
 	<h4>Site</h4>
 	<hr>
 
@@ -36,35 +25,49 @@ title: About
 
 <div class="container">
 
-	<h4>Social</h4>
+	<h4>Author</h4>
 	<hr>
+	My name is Kain Nanne. I am a dual Dutch-American citizen, and would describe myself as an expert traveler, amateur farmer, beer/wine enthusiast with a data science problem.
 
 	<div class="subcontainer">
+		<h5>Profile</h5>
+		<hr>
+		{% include integrations/linkedin_card.html %}
+	</div>
 
-		<div class="row">
-			<div class="col-sm-6">
-				<div class="card card-hover d-inline-flex justify-content-center">
-					<div class="card-header text-left">
-						Latest tweet from <a class='text-primary' href="https://twitter.com/knanne/">@knanne</a>
+	<div class="subcontainer">
+		<h5>Visualization</h5>
+		<hr>
+		<div class="d-flex justify-content-center">
+		<div class='tableauPlaceholder' id='viz1488390011341' style='position: relative'><noscript><a href='#'><img alt='Resume Visualization ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Re&#47;ResumeVisualization&#47;ResumeVisualization&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='ResumeVisualization&#47;ResumeVisualization' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Re&#47;ResumeVisualization&#47;ResumeVisualization&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1488390011341');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1204px';vizElement.style.height='669px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+		</div>
+	</div>
+
+	<div class="subcontainer">
+		<h5>Social</h5>
+		<hr>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="card card-hover d-inline-flex justify-content-center">
+						<div class="card-header text-left">
+							Latest tweet from <a class='text-primary' href="https://twitter.com/knanne/">@knanne</a>
+						</div>
+						<!-- WIDGET EMBED - TWITTER -->
+						{% include integrations/twitter_latest_tweet.html %}
 					</div>
-					<!-- WIDGET EMBED - TWITTER -->
-					{% include integrations/twitter_latest_tweet.html %}
 				</div>
-			</div>
-
-			<div class="col-sm-6">
-				<div class="card card-hover d-inline-flex justify-content-center">
-					<div class="card-header text-left">
-						Latest photo from <a class='text-primary' href="https://instagram.com/knanne/">@knanne</a>
+				<div class="col-sm-6">
+					<div class="card card-hover d-inline-flex justify-content-center">
+						<div class="card-header text-left">
+							Latest photo from <a class='text-primary' href="https://instagram.com/knanne/">@knanne</a>
+						</div>
+						<!-- WIDGET EMBED - INSTAGRAM
+						currently not dynamic. must copy manually new posts embed code.
+						-->
+						{% include integrations/instagram_latest_photo.html %}
 					</div>
-					<!-- WIDGET EMBED - INSTAGRAM
-					currently not dynamic. must copy manually new posts embed code.
-					-->
-					{% include integrations/instagram_latest_photo.html %}
 				</div>
 			</div>
 		</div>
-
-	</div>
 
 </div>

@@ -44,7 +44,7 @@
 
 							// get rss channel content from feed
 							var content = (data.query.results.hasOwnProperty('rss') ? data.query.results.rss.channel : data.query.results.feed);
-							var title = content.title;
+							var title = (content.title.constructor === Object ? content.title.content : content.title );
 							// console.log(title);
 							var link = (content.link.constructor === Array ? content.link[0].href || content.link[0] : content.link.href || content.link);
 							var description = (content.description ? content.description : null);
