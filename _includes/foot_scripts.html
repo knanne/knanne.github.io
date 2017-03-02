@@ -31,20 +31,18 @@
 	{% include functions/buildFeedCard.html %}
 	<script>
 		feeds = ['https://news.google.com/news?topic=tc&output=rss', // google news - technology
-			// feedburner NOT WORKING 'http://feeds.feedburner.com/GDBcode', // google developer blog
-			// feedburner NOT WORKING 'http://feeds.feedburner.com/blogspot/gJZg', // google research blog
-			// feedburner NOT WORKING 'http://feeds.feedburner.com/TechCrunch/', //techcrunch
 			'https://www.technologyreview.com/stories.rss', // mit tech all stories
-			'https://medium.com/feed/tag/tech', // medium posts tagged tech
-			'http://www.npr.org/rss/rss.php?id=1019', // npr tech
 			'http://feeds.hbr.org/harvardbusiness/', // harvard business review
+			'http://feeds.feedburner.com/GDBcode', // google developer blog
+			'http://feeds.feedburner.com/blogspot/gJZg', // google research blog
+			'https://medium.com/feed/collections/d39cf943f634', // medium the download - tech posts
 			// 'https://www.reddit.com/r/technology/.rss', // subreddit tech
 			// 'https://github.com/blog.atom', // github blog
 			// 'http://planetpython.org/rss20.xml', //python community updates
 			// 'https://www.xda-developers.com/feed/', // xda-developers blog
-			// 'https://www.wired.com/category/gear/feed/', //wired tech
-			// 'http://www.theverge.com/rss/index.xml', // the verge all
-			'https://blog.acolyer.org/feed/' // the morning paper
+			'https://blog.acolyer.org/feed/', // the morning paper
+			'http://www.datasciencecentral.com/profiles/blog/feed?promoted=1&xn_auth=no', // data science central
+			'https://opendatascience.com/feed/' // open data science
 		]
 
 		function get_feeds() {

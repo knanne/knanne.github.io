@@ -61,12 +61,12 @@
 										var source = entry.title.split(" - ")[1];
 									}
 									else {
-										var title = entry.title;
+										var title = (entry.title.constructor === Object ? entry.title.content : entry.title );
 										var source = (entry.hasOwnProperty('creator') ? entry.creator : (entry.hasOwnProperty('author') ? entry.author.name : null));
 									}
 									var link = (entry.link.constructor === Array ? entry.link[0].href || entry.link[0] : entry.link.href || entry.link);
 									// console.log(entry.pubDate || entry.updated);
-									var date = new Date(Date.parse(entry.pubDate)) || new Date(entry.updated);
+									var date = new Date(Date.parse((entry.hasOwnProperty('pubDate') ? entry.pubDate : entry.updated)));
 									date = date.toLocaleDateString('en-US', date_options);
 
 									//var text = $(entry.description).text().substring(0, 60)+"...";
@@ -81,6 +81,7 @@
 									return i < 2;
 							});
 
+							// var last_updated = new Date(Date.parse(content.updated));
 							var last_updated = new Date(Date.parse(data.query.created));
 							last_updated = last_updated.toLocaleDateString('en-US', date_options);
 							// var last_updated = data.query.created;
