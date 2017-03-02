@@ -1,12 +1,14 @@
 <script>
 
-	// function to transform rss streams into cards
-
-	// YQL: https://developer.yahoo.com/yql/
-	// Google news guidelines https://support.google.com/news/publisher/answer/4203?hl=en
+	/*
+	* function to transform rss streams into bootstrap cards
+	* DEPENDENCY - YQL: https://developer.yahoo.com/yql/
+	* Use Google news guidelines as standard for parsing RSS feeds
+	* https://support.google.com/news/publisher/answer/4203?hl=en
+	*/
 
 	function buildFeedCard(url, container, feednum) {
-			// call yahoo for json from rss feed
+		// call yahoo for json from rss feed
 			var query = 'https://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('select * from feednormalizer where url="' + url + '"') + '&format=json';
 
 			// define date format

@@ -15,9 +15,7 @@
   4. embed content by:
     - using markdown syntax
     - adding photos with `![<IMAGE>]({{ site.baseurl }}/assets/img/posts/<IMAGE>.png)`
-    - adding youtube videos with `{% youtube <ID> %}`, which renders as embbedded iframe using `_plugins/youtube.rb`
-    - adding gists from GitHub use the liquid tag `{% gist <ID> %}` with the gist ID
-  5. always use `<div class="d-flex justify-content-center"></div>` when embedding html
+  5. always use `class="d-flex justify-content-center"` when embedding html
 
 ## Sample Post Setup
 

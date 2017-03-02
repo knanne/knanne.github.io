@@ -207,6 +207,10 @@ button:hover {
   padding: 0 !important;
   margin: 0 !important;
 }
+.gist {
+  max-width: 100% !important;
+  overflow: auto;
+}
 
 // SEARCH
 .nav-search-link .nav-search-icon {
