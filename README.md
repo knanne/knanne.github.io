@@ -1,20 +1,28 @@
-[![Build Status](https://travis-ci.org/knanne/knanne.github.io.svg?branch=master)](https://travis-ci.org/knanne/knanne.github.io)
+[![Build Status](https://travis-ci.org/knanne/knanne.github.io.svg?branch=master)](https://travis-ci.org/knanne/knanne.github.io)  
 
 # About
 
-This is a user site for knanne
+This is a "static" website for Kain Nanne built with [Jekyll](https://jekyllrb.com/) and hosted on [GitHub Pages](https://pages.github.com/)  
 
-The site can be found at [knanne.github.io](https://knanne.github.io)
+The live site can be found at [knanne.github.io](https://knanne.github.io)  
+
+# Creating Posts
+
+See [Posts](https://github.com/knanne/knanne.github.io/tree/master/posts) on how to create a post  
+
+# Creating Projects
+
+See [Projects](https://github.com/knanne/knanne.github.io/tree/master/projects) on how to create a project
 
 # Local Testing Procedure
 
   - run `rake test`  
-  - run `rake serve`  
+  - run `rake serve`
 
 # Publishing Procedure
 
   - commit and push to remote repo (no need to `jekll build`, GitHub pages takes care of this)  
-  - be sure not to publish sensitive content (use `.gitignore` if needed)  
+  - be sure NOT to publish sensitive content (use `.gitignore` if needed)  
 
 # To Do:
 

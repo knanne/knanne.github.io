@@ -6,5 +6,5 @@ task :test do
 end
 
 task :serve do
-  sh "bundle exec jekyll serve"
+  sh "bundle exec jekyll serve --drafts"
 end

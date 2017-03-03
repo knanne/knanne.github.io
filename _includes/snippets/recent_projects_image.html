@@ -1,24 +1,19 @@
-<h4>Recent Projects</h4>
-<hr>
-
-<div class="subcontainer">
-	{% for project in site.data.projects %}
-		{% if project.publish == true %}
-			<a href="{{ project.url }}" rel="tooltip" title="View Project">
-				<div class="card card-hover d-inline-flex justify-content-center">
-					<div class="card-header text-left">
-						<p><small class="text-muted">{{ project.date | date: "%B, %Y" }}</small></p>
-					</div>
-					<div class="card-block text-center">
-						<h5 class="card-title">{{ project.project }}</h5>
-						<span class="badge badge-warning">{{ project.category }}</span>
-						<p class="card-text text-muted">{{ project.description }}</p>
-					</div>
-					<div class="card-img-bottom">
-						<img src="{{ site.baseurl }}{{ project.image }}" alt="Card image cap" style="width:auto;height:400px;">
-					</div>
+{% for project in site.data.projects %}
+	{% if project.publish == true %}
+		<a href="{{ project.url }}" rel="tooltip" title="View Project">
+			<div class="card card-hover d-inline-flex justify-content-center">
+				<div class="card-header text-left">
+					<p><small class="text-muted">{{ project.date | date: "%B, %Y" }}</small></p>
 				</div>
-			</a>
-		{% endif %}
-	{% endfor %}
-</div>
+				<div class="card-block text-center">
+					<h5 class="card-title">{{ project.project }}</h5>
+					<span class="badge badge-warning">{{ project.category }}</span>
+					<p class="card-text text-muted">{{ project.description }}</p>
+				</div>
+				<div class="card-img-bottom">
+					<img src="{{ site.baseurl }}{{ project.image }}" alt="Card image cap" style="width:auto;height:400px;">
+				</div>
+			</div>
+		</a>
+	{% endif %}
+{% endfor %}
