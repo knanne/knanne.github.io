@@ -1,19 +1,3 @@
-- project: VU Social Web
-  date: March, 2016
-  category: Academic
-  publish: True
-  url: https://knanne.github.io/vu_socialweb_2016
-  image: /assets/img/projects/vu_socialweb_2016.png
-  description: Developed a web app for analyzing social web data, to meet requirements of VU The Social Web Master course project. The dashboard integrates multiple D3 visualizations into a dynamic webpage for exploring connections between members of The Network Institute research group.
-
-- project: UVA Info Visualization
-  date: March, 2016
-  category: Academic
-  publish: True
-  url: https://knanne.github.io/uva_infoviz_2016
-  image: /assets/img/projects/uva_infoviz_2016.png
-  description: Fully implemented a data analysis project from design to development. The final visualization dashboard demonstrates methods of analysis that can be used to improve energy labels in The Netherlands.
-
 - project: Framework for Personal Financial Monitoring
   date: March, 2017
   category: Personal
@@ -21,3 +5,27 @@
   url: https://knanne.github.io/financial_analysis
   image: /assets/img/projects/financial_analysis.png
   description: Developing a framework for monitoring personal finances through data analysis and visualization. Inspired by [Mint.com](https://mint.com) and the issue of having bank accounts not supported by the platform, this project provides a template for integrating multiple accounts' transactions into a single standardized dashboard for financial monitoring.
+
+- project: Thesis Project for MSc. Information Sciences
+  date: Aug, 2016
+  category: Academic
+  publish: True
+  url: https://github.com/knanne/vu_msc_tweetsumm
+  image: /assets/img/projects/vu_msc_tweetsumm.png
+  description: Automating Open Domain Event Summaries by Harnessing Collective Reactions on Twitter
+
+- project: VU Social Web Course Project
+  date: March, 2016
+  category: Academic
+  publish: True
+  url: https://knanne.github.io/vu_socialweb_2016
+  image: /assets/img/projects/vu_socialweb_2016.png
+  description: Developed a web app for analyzing social web data, to meet requirements of VU The Social Web Master course project. The dashboard integrates multiple D3 visualizations into a dynamic webpage for exploring connections between members of The Network Institute research group.
+
+- project: UVA Information Visualization Course Project
+  date: March, 2016
+  category: Academic
+  publish: True
+  url: https://knanne.github.io/uva_infoviz_2016
+  image: /assets/img/projects/uva_infoviz_2016.png
+  description: Fully implemented a data analysis project from design to development. The final visualization dashboard demonstrates methods of analysis that can be used to improve energy labels in The Netherlands.

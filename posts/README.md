@@ -5,8 +5,8 @@
     - author is inherited from YAML defaults in `_config.yml`
     - <del>last modified data is inherited from file properties using `_plugins\hook-add-last-modified-date.rb`</del>  
   2. **add category and tags**
-    - see [/posts/categories](https://knanne.github.io/posts/categories) for existing categories
-    - see [/posts/tags] for existing tags
+    - see [/posts/categories](https://knanne.github.io/posts/categories) for list of existing categories
+    - see [/posts/tags](https://knanne.github.io/posts/tags) for list of existing tags
   3. **include an excerpt followed by `<!-- excerpt separator -->`**
     - excerpt should be short and concise (not full sentence), it is used as post description in Bootstrap Cards
   4. **include post navigation with Auto TOC and Custom Nav**
