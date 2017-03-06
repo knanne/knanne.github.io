@@ -15,7 +15,7 @@ layout: default
           <p class="post-meta">
             <b>Category:</b>
             {% for cat in page.categories %}
-              <a href="{{ site.base_url }}/posts/#{{ cat }}" rel="tooltip" title="Go to Category" itemprop="genre">{{ cat }}{% unless forloop.last %}, {% endunless %}</a>
+              <a href="{{ site.base_url }}/posts/categories/#{{ cat }}" rel="tooltip" title="Go to Category" itemprop="genre">{{ cat }}{% unless forloop.last %}, {% endunless %}</a>
             {% endfor %}
             <time class="pull-right" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
           </p>
@@ -38,7 +38,7 @@ layout: default
             <span class="pull-right">
               <b>Tags:</b>
               {% for tag in page.tags %}
-                <a href="{{ site.base_url }}/tags/#{{ tag }}" rel="tooltip" title="Go to Tag" itemprop="keywords">{{ tag }}{% unless forloop.last %}, {% endunless %}</a>
+                <a href="{{ site.base_url }}/posts/tags/#{{ tag }}" rel="tooltip" title="Go to Tag" itemprop="keywords">{{ tag }}{% unless forloop.last %}, {% endunless %}</a>
               {% endfor %}
             </span>
           </p>
