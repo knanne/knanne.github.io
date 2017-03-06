@@ -70,7 +70,7 @@
 			// transform into bootstrap nav, and apply scrollspy
 
 			// wrap markdown-toc in navbar div
-			$('#markdown-toc').wrapAll('<nav id="post-nav" class="navbar post-nav">');
+			$('#markdown-toc').wrap('<nav id="post-nav" class="navbar post-nav"></div>');
 			// add scrollspy to post navigation
 			$('body').scrollspy({target: "#post-nav", offset: 50});
 			// format toc objects with classes for custom scrollspy
@@ -111,6 +111,12 @@
 			    }
 			  });
 			});
+
+			// convert kramdown tables to bootstrap tables
+			$(".post-content table").addClass("table table-sm");
+
+			// center and make fluid all post images
+			$(".post-content img").addClass('img-fluid mx-auto d-block');
 
 		};
 	</script>

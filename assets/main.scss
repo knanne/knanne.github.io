@@ -147,6 +147,9 @@ h5:hover .header-link,
 h6:hover .header-link {
   opacity: 1;
 }
+.table {
+  font-size: 12px;
+}
 
 // BackToTop button
 #back2top {
@@ -242,7 +245,10 @@ button:hover {
 // IMAGES
 img {
   max-width: 100%;
-  vertical-align: middle;
+  height: auto;
+}
+.img-sm {
+  max-width: 50% !important;
 }
 
 /*

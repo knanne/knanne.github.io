@@ -42,6 +42,8 @@
 
   - use markdown syntax (e.g. quotes, text formatting etc.)
   - add photos with `![<IMAGE>]({{ site.baseurl }}/assets/img/posts/<IMAGE>.png)`
+    - images are fluid, 100% width and auto height
+    - alternatively append `{:class="img-sm"}` to have image only 50% of width
   - embed HTML inside a `<div class="d-flex justify-content-center"></div>` container
 
 # Drafts

@@ -2,6 +2,12 @@
 layout: default
 ---
 
+  {% if page.is_draft %}
+  <div class="alert alert-warning" role="alert">
+    <strong>DRAFT!</strong> This is a draft post that has yet to be published.
+  </div>
+  {% endif %}
+
     <div class="post">
       <article itemscope itemtype="http://schema.org/BlogPosting">
         <header class="post-header">

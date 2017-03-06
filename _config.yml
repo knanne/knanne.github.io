@@ -64,11 +64,21 @@ defaults:
       path: "_posts"
       type: "posts"
     values:
-      is_post: True
+      is_post: True # used in _includes/foot_scripts.html to dynamically load scripts
       layout: "post"
       author: Kain Nanne
-      share: True # include social sharing buttons, True by default
-      comments: True # include comments section, True by default
+      share: True # include social sharing buttons
+      comments: True # include comments section
+  -
+    scope:
+      path: "_drafts"
+    values:
+      is_post: True # used in _includes/foot_scripts.html to dynamically load scripts
+      layout: "post"
+      author: Kain Nanne
+      share: False # hide social sharing buttons
+      comments: False # hide comments section
+      is_draft: True # used in _layouts/post.html to show draft alert
   -
     scope:
       path: "_projects"
