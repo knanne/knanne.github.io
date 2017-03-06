@@ -113,7 +113,8 @@
 			});
 
 			// convert kramdown tables to bootstrap tables
-			$(".post-content table").addClass("table table-sm");
+			$(".post-content table").addClass("table table-bordered table-striped table-responsive table-sm");
+			// $(".post-content table thead").addClass("thead-default");
 
 			// center and make fluid all post images
 			$(".post-content img").addClass('img-fluid mx-auto d-block');

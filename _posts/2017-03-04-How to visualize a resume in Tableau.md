@@ -34,33 +34,27 @@ To make this process even more simple, I will create the data in Excel.
 
 Tableau has minimal to none data transformation built in, therefore to be able to visualize something over time you need to have a row in your database for every period of time. I thought the month level would be detailed enough to communicate the point and look good, so I created a database of each of my resume events for every month it occurred.
 
-I decided I would identify unique events by a combination of Category, Subcategory, Title and Organization. A sample of what this may look like for one year is below.  
+I decided I would identify unique events by a combination of Category, Subcategory, Title and Organization. A sample of what this may look like is provided below.  
 
 **Data**  
 
-| Year | Month | Category     | Subcategory               | Title                     | Organization                 |
-| ---- | ----- | ------------ | ------------------------- | ------------------------- | ---------------------------- |
-| 2015 | 01    | Professional | Contractor                | Data Analyst Consultant   | MITTERA                      |
-| 2015 | 02    | Professional | Contractor                | Data Analyst Consultant   | MITTERA                      |
-| 2015 | 03    | Professional | Contractor                | Data Analyst Consultant   | MITTERA                      |
-| 2015 | 04    | Professional | Contractor                | Data Analyst Consultant   | MITTERA                      |
-| 2015 | 05    | Professional | Contractor                | Data Analyst Consultant   | MITTERA                      |
-| 2015 | 07    | Professional | Contractor                | Data Analyst Consultant   | MITTERA                      |
-| 2015 | 06    | Professional | Contractor                | Data Analyst Consultant   | MITTERA                      |
-| 2015 | 08    | Professional | Contractor                | Data Analyst Consultant   | MITTERA                      |
-| 2015 | 09    | Education    | Masters of Science (MSc.) | MSc. Information Sciences | Vrije Universiteit Amsterdam |
-| 2015 | 10    | Education    | Masters of Science (MSc.) | MSc. Information Sciences | Vrije Universiteit Amsterdam |
-| 2015 | 11    | Education    | Masters of Science (MSc.) | MSc. Information Sciences | Vrije Universiteit Amsterdam |
-| 2015 | 12    | Education    | Masters of Science (MSc.) | MSc. Information Sciences | Vrije Universiteit Amsterdam |
+| Year | Month | Category     | Subcategory | Title                   | Organization    |
+| ---- | ----- | ------------ | ----------- | ----------------------- | --------------- |
+| 2016 | 10    | Education    | Masters     | MSc. Data Science       | ACME University |
+| 2016 | 11    | Education    | Masters     | MSc. Data Science       | ACME University |
+| 2016 | 12    | Education    | Masters     | MSc. Data Science       | ACME University |
+| 2017 | 01    | Professional | Contractor  | Data Science Consultant | ACME Corp.      |
+| 2017 | 02    | Professional | Contractor  | Data Science Consultant | ACME Corp.      |
+| 2017 | 03    | Professional | Contractor  | Data Science Consultant | ACME Corp.      |
 
 For efficiency, the details of each job are created in a second sheet which will be joined to the first within Tableau.  
 
 **Details**  
 
-| Category     | Subcategory               | Title                     | Organization                 | Country                 | City       | State         | Link                 | Details |
-| ------------ | ------------------------- | ------------------------- | ---------------------------- | ----------------------- | ---------- | ------------- | -------------------- | ------- |
-| Professional | Contractor                | Data Analyst Consultant   | MITTERA                      |United States of America | Des Moines |Iowa           | http://mittera.com/  | Developed and maintained tools using SQL, Python and Tableau to transform, mine, and visualize customer data to support business intelligence objectives surrounding marketing campaigns |
-| Education    | Masters of Science (MSc.) | MSc. Information Sciences | Vrije Universiteit Amsterdam |The Netherlands          | Amsterdam  | Noord Holland | http://www.vu.nl/en/ | Specialization in Business Information Systems |
+| Category     | Subcategory | Title                   | Organization    | Country | City           | State      | Link                                         | Details                  |
+| ------------ | ----------- | ----------------------- | --------------- | ------- | -------------- | ---------- | -------------------------------------------- | ------------------------ |
+| Education    | Masters     | MSc. Data Science       | ACME University | U.S.A   | Silicon Valley | California | [knanne.github.io](https://knanne.github.io) | Learn to develop widgets |
+| Professional | Contractor  | Data Science Consultant | ACME Corp.      | U.S.A   | Silicon Valley | California | [knanne.github.io](https://knanne.github.io) | Develop widgets          |
 
 ## development
 
@@ -83,6 +77,8 @@ By default the data in the same pane is stacked on top of each other, we need to
 The final template for you to continue personalizing should look like the following:  
 
 ![Resume Data Tableau Final Template]({{ site.baseurl }}/assets/img/posts/resume_visualization_finaltemplate.png)  
+
+To continue personalizing, I add the necessary details properties to the Tooltip shelf and customize accordingly. I also colored by Category.  
 
 When you are finished, simply go to `File > Save To Tablea Public As`, sign in, and then get the embed code or share the link as you wish.  
 
