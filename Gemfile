@@ -28,4 +28,5 @@ group :jekyll_plugins do
    gem "jekyll-sitemap"
    gem "amp-jekyll"
    gem "html-proofer"
+   gem "jekyll-last-modified-at"
 end

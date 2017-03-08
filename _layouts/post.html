@@ -13,11 +13,17 @@ layout: default
         <header class="post-header">
           <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
           <p class="post-meta">
-            <b>Category:</b>
-            {% for cat in page.categories %}
-              <a href="{{ site.base_url }}/posts/categories/#{{ cat }}" rel="tooltip" title="Go to Category" itemprop="genre">{{ cat }}{% unless forloop.last %}, {% endunless %}</a>
-            {% endfor %}
-            <time class="pull-right" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
+            <span class="pull-left">
+              <b>Date Published: </b>
+              <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
+            </span>
+            <span class="pull-right">
+              <b>Category:</b>
+              {% for cat in page.categories %}
+                <a href="{{ site.base_url }}/posts/categories/#{{ cat }}" rel="tooltip" title="Go to Category" itemprop="genre">{{ cat }}{% unless forloop.last %}, {% endunless %}</a>
+              {% endfor %}
+            </span>
+            <br>
           </p>
           <!-- post excerpt used only in cards
           <p class="lead" itemprop="about">{{ page.excerpt | strip_html }}</p> -->
@@ -27,19 +33,23 @@ layout: default
           {{ page.content | remove: page.excerpt }}
         </div>
         <br>
+
         <footer class="post-footer">
           <p class="post-meta">
-            <a class="pull-left" href="https://github.com/knanne/knanne.github.io/commits/master/{{ page.path }}" rel="tooltip" title="View History on GitHub" ><span class="text-muted">revision history</span></a>
-            <!-- last-modified-date Plugin Not Available on GitHub Pages
-            {% unless page.last-modified-date == nil %}
-              <time class='text-muted' datetime="{{ page.last-modified-date | date_to_xmlschema }}" itemprop="dateModified">Last Modified: {{ page.last-modified-date | date: "%b %-d, %Y at %H:%M" }}</time>
-            {% endunless %}
-            -->
+            <span class="pull-left">
+              <b>Last Modified: </b>
+              <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%b %-d, %Y at %H:%M" }}</time>
+            </span>
             <span class="pull-right">
               <b>Tags:</b>
               {% for tag in page.tags %}
                 <a href="{{ site.base_url }}/posts/tags/#{{ tag }}" rel="tooltip" title="Go to Tag" itemprop="keywords">{{ tag }}{% unless forloop.last %}, {% endunless %}</a>
               {% endfor %}
+            </span>
+            <br>
+            <span class="pull-left">
+              <b>View: </b>
+              <a href="https://github.com/knanne/knanne.github.io/commits/master/{{ page.path }}" rel="tooltip" title="View History on GitHub" >revision history</a>
             </span>
           </p>
         </footer>

@@ -24,9 +24,9 @@ So what is this all about...
 
 ## Resources
 
+- refer to the [Jekyll docs](https://jekyllrb.com/docs/home/)
+- refer to the [GitHub Pages docs](https://help.github.com/categories/github-pages-basics/)
 - a guy named Michael Lee is writing [Field Guide to Jekyll](https://michaelsoolee.com/jekyll-field-guide/)
-- refer to the Jekyll [docs](https://jekyllrb.com/docs/home/)
-- get help from GitHub Pages [docs](https://help.github.com/categories/github-pages-basics/)
 
 ## Getting Started
 
@@ -54,6 +54,32 @@ bundle exec jekyll serve
 Find the app hosted at [http://localhost:4000/](http://127.0.0.1:4000)  
 
 ## Customization  
+
+#### gems
+
+Learn about [gems and the bundler](http://jekyll.tips/jekyll-casts/gemfiles-and-the-bundler/)  
+
+add a `gem` to your `config.yml` file  
+
+```ruby
+gems:
+  - jekyll-last-modified-at
+```
+and run  
+
+```shell
+gem install jekyll-last-modified-at
+```
+
+Or, add gems to `Gemfile`  
+
+```ruby
+group :jekyll_plugins do
+   gem "jekyll-last-modified-at"
+end
+```
+
+If you modify the Gemfile, you must then run `bundle install`  
 
 #### theme  
 

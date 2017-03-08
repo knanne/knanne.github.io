@@ -51,11 +51,28 @@ Packages I use include:
 
 #### Virtual Envrionments
 
-[virtualenvwrapper-win](https://github.com/davidmarble/virtualenvwrapper-win/) is a Windows port of virtualenvwrapper, which is a more intuitive way to create [virtual environments in Python](http://docs.python-guide.org/en/latest/dev/virtualenvs/)  
+If you are using [Conda](https://conda.io/), there is nice virtual environment functionality built in.  
+
+> With conda, you can create, export, list, remove, and update environments that have different versions of Python and/or packages installed in them. Switching or moving between environments is called activating the environment. You can even share an environment file with a coworker. - [docs](https://conda.io/docs/using/envs.html)
+
+```shell
+# create virtual environment
+conda create --n snowflakes
+# list virtual environments
+conda env list
+# activate env
+activate snowflakes
+# deactivate env
+deactivate
+```
+
+Alternatively, [virtualenvwrapper-win](https://github.com/davidmarble/virtualenvwrapper-win/) is a Windows port of virtualenvwrapper, which is a more intuitive way to create [virtual environments in Python](http://docs.python-guide.org/en/latest/dev/virtualenvs/)  
 
 ```shell
 # create virtual environment
 mkvirtualenv APP
+# list virtual environments
+lsvirtualenv
 # activate env
 workon APP
 # deactivate env
@@ -86,7 +103,7 @@ Notable commands:
 
   - open task view with `Windows + Tab`
     - press `Tab` the arrow keys within task view to toggle between desktops
-  -  lock the computer with `Windows + L`
+  - lock the computer with `Windows + L`
 
 Microsoft [source](https://support.microsoft.com/en-us/help/12445/windows-keyboard-shortcuts)
 

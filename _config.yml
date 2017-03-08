@@ -116,6 +116,8 @@ gems:
   - jekyll-seo-tag
   - jekyll-sitemap
   - amp-jekyll
+  - html-proofer
+  - jekyll-last-modified-at
 exclude:
   - Gemfile
   - Gemfile.lock

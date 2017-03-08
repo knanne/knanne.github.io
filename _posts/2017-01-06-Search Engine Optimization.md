@@ -10,9 +10,15 @@ Notes on Search Engine Optimization (SEO) for this site, and related Google reso
 * AUTO TABLE OF CONTENTS
 {:toc}
 
+## Introduction
+
+I think everybody wants to get their site on Google, if not at least utilize Google's endless resources for managing a website's structural standards, indexing and analytics.  
+
+As a disclaimer, I am new to this process and there is A LOT of information to cover, but below is an overview of important links I have found useful.  
+
 ## Register Site
 
-Register the site on Google  
+Register your website on Google  
 
 - see [what Google says](https://support.google.com/webmasters/answer/34397?hl=en&ref_topic=3309300) about getting your site in their search engine
 - refer to [Google Webmasters](https://www.google.com/webmasters)  
@@ -28,6 +34,7 @@ Register your sitemap with Google. This site uses the [`jekyll-sitemap gem`](htt
 This site has an embedded custom search, located at [/search/](https://knanne.github.io/search/). This internal search is the same as searching google.com with `site:mysite.com`.  
 
 - Google's [custom search](https://cse.google.com/)
+- Read [how to Use it with your website](https://support.google.com/webmasters/answer/6258314?utm_source=wnc_376106&utm_medium=gamma&utm_campaign=wnc_376106&utm_content=msg_743502&hl=en)  
 
 ## Utilize Analytics
 

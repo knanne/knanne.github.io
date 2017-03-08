@@ -1,9 +1,14 @@
+<!--
+Sorting on last_modified_at is not working
+Or date reversed for that matter
+-->
+
 <div class="card-deck">
-	{% for post in site.posts limit : 3 %}
+	{% for post in site.posts | sort: 'last_modified_at' | limit: 3 %}
 		<a href="{{ site.baseurl }}{{ post.url }}" rel="tooltip" title="View Post">
 			<div class="card card-hover">
 				<div class="card-header text-left">
-					<p><small class="text-muted">Date Published: {{ post.date | date: "%b %-d, %Y" }}</small></p>
+					<p><small class="text-muted">Last Modified: {{ post.last_modified_at | date: "%b %-d, %Y" }}</small></p>
 				</div>
 				<div class="card-block text-center">
 					<h5 class="card-title">{{ post.title }}</h5>
