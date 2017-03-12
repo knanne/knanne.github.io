@@ -25,8 +25,10 @@ layout: default
             </span>
             <br>
           </p>
+          {% comment %}
           <!-- post excerpt used only in cards
           <p class="lead" itemprop="about">{{ page.excerpt | strip_html }}</p> -->
+          {% endcomment %}
         </header>
 
         <div class="post-content" itemprop="articleBody">
@@ -37,14 +39,14 @@ layout: default
         <footer class="post-footer">
           <p class="post-meta">
             <span class="pull-left">
-              <b>View: </b>
-              <a href="https://github.com/knanne/knanne.github.io/commits/master/{{ page.path }}" rel="tooltip" title="View History on GitHub" >revision history</a>
               {% comment %}
               <!--
-              <b>Last Modified: </b>
-              <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%b %-d, %Y at %H:%M" }}</time>
+              <b>View: </b>
+              <a href="https://github.com/knanne/knanne.github.io/commits/master/{{ page.path }}" rel="tooltip" title="View History on GitHub" >revision history</a>
               -->
               {% endcomment %}
+              <b>Last Modified: </b>
+              <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%b %-d, %Y at %H:%M" }}</time>
             </span>
             <span class="pull-right">
               <b>Tags:</b>
