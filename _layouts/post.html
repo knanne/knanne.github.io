@@ -37,19 +37,20 @@ layout: default
         <footer class="post-footer">
           <p class="post-meta">
             <span class="pull-left">
+              <b>View: </b>
+              <a href="https://github.com/knanne/knanne.github.io/commits/master/{{ page.path }}" rel="tooltip" title="View History on GitHub" >revision history</a>
+              {% comment %}
+              <!--
               <b>Last Modified: </b>
               <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%b %-d, %Y at %H:%M" }}</time>
+              -->
+              {% endcomment %}
             </span>
             <span class="pull-right">
               <b>Tags:</b>
               {% for tag in page.tags %}
                 <a href="{{ site.base_url }}/posts/tags/#{{ tag }}" rel="tooltip" title="Go to Tag" itemprop="keywords">{{ tag }}{% unless forloop.last %}, {% endunless %}</a>
               {% endfor %}
-            </span>
-            <br>
-            <span class="pull-left">
-              <b>View: </b>
-              <a href="https://github.com/knanne/knanne.github.io/commits/master/{{ page.path }}" rel="tooltip" title="View History on GitHub" >revision history</a>
             </span>
           </p>
         </footer>

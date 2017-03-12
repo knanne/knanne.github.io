@@ -20,7 +20,8 @@ title: Posts by Category
     {% for post in site.categories[cat] %}
       <li>
         <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-        <span class="text-muted"><small>Last Modified: {{ post.last_modified_at | date: "%b %-d, %Y" }}</small></span>
+        <span class="text-muted"><small>Date Published: {{ post.date | date: "%b %-d, %Y" }}</small></span>
+        {% comment %}<!-- <span class="text-muted"><small>Last Modified: {{ post.last_modified_at | date: "%b %-d, %Y" }}</small></span> -->{% endcomment %}
       </li>
     {% endfor %}
     </ul>
