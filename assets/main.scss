@@ -217,6 +217,10 @@ button:hover {
   max-width: 100% !important;
   overflow: auto;
 }
+iframe {
+  max-width: 100%;
+  width: auto;
+}
 
 // SEARCH
 .nav-search-link .nav-search-icon {

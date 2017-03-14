@@ -4,15 +4,49 @@ title: Homepage
 is_home: True
 ---
 
-<div class="subcontainer">
+<div class="container">
 
-	<h4>RSS Updates</h4>
-	<hr>
-	<div class="d-flex justify-content-end"><button type="button" class="btn btn-primary btn-sm" onclick="get_feeds()">Refresh</button></div>
-	<br>
+	<p>Welcome to <a href="{{ site.url }}/about">my</a> frontpage of the internet. This page serves as a personalized dashboard for displaying aggregated content from curated sources. Enjoy!</p>
 
-	<div id="feeds" class="card-columns">
-		<!-- feeds get appended here -->
+	<div class="subcontainer">
+
+		<h4>Trends on Google</h4>
+		<hr>
+
+		<div class="card-deck">
+			<div class="card">
+				<iframe scrolling="no" style="border:none;" height="413" src="https://trends.google.com/trends/hottrends/widget?pn=p1&amp;tn=10&amp;h=413"></iframe>
+			</div>
+			<div class="card">
+				<iframe scrolling="no" style="border:none;" height="413" src="https://trends.google.com/trends/hottrends/widget?pn=p17&amp;tn=10&amp;h=413"></iframe>
+			</div>
+			<div class="card">
+				<iframe scrolling="no" style="border:none;" height="413" src="https://trends.google.com/trends/hottrends/widget?pn=p45&amp;tn=10&amp;h=413"></iframe>
+			</div>
+		</div>
+
+		<br>
+		<br>
+
+		<h4>RSS Updates</h4>
+		<hr>
+		<div class="d-flex justify-content-end"><button type="button" class="btn btn-primary btn-sm" onclick="get_feeds()">Refresh</button></div>
+		<br>
+
+		<div id="feeds" class="card-columns">
+			<!-- feeds get appended here -->
+		</div>
+
+		<br>
+		<br>
+
+		<h4>Latest Tweets</h4>
+		<hr>
+
+		<div style="text-align:center;">
+			<a class="twitter-timeline" href="https://twitter.com/knanne/lists/data-science-influencers" data-tweet-limit="3" data-width="400px">A Twitter List by knanne</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+		</div>
+
 	</div>
 
 </div>
