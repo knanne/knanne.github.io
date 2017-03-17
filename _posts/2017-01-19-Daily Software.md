@@ -41,15 +41,13 @@ Packages I use include:
 
 ## Python
 
+Python is my language of choice for anything from data analysis and manipulation, to web development. Below are a few necessary tools.  
+
 #### Jupyter Notebook
 
 [Jupyter](http://jupyter.org/) (Formerly IpythonNotebook) now supports everything you would ever need for data analysis and visualization, even with interactive charts for some libraries.  
 
-#### Rodeo
-
-[Rodeo](https://www.yhat.com/products/rodeo) is basically RStudio, but of course for Python. Which means it's pretty dope.  
-
-#### Virtual Envrionments
+#### Virtual Environments for Development
 
 If you are using [Conda](https://conda.io/), there is nice virtual environment functionality built in.  
 
@@ -95,7 +93,7 @@ Google [source](https://support.google.com/chrome/answer/157179?)
 
 <div class="heading" id="operating_system"></div>
 
-## Operating System
+## OS
 
 #### Windows
 
