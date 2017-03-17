@@ -1,9 +1,11 @@
 <script>
 
 	/*
-	* transform list of RSS feeds into bootstrap cards
-	* DEPENDENCY - YQL: https://developer.yahoo.com/yql/
-	* Use Google news guidelines as standard for parsing RSS feeds
+	* code to transform list of RSS feeds into bootstrap cards
+	* view my tutorial at https://knanne.github.io/posts/how-to-create-a-custom-rss-reader
+	* 1 DEPENDENCY - YQL: https://developer.yahoo.com/yql/
+	* Adhere to Google News GUIDELINES as standard for parsing RSS feeds
+	* (e.g. link to source, site author etc.)
 	* https://support.google.com/news/publisher/answer/4203?hl=en
 	*/
 
@@ -43,84 +45,85 @@
 		</div>';
 	};
 
+	// main build function
 	function buildFeedCard(url, container, feednum) {
 
 		// console.log(url);
 
-			// call yahoo for json from rss feed, parse json
-	    $.getJSON(make_query(url), function (data, status, errorThrown) {
-	     if (status === 'success') {
+		// call yahoo for json from rss feed, parse json
+		$.getJSON(make_query(url), function (data, status, errorThrown) {
+		 if (status === 'success') {
 
-					// console.log(data);
+			// console.log(data);
 
-							// define card string
-							card_string = '';
+			// define card string
+			card_string = '';
 
-							// open the feed card
-							card_string = card_string + '<div id="feed_' + feednum + '" class="card d-inline-flex justify-content-center">';
+			// open the feed card
+			card_string = card_string + '<div id="feed_' + feednum + '" class="card d-inline-flex justify-content-center">';
 
-							// get rss channel content from feed
-							var content = (data.query.results.hasOwnProperty('rss') ? data.query.results.rss.channel : data.query.results.feed);
-							var title = (content.title.constructor === Object ? content.title.content : content.title );
-							// console.log(title);
-							var link = (content.link.constructor === Array ? content.link[0].href || content.link[0] : content.link.href || content.link);
-							var description = (content.description ? content.description : null);
+			// get rss channel content from feed
+			var content = (data.query.results.hasOwnProperty('rss') ? data.query.results.rss.channel : data.query.results.feed);
+			var title = (content.title.constructor === Object ? content.title.content : content.title );
+			// console.log(title);
+			var link = (content.link.constructor === Array ? content.link[0].href || content.link[0] : content.link.href || content.link);
+			var description = (content.description ? content.description : null);
 
-							// add header to card
-		          card_string = card_string + make_cardheader(title, link, description);
+			// add header to card
+			card_string = card_string + make_cardheader(title, link, description);
 
-							// loop thru each content entry, get content
-							$.each(content.item || content.entry, function(i, entry) {
+			// loop thru each content entry, get content
+			$.each(content.item || content.entry, function(i, entry) {
 
-									// get item content dynamically
-									// because RSS feeds have different structures
-									if (content.description == "Google News") {
-										var title = entry.title.split(" - ")[0];
-										var source = entry.title.split(" - ")[1];
-									}
-									else {
-										var title = (entry.title.constructor === Object ? entry.title.content : entry.title );
-										var source = (entry.hasOwnProperty('creator') ? entry.creator : (entry.hasOwnProperty('author') ? entry.author.name : null));
-									}
-									var link = (entry.link.constructor === Array ? entry.link[0].href || entry.link[0] : entry.link.href || entry.link);
-									// console.log(entry.pubDate || entry.updated);
-									var date = new Date(Date.parse((entry.hasOwnProperty('pubDate') ? entry.pubDate : entry.updated)));
-									date = date.toLocaleDateString('en-US', date_options);
+				// get item content dynamically
+				// because RSS feeds have different structures
+				if (content.description == "Google News") {
+					var title = entry.title.split(" - ")[0];
+					var source = entry.title.split(" - ")[1];
+				}
+				else {
+					var title = (entry.title.constructor === Object ? entry.title.content : entry.title );
+					var source = (entry.hasOwnProperty('creator') ? entry.creator : (entry.hasOwnProperty('author') ? entry.author.name : null));
+				}
+				var link = (entry.link.constructor === Array ? entry.link[0].href || entry.link[0] : entry.link.href || entry.link);
+				// console.log(entry.pubDate || entry.updated);
+				var date = new Date(Date.parse((entry.hasOwnProperty('pubDate') ? entry.pubDate : entry.updated)));
+				date = date.toLocaleDateString('en-US', date_options);
 
-									// entry text not currently in use
-									//var text = $(entry.description).text().substring(0, 60)+"...";
+				// entry text not currently in use
+				//var text = $(entry.description).text().substring(0, 60)+"...";
 
-									//append content to card
-									card_string = card_string + make_cardblock(link, title, date, source);
+				// add content block to card
+				card_string = card_string + make_cardblock(link, title, date, source);
 
-									// dynamic trailing spacer
-									if ( i < 2 ) { card_string = card_string + '<hr>'; } else { card_string = card_string + '<br>'; }
+				// dynamically add trailing spacer
+				if ( i < 2 ) { card_string = card_string + '<hr>'; } else { card_string = card_string + '<br>'; }
 
-									// limit feed to 3 entries
-									return i < 2;
-							});
+				// limit feed to 3 entries
+				return i < 2;
+			});
 
-							// last updated as query created time
-							var last_updated = new Date(Date.parse(data.query.created));
-							// alternatively, use RSS feed last updated time
-							// var last_updated = new Date(Date.parse(content.updated));
-							// var last_updated = data.query.created;
-							// last_updated = last_updated.replace("T", " ").replace("Z", " ");
-							last_updated = last_updated.toLocaleDateString('en-US', date_options);
+			// last updated as query created time
+			var last_updated = new Date(Date.parse(data.query.created));
+			// alternatively, use RSS feed last updated time
+			// var last_updated = new Date(Date.parse(content.updated));
+			// var last_updated = data.query.created;
+			// last_updated = last_updated.replace("T", " ").replace("Z", " ");
+			last_updated = last_updated.toLocaleDateString('en-US', date_options);
 
-							// append footer to card
-							card_string = card_string + make_cardfooter(last_updated);
+			// add footer to card
+			card_string = card_string + make_cardfooter(last_updated);
 
-							// close the feed card
-							card_string = card_string + '</div>';
+			// close the feed card
+			card_string = card_string + '</div>';
 
-							// append feed card to DOM
-							$(container).append(card_string);
+			// append feed card to DOM as HTML
+			$(container).append(card_string);
 
-	        } else if (status === 'error' || status === 'parsererror') {
-	            console.log(errorThrown);
-	        }
-	    });
+			} else if (status === 'error' || status === 'parsererror') {
+				console.log(errorThrown);
+			}
+		});
 	}
 
 </script>

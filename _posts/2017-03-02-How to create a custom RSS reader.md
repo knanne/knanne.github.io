@@ -31,7 +31,7 @@ Features I wanted:
 
 #### TL;DR
 
-Skip down to the  [Implementation](https://knanne.github.io/posts/how-to-create-a-custom-rss-reader#implementation) section to simply steal my code
+Skip down to the  [Development](https://knanne.github.io/posts/how-to-create-a-custom-rss-reader#development) section to simply steal my code.  
 
 ## requirements
 
@@ -78,7 +78,7 @@ Since I knew I wanted to include a Google News feed, because they already aggreg
 
 #### dependencies
 
-Unfortunately the [Google Feed API](https://developers.google.com/feed/) has been **deprecated** as of December, 2016. This seems to have been a good solution and many people are [looking for an alternative](http://stackoverflow.com/questions/34016263/real-alternative-for-google-feed-api).
+Unfortunately the [Google Feed API](https://developers.google.com/feed/) has been **deprecated** as of December, 2016. This seems to have been a good solution and many people are [looking for an alternative](http://stackoverflow.com/questions/34016263/real-alternative-for-google-feed-api).  
 
 The dependency used is the [Yahoo Query Language API](https://developer.yahoo.com/yql/).  
 
@@ -88,7 +88,7 @@ The solution I developed was inspired by [this code snippet](https://codepen.io/
 
 #### container
 
-Create a container where the feed cards will live. During the build function below, a Bootstrap card will be built for each feed and appended to the DOM inside the `.feeds` div.
+Create a container where the feed cards will live using Bootstrap class `card-columns`. During the build function below, a Bootstrap card will be built for each feed and appended to the DOM inside the `#feeds` div.  
 
 ```html
 <div id="feeds" class="card-columns">
@@ -98,7 +98,15 @@ Create a container where the feed cards will live. During the build function bel
 
 #### build function
 
-This is the worker function to build a card for each feed and append it to the DOM.  
+The Gist below contains the worker function to build a card for each feed and append it to the DOM.  
+
+I reuse a few maker functions when building card header, block, and footer. The basic logic if for each feed url is:  
+
+  - make query, get JSON
+  - dynamically get content
+  - build a string of html elements that represent the card
+  - append the card string to the container
+  - repeat
 
 <div class="d-flex justify-content-center">
   <script src="https://gist.github.com/knanne/3bcb3daad9faa1ab072a731d96ff2ae7.js"></script>
@@ -140,7 +148,7 @@ window.onload = function() {
 
 #### (optional) refresh button
 
-Alternatively to on page load, we can create a regresh button to manually re-pull the feeds and build the cards.  
+Alternatively to on page load, we can create a refresh button to manually re-pull the feeds and build the cards.  
 
 ```html
 <div class="d-flex justify-content-end"><button type="button" class="btn btn-primary btn-sm" onclick="get_feeds()">Refresh</button></div>
@@ -148,6 +156,6 @@ Alternatively to on page load, we can create a regresh button to manually re-pul
 
 ## implementation
 
-The final implementation looks something like the following:  
+The final implementation looks something like the following image. You can check out [my source code](https://github.com/knanne/knanne.github.io/blob/master/_includes/foot_scripts.html) to see how exactly I manage the scripts on this site's footer.  
 
 ![Custom RSS Reader]({{ site.baseurl }}/assets/img/posts/custom_rss_reader.png)
