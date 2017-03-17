@@ -24,17 +24,21 @@
 	};
 	function make_cardblock(link, title, date, source) {
 		return '\
-		<div class="card-block text-center">\
-			<div class="card-text text-muted">\
-				<h6><a href="' + link + '" target="_blank">' + title + '</a></h6>\
-				<small>' + date + '<br>\
-				' + ( source ? '<b> - ' + source + '</b>' : '' ) + '</small>\
+		<a href="' + link + '" target="_blank">\
+			<div class="card-block text-center">\
+				<div class="card-text text-muted">\
+					<p><b>' + title + '</b><br>\
+						<small>' + date + '<br>\
+						' + ( source ? ' - ' + source : '' ) + '\
+						</small>\
+					</p>\
+				</div>\
 			</div>\
-		</div>';
+		</a>';
 	};
 	function make_cardfooter(last_updated) {
 		return '\
-		<div class="card-footer">\
+		<div class="card-footer text-muted">\
 			<small>Last Updated: ' + last_updated + '</small>\
 		</div>';
 	};
