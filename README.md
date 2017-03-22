@@ -6,25 +6,27 @@ This is a "static" website for Kain Nanne built with [Jekyll](https://jekyllrb.c
 
 The live site can be found at [knanne.github.io](https://knanne.github.io)  
 
-# Creating Posts
+# Personal Development Notes
+
+## Creating Posts
 
 See [Posts](https://github.com/knanne/knanne.github.io/tree/master/posts) on how to create a post  
 
-# Creating Projects
+## Creating Projects
 
 See [Projects](https://github.com/knanne/knanne.github.io/tree/master/projects) on how to create a project
 
-# Local Testing Procedure
+## Local Testing Procedure
 
   - run `rake test`  
   - run `rake serve`
 
-# Publishing Procedure
+## Publishing Procedure
 
   - commit and push to remote repo (no need to `jekll build`, GitHub pages takes care of this)  
   - be sure NOT to publish sensitive content (use `.gitignore` if needed)  
 
-# To Do:
+## To Do (IDEAS):
 
   - configure and test posts as Accelerated Mobile Pages ([AMP](https://www.ampproject.org/)) using [amp-jekyll](https://github.com/juusaw/amp-jekyll)
   - continue projects procedure
@@ -32,4 +34,4 @@ See [Projects](https://github.com/knanne/knanne.github.io/tree/master/projects) 
   - use bower to manage assets
   - create `tests` procedure
   - implement test for html-proofer
-  - add lint test
+  - add linter (?)
