@@ -45,7 +45,7 @@ Call `plt.style.available` to show options, then set the style of choice.
 plt.style.use('seaborn-talk')
 ```
 
-## Visualizations
+# Visualizations
 
 Create some dummy data.  
 
@@ -124,8 +124,8 @@ fig.savefig('category_volume_per_year_end.png', transparent=False, dpi=300, bbox
 
 # Resources
 
-[Matplotlib docs](https://matplotlib.org/contents.html)  
-[Pandas Visualization docs](https://pandas.pydata.org/pandas-docs/stable/visualization.html)  
-[Seaborn docs](https://seaborn.pydata.org/api.html)  
+- [Matplotlib docs](https://matplotlib.org/contents.html)  
+- [Pandas Visualization docs](https://pandas.pydata.org/pandas-docs/stable/visualization.html)  
+- [Seaborn docs](https://seaborn.pydata.org/api.html)  
 
-Chris Moffitt at Practical Business Python has a [great tutorial and helpful infographic](http://pbpython.com/effective-matplotlib.html)  
+Chris Moffitt at Practical Business Python has a [great tutorial and helpful infographic](http://pbpython.com/effective-matplotlib.html) on matplotlib  
