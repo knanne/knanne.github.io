@@ -12,11 +12,11 @@ Helpful scripts and samples for plotting in Python
 
 # Setup
 
-Since [Pandas](https://pandas.pydata.org/) is almost a one stop shop for everything data analysis in python anyway, most plotting is done using `df.plot()` syntax, however, you must import [Matplotlib](https://matplotlib.org/index.html) since this is a dependency.  
+Since [Pandas](https://pandas.pydata.org/) is almost a one stop shop for everything data analysis in python anyway, most plotting is done using `df.plot()` syntax, however, you must import [Matplotlib](https://matplotlib.org/index.html) since this is a dependency. I would also recommend installing [Seaborn](https://seaborn.pydata.org/) because they many interesting plot types and statistical features. Plus it has a nice native style.  
 
 Pandas has an [extensive documentation](https://pandas.pydata.org/pandas-docs/stable/visualization.html) on how to create plots directly on a DataFrame.  
 
-## Imports
+## Dependencies
 
 ```python
 # data
@@ -45,7 +45,7 @@ Call `plt.style.available` to show options, then set the style of choice.
 plt.style.use('seaborn-talk')
 ```
 
-## How To
+## Visualizations
 
 Create some dummy data.  
 
@@ -124,4 +124,8 @@ fig.savefig('category_volume_per_year_end.png', transparent=False, dpi=300, bbox
 
 # Resources
 
-Chris Moffitt at Practical Business Python has a (great tutorial and helpful infographic)[http://pbpython.com/effective-matplotlib.html]  
+[Matplotlib docs](https://matplotlib.org/contents.html)  
+[Pandas Visualization docs](https://pandas.pydata.org/pandas-docs/stable/visualization.html)  
+[Seaborn docs](https://seaborn.pydata.org/api.html)  
+
+Chris Moffitt at Practical Business Python has a [great tutorial and helpful infographic](http://pbpython.com/effective-matplotlib.html)  
