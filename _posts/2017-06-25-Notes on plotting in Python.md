@@ -110,7 +110,7 @@ ax.xaxis.set_major_formatter(plt.FixedFormatter(df.index.to_series().dt.strftime
 
 # annotate data labels onto vertical bars
 # see https://matplotlib.org/users/annotations_guide.html
-for bar,(ix,col) in zip(ax.patches, pd.MultiIndex.from_product([df.index, df.columns])):
+for bar,(col,ix) in zip(ax.patches, pd.MultiIndex.from_product([df.columns,df.index])):
     ax.annotate(str(round(df.loc[ix,col],2)), xy=(bar.get_x()+.01, bar.get_height()-.5), color='white')
 
 # format
