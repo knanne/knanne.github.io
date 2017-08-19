@@ -16,7 +16,7 @@ This post is an explanation of the custom Jekyll-post navigation I came up with 
 
 So the goal here was to create some sort of navigation that would show post contents and allow for linking to a heading. And of course i wanted to automate this for each post with as little work as possible when writing a new post.  
 
-My initial idea was a second fixed navbar above post content, as I like Bootstrap and find it easy to implement. I then found [Scrollspy](http://v4-alpha.getbootstrap.com/components/scrollspy/) within the Bootstrap docs and thought that was cool. OK, so go for a fixed navbar with scrolsspy functionality.  
+My initial idea was a second fixed navbar above post content, as I like Bootstrap and find it easy to implement. I then found [Scrollspy](http://v4-alpha.getbootstrap.com/components/scrollspy/) within the Bootstrap docs and thought that was cool. OK, so go for a fixed navbar with Scrollspy functionality.  
 
 #### TL;DR
 

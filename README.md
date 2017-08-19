@@ -19,7 +19,7 @@ See [Projects](https://github.com/knanne/knanne.github.io/tree/master/projects) 
 ## Local Testing Procedure
 
   - run `rake test`  
-  - run `rake serve`
+  - run `rake serve`  
 
 ## Publishing Procedure
 
@@ -34,4 +34,4 @@ See [Projects](https://github.com/knanne/knanne.github.io/tree/master/projects) 
   - use bower to manage assets
   - create `tests` procedure
   - implement test for html-proofer
-  - add linter (?)
+  - add linter

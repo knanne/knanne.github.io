@@ -3,7 +3,7 @@ categories: [technology]
 tags: [software]
 ---
 
-Some notes from my daily software use on Windows 10
+Some notes on the software I use on a daily basis for work, on Windows 10
 
 <!-- excerpt separator -->
 
@@ -14,31 +14,52 @@ Some notes from my daily software use on Windows 10
 
 #### Cmder
 
-Cmder is an attractive and portable console emulator for Windows.
+Cmder is an attractive and portable console emulator for Windows.  
 
 > Cmder is a software package created out of pure frustration over the absence of nice console emulators on Windows. It is based on amazing software, and spiced up with the Monokai color scheme and a custom prompt layout, looking sexy from the start. - [website](http://cmder.net/)  
 
 Notable commands:  
-
-  - summons from taskbar with ``Ctrl + ` ``
-  - open a new tab with `Ctrl + Tab`
+  - open a new tab with `Ctrl + Tab`  
 
 ## Text Editor
+
+#### Notepad++
+
+[Notepad++] is a super simple text editor, but so useful.  
+
+> Notepad++ is a free (as in "free speech" and also as in "free beer") source code editor and Notepad replacement that supports several languages - [website](https://notepad-plus-plus.org/)
+
+Common cases I use it for:  
+  - quickly edit many lines at once using `Alt + Select Drag`
+  - convert encoding of a file with `Encoding > Convert to ...`
+  - view special characters by turning on `View > Show All Characters`
+  - convert Tabs to Spaces with `Edit > Blank Operations > Tab to Space`
+
+There are endless useful features in this tool that I don't use.  
 
 #### Atom
 
 Atom is a text editor made by the guys at GitHub so it has some fancy native integrations. Refer to the [Atom Flight Manual](http://flight-manual.atom.io/getting-started/sections/atom-basics/) for basic documentation.
 
-Notable commands:  
+> Atom is a text editor that's modern, approachable, yet hackable to the core—a tool you can customize to do anything but also use productively without ever touching a config file. - [website](https://atom.io/)
 
+Notable commands:  
   - open a new window with `Ctrl + Shift + N`
-  - open a project folder with 'Ctrl + Shift + A'
+  - open a project folder with `Ctrl + Shift + A`
   - unhide auto-hidden menu with `Alt`  
   - open command palette with `Ctrl + Shift + P`
 
-Packages I use include:  
+Installing Packages:  
 
+```shell
+apm install editorconfig
+```
+
+Alternatively, Go to `Settings > Install > Search`  
+
+Packages I use include:  
   - [autocomplete-python](https://atom.io/packages/autocomplete-python)
+  - [editorconfig](https://atom.io/packages/editorconfig)
 
 ## Programming
 
@@ -46,23 +67,23 @@ Packages I use include:
 
 [Python](https://www.python.org) is my language of choice for anything from data analysis and manipulation, to web development. The official package manager in Python is called [pip](https://pip.pypa.io/en/stable/)  
 
-Below are a few Python-related and necessary tools.  
+Python Enhancement Proposals (PEP) are standards to follow for writing Python code. For example, use [PEP 8](https://www.python.org/dev/peps/pep-0008/) as a Style Guide for Python, and [PEP 257](https://www.python.org/dev/peps/pep-0257/) for Docstring Conventions.  
+
+Use [flake8](http://flake8.pycqa.org/en/latest/) to adhere to above conventions.  
+
+Find good examples of docstring conventions with the [Numpy Docstring Standard](https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt). Their standard is widely used in the Scientific Python community, which is why [Pandas uses it](http://pandas.pydata.org/pandas-docs/stable/contributing.html#about-the-pandas-documentation).  
+
+Below are a few other useful tools for Python.  
 
 ###### Anaconda
 
-I recommend also downloading [Anaconda (or Miniconda)](https://www.continuum.io/downloads)  
+I recommend downloading Python thru [Anacondo](https://www.continuum.io/downloads) which comes with various data science libraries out of the box.  
 
 > Anaconda is the leading open data science platform powered by Python. The open source version of Anaconda is a high performance distribution of Python and R and includes over 100 of the most popular Python, R and Scala packages for data science.
 
 ###### Jupyter Notebook
 
 [Jupyter](http://jupyter.org/) (Formerly IpythonNotebook) now supports everything you would ever need for data analysis and visualization, even with interactive charts for some libraries.  
-
-###### Rodeo
-
-[Rodeo](https://www.yhat.com/products/rodeo) is a nice Python IDE, basically RStudio for Python.
-
-> Rodeo is a development environment that’s lightweight and intuitive, yet customizable to its core - your own personal home base for exploring and interpreting data. - [website](https://www.yhat.com/products/rodeo)
 
 ###### Virtual Environments for Development
 
@@ -94,7 +115,17 @@ workon APP
 deactivate
 ```
 
+## ETL Workflow Automation
+
+[KNIME](https://www.knime.com/knime-analytics-platform) is an open source software for creating data science workflows without programming.  
+
+KNIME is designed for drag-and-drop people, however it provides a really efficient way to automate data pipelines by combining programming (python) nodes, with their quickform nodes to create simple webapps to run from the browser.  
+
 ## Database
+
+Setup a local instance of [MySQL](https://dev.mysql.com/downloads/installer/)  
+
+Setup a local instance of [PostgreSQL](https://www.postgresql.org/download/)  
 
 #### DBeaver
 
@@ -122,9 +153,13 @@ Google [source](https://support.google.com/chrome/answer/157179?)
 
 Notable commands:  
 
+  - switch between open apps with `Alt + Tab`
   - open task view with `Windows + Tab`
     - press `Tab` the arrow keys within task view to toggle between desktops
+  - cycle through apps on the taskbar with `Windows + T`
   - lock the computer with `Windows + L`
+  - add a virtual desktop with `Windows + Ctrl + D`
+  - switch between virtual desktops with `Windows + Ctrl + Arrow Key`
 
 Microsoft hotkeys [source](https://support.microsoft.com/en-us/help/12445/windows-keyboard-shortcuts)
 

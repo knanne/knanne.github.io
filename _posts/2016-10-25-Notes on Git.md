@@ -12,8 +12,8 @@ A quick compilation of notes on Git
 
 ## getting started
 
-- official [documentation](https://git-scm.com/)  
-- great easy documenatation from [GitLab](https://docs.gitlab.com/ce/gitlab-basics)  
+- official [Git documentation](https://git-scm.com/)  
+- great easy documentation from [GitLab](https://docs.gitlab.com/ce/gitlab-basics)  
 - [download](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) git  
 
 ## resources
@@ -56,20 +56,14 @@ Since we have cloned a repo, replace REMOTE with `origin` in the folloing comman
 Fetch all or pull remote branch    
 
 ```shell
-git fetch REMOTE
+git fetch <REMOTE>
 git pull
 ```
 
 Create a branch  
 
 ```shell
-git checkout -b BRANCH
-```
-
-Navigate to branch (e.g. master)  
-
-```shell
-git checkout BRANCH
+git checkout -b <BRANCH>
 ```
 
 Now make some changes in the repo, and add those changes  
@@ -88,13 +82,13 @@ git status
 Push changes to repo  
 
 ```shell
-git push REMOTE BRANCH
+git push
 ```
 
 Merge changes  
 
 ```shell
-git checkout BRANCH
+git checkout <BRANCH>
 git merge master
 ```
 
@@ -110,9 +104,35 @@ Below are some scenarios that you may find yourself in, and some helpful tips on
 4. resolve conflicts if any
 5. force push branch (if already on remote)
 
+I highly recommend using [Atom](https://atom.io/) while resolving conflicts. It is a text editor made by GitHub and therefor contains very handy options to indentify and resolve conflicts with a couple of clicks.  
+
+#### auto-rebase (with conflicts) a feature branch on master
+
+```shell
+git checkout feature
+git rebase master
+```
+
+At this point you may have merge conflicts, which could even contain random files like jupyter notebooks that are difficult to manually navigate for resolving conflicts. If you want to simply keep the changes on your new feature branch to a specific file, and apply them on top of master, do the following:
+
+```shell
+git checkout --theirs <FILE>.ipynb
+git checkout --theirs <FILE>.pptx
+git add .
+git rebase --continue
+```
+
+> Note that a rebase merge works by replaying each commit from the working branch on top of the <upstream> branch. Because of this, when a merge conflict happens, the side reported as ours is the so-far rebased series, starting with <upstream>, and theirs is the working branch. In other words, the sides are swapped. [Git docs](https://git-scm.com/docs/git-rebase#git-rebase---merge)  
+
 #### totally screwed up local repo
 
-Remove untracked changes and revert to last local commit  
+Reset current HEAD and index to last commit
+
+```shell
+git reset --hard
+```
+
+Remove untracked files from the working tree  
 
 ```shell
 # show to be deleted
@@ -121,21 +141,33 @@ git clean -n
 git clean -f
 ```
 
-Hard reset to state of remote master - *this will remove any untracked changes*  
-
-```shell
-git reset --hard
-```
-
 ## notable commands
 
-list all committed files  
+List branches  
 
 ```shell
-git ls-tree --name-only BRANCH
+git branch --list
 ```
 
-list all uncommitted files  
+Navigate to branch  
+
+```shell
+git checkout <BRANCH>
+```
+
+List previous commits, limit 1  
+
+```shell
+git log -n 1
+```
+
+List all committed files  
+
+```shell
+git ls-tree --name-only <BRANCH>
+```
+
+List all uncommitted files  
 
 ```shell
 git ls-files --others
