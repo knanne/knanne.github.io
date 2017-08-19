@@ -75,7 +75,7 @@ fig.show()
 fig.savefig('category_volume_over_time.png', transparent=False, dpi=300, bbox_inches='tight')
 ```
 
-![<IMAGE>]({{ site.baseurl }}/assets/img/posts/category_volume_over_time.png)
+![Category Volume Over Time]({{ site.baseurl }}/assets/img/posts/category_volume_over_time.png)  
 
 Group data over time periods. Refer to [Pandas Offset Aliases](http://pandas.pydata.org/pandas-docs/stable/timeseries.html#offset-aliases)  
 
@@ -120,7 +120,7 @@ fig.show()
 fig.savefig('category_volume_per_year_end.png', transparent=False, dpi=300, bbox_inches='tight')
 ```
 
-![<IMAGE>]({{ site.baseurl }}/assets/img/posts/category_volume_per_year_end.png)
+![Category Volume per Year End]({{ site.baseurl }}/assets/img/posts/category_volume_per_year_end.png)  
 
 # Resources
 

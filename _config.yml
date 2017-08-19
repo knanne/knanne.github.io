@@ -104,7 +104,7 @@ sass:
 
 markdown: kramdown
 kramdown:
-  toc_levels: 1..2 # only using h1 thru h2 to generate table of contents in posts
+  toc_levels: 1..1 #1..2 # only using h1 thru h2 to generate table of contents in posts
 
 highlighter: rouge
 
