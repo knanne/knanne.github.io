@@ -47,6 +47,8 @@ disqus:
 baseurl: "" # root of site, e.g. /blog
 url: "https://knanne.github.io" # https://knanne.github.io
 
+nbviewer: "http://nbviewer.jupyter.org/github/knanne/knanne.github.io/blob/master/notebooks"
+
 nav-links:
   About: "about"
   Posts: "posts"

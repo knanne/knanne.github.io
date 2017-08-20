@@ -1,6 +1,7 @@
 # meta / cache
 .sass-cache
 .jekyll-metadata
+.ipynb_checkpoints
 
 # folders
 _site
@@ -8,3 +9,6 @@ _drafts
 
 # files
 Gemfile.lock
+
+# extras
+/notebooks/*.png

@@ -64,3 +64,5 @@ euclidean_distance = lambda row: math.acos(
 df['distance_km'] = df.apply(euclidean_distance, axis=1)
 df['distance_mi'] = df['distance_km'].apply(lambda x: x / 1.609344)
 ```
+
+Try yourself with [this Jupyter Notebook]({{ site.nbviewer }}/pandas_apply_euclidean_distance.ipynb)
