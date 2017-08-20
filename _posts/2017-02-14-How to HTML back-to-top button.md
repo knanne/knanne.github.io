@@ -10,11 +10,11 @@ A documentation on how I created a simple back to top button for posts on this s
 * AUTO TABLE OF CONTENTS
 {:toc}
 
-## introduction
+# Introduction
 
 Have you ever seen a button that magically appears on a site or blog when you scroll all the way to the bottom? Below is a documentation on how to create the one used on this site.  
 
-## object
+# Object
 
 Pick your icon from you favorite icon source. I prefer to use [Google's Material Icons](https://google.github.io/material-design-icons/). You will need to import the library in you head scripts for use.  
 
@@ -26,7 +26,7 @@ Now include it in your post template.
 <i id="back2top" class="material-icons icon-3d" rel="tooltip" title="Back to Top">arrow_drop_down_circle</i>
 ```
 
-## functionality
+# Functionality
 
 To make use of it, I implement some jQuery to find the scroll position, and dynamically show the icon when scrolled to bottom. This code adds a buffer of 200 pixels, which can be changed depending on when you want the icon to appear.  
 
@@ -49,7 +49,7 @@ $('#back2top').click(function(){
 });
 ```
 
-## style
+# Style
 
 Below is the custom styling I applied to the icon. What's important is the fixed position at bottom of right corner and the default display as none.  
 

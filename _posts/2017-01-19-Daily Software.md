@@ -10,9 +10,9 @@ Some notes on the software I use on a daily basis for work, on Windows 10
 * AUTO TABLE OF CONTENTS
 {:toc}
 
-## Command Console
+# Command Console
 
-#### Cmder
+## Cmder
 
 Cmder is an attractive and portable console emulator for Windows.  
 
@@ -21,9 +21,9 @@ Cmder is an attractive and portable console emulator for Windows.
 Notable commands:  
   - open a new tab with `Ctrl + Tab`  
 
-## Text Editor
+# Text Editor
 
-#### Notepad++
+## Notepad++
 
 [Notepad++] is a super simple text editor, but so useful.  
 
@@ -37,7 +37,7 @@ Common cases I use it for:
 
 There are endless useful features in this tool that I don't use.  
 
-#### Atom
+## Atom
 
 Atom is a text editor made by the guys at GitHub so it has some fancy native integrations. Refer to the [Atom Flight Manual](http://flight-manual.atom.io/getting-started/sections/atom-basics/) for basic documentation.
 
@@ -61,9 +61,9 @@ Packages I use include:
   - [autocomplete-python](https://atom.io/packages/autocomplete-python)
   - [editorconfig](https://atom.io/packages/editorconfig)
 
-## Programming
+# Programming
 
-#### Python
+## Python
 
 [Python](https://www.python.org) is my language of choice for anything from data analysis and manipulation, to web development. The official package manager in Python is called [pip](https://pip.pypa.io/en/stable/)  
 
@@ -75,17 +75,17 @@ Find good examples of docstring conventions with the [Numpy Docstring Standard](
 
 Below are a few other useful tools for Python.  
 
-###### Anaconda
+### Anaconda
 
 I recommend downloading Python thru [Anacondo](https://www.continuum.io/downloads) which comes with various data science libraries out of the box.  
 
 > Anaconda is the leading open data science platform powered by Python. The open source version of Anaconda is a high performance distribution of Python and R and includes over 100 of the most popular Python, R and Scala packages for data science.
 
-###### Jupyter Notebook
+### Jupyter Notebook
 
 [Jupyter](http://jupyter.org/) (Formerly IpythonNotebook) now supports everything you would ever need for data analysis and visualization, even with interactive charts for some libraries.  
 
-###### Virtual Environments for Development
+### Virtual Environments for Development
 
 If you are using [Conda](https://conda.io/), there is nice virtual environment functionality built in.  
 
@@ -115,27 +115,27 @@ workon APP
 deactivate
 ```
 
-## ETL Workflow Automation
+# ETL Workflow Automation
 
 [KNIME](https://www.knime.com/knime-analytics-platform) is an open source software for creating data science workflows without programming.  
 
 KNIME is designed for drag-and-drop people, however it provides a really efficient way to automate data pipelines by combining programming (python) nodes, with their quickform nodes to create simple webapps to run from the browser.  
 
-## Database
+# Database
 
 Setup a local instance of [MySQL](https://dev.mysql.com/downloads/installer/)  
 
 Setup a local instance of [PostgreSQL](https://www.postgresql.org/download/)  
 
-#### DBeaver
+## DBeaver
 
 [DBeaver](http://dbeaver.jkiss.org/download/) is an open source universal SQL client.
 
 > Free multi-platform database tool for developers, SQL programmers, database administrators and analysts. Supports all popular databases: MySQL, PostgreSQL, SQLite, Oracle, DB2, SQL Server, Sybase, Teradata, MongoDB, Cassandra, Redis, etc. - [website](http://dbeaver.jkiss.org/)
 
-## Internet
+# Internet
 
-#### Chrome
+## Chrome
 
 Notable commands:  
 
@@ -147,9 +147,9 @@ Notable commands:
 
 Google [source](https://support.google.com/chrome/answer/157179?)  
 
-## OS
+# OS
 
-#### Windows
+## Windows
 
 Notable commands:  
 
@@ -176,7 +176,7 @@ dir /b
 dir /s
 ```
 
-###### Windows Bash
+### Windows Bash
 
 Windows 10 now features a full Ubuntu installation, with Linux bash, on top of Windows. Read about it [here.](https://msdn.microsoft.com/en-us/commandline/wsl/about)  
 

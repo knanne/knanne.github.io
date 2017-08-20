@@ -10,7 +10,7 @@ Notes on using Jekyll for creating a website on GitHub pages
 * AUTO TABLE OF CONTENTS
 {:toc}
 
-## Introduction
+# Intro
 
 So what is this all about...
 
@@ -22,13 +22,13 @@ So what is this all about...
 
 > GitHub Pages is a static site hosting service, and is designed to host your personal, organization, or project pages directly from a GitHub repository. - [website](https://pages.github.com/)  
 
-## Resources
+# Resources
 
 - refer to the [Jekyll docs](https://jekyllrb.com/docs/home/)
 - refer to the [GitHub Pages docs](https://help.github.com/categories/github-pages-basics/)
 - a guy named Michael Lee is writing [Field Guide to Jekyll](https://michaelsoolee.com/jekyll-field-guide/)
 
-## Getting Started
+# Getting Started
 
 <mark>installation of Jekyll on Windows is not so straightforward</mark>
 
@@ -53,9 +53,9 @@ bundle exec jekyll serve
 
 Find the app hosted at [http://localhost:4000/](http://127.0.0.1:4000)  
 
-## Customization  
+# Customization  
 
-#### gems
+## gems
 
 Learn about [gems and the bundler](http://jekyll.tips/jekyll-casts/gemfiles-and-the-bundler/)  
 
@@ -81,23 +81,23 @@ end
 
 If you modify the Gemfile, you must then run `bundle install`  
 
-#### theme  
+## Theme  
 
 To remove the default theme, remove the `gem 'minima'` in Gemfile, and remove `theme='minima'` settings in `_config.yml`. Otherwise import a local css/sass file to simply override theme settings.  
 
-#### harness the jekyll engine  
+## Jekyll Engine  
 
 - refer to the jekyll [cheat sheet](http://jekyll.tips/jekyll-cheat-sheet/)  
 
-#### use YAML frontmatter  
+## YAML Frontmatter  
 
 - read what Jekyll advises on [front matter](https://jekyllrb.com/docs/frontmatter/)
 
-#### use liquid for automation  
+## Liquid for Automation  
 
 > "Liquid is an open-source template language created by Shopify and written in Ruby." - [website](https://shopify.github.io/liquid/)  
 
-#### plugins
+## Plugins
 
 Plugins written in Ruby and either store in your `_plugins` dir or installed with a gem are able to add a lot of convenience and features to a site.
 
@@ -105,12 +105,12 @@ But, [according to the Jekyll docs](http://jekyllrb.com/docs/plugins/), custom `
 
 Therefore only install from gem for now if you are hosting on GitHub pages.
 
-#### search engine optimization
+## Search Engine Optimization
 
 - use the [jekyll seo gem](https://help.github.com/articles/search-engine-optimization-for-github-pages/)
 - create a [jekyll sitemap](https://github.com/jekyll/jekyll-sitemap)
 
-#### site comments
+## Site Comments
 
 This blog implements the comments powered by Google Plus (see bottom of post). I have not found any official documentation on their [web API site](https://developers.google.com/+/web/), but found sample code [here](https://gist.github.com/chuckbutler/fce8077a0161cff6b489), and a blog post describing the implementation [here](https://floaternet.com/gcomments).
 
@@ -118,7 +118,7 @@ Other notable options I have seen include:
 - [Disqus](https://disqus.com/)
 - [Facebook](https://developers.facebook.com/docs/plugins/comments)
 
-#### social buttons
+## Social Cuttons
 
 - GitHub various [buttons](https://buttons.github.io/)
 - Google +1 [button](https://developers.google.com/+/web/+1button/)
@@ -126,12 +126,11 @@ Other notable options I have seen include:
 - Facebook like [button](https://developers.facebook.com/docs/plugins/like-button)
 - LinkedIn various [buttons](https://developer.linkedin.com/plugins)
 
-## Code Snippets
-
+# Code Snippets
 
 Here are some code snippets that may come in handy when trying to code your own site. Some of these are implemented on this site.  
 
-#### recent posts summary
+## Recent Posts Summary
 
 ```html
 {% raw %}{% for post in site.posts limit : 3 %}
@@ -141,7 +140,7 @@ Here are some code snippets that may come in handy when trying to code your own 
 {% endfor %}{% endraw %}
 ```
 
-#### posts by category list
+## Posts by Category List
 
 ```html
 {% raw %}{% for category in site.categories %}
@@ -155,7 +154,7 @@ Here are some code snippets that may come in handy when trying to code your own 
 {% endfor %}{% endraw %}
 ```
 
-#### post by sorted tags
+## Post by Sorted Tags
 
 ```html
 {% raw %}{% capture tags %}
@@ -179,7 +178,7 @@ Here are some code snippets that may come in handy when trying to code your own 
 {% endfor %}{% endraw %}
 ```
 
-#### automatic table of contents
+## Automatic Table of Contents
 
 The default markdown converter for Jekyll is **Kramdown**, which generates IDs by default for headings and allows for the auto generation of a table of contents. Simply include the following snipped in your markdown post file.  
 

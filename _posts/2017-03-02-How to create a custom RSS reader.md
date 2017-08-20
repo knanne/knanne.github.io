@@ -10,7 +10,7 @@ How I created a personalized and custom RSS feed reader for this site, in (almos
 * AUTO TABLE OF CONTENTS
 {:toc}
 
-## background
+# Background
 
 Open chrome to google news homepage, receiving constant email newsletters, multiple browser tabs always open, too many news aggregator apps to keep track of - does this sound familiar? This was my problem.  
 
@@ -29,24 +29,24 @@ Features I wanted:
   - support any RSS feeds
   - mobile friendly
 
-#### TL;DR
+## TL;DR
 
 Skip down to the  [Development](https://knanne.github.io/posts/how-to-create-a-custom-rss-reader#development) section to simply steal my code.  
 
-## requirements
+# Requirements
 
 Due to this site being hosted on GitHub Pages, no server-side processing is supported. Therefore, any additional processing, like getting RSS feeds, parsing and printing will need to be in client-side scripts.  
 
 This means a pure JavaScript solution is needed, with no external libraries (e.g. node.js)  
 
-## research
+# Research
 
 Things I learned:
   - an RSS feed is simply XML data
   - natively requesting data from another domain is prohibited
   - not all RSS data is the same
 
-#### data type
+## Data Type
 
 Despite all being XML, there are many forms of what feeds look like (e.g. Atom, RSS, Feedburner etc.) and they are all slightly different in naming convention and structure.
 
@@ -54,7 +54,7 @@ Looking into [parsing XML in pure JavaScript](http://stackoverflow.com/questions
 
 The simplest data to process would be JSON, especially when datasources have different keys and tree structures. It would be nice to be able to standardize all feeds into a similar JSON object.  
 
-#### cross-domain origin problem
+## Cross-Domain Origin Problem
 
 The same-domain policy disallows any cross-domain requests.  
 
@@ -64,11 +64,11 @@ Some examples of the proxy method are shown in [this stackoverflow answer](http:
 
 The jQuery docs from 2015 show an example [using the YQL API in an Ajax call](https://learn.jquery.com/ajax/working-with-jsonp/). So it seems like this may be a recommended solution.  
 
-#### inconsistent data
+## Inconsistent Data
 
 During the parsing of feeds process, I found out the JSON dictionaries were really not consistent. Some elements were values, some arrays, and some more objects. Therefore in the final function there are many checks for identifying the type of an object first (e.g. author) and then finding the necessary information based on it (e.g. author, author.content, or author.name etc.).
 
-## solution
+# Solution
 
 I decided to utilize an external API to parse the XML and return standardized JSON objects. This allows for consistent data to work with and removes a lot of work.  
 
@@ -76,17 +76,17 @@ The dashboard will be built using [Bootstrap 4  Cards](https://v4-alpha.getboots
 
 Since I knew I wanted to include a Google News feed, because they already aggregate so well, I made sure to follow [what guidelines I could find](https://support.google.com/news/publisher/answer/4203?hl=en) and standardize based on these rules (e.g. citations, links to original, etc.).  
 
-#### dependencies
+## Dependencies
 
 Unfortunately the [Google Feed API](https://developers.google.com/feed/) has been **deprecated** as of December, 2016. This seems to have been a good solution and many people are [looking for an alternative](http://stackoverflow.com/questions/34016263/real-alternative-for-google-feed-api).  
 
 The dependency used is the [Yahoo Query Language API](https://developer.yahoo.com/yql/).  
 
-## development
+# Development
 
 The solution I developed was inspired by [this code snippet](https://codepen.io/markhillard/pen/jJDls).  
 
-#### container
+## Container
 
 Create a container where the feed cards will live using Bootstrap class `card-columns`. During the build function below, a Bootstrap card will be built for each feed and appended to the DOM inside the `#feeds` div.  
 
@@ -96,7 +96,7 @@ Create a container where the feed cards will live using Bootstrap class `card-co
 </div>
 ```
 
-#### build function
+## Build Function
 
 The Gist below contains the worker function to build a card for each feed and append it to the DOM.  
 
@@ -112,7 +112,7 @@ I reuse a few maker functions when building card header, block, and footer. The 
   <script src="https://gist.github.com/knanne/3bcb3daad9faa1ab072a731d96ff2ae7.js"></script>
 </div>
 
-#### feeds list
+## Feeds List
 
 Create a dynamic array of the RSS feeds you want to follow. Some example feeds are presented below.
 
@@ -123,7 +123,7 @@ feeds = ['https://news.google.com/news?topic=tc&output=rss', // google news - te
 ]
 ```
 
-#### get feeds
+## Get Feeds
 
 A function to loop thru each feed and run the build function.
 
@@ -136,7 +136,7 @@ function get_feeds() {
 };
 ```
 
-#### run on page load
+## Run on Page Load
 
 Call the function on page load.
 
@@ -146,7 +146,7 @@ window.onload = function() {
 };
 ```
 
-#### (optional) refresh button
+## Refresh Button
 
 Alternatively to on page load, we can create a refresh button to manually re-pull the feeds and build the cards.  
 
@@ -154,7 +154,7 @@ Alternatively to on page load, we can create a refresh button to manually re-pul
 <div class="d-flex justify-content-end"><button type="button" class="btn btn-primary btn-sm" onclick="get_feeds()">Refresh</button></div>
 ```
 
-## implementation
+# Implementation
 
 The final implementation looks something like the following image. You can check out [my source code](https://github.com/knanne/knanne.github.io/blob/master/_includes/foot_scripts.html) to see how exactly I manage the scripts on this site's footer.  
 

@@ -10,13 +10,13 @@ A compilation of handy code snippets
 * AUTO TABLE OF CONTENTS
 {:toc}
 
-## introduction
+# Introduction
 
 This list will hopefully save me time from not having to search stackoverflow again.
 
-## strings
+# Strings
 
-#### filter dataframe on text column, by list of keys
+Filter dataframe on text column, by list of keys
 
 ```Python
 # create dataframe with some text field

@@ -10,19 +10,19 @@ How I visualized my professional timeline using Tableau
 * AUTO TABLE OF CONTENTS
 {:toc}
 
-## background
+# Background
 
 I wanted to visualize my resume, simple as that.  
 
 There are a many ways to go about building a visualization through multiple open source tools. Since this is a simple and public project I decided not to reinvent the wheel, by coding a new visualization, but rather use a free tool that I am already familiar with and looks good.  
 
-## tableau
+# Tableau
 
 [Tableau](https://www.tableau.com/) is a leading tool in the business intelligence software realm. I am familiar with it from previous work, and have enjoyed how easy it is to use. You can build a professional looking, and completely interactive, dashboard with multiple visualizations and data sources in just minutes.  
 
 [Tableau Public](https://public.tableau.com) is a free version where you are forced to publish to a public facing account online to save anything.  
 
-## solution
+# Solution
 
 I imagine most information on a resume has a date property and therefore decided that the simplest and most easily read visualization will be a timeline of events over time.  
 
@@ -30,7 +30,7 @@ Events can be within categories like work, volunteer, education etc. and can hav
 
 To make this process even more simple, I will create the data in Excel.  
 
-## data
+# Data
 
 Tableau has minimal to none data transformation built in, therefore to be able to visualize something over time you need to have a row in your database for every period of time. I thought the month level would be detailed enough to communicate the point and look good, so I created a database of each of my resume events for every month it occurred.
 
@@ -56,7 +56,7 @@ For efficiency, the details of each job are created in a second sheet which will
 | Education    | Masters     | MSc. Data Science       | ACME University | U.S.A   | Silicon Valley | California | [knanne.github.io](https://knanne.github.io) | Learn to develop widgets |
 | Professional | Contractor  | Data Science Consultant | ACME Corp.      | U.S.A   | Silicon Valley | California | [knanne.github.io](https://knanne.github.io) | Develop widgets          |
 
-## development
+# Development
 
 Import the data in Tableau and use a Left Join to match details to events.  
 
@@ -82,7 +82,7 @@ To continue personalizing, I add the necessary details properties to the Tooltip
 
 When you are finished, simply go to `File > Save To Tablea Public As`, sign in, and then get the embed code or share the link as you wish.  
 
-## finished product
+# Finished Product
 
 Here is the final product I came up with, published on Tableau Public.
 

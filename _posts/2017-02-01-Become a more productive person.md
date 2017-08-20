@@ -10,7 +10,7 @@ Notes on how to become more productive person, and some helpful tools
 * AUTO TABLE OF CONTENTS
 {:toc}
 
-## X Effect
+# X Effect
 
 I'm not sure where this originated, but the [internet](https://www.reddit.com/r/getdisciplined/comments/1x99m6/im_a_piece_of_shit_no_more_games_no_more_lies_no/cf9dz72/) has decided that streaks of X's on cards are the most effective way to start or break habits. The effect seems to work similarly for starting new habits.
 
@@ -21,7 +21,7 @@ This method has also been credited to Jerry Sienfeld according to [this article]
 - So a subreddit was born [/r/theXeffect](http://www.reddit.com/r/theXeffect)
 - And some scholar came up with [fortyninedays.com](https://www.fortyninedays.com), although it seems it may be [disappearing soon](https://www.fortyninedays.com/Post/View/58)
 
-#### Popular (Android) Apps Employing The Method
+## Popular (Android) Apps Employing The Method
 
 Whether you are tracking Habits, Tasks, Goals, Activities or Achievements many apps now use this "X" chain or streak method to motivate more accomplishments.
 
@@ -29,7 +29,7 @@ Whether you are tracking Habits, Tasks, Goals, Activities or Achievements many a
 - [The Habit Hub](http://www.thehabithub.com/)
 - [Habit Bull](http://www.habitbull.com/)
 
-#### Simulating The X Effect in Google Calendar
+## Simulating The X Effect in Google Calendar
 
 - add recurring [To Dos](https://blog.google/products/calendar/add-to-dos-to-your-google-calendar/) (e.g. pay bills) in Google Calendar
 
@@ -39,9 +39,9 @@ Whether you are tracking Habits, Tasks, Goals, Activities or Achievements many a
 
 The UI of Google Calendar does not provide the best view of tracking X's over time, but it does offer Goals and To Dos in addition to normal events and crosses out those that have been marked as done, and reschedules those that have been dismissed
 
-## Time Tracking
+# Time Tracking
 
-#### Toggle
+## Toggle
 
 Time tracking is another effective way to keep yourself on task and make sure to get the important things done before diverging down a rabbit hole of internet links
 

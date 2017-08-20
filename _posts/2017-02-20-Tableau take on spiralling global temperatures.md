@@ -10,7 +10,7 @@ How I recreated a popular data visualization in Tableau
 * AUTO TABLE OF CONTENTS
 {:toc}
 
-## background
+# Background
 
 It all started with a tweet. **[Ed Hawkins](https://twitter.com/ed_hawkins)**, a climate scientist in the National Centre for Atmospheric Science (NCAS) at the University of Reading publicly posted a visualization he had made.  
 
@@ -23,13 +23,13 @@ It all started with a tweet. **[Ed Hawkins](https://twitter.com/ed_hawkins)**, a
 
 **Read his follow up post** [here](http://www.climate-lab-book.ac.uk/spirals/)  
 
-## tableau tour
+# Tableau tour
 
 Tableau is doing a tutorial series around The Netherlands. They are calling it [#tableautour](https://twitter.com/search?q=%23tableautour), and the series schedule can be found [here](https://www.tableau.com/learn/series/TableauTour).
 
 Now they are holding a [(RE)Visualize It Competition](https://tableau.egnyte.com/dl/6jxgNujERe) to generate new versions or previously successful visualizations. Having had Tableau experience in the past, and a chance to win Tableau swag...I needed to participate.  
 
-## dataset
+## Dataset
 
 The original dataset can be found [here](http://www.metoffice.gov.uk/hadobs/hadcrut4/)  
 
@@ -37,7 +37,7 @@ The original dataset can be found [here](http://www.metoffice.gov.uk/hadobs/hadc
 
 From the Tableau competition resources, **[TDriver7](https://twitter.com/TDriver7)**, generously did half the work already, by providing a data extract (.tde file) included with calculations of the coordinate system for the radar. You can download it [here](https://tableau.egnyte.com/dl/s9n5XwB9jA).  
 
-## tableau
+## Research
 
 I am not the first to recreate this in Tableau!  
 
@@ -45,7 +45,7 @@ I am not the first to recreate this in Tableau!
 
 As far as radar charts in Tableau go, **[Jonathan Trajkovic](https://twitter.com/j_trajkovic)** provides instructions on [how to create a radar chart in Tableau](https://www.tableau.com/about/blog/2015/7/use-radar-charts-compare-dimensions-over-several-metrics-41592)  
 
-## final visualization
+# Final Visualization
 
 So this is what I was able to come up with...  
 

@@ -10,7 +10,7 @@ A documentation on how I created a fancy post navigation for this site
 * AUTO TABLE OF CONTENTS
 {:toc}
 
-## introduction
+# Introduction
 
 This post is an explanation of the custom Jekyll-post navigation I came up with for this site (as shown on this post).  
 
@@ -18,11 +18,11 @@ So the goal here was to create some sort of navigation that would show post cont
 
 My initial idea was a second fixed navbar above post content, as I like Bootstrap and find it easy to implement. I then found [Scrollspy](http://v4-alpha.getbootstrap.com/components/scrollspy/) within the Bootstrap docs and thought that was cool. OK, so go for a fixed navbar with Scrollspy functionality.  
 
-#### TL;DR
+## TL;DR
 
 Skip down to the  [Implementation](https://knanne.github.io/posts/how-to-create-custom-post-navigation-in-jekyll#implementation) section to simply steal my code
 
-## attempt 1
+# Attempt 1
 
 First, I though this would be simple to implement using YAML and Liquid. The idea was create a list of sections in the post's front matter and then call that data for constructing a navbar in my post template. This was straightforward and worked perfectly, with only one hiccup, I needed to include a `<div>` before each heading in markdown to link the heading to the navbar. The components of this are outlined below.  
 
@@ -78,7 +78,7 @@ Element to ID each heading for navigation
 
 I quickly realized I didn't want this because I had re list each section in the front matter, and then again repeat myself in an extra `<div>`. On top of that everything had to be spelled exactly right to work.  
 
-## more research
+# More Research
 
 In researching a way to make the above easier, I started to build plugin in Ruby to auto-generate the post front-matter by iterating through posts and finding all the headings. But I still needed to link to the headings.  
 
@@ -94,7 +94,7 @@ I document how to use this feature in [this post](https://knanne.github.io/posts
 
 This looks very similar to what I wanted to do (I should have thought of "Table of Contents" from the beginning) ...OK. So how can I use it?
 
-## implementation
+# Implementation
 
 So after knowing what I want the final navigation to look like, and finding half the work doen for me by an automatically-generated table of contents from Kramdown, I knew the tools existed to fully automate this how i orginally planned.  
 
@@ -110,7 +110,7 @@ My steps from here would be the following:
 
 Below each part is documented for you to replicate it.  
 
-#### include auto TOC in post
+## include auto TOC in post
 
 Stick this in your post above your first heading.  
 
@@ -119,7 +119,7 @@ Stick this in your post above your first heading.
 {:toc}
 ```
 
-#### jQuery to construct navbar, apply scrollspy
+## jQuery to construct navbar, apply scrollspy
 
 Include this jQuery in your scripts files to be run on post template load. Included is some extra styling elements to capitalize headings, and padd them to make sure they are not hidden by the fixed navbar when linked to.  
 
@@ -159,7 +159,7 @@ $(window).scroll(function() {
 });
 ```
 
-#### CSS to style the navbar
+## CSS to style the navbar
 
 Apply bottom border to heading in navbar when active. And bring the navbar off the z axis to make sure it clears other elements like quotes in markdown.
 

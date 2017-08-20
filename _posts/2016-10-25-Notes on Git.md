@@ -10,13 +10,13 @@ A quick compilation of notes on Git
 * AUTO TABLE OF CONTENTS
 {:toc}
 
-## getting started
+# Getting Started
 
 - official [Git documentation](https://git-scm.com/)  
 - great easy documentation from [GitLab](https://docs.gitlab.com/ce/gitlab-basics)  
 - [download](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) git  
 
-## resources
+# Resources
 
 - check out this online [interactive](http://ndpsoftware.com/git-cheatsheet.html) cheat sheet  
 - download the [pdf](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) cheat sheet  
@@ -43,7 +43,7 @@ Create SSH key
 ssh-keygen -t rsa -C "kain.nane@gmail.com"
 ```
 
-## workflow
+# Workflow
 
 Clone remote repo  
 
@@ -92,11 +92,11 @@ git checkout <BRANCH>
 git merge master
 ```
 
-## sticky situations  
+# Sticky Situations  
 
 Below are some scenarios that you may find yourself in, and some helpful tips on how to get out.
 
-#### branch is behind master
+## Behind Master
 
 1. commit changes to branch
 2. pull latest master
@@ -106,7 +106,7 @@ Below are some scenarios that you may find yourself in, and some helpful tips on
 
 I highly recommend using [Atom](https://atom.io/) while resolving conflicts. It is a text editor made by GitHub and therefor contains very handy options to indentify and resolve conflicts with a couple of clicks.  
 
-#### auto-rebase (with conflicts) a feature branch on master
+## Rebase with Conflicts
 
 ```shell
 git checkout feature
@@ -124,7 +124,7 @@ git rebase --continue
 
 > Note that a rebase merge works by replaying each commit from the working branch on top of the <upstream> branch. Because of this, when a merge conflict happens, the side reported as ours is the so-far rebased series, starting with <upstream>, and theirs is the working branch. In other words, the sides are swapped. [Git docs](https://git-scm.com/docs/git-rebase#git-rebase---merge)  
 
-#### totally screwed up local repo
+## Mistakes Were Made
 
 Reset current HEAD and index to last commit
 
@@ -141,7 +141,7 @@ git clean -n
 git clean -f
 ```
 
-## notable commands
+# Notable Commands
 
 List branches  
 

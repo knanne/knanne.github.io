@@ -10,14 +10,14 @@ A compilation of helpful notes on GitHub
 * AUTO TABLE OF CONTENTS
 {:toc}
 
-## GitHub Intro
+# Intro
 
 - Check out [GitHub Guides](https://guides.github.com/)
 - GitHub's [guide](https://guides.github.com/activities/hello-world/)
 
 Checkout [GitHub Explore](https://github.com/explore) to simply "explore" what's on GitHub. For example you can view a list of top projects for related to [government](https://github.com/showcases/government) or [social impact](https://github.com/showcases/social-impact).
 
-## Start Project
+# Start Project
 
 Easiest way to start is create a repository on [Github](https://github.com), then clone it to local.  
 
@@ -43,13 +43,13 @@ git commit -m "initial commit"
 git push -u origin master
 ```
 
-## Proper Workflow
+# Proper Workflow
 
 Download the GitHub [workflow.pdf](https://guides.github.com/pdfs/githubflow-online.pdf) or view it [online](https://guides.github.com/introduction/flow/)  
 
 See guide on [Contributing to Open Source](https://guides.github.com/activities/contributing-to-open-source/)  
 
-## GitHub Pages
+# GitHub Pages
 
 Use [GitHub Pages](https://pages.github.com/) to publish a site for a GitHub account (personal/organization), as well as for hosting GitHub projects live  
 
@@ -57,7 +57,7 @@ Use [GitHub Pages](https://pages.github.com/) to publish a site for a GitHub acc
 
 2. Publish a webapp project using the `/docs` folder in project master branch, and find the project at `username.github.io/project` ([source](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/))
 
-## Notable Commands
+# Notable Commands
 
   - reference an issue using `#` followed by the issue ID  
   - reference a commit simply with the shortened commit hash ID, it will look something like `b1496ae`

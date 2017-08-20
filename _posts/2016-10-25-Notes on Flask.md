@@ -10,17 +10,17 @@ Notes on using Flask, a microframework for creating apps in Python.
 * AUTO TABLE OF CONTENTS
 {:toc}
 
-## Flask Intro
+# Intro
 
 **Flask**
 
 > Flask is a micro webdevelopment framework for Python - [website](http://flask.pocoo.org/)
 
-## Resources
+# Resources
 
 [This guy](https://blog.miguelgrinberg.com/category/Flask) has some pretty good blog posts on Flask, and wrote a [book](http://flaskbook.com/) on it
 
-## Simple Setup
+# Setup
 
 Create app environment  
 
@@ -69,7 +69,7 @@ python app.py
 
 navigate to [localhost:5000](http://127.0.0.1:5000/)  
 
-## Advanced
+# Advanced
 
 A more complex web app which needs to perform time consuming tasks like send emails, make external API calls or do long computations will require a background processing. Enter [celery](http://www.celeryproject.org/)
 
