@@ -19,13 +19,10 @@ This post is also available as a [Jupyter Notebook]({{ site.nbviewer }}/pandas_v
 ## Dependencies
 
 ```python
-# data
 import pandas as pd
 import numpy as np
-# visualization
 import matplotlib as mpl
 from matplotlib import pyplot as plt
-# added visualization library you should get
 import seaborn
 ```
 
@@ -48,6 +45,8 @@ plt.style.use('seaborn-white')
 ```
 
 # Visualizations
+
+Below are a few examples of basic plots, and simple code on how to use other features like formatting and labels.  
 
 ## Dummy Data  
 
