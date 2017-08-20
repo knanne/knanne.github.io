@@ -1,6 +1,6 @@
 ---
-categories: [Data Visualization]
-tags: [Python, Pandas, Matplotlib, Jupyter]
+categories: [data visualization]
+tags: [python, pandas, matplotlib, jupyter]
 ---
 
 Helpful scripts and samples for plotting in Python
@@ -32,9 +32,9 @@ import seaborn
 Couple options for visualizing in a Jupyter Notebook. Either present static charts `inline`, embed them as interactive elements using `notebook` setting, or open the chart in a new windows from backend usiing `gtk`.  [source](http://ipython.readthedocs.io/en/stable/interactive/plotting.html)
 
 ```python
-%matplitlib inline
-%matplitlib notebook
-%matplitlib gtk
+%matplotlib inline
+%matplotlib notebook
+%matplotlib gtk
 ```
 
 ## Style
@@ -42,7 +42,7 @@ Couple options for visualizing in a Jupyter Notebook. Either present static char
 Call `plt.style.available` to show options, then set the style of choice.
 
 ```python
-plt.style.use('seaborn-talk')
+plt.style.use('seaborn-white')
 ```
 
 # Visualizations
@@ -72,7 +72,7 @@ ax.set(ylabel='Categories', xlabel='Time', title='Category Volume Over Time')
 fig.tight_layout(pad=2)
 fig.show()
 
-fig.savefig('category_volume_over_time.png', transparent=False, dpi=300, bbox_inches='tight')
+fig.savefig('category_volume_over_time.png', transparent=True, dpi=300, bbox_inches='tight')
 ```
 
 ![Category Volume Over Time]({{ site.baseurl }}/assets/img/posts/category_volume_over_time.png)  
@@ -117,7 +117,7 @@ for bar,(col,ix) in zip(ax.patches, pd.MultiIndex.from_product([df.columns,df.in
 fig.tight_layout(pad=2)
 fig.show()
 
-fig.savefig('category_volume_per_year_end.png', transparent=False, dpi=300, bbox_inches='tight')
+fig.savefig('category_volume_per_year_end.png', transparent=True, dpi=300, bbox_inches='tight')
 ```
 
 ![Category Volume per Year End]({{ site.baseurl }}/assets/img/posts/category_volume_per_year_end.png)  

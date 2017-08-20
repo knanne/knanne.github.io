@@ -266,3 +266,11 @@ blockquote {
   letter-spacing: 0px;
   opacity: .87;
 }
+
+// SYNTAX HIGHLIGHTING
+pre,
+%vertical-rhythm
+  .highlight
+    .highlighter-rouge {
+      background: $background-color-grey !important;
+}

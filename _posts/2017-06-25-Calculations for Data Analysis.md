@@ -1,5 +1,5 @@
 ---
-categories: [Data Analysis]
+categories: [data analysis]
 tags: [calculations, equations]
 ---
 
