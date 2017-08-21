@@ -44,10 +44,11 @@ Atom is a text editor made by the guys at GitHub so it has some fancy native int
 > Atom is a text editor that's modern, approachable, yet hackable to the core—a tool you can customize to do anything but also use productively without ever touching a config file. - [website](https://atom.io/)
 
 Notable commands:  
-  - open a new window with `Ctrl + Shift + N`
-  - open a project folder with `Ctrl + Shift + A`
+  - open a new window with `Ctrl + Shift + N`  
+  - open a project folder with `Ctrl + Shift + A`  
   - unhide auto-hidden menu with `Alt`  
-  - open command palette with `Ctrl + Shift + P`
+  - open command palette with `Ctrl + Shift + P`  
+  - go to line in file with `Ctrl + G`  
 
 Installing Packages:  
 

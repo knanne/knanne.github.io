@@ -106,18 +106,36 @@ Below are some scenarios that you may find yourself in, and some helpful tips on
 
 I highly recommend using [Atom](https://atom.io/) while resolving conflicts. It is a text editor made by GitHub and therefor contains very handy options to indentify and resolve conflicts with a couple of clicks.  
 
-## Rebase with Conflicts
+## Pull with Conflicts
 
 ```shell
 git checkout feature
 git rebase master
 ```
 
-At this point you may have merge conflicts, which could even contain random files like jupyter notebooks that are difficult to manually navigate for resolving conflicts. If you want to simply keep the changes on your new feature branch to a specific file, and apply them on top of master, do the following:
+At this point you may have merge conflicts, which could even contain random files like jupyter notebooks that are difficult to manually navigate for resolving conflicts. If you want to simply **keep the changes on your local feature branch** of a specific file, and apply them on top of the files being pulled in, do the following:  
+
+```shell
+git checkout --ours <FILE>.py
+git add .
+git commit -m "resolve"
+git push
+```
+
+## Rebase with Conflicts
+
+This resolve is the same as a pull merge, however "ours" and "theirs" are switched.  
+
+```shell
+git checkout feature
+git rebase master
+```
+
+At the point of existing merge conflicts and you don't want to manually resolve, do the following to **keep the changes from the new feature branch** of a specific file, and apply them on top of master:  
 
 ```shell
 git checkout --theirs <FILE>.ipynb
-git checkout --theirs <FILE>.pptx
+git checkout --theirs <FILE>.xml
 git add .
 git rebase --continue
 ```
