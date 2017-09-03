@@ -118,9 +118,11 @@ At this point you may have merge conflicts, which could even contain random file
 ```shell
 git checkout --ours <FILE>.py
 git add .
-git commit -m "resolve"
+git commit
 git push
 ```
+
+In case of being stuck in vim after commit, type `:wq`  
 
 ## Rebase with Conflicts
 

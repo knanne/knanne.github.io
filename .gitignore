@@ -11,4 +11,6 @@ _drafts
 Gemfile.lock
 
 # extras
+/notebooks/data/*
 /notebooks/*.png
+/notebooks/*.svg
