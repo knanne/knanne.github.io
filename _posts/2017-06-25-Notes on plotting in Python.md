@@ -12,7 +12,7 @@ Helpful scripts and samples for plotting in Python
 
 # Setup
 
-Since [Pandas](https://pandas.pydata.org/) is almost a one stop shop for everything data analysis in python anyway, most plotting is done using `df.plot()` syntax, however, you must import [Matplotlib](https://matplotlib.org/index.html) since this is a dependency. I would also recommend installing [Seaborn](https://seaborn.pydata.org/) for more interesting plot types and statistical features. Plus it has a nice native style.  
+[Pandas](https://pandas.pydata.org/) is a common one stop shop for everything data analysis in python. Most plotting can be done using `df.plot()` syntax, however, you must import [Matplotlib](https://matplotlib.org/index.html) since this is a dependency. I would also recommend installing [Seaborn](https://seaborn.pydata.org/) for more interesting plot types and statistical features. Plus it has a nice native style.  
 
 This post is also available as a [Jupyter Notebook]({{ site.nbviewer }}/pandas_visualization.ipynb)  
 
@@ -46,14 +46,12 @@ from matplotlib import pyplot as plt
 
 Call `plt.style.available` to show options, then set the style of choice.  
 
-And customize the style sheet manually using `rcParams`  
+And customize the style sheet manually using `rcParams`. Below I customize how the plot is exported using `fig.savefig()` command.  
 
 See more on styling here: [matplotlib.org/users/customizing](https://matplotlib.org/users/customizing.html)  
 
 ```python
 plt.style.use('seaborn-white')
-
-mpl.rc('figure')
 mpl.rc('savefig', transparent=True, dpi=700, bbox='tight', pad_inches=.05, format='png')
 ```
 
@@ -107,8 +105,6 @@ for series in dfM.columns:
 
 fig.tight_layout(pad=2)
 fig.show()
-
-fig.savefig('category_volume_over_time.png')
 ```
 
 ![Category Volume Over Time]({{ site.baseurl }}/assets/img/posts/category_volume_over_time.svg)  
@@ -122,32 +118,22 @@ dfA.plot(kind='bar', ax=ax)
 
 ax.set(ylabel='Volume', xlabel='Time', title='Category Volume per Year End')
 
-# auto format xaxis labels as date
 fig.autofmt_xdate()
 
-# custom format xaxis date labels
-# current bug in pandas doesn't allow the following (https://github.com/pandas-dev/pandas/issues/1918)
-#ax.xaxis_date()
-#ax.xaxis.set_major_locator(mpl.dates.YearLocator())
-#ax.xaxis.set_major_formatter(mpl.dates.DateFormatter('%d %b %Y'))
-# so instead we manually set xaxis labels to our custom formatted df index as series of strings
-ax.xaxis.set_major_formatter(plt.FixedFormatter(dfA.index.to_series().dt.strftime('%b %Y')))
+ax.set_xticklabels(dfA.index.strftime('%b %Y'))
 
-# annotate data labels onto vertical bars
-# see https://matplotlib.org/users/annotations_guide.html
+# data labels
 for bar,(col,ix) in zip(ax.patches, pd.MultiIndex.from_product([dfA.columns,dfA.index])):
     label = '{:,.2f}'.format(dfA.loc[ix,col])
-    ax.text(s=label, x=bar.get_x()+(bar.get_width()/2), y=bar.get_height()-(.05*bar.get_height()), ha='center', va='top', fontdict={'fontsize':10, 'color':'white'})
+    ax.text(s=label, x=bar.get_x()+(bar.get_width()/2), y=ba r.get_height()-(.05*bar.get_height()), ha='center', va='top', fontdict={'fontsize':10, 'color':'white'})
 
 fig.tight_layout(pad=2)
 fig.show()
-
-fig.savefig('category_volume_per_year_end')
 ```
 
 ![Category Volume per Year End]({{ site.baseurl }}/assets/img/posts/category_volume_per_year_end.svg)  
 
-## Building A Fully Customizable Plot From Scratch
+## Build Fully Customizable Plot From Scratch
 
 ```python
 fig, ax = plt.subplots(figsize=(12,8))
@@ -165,7 +151,6 @@ for i,(col,values) in enumerate(dfA.iteritems()):
 
 ax.set_xticks(np.arange(groups)+width)
 ax.set_xticklabels(dfA.index.strftime('%b %Y'))
-# auto format xaxis labels as date
 fig.autofmt_xdate()
 
 ax.tick_params(axis='both', which='both', direction='out', length=6, width=2,
@@ -174,7 +159,7 @@ ax.tick_params(axis='both', which='both', direction='out', length=6, width=2,
 
 ax.set(ylabel='Volume', xlabel='Time', title='Category Volume per Year End')
 
-# labels
+# data labels
 for bar,(col,ix) in zip(ax.patches, pd.MultiIndex.from_product([dfA.columns,dfA.index])):
     label = '{:,.2f}'.format(dfA.loc[ix,col])
     ax.text(s=label, x=bar.get_x()+(bar.get_width()/2), y=bar.get_height()+(.05*dfA.values.max()), ha='center', va='bottom', fontdict={'fontsize':10})
@@ -192,10 +177,6 @@ fig = plt.gcf()
 fig.tight_layout()
 fig.subplots_adjust(top=.9, bottom=.2)
 fig.show()
-
-fig.savefig('category_volume_per_year_end_custom')
-
-plt.show()
 ```
 
 ![Category Volume per Year End Custom]({{ site.baseurl }}/assets/img/posts/category_volume_per_year_end_custom.svg)  
@@ -204,7 +185,6 @@ plt.show()
 
 ```python
 plot = sns.pairplot(df)
-plot.savefig('scatterplot_matrix')
 ```
 
 ![Scatterplot Matrix]({{ site.baseurl }}/assets/img/posts/scatterplot_matrix.svg)  
@@ -213,7 +193,6 @@ plot.savefig('scatterplot_matrix')
 
 ```python
 plot = sns.jointplot(x="B", y="A", data=df, kind='kde')
-plot.savefig('kde_plot')
 ```
 
 ![KDE Plot]({{ site.baseurl }}/assets/img/posts/kde_plot.svg)  
