@@ -28,12 +28,18 @@ import seaborn as sns
 
 ## Display
 
-Couple options for visualizing in a Jupyter Notebook. Either present static charts `inline`, embed them as interactive elements using `notebook` setting, or open the chart in a new windows from backend usiing `gtk`.  [source](http://ipython.readthedocs.io/en/stable/interactive/plotting.html)
+Couple options for visualizing in a Jupyter Notebook. Either present static charts `inline`, embed them as interactive elements using `notebook` setting, or open the chart in a new windows using a specified backend (e.g. `GTK3Agg` for raster graphics, `GTK3Cairo` for vector graphics). [ipython source](http://ipython.readthedocs.io/en/stable/interactive/plotting.html) (somewhat out of date), [matplotlib source](https://matplotlib.org/faq/usage_faq.html#what-is-a-backend) BTW, [here](https://matplotlib.org/faq/howto_faq.html#howto-webapp) is info on how to run matplotlib in backend of webserver.  
 
 ```python
-#matplotlib inline
-%matplotlib notebook
-#%matplotlib gtk
+%matplotlib inline
+#%matplotlib notebook
+#%matplotlib GTK3Cairo
+```
+
+It is recommended to import pyplot after configuring matplotlib
+
+```python
+from matplotlib import pyplot as plt
 ```
 
 ## Style
@@ -49,6 +55,18 @@ plt.style.use('seaborn-white')
 
 mpl.rc('figure')
 mpl.rc('savefig', transparent=True, dpi=700, bbox='tight', pad_inches=.05, format='png')
+```
+
+For colors, there are endless presets in matplotlib or seaborn. But, you can always construct your own custom length arrays of hues. Below is a sample from [colorbrewer](http://colorbrewer2.org)  
+
+```
+colors = [
+    '#8dd3c7',
+    '#ffffb3',
+    '#bebada',
+    '#fb8072',
+    '#80b1d3'
+]
 ```
 
 # Data
@@ -102,7 +120,7 @@ fig, ax = plt.subplots(figsize=(12,8))
 
 dfA.plot(kind='bar', ax=ax)
 
-ax.set(ylabel='Categories', xlabel='Time', title='Category Volume per Year End')
+ax.set(ylabel='Volume', xlabel='Time', title='Category Volume per Year End')
 
 # auto format xaxis labels as date
 fig.autofmt_xdate()
@@ -118,17 +136,69 @@ ax.xaxis.set_major_formatter(plt.FixedFormatter(dfA.index.to_series().dt.strftim
 # annotate data labels onto vertical bars
 # see https://matplotlib.org/users/annotations_guide.html
 for bar,(col,ix) in zip(ax.patches, pd.MultiIndex.from_product([dfA.columns,dfA.index])):
-    ax.annotate(str(round(dfA.loc[ix,col],2)),
-                xy=(bar.get_x()+(bar.get_width()*.05), bar.get_height()-(dfA.values.max()*.05)),
-                fontsize=10, color='white')
+    label = '{:,.2f}'.format(dfA.loc[ix,col])
+    ax.text(s=label, x=bar.get_x()+(bar.get_width()/2), y=bar.get_height()-(.05*bar.get_height()), ha='center', va='top', fontdict={'fontsize':10, 'color':'white'})
 
 fig.tight_layout(pad=2)
 fig.show()
 
-fig.savefig('category_volume_per_year_end.png')
+fig.savefig('category_volume_per_year_end')
 ```
 
 ![Category Volume per Year End]({{ site.baseurl }}/assets/img/posts/category_volume_per_year_end.svg)  
+
+## Building A Fully Customizable Plot From Scratch
+
+```python
+fig, ax = plt.subplots(figsize=(12,8))
+
+series = len(dfA.columns)
+groups = len(dfA.index)
+bars = series * groups
+width = .90 / series
+bar_offset = series * width / 2
+
+# bars
+for i,(col,values) in enumerate(dfA.iteritems()):
+    s = dfA.columns.get_loc(col) + 1
+    rect = ax.bar(np.arange(groups)+(s*width)-bar_offset, list(values), width=width, color=colors[i])
+
+ax.set_xticks(np.arange(groups)+width)
+ax.set_xticklabels(dfA.index.strftime('%b %Y'))
+# auto format xaxis labels as date
+fig.autofmt_xdate()
+
+ax.tick_params(axis='both', which='both', direction='out', length=6, width=2,
+               left='on', right='off', top='off', bottom='on',
+               labelsize=12)
+
+ax.set(ylabel='Volume', xlabel='Time', title='Category Volume per Year End')
+
+# labels
+for bar,(col,ix) in zip(ax.patches, pd.MultiIndex.from_product([dfA.columns,dfA.index])):
+    label = '{:,.2f}'.format(dfA.loc[ix,col])
+    ax.text(s=label, x=bar.get_x()+(bar.get_width()/2), y=bar.get_height()+(.05*dfA.values.max()), ha='center', va='bottom', fontdict={'fontsize':10})
+
+# legend
+handles, labels = ax.containers, list(dfA.columns)
+lgd = ax.legend(handles, labels, loc='upper center', bbox_to_anchor=(0.5, -0.15), ncol=4, fontsize=12, frameon=False)
+#lgd = ax.legend(handles, labels, loc='lower center', bbox_to_anchor=(0,1.02,1,0.2), ncol=4, fontsize=12, frameon=False)
+
+# remove right and left figure border
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+
+fig = plt.gcf()
+fig.tight_layout()
+fig.subplots_adjust(top=.9, bottom=.2)
+fig.show()
+
+fig.savefig('category_volume_per_year_end_custom')
+
+plt.show()
+```
+
+![Category Volume per Year End Custom]({{ site.baseurl }}/assets/img/posts/category_volume_per_year_end_custom.svg)  
 
 ## Scatterplot Matrix
 
