@@ -120,6 +120,7 @@ gems:
   - amp-jekyll
   - html-proofer
   - jekyll-last-modified-at
+  - jekyll-jupyter-notebook
 exclude:
   - Gemfile
   - Gemfile.lock

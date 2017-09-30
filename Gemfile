@@ -29,4 +29,5 @@ group :jekyll_plugins do
    gem "amp-jekyll"
    gem "html-proofer"
    gem "jekyll-last-modified-at"
+   gem "jekyll-jupyter-notebook"
 end
