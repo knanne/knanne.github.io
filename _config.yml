@@ -112,7 +112,8 @@ highlighter: rouge
 
 ampdir: amp
 
-gems:
+#gems: (deprecated)
+plugins:
   - jekyll-feed
   - jekyll-gist
   - jekyll-seo-tag
