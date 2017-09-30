@@ -12,6 +12,8 @@ Helpful scripts for automating everything Python
 
 # Files
 
+Manipulate files for automating ETL pipelines.  
+
 ## Stats
 
 ```python
@@ -69,6 +71,8 @@ with gzip.open(infile, 'rb') as inf:
 
 # Shell
 
+Run command line operations from within python.  
+
 ## Executing Commands
 
 ```python
@@ -80,6 +84,8 @@ subprocess.run(cmd, shell=True)
 ```
 
 # Security
+
+Always hide credentials or keys behind the scenes.  
 
 ## Accessing Credentials
 
@@ -108,11 +114,15 @@ password = os.environ['PASSWORD']
 
 # System
 
+Access and use system settings in a workflow.  
+
 ## Python Installation
 
 ```python
 import sys
+# python installation location
 print(sys.executable)
+# python version
 print(sys.version_info())
 ```
 
@@ -128,6 +138,8 @@ sys.path.append(custom_module)
 ```
 
 # HTTP
+
+Operations over HTTP(s)  
 
 ## API
 
@@ -152,15 +164,49 @@ urllib.urlretrieve(url)
 
 # SQL
 
-Connect to a database and quickly upload data with the following.  
+Connect to a database and execute a sql statement with the following.  
+
+This following example uses [SQLAlchemy](http://www.sqlalchemy.org/). Depending on the type of database you are connecting to, there is an extra configuration step to install the right Python-to-ODBC connection, then choose the correct engine below.  
+
+PostgreSQL: `pip install psycopg2`, see [psycopg homepage](http://initd.org/psycopg/)  
+
+MySQL: `pip install mysqlclient`, see [mysqlclient-python on github](https://github.com/PyMySQL/mysqlclient-python) which supports python 3.6. If on Windows, find the correct wheel file for your platform on [pypi](https://pypi.python.org/pypi/mysqlclient)  
+
+Oracle: `pip install cx_Oracle` see [python-cx_Oracle on github](https://github.com/oracle/python-cx_Oracle). You will also need the [Oracle Client](http://www.oracle.com/technetwork/database/features/instant-client/index.html).  
 
 ```python
+import json
+# read database credentials from json file
+with open('creds_file') as f:
+  creds = json.loads(f.read())
+
 from sqlalchemy import create_engine
-db = create_engine('mysql+mysqldb://{}:{}@{}:{}/?charset=utf8&local_infile=1'.format(creds['user'],
-                                                                                     creds['password'],
-                                                                                     creds['host'],
-                                                                                     creds['port']),
-                   encoding='utf8')
+# create appropriate database connection engine
+db = create_engine('postgresql+psycopg2://{}:{}@{}:{}/{}'.format(
+  creds['user'],
+  creds['password'],
+  creds['host'],
+  creds['port'],
+  creds['database']),
+    encoding='utf8')
+
+db = create_engine('mysql+mysqldb://{}:{}@{}:{}/{}?charset=utf8&local_infile=1'.format(
+    creds['user'],
+    creds['password'],
+    creds['host'],
+    creds['port'],
+    creds['database']),
+      encoding='utf8')
+
+db = create_engine('oracle+cx_oracle://{}:{}@{}:{}/{}'.format(
+  creds['user'],
+  creds['password'],
+  creds['host'],
+  creds['port'],
+  creds['tns']),
+    encoding='utf8')
+
+# define some sql statement
 sql = """
   LOAD DATA LOCAL INFILE '{data}'
   INTO TABLE {schema}.{table}
@@ -169,5 +215,47 @@ sql = """
 """.format(data='file.txt',
            schema='db',
            table='data')
-r = db.execute(sql)
+
+# execute sql
+connection = db.connect()
+r = connection.execute(sql)
+connection.close()
+```
+
+# Runtime
+
+Various procedures to consider when building `.py` executables.  
+
+## Arguments
+
+Pass command line arguments to a .py during execution. Simply copy the below to a `test.py` file and run `test.py -h` from the command line.   
+
+```python
+import argparse
+parser = argparse.ArgumentParser(description='Example on how to use ArgumentParser', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+
+parser.add_argument('-a', '--argument', dest='myargument', type=str, help='Example argument', default='test')
+parser.add_argument('-b', '--boolean', dest='myboolean', type=bool, help='Example boolean argument', default=False)
+
+args = parser.parse_args()
+
+myargument = args.myargument
+myboolean = args.myboolean
+```
+
+## Logging
+
+Setup a basic logging configuration when running time consuming operations.  
+
+```python
+import Logging
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)-15s %(message)s')
+
+logging.info('My custom logging message')
+
+# disable logging to a certain level
+logging.disable(logging.INFO)
+
+logging.info('My second custom logging message')
 ```

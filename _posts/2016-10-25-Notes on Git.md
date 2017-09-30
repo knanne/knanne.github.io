@@ -13,15 +13,32 @@ A quick compilation of notes on Git
 # Getting Started
 
 - official [Git documentation](https://git-scm.com/)  
-- great easy documentation from [GitLab](https://docs.gitlab.com/ce/gitlab-basics)  
 - [download](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) git  
 
 # Resources
 
+- great easy documentation from [GitLab](https://docs.gitlab.com/ce/gitlab-basics)  
 - check out this online [interactive](http://ndpsoftware.com/git-cheatsheet.html) cheat sheet  
-- download the [pdf](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) cheat sheet  
+- download the [pdf cheat sheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) from Github  
 - try GitHub's [educational challenge](https://try.github.io/)
 - [GitHub Guides](https://guides.github.com/) has many friendly tutorials
+
+Most open source projects are on GitHub. Checkout [GitHub Explore](https://github.com/explore) to simply "explore" what's out there. For example you can view a list of top projects for related to [government](https://github.com/showcases/government) or [social impact](https://github.com/showcases/social-impact).  
+
+**Advice:** Use [Atom](https://atom.io/) as a text editor for working on git projects! It color codes files (green for added, orange for modified) and allows you to view the fancy side-by-side changelog of a file immediately before checking it in. You can even stage, commit and resolve merge conflicts using only the git-integrated UI.  
+
+Also, check out [GitHub's reference on user autolinks](https://help.github.com/articles/autolinked-references-and-urls/) to things like commits, issues, or users.  
+
+# GitHub Pages
+
+Use [GitHub Pages](https://pages.github.com/) to publish a site for a GitHub account (personal/organization), as well as for hosting GitHub projects like:  
+
+- blog or website using jekyll, at `username.github.io` ([source](https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/))  
+- webapp project using the `/docs` folder in project master branch, and find the project at `username.github.io/project` ([source](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/))  
+
+# Start Project
+
+Easiest way to start is create a repository on [Github](https://github.com) or [GitLab](https://gitlab.com/), then clone it to local.  
 
 Check install  
 
@@ -43,15 +60,28 @@ Create SSH key
 ssh-keygen -t rsa -C "kain.nane@gmail.com"
 ```
 
-# Workflow
+# Start Project
 
-Clone remote repo  
+Easiest way to start is create a repository on [Github](https://github.com), then clone it to local.  
 
 ```shell
-git clone HTTPS
+git clone <URL>
 ```
 
-Since we have cloned a repo, replace REMOTE with `origin` in the folloing commands.
+Alternatively, we could initialize a new local directory, and add the repo as remote origin.  
+
+```shell
+md repo
+cd repo
+git init
+git remote add origin <URL>
+```
+
+# Workflow
+
+For the proper workflow, download the GitHub [workflow.pdf](https://guides.github.com/pdfs/githubflow-online.pdf) or view it [online](https://guides.github.com/introduction/flow/). Or, see guide on [Contributing to Open Source](https://guides.github.com/activities/contributing-to-open-source/)  
+
+If you have cloned a repo, replace REMOTE with `origin` in the following commands.  
 
 Fetch all or pull remote branch    
 
@@ -66,7 +96,7 @@ Create a branch
 git checkout -b <BRANCH>
 ```
 
-Now make some changes in the repo, and add those changes  
+Now make some changes in the repo, and add (all) those changes  
 
 ```shell
 git add .
@@ -162,6 +192,12 @@ git clean -f
 ```
 
 # Notable Commands
+
+Create local branch from remote  
+
+```shell
+git checkout origin/<BRANCH> -b <BRANCH>
+```
 
 List branches  
 

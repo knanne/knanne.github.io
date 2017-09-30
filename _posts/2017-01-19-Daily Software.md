@@ -82,9 +82,22 @@ I recommend downloading Python thru [Anacondo](https://www.continuum.io/download
 
 > Anaconda is the leading open data science platform powered by Python. The open source version of Anaconda is a high performance distribution of Python and R and includes over 100 of the most popular Python, R and Scala packages for data science.
 
+To keep updated, use the following commands.  
+
+```shell
+conda update python
+conda update anaconda
+```
+
 ### Jupyter Notebook
 
 [Jupyter](http://jupyter.org/) (Formerly IpythonNotebook) now supports everything you would ever need for data analysis and visualization, even with interactive charts for some libraries.  
+
+If you have multiple python versions (virtual environments), you can toggle which kernel to use from within Jupyter Notebook using the following libary.  
+
+```shell
+pip install ipykernel
+```
 
 ### Virtual Environments for Development
 
