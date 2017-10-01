@@ -105,6 +105,10 @@ But, [according to the Jekyll docs](http://jekyllrb.com/docs/plugins/), custom `
 
 Therefore only install from gem for now if you are hosting on GitHub pages.
 
+## Collections
+
+Check out Jekyll's documentation on [Collections](https://jekyllrb.com/docs/collections/) for added functionality. This site uses collections to manage "Notebooks" and "Projects", separate from "Posts".  
+
 ## Search Engine Optimization
 
 - use the [jekyll seo gem](https://help.github.com/articles/search-engine-optimization-for-github-pages/)
@@ -118,7 +122,7 @@ Other notable options I have seen include:
 - [Disqus](https://disqus.com/)
 - [Facebook](https://developers.facebook.com/docs/plugins/comments)
 
-## Social Cuttons
+## Social Buttons
 
 - GitHub various [buttons](https://buttons.github.io/)
 - Google +1 [button](https://developers.google.com/+/web/+1button/)

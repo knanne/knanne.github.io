@@ -29,5 +29,5 @@ group :jekyll_plugins do
    gem "amp-jekyll"
    gem "html-proofer"
    gem "jekyll-last-modified-at"
-   gem "jekyll-jupyter-notebook"
+#   gem "jekyll-jupyter-notebook" # not working on github pages (nbconvert not run)
 end

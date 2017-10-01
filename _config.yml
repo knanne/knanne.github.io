@@ -52,6 +52,7 @@ nbviewer: "http://nbviewer.jupyter.org/github/knanne/knanne.github.io/blob/maste
 nav-links:
   About: "about"
   Posts: "posts"
+  Notebooks: "notebooks"
   Projects: "projects"
 
 # https://jekyllrb.com/docs/configuration/#front-matter-defaults
@@ -74,6 +75,7 @@ defaults:
   -
     scope:
       path: "_drafts"
+      type: "posts"
     values:
       is_post: True # used in _includes/foot_scripts.html to dynamically load scripts
       layout: "post"
@@ -81,6 +83,15 @@ defaults:
       share: False # hide social sharing buttons
       comments: False # hide comments section
       is_draft: True # used in _layouts/post.html to show draft alert
+  -
+    scope:
+      path: "_notebooks"
+      type: "notebooks"
+    values:
+      layout: "notebook"
+      author: Kain Nanne
+      share: True # include social sharing buttons
+      comments: True # include comments section
   -
     scope:
       path: "_projects"
@@ -92,9 +103,10 @@ defaults:
 collections:
   posts:
     permalink: /posts/:slug
+  notebooks:
+    output: True
   projects:
     output: True
-    permalink: /projects/:title
 
 excerpt_separator: <!-- excerpt separator -->
 
@@ -112,8 +124,7 @@ highlighter: rouge
 
 ampdir: amp
 
-#gems: (deprecated)
-plugins:
+gems:
   - jekyll-feed
   - jekyll-gist
   - jekyll-seo-tag
@@ -121,7 +132,7 @@ plugins:
   - amp-jekyll
   - html-proofer
   - jekyll-last-modified-at
-  - jekyll-jupyter-notebook
+#  - jekyll-jupyter-notebook # not working on github pages (nbconvert not run)
 exclude:
   - Gemfile
   - Gemfile.lock

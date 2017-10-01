@@ -1,7 +1,6 @@
-<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>pandas_visualization</title>
+<title>pandas_apply_euclidean_distance</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -8456,15 +8455,15 @@ label {
 }
 /* Flexible box model classes */
 /* Taken from Alex Russell http://infrequently.org/2009/08/css-3-progress/ */
-/* This file is a compatability layer.  It allows the usage of flexible box 
+/* This file is a compatability layer.  It allows the usage of flexible box
 model layouts accross multiple browsers, including older browsers.  The newest,
 universal implementation of the flexible box model is used when available (see
-`Modern browsers` comments below).  Browsers that are known to implement this 
+`Modern browsers` comments below).  Browsers that are known to implement this
 new spec completely include:
 
     Firefox 28.0+
     Chrome 29.0+
-    Internet Explorer 11+ 
+    Internet Explorer 11+
     Opera 17.0+
 
 Browsers not listed, including Safari, are supported via the styling under the
@@ -11214,7 +11213,7 @@ div#pager .ui-resizable-handle {
   background: #f7f7f7;
   border-top: 1px solid #cfcfcf;
   border-bottom: 1px solid #cfcfcf;
-  /* This injects handle bars (a short, wide = symbol) for 
+  /* This injects handle bars (a short, wide = symbol) for
         the resize handle. */
 }
 div#pager .ui-resizable-handle::after {
@@ -11653,7 +11652,7 @@ ul.typeahead-list > li > a {
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
-    
+
 /* Temporary definitions which will become obsolete with Notebook release 5.0 */
 .ansi-black-fg { color: #3E424D; }
 .ansi-black-bg { background-color: #3E424D; }
@@ -11709,14 +11708,14 @@ div#notebook {
   div.cell {
     display: block;
     page-break-inside: avoid;
-  } 
-  div.output_wrapper { 
-    display: block;
-    page-break-inside: avoid; 
   }
-  div.output { 
+  div.output_wrapper {
     display: block;
-    page-break-inside: avoid; 
+    page-break-inside: avoid;
+  }
+  div.output {
+    display: block;
+    page-break-inside: avoid;
   }
 }
 </style>
@@ -11755,17 +11754,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Setup">Setup<a class="anchor-link" href="#Setup">&#182;</a></h1><p>Since <a href="https://pandas.pydata.org/">Pandas</a> is almost a one stop shop for everything data analysis in python anyway, most plotting is done using <code>df.plot()</code> syntax, however, you must import <a href="https://matplotlib.org/index.html">Matplotlib</a> since this is a dependency. I would also recommend installing <a href="https://seaborn.pydata.org/">Seaborn</a> for more interesting plot types and statistical features. Plus it has a nice native style.</p>
+<h1 id="Euclidean-Distance">Euclidean Distance<a class="anchor-link" href="#Euclidean-Distance">&#182;</a></h1><p>The following equation can be used to calculate distance between two locations (e.g. shopper and store etc.)</p>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Dependencies">Dependencies<a class="anchor-link" href="#Dependencies">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -11775,57 +11765,23 @@ div#notebook {
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">math</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Display">Display<a class="anchor-link" href="#Display">&#182;</a></h2><p>Couple options for visualizing in a Jupyter Notebook. Either present static charts <code>inline</code>, embed them as interactive elements using <code>notebook</code> setting, or open the chart in a new windows using a specified backend (e.g. <code>GTK3Agg</code> for raster graphics, <code>GTK3Cairo</code> for vector graphics). <a href="http://ipython.readthedocs.io/en/stable/interactive/plotting.html">ipython source</a> (somewhat out of date), <a href="https://matplotlib.org/faq/usage_faq.html#what-is-a-backend">matplotlib source</a> BTW, <a href="https://matplotlib.org/faq/howto_faq.html#howto-webapp">here</a> is info on how to run matplotlib in backend of webserver.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="c1">#%matplotlib notebook</span>
-<span class="c1">#%matplotlib GTK3Cairo</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>it is recommended to import pyplot after configuring matplotlib</p>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">latitude1</span> <span class="o">=</span> <span class="mf">52.379128</span>
+<span class="n">latitude2</span> <span class="o">=</span> <span class="mf">40.752726</span>
+<span class="n">longitude2</span> <span class="o">=</span> <span class="mf">4.900272</span>
+<span class="n">longitude1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">73.977229</span>
 </pre></div>
 
 </div>
@@ -11833,24 +11789,22 @@ div#notebook {
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Style">Style<a class="anchor-link" href="#Style">&#182;</a></h2><p>Call <code>plt.style.available</code> to show options, then set the style of choice.</p>
-<p>And customize the style sheet manually using <code>rcParams</code></p>
-<p>See more on styling here: <a href="https://matplotlib.org/users/customizing.html">https://matplotlib.org/users/customizing.html</a></p>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-white&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">latitude1</span> <span class="o">=</span> <span class="mf">52.379128</span>
+<span class="n">latitude2</span> <span class="o">=</span> <span class="mf">40.752726</span>
+<span class="n">longitude2</span> <span class="o">=</span> <span class="mf">4.900272</span>
+<span class="n">longitude1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">73.977229</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span>
+    <span class="s1">&#39;latitude1&#39;</span><span class="p">:</span> <span class="n">latitude1</span><span class="p">,</span> <span class="s1">&#39;longitude1&#39;</span><span class="p">:</span> <span class="n">longitude1</span><span class="p">,</span>
+    <span class="s1">&#39;latitude2&#39;</span><span class="p">:</span> <span class="n">latitude2</span><span class="p">,</span> <span class="s1">&#39;longitude2&#39;</span><span class="p">:</span> <span class="n">longitude2</span><span class="p">}])</span>
 </pre></div>
 
 </div>
@@ -11863,37 +11817,59 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">)</span>
-<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;savefig&#39;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">pad_inches</span><span class="o">=.</span><span class="mi">05</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;svg&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>latitude1</th>
+      <th>latitude2</th>
+      <th>longitude1</th>
+      <th>longitude2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>52.379128</td>
+      <td>40.752726</td>
+      <td>-73.977229</td>
+      <td>4.900272</td>
+    </tr>
+  </tbody>
+</table>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
 </div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>For colors, there are endless presets in matplotlib or seaborn. But, you can always construct your own custom length arrays of hues. Below is a sample from <a href="http://colorbrewer2.org">colorbrewer</a></p>
+
+</div>
 
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;#8dd3c7&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;#ffffb3&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;#bebada&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;#fb8072&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;#80b1d3&#39;</span>
-<span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">euclidean_distance</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span>
+  <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;latitude1&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;latitude2&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span>
+  <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;latitude1&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;latitude2&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span>
+  <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;longitude2&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span> <span class="o">-</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;longitude1&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span> <span class="p">)</span> <span class="o">*</span> <span class="mi">6371</span>
 </pre></div>
 
 </div>
@@ -11901,23 +11877,25 @@ div#notebook {
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Data">Data<a class="anchor-link" href="#Data">&#182;</a></h1>
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">36</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span>
-                  <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">end</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="n">periods</span><span class="o">=</span><span class="mi">36</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;MS&#39;</span><span class="p">),</span>
-                  <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;distance_km&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">euclidean_distance</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;distance_mi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;distance_km&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="mf">1.609344</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11930,7 +11908,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>
 </pre></div>
 
 </div>
@@ -11941,43 +11919,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-DatetimeIndex: 36 entries, 2014-10-01 20:10:04.349740 to 2017-09-01 20:10:04.349740
-Freq: MS
-Data columns (total 4 columns):
-A    36 non-null float64
-B    36 non-null float64
-C    36 non-null float64
-D    36 non-null float64
-dtypes: float64(4)
-memory usage: 1.4 KB
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -11985,68 +11927,23 @@ memory usage: 1.4 KB
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>A</th>
-      <th>B</th>
-      <th>C</th>
-      <th>D</th>
+      <th>latitude1</th>
+      <th>latitude2</th>
+      <th>longitude1</th>
+      <th>longitude2</th>
+      <th>distance_km</th>
+      <th>distance_mi</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>count</th>
-      <td>36.000000</td>
-      <td>36.000000</td>
-      <td>36.000000</td>
-      <td>36.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>0.523945</td>
-      <td>0.515648</td>
-      <td>0.463467</td>
-      <td>0.497094</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>0.289522</td>
-      <td>0.303504</td>
-      <td>0.255665</td>
-      <td>0.290106</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>0.041229</td>
-      <td>0.029692</td>
-      <td>0.000678</td>
-      <td>0.035290</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>0.334697</td>
-      <td>0.234806</td>
-      <td>0.339944</td>
-      <td>0.254544</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>0.495398</td>
-      <td>0.582371</td>
-      <td>0.445156</td>
-      <td>0.457707</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>0.825301</td>
-      <td>0.776121</td>
-      <td>0.598338</td>
-      <td>0.729240</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>0.970341</td>
-      <td>0.996389</td>
-      <td>0.993212</td>
-      <td>0.991040</td>
+      <th>0</th>
+      <td>52.379128</td>
+      <td>40.752726</td>
+      <td>-73.977229</td>
+      <td>4.900272</td>
+      <td>5857.771216</td>
+      <td>3639.850284</td>
     </tr>
   </tbody>
 </table>
@@ -12058,804 +11955,6 @@ memory usage: 1.4 KB
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>A</th>
-      <th>B</th>
-      <th>C</th>
-      <th>D</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2014-10-01 20:10:04.349740</th>
-      <td>0.551977</td>
-      <td>0.054202</td>
-      <td>0.515052</td>
-      <td>0.718116</td>
-    </tr>
-    <tr>
-      <th>2014-11-01 20:10:04.349740</th>
-      <td>0.196603</td>
-      <td>0.131139</td>
-      <td>0.498870</td>
-      <td>0.407855</td>
-    </tr>
-    <tr>
-      <th>2014-12-01 20:10:04.349740</th>
-      <td>0.970341</td>
-      <td>0.996389</td>
-      <td>0.443949</td>
-      <td>0.546896</td>
-    </tr>
-    <tr>
-      <th>2015-01-01 20:10:04.349740</th>
-      <td>0.952596</td>
-      <td>0.821364</td>
-      <td>0.000678</td>
-      <td>0.316319</td>
-    </tr>
-    <tr>
-      <th>2015-02-01 20:10:04.349740</th>
-      <td>0.813518</td>
-      <td>0.382032</td>
-      <td>0.348560</td>
-      <td>0.443215</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Transform">Transform<a class="anchor-link" href="#Transform">&#182;</a></h2><p>Group data over time periods. Refer to <a href="http://pandas.pydata.org/pandas-docs/stable/timeseries.html#offset-aliases">Pandas Offset Aliases</a></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfA</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">TimeGrouper</span><span class="p">(</span><span class="s1">&#39;1A&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfA</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(4, 4)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfM</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">TimeGrouper</span><span class="p">(</span><span class="s1">&#39;6M&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfM</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[14]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(7, 4)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Visualizations">Visualizations<a class="anchor-link" href="#Visualizations">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Plot-Categorical-Data-Over-Time">Plot Categorical Data Over Time<a class="anchor-link" href="#Plot-Categorical-Data-Over-Time">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
-
-<span class="n">dfM</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Categories&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Category Volume Over Time&#39;</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">series</span> <span class="ow">in</span> <span class="n">dfM</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dfM</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">dfM</span><span class="p">[</span><span class="n">series</span><span class="p">]):</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span>
-                    <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="p">(</span><span class="o">.</span><span class="mi">01</span><span class="o">*</span><span class="n">dfM</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">max</span><span class="p">())),</span>
-                    <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
-
-<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;category_volume_over_time&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>C:\Miniconda3\lib\site-packages\matplotlib\figure.py:397: UserWarning: matplotlib is currently using a non-GUI backend, so cannot show the figure
-  &#34;matplotlib is currently using a non-GUI backend, &#34;
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Plot-Categorical-Data-Over-Time-Groups">Plot Categorical Data Over Time Groups<a class="anchor-link" href="#Plot-Categorical-Data-Over-Time-Groups">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
-
-<span class="n">dfA</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Volume&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Category Volume per Year End&#39;</span><span class="p">)</span>
-
-<span class="c1"># auto format xaxis labels as date</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">autofmt_xdate</span><span class="p">()</span>
-
-<span class="c1"># custom format xaxis date labels</span>
-<span class="c1"># current bug in pandas doesn&#39;t allow the following (https://github.com/pandas-dev/pandas/issues/1918)</span>
-<span class="c1">#ax.xaxis_date()</span>
-<span class="c1">#ax.xaxis.set_major_locator(mpl.dates.YearLocator())</span>
-<span class="c1">#ax.xaxis.set_major_formatter(mpl.dates.DateFormatter(&#39;%d %b %Y&#39;))</span>
-<span class="c1"># so instead we manually set xaxis labels to our custom formatted df index as series of strings</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">FixedFormatter</span><span class="p">(</span><span class="n">dfA</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_series</span><span class="p">()</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%b %Y&#39;</span><span class="p">)))</span>
-
-<span class="c1"># annotate data labels onto vertical bars</span>
-<span class="c1"># see https://matplotlib.org/users/annotations_guide.html</span>
-<span class="k">for</span> <span class="n">bar</span><span class="p">,(</span><span class="n">col</span><span class="p">,</span><span class="n">ix</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">patches</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">([</span><span class="n">dfA</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span><span class="n">dfA</span><span class="o">.</span><span class="n">index</span><span class="p">])):</span>
-    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:,.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dfA</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix</span><span class="p">,</span><span class="n">col</span><span class="p">])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">bar</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span><span class="o">+</span><span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="n">bar</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span><span class="o">-</span><span class="p">(</span><span class="o">.</span><span class="mi">05</span><span class="o">*</span><span class="n">bar</span><span class="o">.</span><span class="n">get_height</span><span class="p">()),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;white&#39;</span><span class="p">})</span>
-
-<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;category_volume_per_year_end&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>C:\Miniconda3\lib\site-packages\matplotlib\figure.py:397: UserWarning: matplotlib is currently using a non-GUI backend, so cannot show the figure
-  &#34;matplotlib is currently using a non-GUI backend, &#34;
-</pre>
-</div>
-</div>
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-QmCC
-"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Building-A-Fully-Customizable-Plot-From-Scratch">Building A Fully Customizable Plot From Scratch<a class="anchor-link" href="#Building-A-Fully-Customizable-Plot-From-Scratch">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
-
-<span class="n">series</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dfA</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-<span class="n">groups</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dfA</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-<span class="n">bars</span> <span class="o">=</span> <span class="n">series</span> <span class="o">*</span> <span class="n">groups</span>
-<span class="n">width</span> <span class="o">=</span> <span class="o">.</span><span class="mi">90</span> <span class="o">/</span> <span class="n">series</span>
-<span class="n">bar_offset</span> <span class="o">=</span> <span class="n">series</span> <span class="o">*</span> <span class="n">width</span> <span class="o">/</span> <span class="mi">2</span>
-
-<span class="c1"># bars</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,(</span><span class="n">col</span><span class="p">,</span><span class="n">values</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dfA</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()):</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="n">dfA</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">rect</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">groups</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">s</span><span class="o">*</span><span class="n">width</span><span class="p">)</span><span class="o">-</span><span class="n">bar_offset</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">values</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">groups</span><span class="p">)</span><span class="o">+</span><span class="n">width</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">dfA</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%b %Y&#39;</span><span class="p">))</span>
-<span class="c1"># auto format xaxis labels as date</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">autofmt_xdate</span><span class="p">()</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-               <span class="n">left</span><span class="o">=</span><span class="s1">&#39;on&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;off&#39;</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="s1">&#39;off&#39;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="s1">&#39;on&#39;</span><span class="p">,</span>
-               <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Volume&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Category Volume per Year End&#39;</span><span class="p">)</span>
-
-<span class="c1"># labels</span>
-<span class="k">for</span> <span class="n">bar</span><span class="p">,(</span><span class="n">col</span><span class="p">,</span><span class="n">ix</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">patches</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">([</span><span class="n">dfA</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span><span class="n">dfA</span><span class="o">.</span><span class="n">index</span><span class="p">])):</span>
-    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:,.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dfA</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix</span><span class="p">,</span><span class="n">col</span><span class="p">])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">bar</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span><span class="o">+</span><span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="n">bar</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span><span class="o">+</span><span class="p">(</span><span class="o">.</span><span class="mi">05</span><span class="o">*</span><span class="n">dfA</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">})</span>
-
-<span class="c1"># legend</span>
-<span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">containers</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">dfA</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-<span class="n">lgd</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.15</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="c1">#lgd = ax.legend(handles, labels, loc=&#39;lower center&#39;, bbox_to_anchor=(0,1.02,1,0.2), ncol=4, fontsize=12, frameon=False)</span>
-
-<span class="c1"># remove right and left figure border</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">top</span><span class="o">=.</span><span class="mi">9</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=.</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;category_volume_per_year_end_custom&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Scatterplot-Matrix">Scatterplot Matrix<a class="anchor-link" href="#Scatterplot-Matrix">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;scatterplot_matrix&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="KDE-Plot">KDE Plot<a class="anchor-link" href="#KDE-Plot">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;kde_plot&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Resources">Resources<a class="anchor-link" href="#Resources">&#182;</a></h1><ul>
-<li><a href="https://matplotlib.org/contents.html">Matplotlib docs</a>  </li>
-<li><a href="https://pandas.pydata.org/pandas-docs/stable/visualization.html">Pandas Visualization docs</a>  </li>
-<li><a href="https://seaborn.pydata.org/api.html">Seaborn docs</a> and <a href="https://seaborn.pydata.org/tutorial.html#tutorial">Seaborn Tutorials</a>  </li>
-</ul>
-<p>Chris Moffitt at Practical Business Python has a <a href="http://pbpython.com/effective-matplotlib.html">great tutorial and helpful infographic</a> on matplotlib</p>
-
-</div>
-</div>
 </div>
     </div>
   </div>

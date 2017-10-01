@@ -1,0 +1,21 @@
+<div class="card-deck">
+	{% for notebook in site.notebooks limit : 3 %}
+		<a href="{{ site.baseurl }}{{ notebook.url }}" rel="tooltip" title="View Notebook">
+			<div class="card card-hover">
+				<div class="card-header text-left">
+					<p><small class="text-muted">Date Published: {{ notebook.date | date: "%b %-d, %Y" }}</small></p>
+				</div>
+				<div class="card-block text-center">
+					<h5 class="card-title">{{ notebook.title }}</h5>
+					<span class="badge badge-warning">Jupyter Notebook</span>
+					<p class="card-text text-muted">{{ notebook.excerpt }}</p>
+				</div>
+				<div class="card-footer text-right">
+					<small class="card-tags">
+						<span class="badge badge-primary">python</span>
+					</small>
+				</div>
+			</div>
+		</a>
+	{% endfor %}
+</div>
