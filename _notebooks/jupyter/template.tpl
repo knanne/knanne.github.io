@@ -25,7 +25,6 @@
 /* Overrides of notebook CSS for static HTML export */
 body {
   overflow: visible;
-  padding: 8px;
 }
 div#notebook {
   overflow: visible;
@@ -53,7 +52,7 @@ div#notebook-container{
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
-<link rel="stylesheet" href="custom.css">
+<link rel="stylesheet" href="custom.scss">
 
 <!-- Loading mathjax macro -->
 {{ mathjax() }}

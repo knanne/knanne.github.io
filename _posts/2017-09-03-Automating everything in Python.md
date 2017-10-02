@@ -79,7 +79,12 @@ Run command line operations from within python.
 import subprocess
 infiles = os.path.join('folder', '*.gz')
 outfile = 'combined.gz'
+
+# windows
 cmd = 'copy /B /Y {} {}'.format(infiles, outfile)
+# unix
+cmd = 'cat {} > {}'.format(infiles, outfile)
+
 subprocess.run(cmd, shell=True)
 ```
 
@@ -115,6 +120,13 @@ password = os.environ['PASSWORD']
 # System
 
 Access and use system settings in a workflow.  
+
+## OS
+
+```python
+import platform
+print(platform.system())
+```
 
 ## Python Installation
 

@@ -1,0 +1,278 @@
+---
+# required
+---
+
+// THIS IS AN EXACT COPY OF main.scss in ~/assets/
+
+// this style sheet uses the default github-pages theme "minima"
+// and includes custom changes on top
+// https://github.com/jekyll/minima
+
+// some other custom styles come from Google
+// Noto Sans font from https://fonts.google.com/
+// Typography rules from https://material.io/guidelines/style/typography.html#
+// Color rules from https://material.io/guidelines/style/color.html#color-color-palette
+
+@charset "utf-8";
+
+// minima variables
+$base-font-family: 'Roboto', sans-serif;
+$base-font-size:   14px;
+$base-font-weight: 400;
+$small-font-size:  $base-font-size * 0.90;
+$base-line-height: 1.5;
+
+$spacing-unit:     30px;
+
+$footer-height: 60px;
+
+$background-color: #fdfdfd;
+$background-color-white: #FFFFFF;
+$background-color-grey: #fafafa;
+$brand-color:      #2a7ae2;
+
+$text-color:       #000000;
+$text-color-muted: #777;
+
+$border-color:     lighten($text-color, 87%);
+
+$grey-color:       lighten($text-color, 54%);
+$grey-color-light: lighten($text-color, 87%);
+$grey-color-dark:  lighten($text-color, 12%);
+
+// Width of the content area
+$content-width:    auto;
+$on-palm:          auto;
+$on-laptop:        auto;
+
+// Import partials from the `minima` theme.
+@import "minima";
+
+/*
+* Custom changes on top of github-pages theme "minima"
+* I got a little wild on !important - to ensure it applies over minima
+*/
+
+/* DEVICE - Specific */
+@media only screen and (max-width: 760px) {
+  #post-nav { display: none; } //hide on mobile
+}
+
+/* GLOBAL */
+html *
+{
+  font-family: $base-font-family;
+}
+h1, h2, h3, h4, h5 {
+  text-transform: capitalize;
+}
+body {
+  background-color: $background-color !important;
+  position: relative;
+}
+
+/* NAVS */
+nav {
+  background-color: $background-color-grey !important;
+}
+.nav a, p, i {
+  color: $text-color-muted;
+}
+nav a.active {
+  border-bottom: 1px solid $brand-color !important;
+}
+nav a:hover, i:hover {
+  color: $brand-color !important;
+}
+
+/* CONTAINERS */
+.subcontainer {
+  display: block;
+  text-align: center;
+  margin: 2%;
+  padding: 2%;
+}
+
+/* FOOTER */
+.footer {
+  background-color: $background-color !important;
+  margin-top: 4%;
+  bottom: 0%;
+  width: 100% !important;
+  height: $footer-height;
+  text-align: center;
+  line-height: $footer-height / 2;
+  color: $text-color-muted;
+}
+
+// POSTS
+.post-sidebar {
+  background-color: $background-color-grey;
+  padding: 1%;
+}
+.post-header {
+  border-bottom: 1px solid $border-color;
+}
+.post-nav {
+  width: 100%;
+  z-index: 10;
+}
+.post-nav a {
+  color: $text-color;
+}
+.post-content {
+  padding-top: 2%;
+  width: 100%;
+  display: inline-block;
+  font-size: $base-font-size;
+  text-align: justify;
+}
+.post-footer {
+  border-top: 1px solid $border-color;
+}
+.post-comments {
+  display: block;
+}
+.header-link {
+  position: absolute;
+  left: -0.5em;
+  opacity: 0;
+  \-webkit-transition: opacity 0.2s ease-in-out 0.1s;
+  \-moz-transition: opacity 0.2s ease-in-out 0.1s;
+  \-ms-transition: opacity 0.2s ease-in-out 0.1s;
+}
+.post-content
+h2:hover .header-link,
+h3:hover .header-link,
+h4:hover .header-link,
+h5:hover .header-link,
+h6:hover .header-link {
+  opacity: 1;
+}
+.table {
+  font-size: 12px;
+}
+
+// BackToTop button
+#back2top {
+  display: none;
+  position: fixed;
+  right: $spacing-unit / 2;
+  bottom: $spacing-unit / 2;
+  cursor: pointer;
+  font-size: 48px;
+  color: $grey-color;
+  opacity: .5;
+  transform: rotate(180deg);
+  z-index: 10px;
+}
+#back2top:hover {
+  color: $brand-color;
+  opacity: 1;
+}
+
+// MATERIAL
+.card {
+  margin: 2% !important;
+}
+.card-hover:hover {
+  box-shadow: 0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);
+}
+.card-deck .card {
+  max-width: 300px - $spacing-unit;
+}
+.icon-3d {
+  text-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);
+}
+
+// SNIPPETS
+// ALL POSTS ACCORDIAN
+.accordian-card {
+  padding: 1%;
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+}
+.accordian-title > a:after {
+  content: "\f078"; /* fa-chevron-down */
+  font-family: 'FontAwesome';
+  position: absolute;
+  right: 1%;
+}
+.accordian-title > a[aria-expanded="true"]:after {
+  content: "\f077"; /* fa-chevron-up */
+}
+
+// INTEGRATIONS
+.instagram-media {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.tableauPlaceholder {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.gist {
+  max-width: 100% !important;
+  overflow: auto;
+}
+iframe {
+  max-width: 100%;
+  width: auto;
+}
+
+// SEARCH
+.nav-search-link .nav-search-icon {
+  display: none;
+}
+.nav-search-link .nav-search-text {
+  display: inline;
+}
+@media only screen and (min-width: 768px) {
+  .nav-search-link .nav-search-icon {
+    display: inline;
+  }
+  .nav-search-link .nav-search-text {
+    display: none;
+  }
+}
+
+// FIX FORMATTING FOR GOOGLE CUSTOM SEARCH
+#gcse {
+	line-height: 1.8em;
+	font: 27px/18px arial, sans-serif;
+	background-image: inherit;
+	box-sizing: content-box;
+}
+
+// IMAGES
+img {
+  max-width: 100%;
+  height: auto;
+}
+.img-sm {
+  max-width: 50% !important;
+}
+
+/*
+* MARKDOWN-specific below
+*/
+
+// Blockquotes
+blockquote {
+  font-size: $base-font-size * 1.10;
+  border-left: 4px solid $border-color;
+  letter-spacing: 0px;
+  opacity: .87;
+}
+
+// SYNTAX HIGHLIGHTING
+pre,
+%vertical-rhythm
+  .highlight
+    .highlighter-rouge {
+      background: $background-color-grey !important;
+}
