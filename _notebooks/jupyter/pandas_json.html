@@ -1,8 +1,6 @@
 <html>
 <head><meta charset="utf-8" />
-<title>pandas_apply_euclidean_distance</title>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>pandas_json</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -8455,15 +8453,15 @@ label {
 }
 /* Flexible box model classes */
 /* Taken from Alex Russell http://infrequently.org/2009/08/css-3-progress/ */
-/* This file is a compatability layer.  It allows the usage of flexible box
+/* This file is a compatability layer.  It allows the usage of flexible box 
 model layouts accross multiple browsers, including older browsers.  The newest,
 universal implementation of the flexible box model is used when available (see
-`Modern browsers` comments below).  Browsers that are known to implement this
+`Modern browsers` comments below).  Browsers that are known to implement this 
 new spec completely include:
 
     Firefox 28.0+
     Chrome 29.0+
-    Internet Explorer 11+
+    Internet Explorer 11+ 
     Opera 17.0+
 
 Browsers not listed, including Safari, are supported via the styling under the
@@ -11213,7 +11211,7 @@ div#pager .ui-resizable-handle {
   background: #f7f7f7;
   border-top: 1px solid #cfcfcf;
   border-bottom: 1px solid #cfcfcf;
-  /* This injects handle bars (a short, wide = symbol) for
+  /* This injects handle bars (a short, wide = symbol) for 
         the resize handle. */
 }
 div#pager .ui-resizable-handle::after {
@@ -11652,7 +11650,7 @@ ul.typeahead-list > li > a {
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
-
+    
 /* Temporary definitions which will become obsolete with Notebook release 5.0 */
 .ansi-black-fg { color: #3E424D; }
 .ansi-black-bg { background-color: #3E424D; }
@@ -11698,13 +11696,10 @@ body {
   overflow: visible;
   padding: 8px;
 }
-
 div#notebook {
   overflow: visible;
   border-top: none;
-}
-
-@media print {
+}@media print {
   div.cell {
     display: block;
     page-break-inside: avoid;
@@ -11754,33 +11749,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Euclidean-Distance">Euclidean Distance<a class="anchor-link" href="#Euclidean-Distance">&#182;</a></h1><p>The following equation can be used to calculate distance between two locations (e.g. shopper and store etc.)</p>
-<p>This content was originally published in post form at <a href="https://knanne.github.io/posts/calculations_for_data_analysis">knanne.github.io/posts/calculations_for_data_analysis</a></p>
-<p>Bonus, here is how to do this in <code>SQL</code></p>
-<div class="highlight"><pre><span></span><span class="k">create</span> <span class="k">database</span> <span class="n">test</span><span class="p">;</span>
-<span class="k">create</span> <span class="k">table</span> <span class="n">test</span><span class="p">.</span><span class="nf">distance</span> <span class="p">(</span><span class="n">latitude1</span> <span class="kt">float</span><span class="p">,</span> <span class="n">longitude1</span> <span class="kt">float</span><span class="p">,</span> <span class="n">latitude2</span> <span class="kt">float</span><span class="p">,</span> <span class="n">longitude2</span> <span class="kt">float</span><span class="p">);</span>
-<span class="k">insert</span> <span class="k">into</span> <span class="n">test</span><span class="p">.</span><span class="nf">distance</span> <span class="p">(</span><span class="n">latitude1</span><span class="p">,</span> <span class="n">longitude1</span><span class="p">,</span> <span class="n">latitude2</span><span class="p">,</span> <span class="n">longitude2</span><span class="p">)</span> <span class="k">values</span> <span class="p">(</span><span class="mi">52</span><span class="p">.</span><span class="mi">379128</span><span class="p">,</span> <span class="mi">4</span><span class="p">.</span><span class="mi">900272</span><span class="p">,</span> <span class="mi">40</span><span class="p">.</span><span class="mi">752726</span><span class="p">,</span> <span class="o">-</span><span class="mi">73</span><span class="p">.</span><span class="mi">977229</span><span class="p">);</span>
-
-<span class="k">select</span>
-  <span class="o">*</span><span class="p">,</span>
-  <span class="n">distance_km</span> <span class="o">/</span> <span class="mi">1</span><span class="p">.</span><span class="mi">609344</span> <span class="s2">&quot;distance_mi&quot;</span>
-<span class="k">from</span>
-<span class="p">(</span>
-  <span class="k">select</span>
-      <span class="n">latitude1</span><span class="p">,</span>
-      <span class="n">longitude1</span><span class="p">,</span>
-      <span class="n">latitude2</span><span class="p">,</span>
-      <span class="n">longitude2</span><span class="p">,</span>
-      <span class="nf">ACOS</span><span class="p">(</span>
-        <span class="nf">SIN</span><span class="p">(</span><span class="n">latitude1</span><span class="o">*</span><span class="nf">PI</span><span class="p">()</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="nf">SIN</span><span class="p">(</span><span class="n">latitude2</span><span class="o">*</span><span class="nf">PI</span><span class="p">()</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span>
-          <span class="o">+</span> <span class="nf">COS</span><span class="p">(</span><span class="n">latitude1</span><span class="o">*</span><span class="nf">PI</span><span class="p">()</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="nf">COS</span><span class="p">(</span><span class="n">latitude2</span><span class="o">*</span><span class="nf">PI</span><span class="p">()</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span>
-          <span class="o">*</span> <span class="nf">COS</span><span class="p">(</span><span class="n">longitude2</span><span class="o">*</span><span class="nf">PI</span><span class="p">()</span><span class="o">/</span><span class="mi">180</span> <span class="o">-</span> <span class="n">longitude1</span><span class="o">*</span><span class="nf">PI</span><span class="p">()</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span>
-          <span class="p">)</span> <span class="o">*</span> <span class="mi">6371</span> <span class="s2">&quot;distance_km&quot;</span>
-  <span class="k">from</span> <span class="n">test</span><span class="p">.</span><span class="n">distance</span>
-<span class="p">)</span> <span class="n">x</span>
-<span class="p">;</span>
-</pre></div>
-
+<h1 id="Pandas-JSON">Pandas JSON<a class="anchor-link" href="#Pandas-JSON">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -11790,7 +11759,8 @@ div#notebook {
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">json</span>
 </pre></div>
 
 </div>
@@ -11798,15 +11768,48 @@ div#notebook {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Read-JSON-File">Read JSON File<a class="anchor-link" href="#Read-JSON-File">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="DataFrame-From-Dictionary">DataFrame From Dictionary<a class="anchor-link" href="#DataFrame-From-Dictionary">&#182;</a></h2>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">latitude1</span> <span class="o">=</span> <span class="mf">52.379128</span>
-<span class="n">latitude2</span> <span class="o">=</span> <span class="mf">40.752726</span>
-<span class="n">longitude2</span> <span class="o">=</span> <span class="mf">4.900272</span>
-<span class="n">longitude1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">73.977229</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># dummy json data</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">)):</span>
+        <span class="n">d</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;data1&#39;</span><span class="p">:</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;data2&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="s1">&#39;data3&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="s1">&#39;data4&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">k</span><span class="p">)}</span>
 </pre></div>
 
 </div>
@@ -11819,22 +11822,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span>
-    <span class="s1">&#39;latitude1&#39;</span><span class="p">:</span> <span class="n">latitude1</span><span class="p">,</span> <span class="s1">&#39;longitude1&#39;</span><span class="p">:</span> <span class="n">longitude1</span><span class="p">,</span>
-    <span class="s1">&#39;latitude2&#39;</span><span class="p">:</span> <span class="n">latitude2</span><span class="p">,</span> <span class="s1">&#39;longitude2&#39;</span><span class="p">:</span> <span class="n">longitude2</span><span class="p">}])</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span>
 </pre></div>
 
 </div>
@@ -11845,31 +11833,26 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>latitude1</th>
-      <th>latitude2</th>
-      <th>longitude1</th>
-      <th>longitude2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>52.379128</td>
-      <td>40.752726</td>
-      <td>-73.977229</td>
-      <td>4.900272</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{(0, 0): {&#39;data1&#39;: 0.36763612809007506,
+  &#39;data2&#39;: 0.13515632267706207,
+  &#39;data3&#39;: 0.60633004881011388,
+  &#39;data4&#39;: -1.0006616123448944},
+ (0, 1): {&#39;data1&#39;: 0.1425640998745108,
+  &#39;data2&#39;: 0.02032452257302949,
+  &#39;data3&#39;: 0.37757661457578484,
+  &#39;data4&#39;: -1.9479635567329971},
+ (1, 0): {&#39;data1&#39;: 0.67871583725104201,
+  &#39;data2&#39;: 0.46065518773538294,
+  &#39;data3&#39;: 0.82384211912904892,
+  &#39;data4&#39;: -0.38755274085918401},
+ (1, 1): {&#39;data1&#39;: 0.37571703918967791,
+  &#39;data2&#39;: 0.14116329353745796,
+  &#39;data3&#39;: 0.61295761614460575,
+  &#39;data4&#39;: -0.97891897425076624}}</pre>
 </div>
 
 </div>
@@ -11880,13 +11863,25 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create DataFrame from dictionary where keys are DataFrame multiindex</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">euclidean_distance</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span>
-  <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;latitude1&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;latitude2&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span>
-  <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;latitude1&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;latitude2&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span>
-  <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;longitude2&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span> <span class="o">-</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;longitude1&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span> <span class="p">)</span> <span class="o">*</span> <span class="mi">6371</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># rename multiindex</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;category1&#39;</span><span class="p">,</span> <span class="s1">&#39;category2&#39;</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -11899,32 +11894,6 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;distance_km&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">euclidean_distance</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;distance_mi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;distance_km&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="mf">1.609344</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>
 </pre></div>
 
@@ -11936,31 +11905,72 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>latitude1</th>
-      <th>latitude2</th>
-      <th>longitude1</th>
-      <th>longitude2</th>
-      <th>distance_km</th>
-      <th>distance_mi</th>
+      <th></th>
+      <th>data3</th>
+      <th>data1</th>
+      <th>data2</th>
+      <th>data4</th>
+    </tr>
+    <tr>
+      <th>category1</th>
+      <th>category2</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <th rowspan="2" valign="top">0</th>
       <th>0</th>
-      <td>52.379128</td>
-      <td>40.752726</td>
-      <td>-73.977229</td>
-      <td>4.900272</td>
-      <td>5857.771216</td>
-      <td>3639.850284</td>
+      <td>0.606330</td>
+      <td>0.367636</td>
+      <td>0.135156</td>
+      <td>-1.000662</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.377577</td>
+      <td>0.142564</td>
+      <td>0.020325</td>
+      <td>-1.947964</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">1</th>
+      <th>0</th>
+      <td>0.823842</td>
+      <td>0.678716</td>
+      <td>0.460655</td>
+      <td>-0.387553</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.612958</td>
+      <td>0.375717</td>
+      <td>0.141163</td>
+      <td>-0.978919</td>
     </tr>
   </tbody>
 </table>
@@ -11973,7 +11983,115 @@ div#notebook {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Dictionary-From-DataFrame">Dictionary From DataFrame<a class="anchor-link" href="#Dictionary-From-DataFrame">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;data1&#39;: {(0, 0): 0.36763612809007506,
+  (0, 1): 0.1425640998745108,
+  (1, 0): 0.67871583725104201,
+  (1, 1): 0.37571703918967791},
+ &#39;data2&#39;: {(0, 0): 0.13515632267706207,
+  (0, 1): 0.02032452257302949,
+  (1, 0): 0.46065518773538294,
+  (1, 1): 0.14116329353745796},
+ &#39;data3&#39;: {(0, 0): 0.60633004881011388,
+  (0, 1): 0.37757661457578484,
+  (1, 0): 0.82384211912904892,
+  (1, 1): 0.61295761614460575},
+ &#39;data4&#39;: {(0, 0): -1.0006616123448944,
+  (0, 1): -1.9479635567329971,
+  (1, 0): -0.38755274085918401,
+  (1, 1): -0.97891897425076624}}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To get back to original format we had, first transpose.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{(0, 0): {&#39;data1&#39;: 0.36763612809007506,
+  &#39;data2&#39;: 0.13515632267706207,
+  &#39;data3&#39;: 0.60633004881011388,
+  &#39;data4&#39;: -1.0006616123448944},
+ (0, 1): {&#39;data1&#39;: 0.1425640998745108,
+  &#39;data2&#39;: 0.02032452257302949,
+  &#39;data3&#39;: 0.37757661457578484,
+  &#39;data4&#39;: -1.9479635567329971},
+ (1, 0): {&#39;data1&#39;: 0.67871583725104201,
+  &#39;data2&#39;: 0.46065518773538294,
+  &#39;data3&#39;: 0.82384211912904892,
+  &#39;data4&#39;: -0.38755274085918401},
+ (1, 1): {&#39;data1&#39;: 0.37571703918967791,
+  &#39;data2&#39;: 0.14116329353745796,
+  &#39;data3&#39;: 0.61295761614460575,
+  &#39;data4&#39;: -0.97891897425076624}}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
     </div>
   </div>
 </body>
+
 </html>
