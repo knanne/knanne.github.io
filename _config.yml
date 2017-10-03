@@ -92,6 +92,7 @@ defaults:
       author: Kain Nanne
       share: True # include social sharing buttons
       comments: True # include comments section
+      publish: True
   -
     scope:
       path: "_projects"
