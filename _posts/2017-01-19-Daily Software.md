@@ -89,9 +89,9 @@ conda update python
 conda update anaconda
 ```
 
-### Jupyter Notebook
+### Jupyter
 
-[Jupyter](http://jupyter.org/) (Formerly IpythonNotebook) now supports everything you would ever need for data analysis and visualization, even with interactive charts for some libraries.  
+[Jupyter Notebook](http://jupyter.org/) (Formerly IpythonNotebook) now supports everything you would ever need for data analysis and visualization, even with interactive charts for some libraries. Read the docs at [jupyter-notebook.readthedocs.io](http://jupyter-notebook.readthedocs.io/en/stable/notebook.html)  
 
 If you have multiple python versions (virtual environments), you can toggle which kernel to use from within Jupyter Notebook using the following libary.  
 

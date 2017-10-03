@@ -135,7 +135,7 @@ import sys
 # python installation location
 print(sys.executable)
 # python version
-print(sys.version_info())
+print(sys.version_info.major)
 ```
 
 ## Modify PATH

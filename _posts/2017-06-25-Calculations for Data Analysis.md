@@ -66,3 +66,21 @@ df['distance_mi'] = df['distance_km'].apply(lambda x: x / 1.609344)
 ```
 
 Try yourself with [this Jupyter Notebook]({{ site.nbviewer }}/pandas_apply_euclidean_distance.ipynb)
+
+# Compound Annual Growth Rate
+
+$$
+{CAGR={Last/First}^{1/n}-1}
+$$
+
+https://en.wikipedia.org/wiki/Compound_annual_growth_rate
+
+## Pandas
+
+```python
+df = pd.DataFrame(data=np.random.rand(36,4),
+                  index=pd.date_range(end=pd.datetime.now(), periods=36, freq='MS'),
+                  columns=['A', 'B', 'C', 'D'])
+
+(df.iloc[-1] / df.iloc[0]) ** (1/len(df)) - 1
+```

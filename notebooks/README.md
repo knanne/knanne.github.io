@@ -1,7 +1,7 @@
 # Writing Notebooks Procedure
 
   1. spin up a `jupyter notebook` server and create a `.ipynb` file in `~/_notebooks/jupyter`
-  2. run `jupyter nbconvert --to html --template full <NOTEBOOK.ipynb>`
+  2. run `jupyter nbconvert --to html --template template.tpl <NOTEBOOK.ipynb>`
     - remove `<!DOCTYPE html>` from the `.html` file
   3. **create new `.md` file in `/_notebooks` with filename as notebook `slug`**
     - add `title` to YAML frontmatter
