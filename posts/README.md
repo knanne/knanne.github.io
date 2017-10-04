@@ -41,7 +41,8 @@ Some more text...
 
 # Embed Content
 
-  - use markdown syntax (e.g. quotes, text formatting etc.)
+  - use markdown syntax (e.g. quotes, text formatting etc.), ref [GitHub's Guide](https://guides.github.com/features/mastering-markdown/)
+  - add latex with math blocks `$$...$$`, enabled by [MathJax](https://www.mathjax.org/)
   - add photos with `![<IMAGE>]({{ site.baseurl }}/assets/img/posts/<IMAGE>.png)`
     - images are fluid, 100% width and auto height
     - alternatively append `{:class="img-sm"}` to have image only 50% of width

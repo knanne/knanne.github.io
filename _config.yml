@@ -117,6 +117,7 @@ sass:
   sass_dir: _sass # @import "minima" comes from gem
   style: compressed
 
+#https://jekyllrb.com/docs/extras/#math-support
 markdown: kramdown
 kramdown:
   toc_levels: 1..1 #1..2 # only using h1 thru h2 to generate table of contents in posts
