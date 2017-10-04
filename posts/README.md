@@ -17,27 +17,27 @@
 
 ## Sample Post Setup
 
-    ```yaml
-    ---
-    categories: [category]
-    tags: [tag1, tag2]
-    ---
-    ```
-    
-    ```html
-    A template for creating posts...
+```yaml
+---
+categories: [category]
+tags: [tag1, tag2]
+---
+```
 
-    <!-- excerpt separator -->
+```html
+A template for creating posts...
 
-    * AUTO TABLE OF CONTENTS
-    {:toc}
+<!-- excerpt separator -->
 
-    ## Introduction
-    Some text...
+* AUTO TABLE OF CONTENTS
+{:toc}
 
-    ## First Paragraph
-    Some more text...
-    ```
+## Introduction
+Some text...
+
+## First Paragraph
+Some more text...
+```
 
 # Embed Content
 

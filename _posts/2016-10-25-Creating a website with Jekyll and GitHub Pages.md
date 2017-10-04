@@ -109,6 +109,10 @@ Therefore only install from gem for now if you are hosting on GitHub pages.
 
 Check out Jekyll's documentation on [Collections](https://jekyllrb.com/docs/collections/) for added functionality. This site uses collections to manage "Notebooks" and "Projects", separate from "Posts".  
 
+## Data
+
+Check out Jekyll's documentation on [Data Files](https://jekyllrb.com/docs/datafiles/) for added functionality. This site uses data files to manage added information on collections, like "Projects".  
+
 ## Search Engine Optimization
 
 - use the [jekyll seo gem](https://help.github.com/articles/search-engine-optimization-for-github-pages/)

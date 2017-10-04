@@ -12,17 +12,17 @@
 
 ## Sample Notebook Setup
 
-    ```yaml
-    ---
-    title: Pandas Visualization
-    date: '2017-09-30'
-    ---
-    ```
+```yaml
+---
+title: Pandas Visualization
+date: '2017-09-30'
+---
+```
 
-    ```html
-    A template for creating notebooks...
+```html
+A template for creating notebooks...
 
-    <!-- excerpt separator -->
+<!-- excerpt separator -->
 
-    {% include_relative jupyter/pandas_visualization.html %}
-    ```
+{% include_relative jupyter/pandas_visualization.html %}
+```
