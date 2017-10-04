@@ -12,7 +12,7 @@ layout: default
           <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
         </span>
         <span class="pull-right">
-          <a href="{{ site.nbviewer }}_notebooks/jupyter/{{ page.title | slugify | replace: "-", "_" }}.ipynb" rel="tooltip" title="View on jupyter.org">view on jupyter.org</a>
+          <a href="{{ site.nbviewer }}/_notebooks/jupyter/{{ page.title | slugify | replace: "-", "_" }}.ipynb" rel="tooltip" title="View on jupyter.org">view on jupyter.org</a>
         </span>
         <br>
       </p>
@@ -36,7 +36,7 @@ layout: default
           {% endcomment %}
         </span>
         <span class="pull-right">
-          <a href="{{ site.nbviewer }}_notebooks/jupyter/{{ page.title | slugify | replace: "-", "_" }}.ipynb" rel="tooltip" title="View on jupyter.org">view on jupyter.org</a>
+          <a href="{{ site.nbviewer }}/_notebooks/jupyter/{{ page.title | slugify | replace: "-", "_" }}.ipynb" rel="tooltip" title="View on jupyter.org">view on jupyter.org</a>
         </span>
       </p>
     </footer>
