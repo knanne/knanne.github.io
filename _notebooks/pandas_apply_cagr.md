@@ -1,5 +1,5 @@
 ---
-title: Pandas Apply Compound Annual Growth Rate
+title: Pandas Apply CAGR
 date: '2017-10-01'
 ---
 

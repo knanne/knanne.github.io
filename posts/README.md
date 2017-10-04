@@ -23,6 +23,7 @@
     tags: [tag1, tag2]
     ---
     ```
+    
     ```html
     A template for creating posts...
 

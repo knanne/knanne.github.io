@@ -4,7 +4,7 @@
   2. run `jupyter nbconvert --to html --template template.tpl <NOTEBOOK.ipynb>`
     - remove `<!DOCTYPE html>` from the `.html` file
   3. **create new `.md` file in `/_notebooks` with filename as notebook `slug`**
-    - add `title` to YAML frontmatter
+    - add `title` to YAML frontmatter (title needs to be same as `.ipynb` filename, "*slugified*" to access file from for nbviewer)
     - add `date` to YAML frontmatter
     - author is inherited from YAML defaults in `_config.yml`
   4. **include an excerpt followed by `<!-- excerpt separator -->`**

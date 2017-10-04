@@ -1,5 +1,5 @@
 ---
-title: Apply Euclidean Distance Using Pandas
+title: Pandas Apply Euclidean Distance
 date: '2017-09-30'
 ---
 
