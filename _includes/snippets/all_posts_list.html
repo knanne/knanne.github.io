@@ -1,0 +1,15 @@
+<ul class="list-group d-inline-flex justify-content-center">
+{% assign posts = site.posts | sort: 'date' %}
+{% assign posts = posts | reverse %}
+{% for post in posts %}
+  <a href="{{ site.baseurl }}{{ post.url }}" rel="tooltip" title="View Notebook">
+  <li class="list-group-item list-group-item-action align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <p>{{ post.title }}</p>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <small class="text-muted">{{ post.date | date: "%b %-d, %Y" }}</small>
+    </div>
+  </li>
+  </a>
+{% endfor %}
+</ul>

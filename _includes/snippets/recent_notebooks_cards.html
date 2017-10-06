@@ -1,5 +1,8 @@
-<div class="card-deck">
-	{% for notebook in site.notebooks limit : 3 %}
+<div class="card-deck d-inline-flex justify-content-center">
+	{% assign notebooks = site.notebooks | sort: 'date' %}
+	{% assign notebooks = notebooks | reverse %}
+	{% for notebook in notebooks limit: 3 %}
+	<!-- skip any files under /_notebooks which are not markdown and contains publish: True -->
 		{% if notebook.publish %}
 			<a href="{{ site.baseurl }}{{ notebook.url }}" rel="tooltip" title="View Notebook">
 				<div class="card card-hover">

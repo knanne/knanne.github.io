@@ -106,8 +106,10 @@ collections:
     permalink: /posts/:slug
   notebooks:
     output: True
+#    permalink: /:collections/:path
   projects:
     output: True
+#    permalink: /:collections/:path
 
 excerpt_separator: <!-- excerpt separator -->
 

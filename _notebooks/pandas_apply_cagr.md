@@ -1,6 +1,6 @@
 ---
 title: Pandas Apply CAGR
-date: '2017-10-01'
+date: '2017-10-02'
 ---
 
 Example of apply Compound Annual Growth Rate on a Pandas DataFrame

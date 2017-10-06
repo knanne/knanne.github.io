@@ -1,5 +1,7 @@
-<div class="card-deck">
-	{% for post in site.posts limit : 3 %}
+<div class="card-deck d-inline-flex justify-content-center">
+	{% assign posts = site.posts | sort: 'date' %}
+	{% assign posts = posts | reverse %}
+	{% for post in posts limit: 3 %}
 		<a href="{{ site.baseurl }}{{ post.url }}" rel="tooltip" title="View Post">
 			<div class="card card-hover">
 				<div class="card-header text-left">

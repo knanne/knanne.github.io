@@ -1,0 +1,18 @@
+<ul class="list-group d-inline-flex justify-content-center">
+{% assign notebooks = site.notebooks | sort: 'date' %}
+{% assign notebooks = notebooks | reverse %}
+{% for notebook in notebooks %}
+<!-- skip any files under /_notebooks which are not markdown and contains publish: True -->
+  {% if notebook.publish %}
+    <a href="{{ site.baseurl }}{{ notebook.url }}" rel="tooltip" title="View Notebook">
+    <li class="list-group-item list-group-item-action align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <p>{{ notebook.title }}</p>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <small class="text-muted">{{ notebook.date | date: "%b %-d, %Y" }}</small>
+      </div>
+    </li>
+    </a>
+  {% endif %}
+{% endfor %}
+</ul>

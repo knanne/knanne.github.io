@@ -1,6 +1,6 @@
 ---
 title: Pandas Visualization
-date: '2017-09-30'
+date: '2017-09-29'
 ---
 
 Complete example of data visualization in Pandas  
