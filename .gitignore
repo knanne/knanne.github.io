@@ -11,6 +11,5 @@ _drafts
 Gemfile.lock
 
 # extras
-/_notebooks/jupyter/data/*
-/_notebooks/jupyter/*.png
-/_notebooks/jupyter/*.svg
+/_notebooks/jupyter/data
+/_notebooks/jupyter/img

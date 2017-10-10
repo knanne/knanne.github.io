@@ -7,4 +7,4 @@ Example of converting Pandas DataFrame to and from a python dictionary (JSON)
 
 <!-- excerpt separator -->
 
-{% include_relative jupyter/pandas_json.html %}
+{% include_relative jupyter/pandas_multiindex_json.html %}

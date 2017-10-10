@@ -1,6 +1,6 @@
 <html>
 <head><meta charset="utf-8" />
-<title>pandas_json</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>pandas_multiindex</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11740,7 +11740,7 @@ div#notebook {
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
-<link rel="stylesheet" href="custom.scss">
+<link rel="stylesheet" href="custom.css">
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
@@ -11772,7 +11772,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Pandas-JSON">Pandas JSON<a class="anchor-link" href="#Pandas-JSON">&#182;</a></h1>
+<h1 id="Pandas-Multiindex">Pandas Multiindex<a class="anchor-link" href="#Pandas-Multiindex">&#182;</a></h1><p>The below examples are my summarized notes based on the <a href="https://pandas.pydata.org/pandas-docs/stable/advanced.html">Pandas docs on advanced indexing</a>. The documentation on Pandas is probably the best in the whole Python community. If you want to use the full power of Pandas yourself, <a href="https://pandas.pydata.org/pandas-docs/stable">start reading</a>!</p>
+
 </div>
 </div>
 </div>
@@ -11783,7 +11784,6 @@ div#notebook {
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">json</span>
 </pre></div>
 
 </div>
@@ -11795,29 +11795,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Read-JSON-File">Read JSON File<a class="anchor-link" href="#Read-JSON-File">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">d</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="DataFrame-From-Dictionary">DataFrame From Dictionary<a class="anchor-link" href="#DataFrame-From-Dictionary">&#182;</a></h2>
+<h1 id="Data">Data<a class="anchor-link" href="#Data">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -11826,11 +11804,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># dummy json data</span>
-<span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">)):</span>
-        <span class="n">d</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;data1&#39;</span><span class="p">:</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;data2&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="s1">&#39;data3&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="s1">&#39;data4&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">k</span><span class="p">)}</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;One&#39;</span><span class="p">,</span> <span class="s1">&#39;Two&#39;</span><span class="p">,</span> <span class="s1">&#39;Three&#39;</span><span class="p">,</span> <span class="s1">&#39;Four&#39;</span><span class="p">]</span>
+<span class="n">years</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">end</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="n">periods</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">year</span>
 </pre></div>
 
 </div>
@@ -11843,45 +11818,10 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">([</span><span class="n">categories</span><span class="p">,</span> <span class="n">years</span><span class="p">],</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">,</span><span class="s1">&#39;year&#39;</span><span class="p">])</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[3]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{(0, 0): {&#39;data1&#39;: 0.36763612809007506,
-  &#39;data2&#39;: 0.13515632267706207,
-  &#39;data3&#39;: 0.60633004881011388,
-  &#39;data4&#39;: -1.0006616123448944},
- (0, 1): {&#39;data1&#39;: 0.1425640998745108,
-  &#39;data2&#39;: 0.02032452257302949,
-  &#39;data3&#39;: 0.37757661457578484,
-  &#39;data4&#39;: -1.9479635567329971},
- (1, 0): {&#39;data1&#39;: 0.67871583725104201,
-  &#39;data2&#39;: 0.46065518773538294,
-  &#39;data3&#39;: 0.82384211912904892,
-  &#39;data4&#39;: -0.38755274085918401},
- (1, 1): {&#39;data1&#39;: 0.37571703918967791,
-  &#39;data2&#39;: 0.14116329353745796,
-  &#39;data3&#39;: 0.61295761614460575,
-  &#39;data4&#39;: -0.97891897425076624}}</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -11891,8 +11831,9 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create DataFrame from dictionary where keys are DataFrame multiindex</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span>
+                  <span class="n">index</span><span class="o">=</span><span class="n">idx</span><span class="p">,</span>
+                  <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -11903,20 +11844,6 @@ div#notebook {
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># rename multiindex</span>
-<span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;category1&#39;</span><span class="p">,</span> <span class="s1">&#39;category2&#39;</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>
@@ -11932,7 +11859,7 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[6]:</div>
+<div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -11956,14 +11883,22 @@ div#notebook {
     <tr style="text-align: right;">
       <th></th>
       <th></th>
-      <th>data3</th>
-      <th>data1</th>
-      <th>data2</th>
-      <th>data4</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>E</th>
+      <th>F</th>
+      <th>G</th>
+      <th>H</th>
     </tr>
     <tr>
-      <th>category1</th>
-      <th>category2</th>
+      <th>category</th>
+      <th>year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -11972,34 +11907,184 @@ div#notebook {
   </thead>
   <tbody>
     <tr>
-      <th rowspan="2" valign="top">0</th>
-      <th>0</th>
-      <td>0.606330</td>
-      <td>0.367636</td>
-      <td>0.135156</td>
-      <td>-1.000662</td>
+      <th rowspan="4" valign="top">One</th>
+      <th>2013</th>
+      <td>0.360327</td>
+      <td>0.985771</td>
+      <td>0.245880</td>
+      <td>0.685196</td>
+      <td>0.349286</td>
+      <td>0.451878</td>
+      <td>0.791817</td>
+      <td>0.729653</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>0.377577</td>
-      <td>0.142564</td>
-      <td>0.020325</td>
-      <td>-1.947964</td>
+      <th>2014</th>
+      <td>0.564336</td>
+      <td>0.012453</td>
+      <td>0.021836</td>
+      <td>0.100025</td>
+      <td>0.566593</td>
+      <td>0.705033</td>
+      <td>0.623865</td>
+      <td>0.278955</td>
     </tr>
     <tr>
-      <th rowspan="2" valign="top">1</th>
-      <th>0</th>
-      <td>0.823842</td>
-      <td>0.678716</td>
-      <td>0.460655</td>
-      <td>-0.387553</td>
+      <th>2015</th>
+      <td>0.054157</td>
+      <td>0.404670</td>
+      <td>0.845568</td>
+      <td>0.552805</td>
+      <td>0.025161</td>
+      <td>0.837562</td>
+      <td>0.016496</td>
+      <td>0.386726</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>0.612958</td>
-      <td>0.375717</td>
-      <td>0.141163</td>
-      <td>-0.978919</td>
+      <th>2016</th>
+      <td>0.709684</td>
+      <td>0.489236</td>
+      <td>0.892152</td>
+      <td>0.333964</td>
+      <td>0.536528</td>
+      <td>0.243267</td>
+      <td>0.686957</td>
+      <td>0.188799</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">Two</th>
+      <th>2013</th>
+      <td>0.570331</td>
+      <td>0.982830</td>
+      <td>0.826117</td>
+      <td>0.592185</td>
+      <td>0.148816</td>
+      <td>0.048780</td>
+      <td>0.135223</td>
+      <td>0.509763</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>0.234321</td>
+      <td>0.395749</td>
+      <td>0.363677</td>
+      <td>0.823273</td>
+      <td>0.379848</td>
+      <td>0.425719</td>
+      <td>0.453727</td>
+      <td>0.916822</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>0.748280</td>
+      <td>0.371602</td>
+      <td>0.066802</td>
+      <td>0.273414</td>
+      <td>0.989124</td>
+      <td>0.453888</td>
+      <td>0.383820</td>
+      <td>0.113457</td>
+    </tr>
+    <tr>
+      <th>2016</th>
+      <td>0.769954</td>
+      <td>0.525683</td>
+      <td>0.490095</td>
+      <td>0.035429</td>
+      <td>0.315791</td>
+      <td>0.545273</td>
+      <td>0.720569</td>
+      <td>0.818346</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">Three</th>
+      <th>2013</th>
+      <td>0.106577</td>
+      <td>0.380808</td>
+      <td>0.927207</td>
+      <td>0.287780</td>
+      <td>0.492644</td>
+      <td>0.086994</td>
+      <td>0.889591</td>
+      <td>0.933095</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>0.561857</td>
+      <td>0.506371</td>
+      <td>0.962382</td>
+      <td>0.163667</td>
+      <td>0.484239</td>
+      <td>0.374857</td>
+      <td>0.094392</td>
+      <td>0.643644</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>0.197825</td>
+      <td>0.710943</td>
+      <td>0.390355</td>
+      <td>0.811361</td>
+      <td>0.581469</td>
+      <td>0.154026</td>
+      <td>0.469202</td>
+      <td>0.669786</td>
+    </tr>
+    <tr>
+      <th>2016</th>
+      <td>0.667968</td>
+      <td>0.503369</td>
+      <td>0.187386</td>
+      <td>0.908971</td>
+      <td>0.998324</td>
+      <td>0.833267</td>
+      <td>0.655844</td>
+      <td>0.209545</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">Four</th>
+      <th>2013</th>
+      <td>0.980583</td>
+      <td>0.585293</td>
+      <td>0.011230</td>
+      <td>0.427428</td>
+      <td>0.576045</td>
+      <td>0.964909</td>
+      <td>0.971147</td>
+      <td>0.883435</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>0.040763</td>
+      <td>0.927800</td>
+      <td>0.615672</td>
+      <td>0.731586</td>
+      <td>0.768721</td>
+      <td>0.078744</td>
+      <td>0.984370</td>
+      <td>0.565257</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>0.862900</td>
+      <td>0.051075</td>
+      <td>0.831173</td>
+      <td>0.845419</td>
+      <td>0.022534</td>
+      <td>0.754840</td>
+      <td>0.002456</td>
+      <td>0.634279</td>
+    </tr>
+    <tr>
+      <th>2016</th>
+      <td>0.458775</td>
+      <td>0.018586</td>
+      <td>0.433801</td>
+      <td>0.531906</td>
+      <td>0.608046</td>
+      <td>0.599256</td>
+      <td>0.986199</td>
+      <td>0.039592</td>
     </tr>
   </tbody>
 </table>
@@ -12016,16 +12101,56 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Dictionary-From-DataFrame">Dictionary From DataFrame<a class="anchor-link" href="#Dictionary-From-DataFrame">&#182;</a></h2>
+<h1 id="Multiindex-Columns">Multiindex Columns<a class="anchor-link" href="#Multiindex-Columns">&#182;</a></h1><p>I recomend creating you multi-header as a list of tuples, then using <code>pd.MultiIndex.from_tuples</code>, set it as the DataFrame columns.</p>
+
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Group1&#39;</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span> <span class="k">else</span> <span class="s1">&#39;Group2&#39;</span><span class="p">,</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">,</span><span class="s1">&#39;subgroup&#39;</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">idx</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>
 </pre></div>
 
 </div>
@@ -12038,28 +12163,242 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[7]:</div>
+<div class="prompt output_prompt">Out[9]:</div>
 
 
 
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
 
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;data1&#39;: {(0, 0): 0.36763612809007506,
-  (0, 1): 0.1425640998745108,
-  (1, 0): 0.67871583725104201,
-  (1, 1): 0.37571703918967791},
- &#39;data2&#39;: {(0, 0): 0.13515632267706207,
-  (0, 1): 0.02032452257302949,
-  (1, 0): 0.46065518773538294,
-  (1, 1): 0.14116329353745796},
- &#39;data3&#39;: {(0, 0): 0.60633004881011388,
-  (0, 1): 0.37757661457578484,
-  (1, 0): 0.82384211912904892,
-  (1, 1): 0.61295761614460575},
- &#39;data4&#39;: {(0, 0): -1.0006616123448944,
-  (0, 1): -1.9479635567329971,
-  (1, 0): -0.38755274085918401,
-  (1, 1): -0.97891897425076624}}</pre>
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>group</th>
+      <th colspan="4" halign="left">Group1</th>
+      <th colspan="4" halign="left">Group2</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>subgroup</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>E</th>
+      <th>F</th>
+      <th>G</th>
+      <th>H</th>
+    </tr>
+    <tr>
+      <th>category</th>
+      <th>year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="4" valign="top">One</th>
+      <th>2013</th>
+      <td>0.360327</td>
+      <td>0.985771</td>
+      <td>0.245880</td>
+      <td>0.685196</td>
+      <td>0.349286</td>
+      <td>0.451878</td>
+      <td>0.791817</td>
+      <td>0.729653</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>0.564336</td>
+      <td>0.012453</td>
+      <td>0.021836</td>
+      <td>0.100025</td>
+      <td>0.566593</td>
+      <td>0.705033</td>
+      <td>0.623865</td>
+      <td>0.278955</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>0.054157</td>
+      <td>0.404670</td>
+      <td>0.845568</td>
+      <td>0.552805</td>
+      <td>0.025161</td>
+      <td>0.837562</td>
+      <td>0.016496</td>
+      <td>0.386726</td>
+    </tr>
+    <tr>
+      <th>2016</th>
+      <td>0.709684</td>
+      <td>0.489236</td>
+      <td>0.892152</td>
+      <td>0.333964</td>
+      <td>0.536528</td>
+      <td>0.243267</td>
+      <td>0.686957</td>
+      <td>0.188799</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">Two</th>
+      <th>2013</th>
+      <td>0.570331</td>
+      <td>0.982830</td>
+      <td>0.826117</td>
+      <td>0.592185</td>
+      <td>0.148816</td>
+      <td>0.048780</td>
+      <td>0.135223</td>
+      <td>0.509763</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>0.234321</td>
+      <td>0.395749</td>
+      <td>0.363677</td>
+      <td>0.823273</td>
+      <td>0.379848</td>
+      <td>0.425719</td>
+      <td>0.453727</td>
+      <td>0.916822</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>0.748280</td>
+      <td>0.371602</td>
+      <td>0.066802</td>
+      <td>0.273414</td>
+      <td>0.989124</td>
+      <td>0.453888</td>
+      <td>0.383820</td>
+      <td>0.113457</td>
+    </tr>
+    <tr>
+      <th>2016</th>
+      <td>0.769954</td>
+      <td>0.525683</td>
+      <td>0.490095</td>
+      <td>0.035429</td>
+      <td>0.315791</td>
+      <td>0.545273</td>
+      <td>0.720569</td>
+      <td>0.818346</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">Three</th>
+      <th>2013</th>
+      <td>0.106577</td>
+      <td>0.380808</td>
+      <td>0.927207</td>
+      <td>0.287780</td>
+      <td>0.492644</td>
+      <td>0.086994</td>
+      <td>0.889591</td>
+      <td>0.933095</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>0.561857</td>
+      <td>0.506371</td>
+      <td>0.962382</td>
+      <td>0.163667</td>
+      <td>0.484239</td>
+      <td>0.374857</td>
+      <td>0.094392</td>
+      <td>0.643644</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>0.197825</td>
+      <td>0.710943</td>
+      <td>0.390355</td>
+      <td>0.811361</td>
+      <td>0.581469</td>
+      <td>0.154026</td>
+      <td>0.469202</td>
+      <td>0.669786</td>
+    </tr>
+    <tr>
+      <th>2016</th>
+      <td>0.667968</td>
+      <td>0.503369</td>
+      <td>0.187386</td>
+      <td>0.908971</td>
+      <td>0.998324</td>
+      <td>0.833267</td>
+      <td>0.655844</td>
+      <td>0.209545</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">Four</th>
+      <th>2013</th>
+      <td>0.980583</td>
+      <td>0.585293</td>
+      <td>0.011230</td>
+      <td>0.427428</td>
+      <td>0.576045</td>
+      <td>0.964909</td>
+      <td>0.971147</td>
+      <td>0.883435</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>0.040763</td>
+      <td>0.927800</td>
+      <td>0.615672</td>
+      <td>0.731586</td>
+      <td>0.768721</td>
+      <td>0.078744</td>
+      <td>0.984370</td>
+      <td>0.565257</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>0.862900</td>
+      <td>0.051075</td>
+      <td>0.831173</td>
+      <td>0.845419</td>
+      <td>0.022534</td>
+      <td>0.754840</td>
+      <td>0.002456</td>
+      <td>0.634279</td>
+    </tr>
+    <tr>
+      <th>2016</th>
+      <td>0.458775</td>
+      <td>0.018586</td>
+      <td>0.433801</td>
+      <td>0.531906</td>
+      <td>0.608046</td>
+      <td>0.599256</td>
+      <td>0.986199</td>
+      <td>0.039592</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -12072,17 +12411,72 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To get back to original format we had, first transpose.</p>
+<h1 id="Slicing">Slicing<a class="anchor-link" href="#Slicing">&#182;</a></h1><p>Pandas already has great documenation on <a href="https://pandas.pydata.org/pandas-docs/stable/advanced.html#using-slicers">using slicers</a>. Below if my simplified TLDR version.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>To allow slicing, you must first sort the index.</strong></p>
+<blockquote><p>For MultiIndex-ed objects to be indexed &amp; sliced effectively, they need to be sorted. As with any index, you can use <code>sort_index</code>. - <a href="https://pandas-docs.github.io/pandas-docs-travis/advanced.html#sorting-a-multiindex">Pandas docs</a></p>
+</blockquote>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>For the most convenient and logical slicing, use the builtin <code>pd.IndexSlice</code> tool</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example slice on all levels avialble.</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">[[</span><span class="s1">&#39;One&#39;</span><span class="p">,</span> <span class="s1">&#39;Two&#39;</span><span class="p">],[</span><span class="mi">2014</span><span class="p">,</span><span class="mi">2015</span><span class="p">]],</span><span class="n">idx</span><span class="p">[[</span><span class="s1">&#39;Group1&#39;</span><span class="p">,</span> <span class="s1">&#39;Group2&#39;</span><span class="p">],[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">]]]</span>
 </pre></div>
 
 </div>
@@ -12095,28 +12489,823 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[8]:</div>
+<div class="prompt output_prompt">Out[12]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>group</th>
+      <th colspan="2" halign="left">Group1</th>
+      <th>Group2</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>subgroup</th>
+      <th>C</th>
+      <th>D</th>
+      <th>E</th>
+    </tr>
+    <tr>
+      <th>category</th>
+      <th>year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">One</th>
+      <th>2014</th>
+      <td>0.021836</td>
+      <td>0.100025</td>
+      <td>0.566593</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>0.845568</td>
+      <td>0.552805</td>
+      <td>0.025161</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Two</th>
+      <th>2014</th>
+      <td>0.363677</td>
+      <td>0.823273</td>
+      <td>0.379848</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>0.066802</td>
+      <td>0.273414</td>
+      <td>0.989124</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Slice on partial indices, and use <code>:</code> for accessing all others. Below is warning from the docs.</strong></p>
+<blockquote><p><mark>Warning</mark> You should specify all axes in the .loc specifier, meaning the indexer for the index and for the columns. There are some ambiguous cases where the passed indexer could be mis-interpreted as indexing both axes, rather than into say the MuliIndex for the rows. - <a href="https://pandas.pydata.org/pandas-docs/stable/advanced.html#using-slicers">Pandas docs</a></p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">[:,[</span><span class="mi">2016</span><span class="p">]],</span><span class="n">idx</span><span class="p">[</span><span class="s1">&#39;Group2&#39;</span><span class="p">,:]]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[13]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>group</th>
+      <th colspan="4" halign="left">Group2</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>subgroup</th>
+      <th>E</th>
+      <th>F</th>
+      <th>G</th>
+      <th>H</th>
+    </tr>
+    <tr>
+      <th>category</th>
+      <th>year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Four</th>
+      <th>2016</th>
+      <td>0.608046</td>
+      <td>0.599256</td>
+      <td>0.986199</td>
+      <td>0.039592</td>
+    </tr>
+    <tr>
+      <th>One</th>
+      <th>2016</th>
+      <td>0.536528</td>
+      <td>0.243267</td>
+      <td>0.686957</td>
+      <td>0.188799</td>
+    </tr>
+    <tr>
+      <th>Three</th>
+      <th>2016</th>
+      <td>0.998324</td>
+      <td>0.833267</td>
+      <td>0.655844</td>
+      <td>0.209545</td>
+    </tr>
+    <tr>
+      <th>Two</th>
+      <th>2016</th>
+      <td>0.315791</td>
+      <td>0.545273</td>
+      <td>0.720569</td>
+      <td>0.818346</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Reindexing">Reindexing<a class="anchor-link" href="#Reindexing">&#182;</a></h1><p>I recommend first creating a new index from your individually altered components, then reindex all levels at one time.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">new_categories</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;Zero&#39;</span><span class="p">,</span> <span class="s1">&#39;Five&#39;</span><span class="p">]</span>
+<span class="n">new_categories</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[14]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{(0, 0): {&#39;data1&#39;: 0.36763612809007506,
-  &#39;data2&#39;: 0.13515632267706207,
-  &#39;data3&#39;: 0.60633004881011388,
-  &#39;data4&#39;: -1.0006616123448944},
- (0, 1): {&#39;data1&#39;: 0.1425640998745108,
-  &#39;data2&#39;: 0.02032452257302949,
-  &#39;data3&#39;: 0.37757661457578484,
-  &#39;data4&#39;: -1.9479635567329971},
- (1, 0): {&#39;data1&#39;: 0.67871583725104201,
-  &#39;data2&#39;: 0.46065518773538294,
-  &#39;data3&#39;: 0.82384211912904892,
-  &#39;data4&#39;: -0.38755274085918401},
- (1, 1): {&#39;data1&#39;: 0.37571703918967791,
-  &#39;data2&#39;: 0.14116329353745796,
-  &#39;data3&#39;: 0.61295761614460575,
-  &#39;data4&#39;: -0.97891897425076624}}</pre>
+<pre>[&#39;Four&#39;, &#39;One&#39;, &#39;Three&#39;, &#39;Two&#39;, &#39;Zero&#39;, &#39;Five&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">new_years</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> 
+                       <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">new_years</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[15]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[2011, 2012, 2013, 2014, 2015, 2016, 2017]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">([</span><span class="n">new_categories</span><span class="p">,</span> <span class="n">new_years</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[17]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>group</th>
+      <th colspan="4" halign="left">Group1</th>
+      <th colspan="4" halign="left">Group2</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>subgroup</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>E</th>
+      <th>F</th>
+      <th>G</th>
+      <th>H</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="7" valign="top">Four</th>
+      <th>2011</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2012</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2013</th>
+      <td>0.980583</td>
+      <td>0.585293</td>
+      <td>0.011230</td>
+      <td>0.427428</td>
+      <td>0.576045</td>
+      <td>0.964909</td>
+      <td>0.971147</td>
+      <td>0.883435</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>0.040763</td>
+      <td>0.927800</td>
+      <td>0.615672</td>
+      <td>0.731586</td>
+      <td>0.768721</td>
+      <td>0.078744</td>
+      <td>0.984370</td>
+      <td>0.565257</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>0.862900</td>
+      <td>0.051075</td>
+      <td>0.831173</td>
+      <td>0.845419</td>
+      <td>0.022534</td>
+      <td>0.754840</td>
+      <td>0.002456</td>
+      <td>0.634279</td>
+    </tr>
+    <tr>
+      <th>2016</th>
+      <td>0.458775</td>
+      <td>0.018586</td>
+      <td>0.433801</td>
+      <td>0.531906</td>
+      <td>0.608046</td>
+      <td>0.599256</td>
+      <td>0.986199</td>
+      <td>0.039592</td>
+    </tr>
+    <tr>
+      <th>2017</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="7" valign="top">One</th>
+      <th>2011</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2012</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2013</th>
+      <td>0.360327</td>
+      <td>0.985771</td>
+      <td>0.245880</td>
+      <td>0.685196</td>
+      <td>0.349286</td>
+      <td>0.451878</td>
+      <td>0.791817</td>
+      <td>0.729653</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>0.564336</td>
+      <td>0.012453</td>
+      <td>0.021836</td>
+      <td>0.100025</td>
+      <td>0.566593</td>
+      <td>0.705033</td>
+      <td>0.623865</td>
+      <td>0.278955</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>0.054157</td>
+      <td>0.404670</td>
+      <td>0.845568</td>
+      <td>0.552805</td>
+      <td>0.025161</td>
+      <td>0.837562</td>
+      <td>0.016496</td>
+      <td>0.386726</td>
+    </tr>
+    <tr>
+      <th>2016</th>
+      <td>0.709684</td>
+      <td>0.489236</td>
+      <td>0.892152</td>
+      <td>0.333964</td>
+      <td>0.536528</td>
+      <td>0.243267</td>
+      <td>0.686957</td>
+      <td>0.188799</td>
+    </tr>
+    <tr>
+      <th>2017</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="7" valign="top">Three</th>
+      <th>2011</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2012</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2013</th>
+      <td>0.106577</td>
+      <td>0.380808</td>
+      <td>0.927207</td>
+      <td>0.287780</td>
+      <td>0.492644</td>
+      <td>0.086994</td>
+      <td>0.889591</td>
+      <td>0.933095</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>0.561857</td>
+      <td>0.506371</td>
+      <td>0.962382</td>
+      <td>0.163667</td>
+      <td>0.484239</td>
+      <td>0.374857</td>
+      <td>0.094392</td>
+      <td>0.643644</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>0.197825</td>
+      <td>0.710943</td>
+      <td>0.390355</td>
+      <td>0.811361</td>
+      <td>0.581469</td>
+      <td>0.154026</td>
+      <td>0.469202</td>
+      <td>0.669786</td>
+    </tr>
+    <tr>
+      <th>2016</th>
+      <td>0.667968</td>
+      <td>0.503369</td>
+      <td>0.187386</td>
+      <td>0.908971</td>
+      <td>0.998324</td>
+      <td>0.833267</td>
+      <td>0.655844</td>
+      <td>0.209545</td>
+    </tr>
+    <tr>
+      <th>2017</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="7" valign="top">Two</th>
+      <th>2011</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2012</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2013</th>
+      <td>0.570331</td>
+      <td>0.982830</td>
+      <td>0.826117</td>
+      <td>0.592185</td>
+      <td>0.148816</td>
+      <td>0.048780</td>
+      <td>0.135223</td>
+      <td>0.509763</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>0.234321</td>
+      <td>0.395749</td>
+      <td>0.363677</td>
+      <td>0.823273</td>
+      <td>0.379848</td>
+      <td>0.425719</td>
+      <td>0.453727</td>
+      <td>0.916822</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>0.748280</td>
+      <td>0.371602</td>
+      <td>0.066802</td>
+      <td>0.273414</td>
+      <td>0.989124</td>
+      <td>0.453888</td>
+      <td>0.383820</td>
+      <td>0.113457</td>
+    </tr>
+    <tr>
+      <th>2016</th>
+      <td>0.769954</td>
+      <td>0.525683</td>
+      <td>0.490095</td>
+      <td>0.035429</td>
+      <td>0.315791</td>
+      <td>0.545273</td>
+      <td>0.720569</td>
+      <td>0.818346</td>
+    </tr>
+    <tr>
+      <th>2017</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="7" valign="top">Zero</th>
+      <th>2011</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2012</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2013</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2016</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2017</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="7" valign="top">Five</th>
+      <th>2011</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2012</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2013</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2016</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2017</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
