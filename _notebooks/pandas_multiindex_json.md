@@ -1,5 +1,5 @@
 ---
-title: Pandas JSON
+title: Pandas MultiIndex JSON
 date: '2017-10-01'
 ---
 

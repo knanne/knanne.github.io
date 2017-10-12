@@ -1,5 +1,5 @@
 ---
-title: Pandas Multiindex
+title: Pandas MultiIndex
 date: '2017-10-10'
 ---
 
