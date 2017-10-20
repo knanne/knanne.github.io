@@ -29,14 +29,14 @@ Most open source projects are on GitHub. Checkout [GitHub Explore](https://githu
 
 Also, check out [GitHub's reference on user autolinks](https://help.github.com/articles/autolinked-references-and-urls/) to things like commits, issues, or users.  
 
-# GitHub Pages
+## GitHub Pages
 
 Use [GitHub Pages](https://pages.github.com/) to publish a site for a GitHub account (personal/organization), as well as for hosting GitHub projects like:  
 
 - blog or website using jekyll, at `username.github.io` ([source](https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/))  
 - webapp project using the `/docs` folder in project master branch, and find the project at `username.github.io/project` ([source](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/))  
 
-# Start Project
+# Config
 
 Easiest way to start is create a repository on [Github](https://github.com) or [GitLab](https://gitlab.com/), then clone it to local.  
 
@@ -140,10 +140,10 @@ I highly recommend using [Atom](https://atom.io/) while resolving conflicts. It 
 
 ```shell
 git checkout feature
-git rebase master
+git pull
 ```
 
-At this point you may have merge conflicts, which could even contain random files like jupyter notebooks that are difficult to manually navigate for resolving conflicts. If you want to simply **keep the changes on your local feature branch** of a specific file, and apply them on top of the files being pulled in, do the following:  
+In case of conflicts and you want to simply **keep the changes on your local feature branch** of a specific file, and apply them on top of the files being pulled in, do the following:  
 
 ```shell
 git checkout --ours <FILE>.py
@@ -163,7 +163,7 @@ git checkout feature
 git rebase master
 ```
 
-At the point of existing merge conflicts and you don't want to manually resolve, do the following to **keep the changes from the new feature branch** of a specific file, and apply them on top of master:  
+In case of conflicts and you want to simply **keep the changes from the new feature branch** of a specific file, and apply them on top of master, do the following:  
 
 ```shell
 git checkout --theirs <FILE>.ipynb

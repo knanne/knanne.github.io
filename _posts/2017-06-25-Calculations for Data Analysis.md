@@ -73,7 +73,7 @@ $$
 {CAGR={Last/First}^{1/n}-1}
 $$
 
-https://en.wikipedia.org/wiki/Compound_annual_growth_rate
+[https://en.wikipedia.org/wiki/Compound_annual_growth_rate](https://en.wikipedia.org/wiki/Compound_annual_growth_rate)  
 
 ## Pandas
 

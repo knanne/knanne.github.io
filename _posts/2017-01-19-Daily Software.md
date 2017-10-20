@@ -188,6 +188,8 @@ tree
 dir /b
 # list all files in subfolders  
 dir /s
+# run a program
+start atom
 ```
 
 ### Windows Bash
