@@ -146,8 +146,15 @@ Setup a local instance of [PostgreSQL](https://www.postgresql.org/download/)
 [DBeaver](http://dbeaver.jkiss.org/download/) is an open source universal SQL client.
 
 > Free multi-platform database tool for developers, SQL programmers, database administrators and analysts. Supports all popular databases: MySQL, PostgreSQL, SQLite, Oracle, DB2, SQL Server, Sybase, Teradata, MongoDB, Cassandra, Redis, etc. - [website](http://dbeaver.jkiss.org/)
-
 # Internet
+
+## Google Services
+
+I use basically all google services, because I have always been a fan of Android. However, I am also a fan of keeping Windows. So here are some tips on integrating the two.  
+
+- in Windows 10, add your Google account to either "Mail", "Calendar", or "People" as these are actually all the same, and you will receive all your mail, calendar, and contacts from Google natively in the Windows notification center.
+- download [Google Drive](https://www.google.com/drive/download/), and setup Backup and Sync. Your Google Photos will be automatically synced as well, as long as you have the sync on from your phone.
+- in Google Chrome, navigate to a Google service of choice (e.g. keep.google.com, news.google.com, voice.google.com, hangouts.google.com, photos.google.com etc.), then go to `Menu > More tools > Add to desktop` and make sure `Open as new window` is checked  
 
 ## Chrome
 

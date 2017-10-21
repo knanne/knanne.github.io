@@ -28,7 +28,7 @@ This list contains tools I have used before but do not use on a daily basis. You
 
 # Platforms
 
-# KNIME
+## KNIME
 
 I have used [KNIME](https://www.knime.com/knime-analytics-platform) for basic data transformation, automate ETL pipelines, and build full reporting webapps. Unfortunately you would need to pay to host the KNIME server somewhere to take full advantage of web access to workflows, but you can still do everything else with the desktop version.  
 
@@ -44,7 +44,7 @@ Want to start with python? Just [download Anaconda](https://www.anaconda.com/dow
 
 ## Jupyter
 
-If you installed Anaconda, you have Jupyter. Now just fire up a notebook from the command line with `jupyter notebook`, navigate to `localhost:8888` and start programming, visualizing, and taking notes (e.g. markdown, html, latex etc.). For more see [Jupyter Quickstart](https://jupyter.readthedocs.io/en/latest/content-quickstart.html)  
+If you installed Anaconda, you have Jupyter. Now just fire up a notebook from the command line with `jupyter notebook`, navigate to `localhost:8888` and start programming, visualizing, and taking notes (e.g. markdown, html, latex etc.). For more see [Jupyter Quickstart](https://jupyter.readthedocs.io/en/latest/content-quickstart.html). Note, you can program in other languages besides Python by installing different [kernals](http://jupyter.readthedocs.io/en/latest/install-kernel.html).  
 
 > The Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more. - [website](http://jupyter.org/)  
 

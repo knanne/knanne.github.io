@@ -55,7 +55,7 @@ Find the app hosted at [http://localhost:4000/](http://127.0.0.1:4000)
 
 # Customization  
 
-## gems
+## Gems
 
 Learn about [gems and the bundler](http://jekyll.tips/jekyll-casts/gemfiles-and-the-bundler/)  
 
@@ -87,7 +87,7 @@ To remove the default theme, remove the `gem 'minima'` in Gemfile, and remove `t
 
 ## Jekyll Engine  
 
-- refer to the jekyll [cheat sheet](http://jekyll.tips/jekyll-cheat-sheet/)  
+- refer to the Jekyll [cheat sheet](http://jekyll.tips/jekyll-cheat-sheet/)  
 
 ## YAML Frontmatter  
 
@@ -99,11 +99,9 @@ To remove the default theme, remove the `gem 'minima'` in Gemfile, and remove `t
 
 ## Plugins
 
-Plugins written in Ruby and either store in your `_plugins` dir or installed with a gem are able to add a lot of convenience and features to a site.
+Plugins written in Ruby and either store in your `_plugins` dir or installed with a gem are able to add a lot of convenience and features to a site.  
 
-But, [according to the Jekyll docs](http://jekyllrb.com/docs/plugins/), custom `.rb` files do not run during build on GitHub pages since it is built in `--safe` mode.
-
-Therefore only install from gem for now if you are hosting on GitHub pages.
+However, [according to the Jekyll docs](http://jekyllrb.com/docs/plugins/), custom `.rb` files do not run during build on GitHub pages since it is built in `--safe` mode. Therefore only install from available gems for now if you are hosting on GitHub pages.  
 
 ## Collections
 
@@ -117,6 +115,38 @@ Check out Jekyll's documentation on [Data Files](https://jekyllrb.com/docs/dataf
 
 - use the [jekyll seo gem](https://help.github.com/articles/search-engine-optimization-for-github-pages/)
 - create a [jekyll sitemap](https://github.com/jekyll/jekyll-sitemap)
+
+# Blog
+
+Most people use Jekyll for creating a blog, or at least sharing code snippets and notes in some form of posts. I am doing the same on this site.  
+
+## Embedding Content
+
+Of course in a basic HTML page, you have the freedom to create whatever you want. If you are using markdown, which this site uses, to create your posts, it may be a bit more mysterious although possible none the less.  
+
+### Basic Content
+- use markdown syntax for assing code blocks, quotes, text formatting and the like. Refer to [GitHub's Guide on Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
+- add latex with math blocks `$$...$$`, enabled by [MathJax](https://www.mathjax.org/)
+- add photos with `![<IMAGE>]({{ site.baseurl }}/path/to/image.png)`
+- embed HTML inside a `<div></div>` container
+
+### GitHub Gists
+
+Embed a larger code snippet, posted on [GitHub Gists](https://gist.github.com/), by simply adding the following in your markdown post.  
+
+```
+<div>
+  <script src="https://gist.github.com/<USERNAME>/<GIST-ID>.py"></script>
+</div>
+```
+
+### Jupyter Notebooks
+
+[Jupyter Notebooks](http://jupyter.org/) are becoming an increasingly popular way to code quickly, as well as share fully documented data science workflows.  
+
+The easiest way to add a Jupyter notebook to your post is to [convert it to HTML using nbconvert](https://nbconvert.readthedocs.io/en/latest/usage.html), then embed simply use Liquid to include it in your markdown post. The conversion from the command line would like something like this `jupyter nbconvert --to html <NOTEBOOK.ipynb>`, and to include it use `{% include_relative path/to/<NOTEBOOK>.html %}` making sure the post is in a subdirectory of the post (or use normal `include` if the notebook is in your `_includes` folder)  
+
+Note, you can always link to a free rendering of your notebook on Github using [Jupyter nbviewer](http://nbviewer.jupyter.org/). An example link would look like `http://nbviewer.jupyter.org/github/<USERNAME>/<PROJECT>/blob/master/path/to/<NOTEBOOOK>.ipynb`  
 
 ## Site Comments
 
