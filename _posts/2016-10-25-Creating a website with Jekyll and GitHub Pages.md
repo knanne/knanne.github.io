@@ -55,9 +55,17 @@ Find the app hosted at [http://localhost:4000/](http://127.0.0.1:4000)
 
 # Customization  
 
+With some creativity, you can hack your website into anything you want. But there is a lot of useful functionality out of the box with Jekyll. For example, make sure you understand how to use the following features.  
+
+## Theme  
+
+To remove the default theme, remove the `gem 'minima'` in Gemfile, and remove `theme='minima'` settings in `_config.yml`. Otherwise import a local css/sass file to simply override theme settings.  
+
 ## Gems
 
-Learn about [gems and the bundler](http://jekyll.tips/jekyll-casts/gemfiles-and-the-bundler/)  
+Jekyll is written in Ruby, a programming language which refers to their libraries or packages as Gems, and therefore Jekyll uses Gems for third-party features.  
+
+Learn about [Jekyll gems and the bundler](http://jekyll.tips/jekyll-casts/gemfiles-and-the-bundler/)  
 
 add a `gem` to your `config.yml` file  
 
@@ -81,27 +89,33 @@ end
 
 If you modify the Gemfile, you must then run `bundle install`  
 
-## Theme  
-
-To remove the default theme, remove the `gem 'minima'` in Gemfile, and remove `theme='minima'` settings in `_config.yml`. Otherwise import a local css/sass file to simply override theme settings.  
-
-## Jekyll Engine  
-
-- refer to the Jekyll [cheat sheet](http://jekyll.tips/jekyll-cheat-sheet/)  
-
 ## YAML Frontmatter  
+
+What the heck is YAML?
+
+> YAML is a human friendly data serialization standard for all programming languages. - [website](http://yaml.org/)
+
+It is basically a markup language used to store configuration data. Jekyll sites commonly use it to store data on blog posts like dates, and tags and the like.    
 
 - read what Jekyll advises on [front matter](https://jekyllrb.com/docs/frontmatter/)
 
 ## Liquid for Automation  
 
+What the heck is Liquid?  
+
 > "Liquid is an open-source template language created by Shopify and written in Ruby." - [website](https://shopify.github.io/liquid/)  
+
+It is basically a language for dynamically rendering templates without any server-side processing. But it also allows us to reuse (HTML) templates, embed templates in other templates, and combined with the Jekyll engine using YAML data, we can even programmatically access and render our entire site's content. For examples, checkout the [Code Snippets](#code-snippets) below.  
+
+## Jekyll Engine  
+
+What do they mean by "Jekyll Engine"? It's basically the combination of Ruby, Liquid and YAML to give you access to all site content dynamically. For more, refer to the [Jekyll cheat sheet](http://jekyll.tips/jekyll-cheat-sheet/).  
 
 ## Plugins
 
-Plugins written in Ruby and either store in your `_plugins` dir or installed with a gem are able to add a lot of convenience and features to a site.  
+Custom plugins can be written in Ruby and either stored in your `_plugins` dir, or installed through a Gem, and can add a lot of convenience and features to a site.  
 
-However, [according to the Jekyll docs](http://jekyllrb.com/docs/plugins/), custom `.rb` files do not run during build on GitHub pages since it is built in `--safe` mode. Therefore only install from available gems for now if you are hosting on GitHub pages.  
+However, [according to the Jekyll docs](http://jekyllrb.com/docs/plugins/), custom `.rb` files do not run during build on GitHub pages since it is built in `--safe` mode. Therefore only install from available approved gems for now if you are hosting on GitHub pages.  
 
 ## Collections
 
@@ -132,9 +146,9 @@ Of course in a basic HTML page, you have the freedom to create whatever you want
 
 ### GitHub Gists
 
-Embed a larger code snippet, posted on [GitHub Gists](https://gist.github.com/), by simply adding the following in your markdown post.  
+Embed a larger code snippet, posted on [GitHub Gists](https://gist.github.com/), by simply adding the following HTML in your markdown post.  
 
-```
+```html
 <div>
   <script src="https://gist.github.com/<USERNAME>/<GIST-ID>.py"></script>
 </div>
@@ -144,9 +158,11 @@ Embed a larger code snippet, posted on [GitHub Gists](https://gist.github.com/),
 
 [Jupyter Notebooks](http://jupyter.org/) are becoming an increasingly popular way to code quickly, as well as share fully documented data science workflows.  
 
-The easiest way to add a Jupyter notebook to your post is to [convert it to HTML using nbconvert](https://nbconvert.readthedocs.io/en/latest/usage.html), then embed simply use Liquid to include it in your markdown post. The conversion from the command line would like something like this `jupyter nbconvert --to html <NOTEBOOK.ipynb>`, and to include it use `{% include_relative path/to/<NOTEBOOK>.html %}` making sure the post is in a subdirectory of the post (or use normal `include` if the notebook is in your `_includes` folder)  
+The easiest way to add a Jupyter notebook to your post is to [convert it to HTML using nbconvert](https://nbconvert.readthedocs.io/en/latest/usage.html), then embed simply use Liquid to include it in your markdown post. The conversion from the command line would like something like this `jupyter nbconvert --to html <NOTEBOOK.ipynb>`, and to include it use `{% raw %}{% include_relative path/to/<NOTEBOOK>.html %}{% endraw %}` making sure the post is in a subdirectory of the post (or use normal `include` if the notebook is in your `_includes` folder)  
 
-Note, you can always link to a free rendering of your notebook on Github using [Jupyter nbviewer](http://nbviewer.jupyter.org/). An example link would look like `http://nbviewer.jupyter.org/github/<USERNAME>/<PROJECT>/blob/master/path/to/<NOTEBOOOK>.ipynb`  
+Note, you can always link to a free rendering of your notebook on Github using [Jupyter nbviewer](http://nbviewer.jupyter.org/). An example link would look like the following:  
+
+`http://nbviewer.jupyter.org/github/<USERNAME>/<PROJECT>/blob/master/path/to/<NOTEBOOOK>.ipynb`  
 
 ## Site Comments
 
