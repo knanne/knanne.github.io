@@ -33,9 +33,6 @@ See [Projects](https://github.com/knanne/knanne.github.io/tree/master/projects) 
 
 ## To Do (IDEAS):
 
-  - configure and test posts as Accelerated Mobile Pages ([AMP](https://www.ampproject.org/)) using [amp-jekyll](https://github.com/juusaw/amp-jekyll)
-  - add custom notebook (nbviewer) template
-  - add projects
   - create `gh-pages` branch and auto push travis-approved build
   - use bower to manage assets
   - create `tests` procedure

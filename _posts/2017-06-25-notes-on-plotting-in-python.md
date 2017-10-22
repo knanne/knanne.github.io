@@ -107,7 +107,7 @@ fig.tight_layout(pad=2)
 fig.show()
 ```
 
-![Category Volume Over Time]({{ site.baseurl }}/assets/img/posts/category_volume_over_time.svg)  
+![Category Volume Over Time]({{ site.baseurl }}/assets/img/posts/category_volume_over_time.png)  
 
 ## Plot Categorical Data Over Time Groups
 
@@ -131,7 +131,7 @@ fig.tight_layout(pad=2)
 fig.show()
 ```
 
-![Category Volume per Year End]({{ site.baseurl }}/assets/img/posts/category_volume_per_year_end.svg)  
+![Category Volume per Year End]({{ site.baseurl }}/assets/img/posts/category_volume_per_year_end.png)  
 
 ## Build Fully Customizable Plot From Scratch
 
@@ -179,7 +179,15 @@ fig.subplots_adjust(top=.9, bottom=.2)
 fig.show()
 ```
 
-![Category Volume per Year End Custom]({{ site.baseurl }}/assets/img/posts/category_volume_per_year_end_custom.svg)  
+![Category Volume per Year End Custom]({{ site.baseurl }}/assets/img/posts/category_volume_per_year_end_custom.png)  
+
+## Scatterplot
+
+```python
+plot = sns.jointplot(df.A, df.B, kind='scatter')
+```
+
+![Scatterplot]({{ site.baseurl }}/assets/img/posts/scatterplot.png)  
 
 ## Scatterplot Matrix
 
@@ -187,15 +195,7 @@ fig.show()
 plot = sns.pairplot(df)
 ```
 
-![Scatterplot Matrix]({{ site.baseurl }}/assets/img/posts/scatterplot_matrix.svg)  
-
-## KDE Plot
-
-```python
-plot = sns.jointplot(x="B", y="A", data=df, kind='kde')
-```
-
-![KDE Plot]({{ site.baseurl }}/assets/img/posts/kde_plot.svg)  
+![Scatterplot Matrix]({{ site.baseurl }}/assets/img/posts/scatterplot_matrix.png)  
 
 # Resources
 

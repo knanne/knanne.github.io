@@ -1,28 +1,119 @@
 ---
 layout: amp
+is_amp: True
 ---
+
+<!-- MODIFIED VERSION ON AMP-JEKYLL: SOURCE: https://github.com/juusaw/amp-jekyll -->
+
 <!doctype html>
-<html amp lang="en">
+<html amp lang="{{ page.lang | default: site.lang | default: "en" }}">
   <head>
-    <meta charset="utf-8">
-    <title>{{ page.title }}</title>
-    <link rel="canonical" href="{{ page.canonical_url | prepend: site.baseurl | prepend: site.url }}" />
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-    <style amp-custom>
-    </style>
-    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <!-- REQUIRED AMP SCRIPTS: SOURCE: https://www.ampproject.org/docs/tutorials/create/basic_markup -->
     <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    <!-- REQUIRED AMP BOILERPLATE: SOURCE: https://www.ampproject.org/docs/reference/spec/amp-boilerplate -->
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+
+    <link rel="canonical" href="{{ page.canonical_url | prepend: site.baseurl | prepend: site.url }}" />
+
+    {% include head_scripts.html %}
   </head>
+
   <body>
-{% capture header %}{% include header.html %}{% endcapture %}
-<h1 class="post-title">
-{{ header | amp_images }}
-</h1>
-<span>
-{{ page.date }} - {{ page.author }}
-</span>
-{{ content | markdownify | amp_images }}
-{% capture footer %}{% include footer.html %}{% endcapture %}
-{{ footer | amp_images: false, 24, 24 }}
-</body>
+
+    {% capture header %}{% include header.html %}{% endcapture %}
+    <header>{{ header | amp_images }}</header>
+
+    {% if page.is_draft %}
+    <div class="alert alert-warning" role="alert">
+      <strong>DRAFT!</strong> This is a draft post that has yet to be published.
+    </div>
+    {% endif %}
+
+    <main class="container">
+      <div class="post">
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+          <header class="post-header">
+            <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
+            <p class="post-meta">
+              <span class="pull-left">
+                <b>Date Published: </b>
+                <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
+              </span>
+              <span class="pull-right">
+                <b>Category:</b>
+                {% for cat in page.categories %}
+                  <a href="{{ site.base_url }}/posts/categories/#{{ cat }}" rel="tooltip" title="Go to Category" itemprop="genre">{{ cat }}{% unless forloop.last %}, {% endunless %}</a>
+                {% endfor %}
+              </span>
+              <br>
+            </p>
+            {% comment %}
+            <!-- post excerpt used only in cards
+            <p class="lead" itemprop="about">{{ page.excerpt | strip_html }}</p> -->
+            {% endcomment %}
+          </header>
+
+          <div class="d-flex justify-content-center">
+            <p>
+              This is the <a href="https://www.ampproject.org/"><i class="fa fa-bolt" aria-hidden="true"></i> AMP</a> version of a post on this site. To view the full post, <a href="{{ page.canonical_url }}">click here</a>
+            </p>
+          </div>
+
+          <div class="post-content" itemprop="articleBody">
+            {{ content | markdownify | amp_images }}
+          </div>
+          <br>
+
+          <footer class="post-footer">
+            <p class="post-meta">
+              <span class="pull-left">
+                <b>View: </b>
+                <a href="https://github.com/knanne/knanne.github.io/commits/master/_posts/{{ page.slug | slugify }}.md" rel="tooltip" title="View History on GitHub" >revision history</a>
+                {% comment %}
+                <!--
+                <b>Last Modified: </b>
+                <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%b %-d, %Y at %H:%M" }}</time>
+                -->
+                {% endcomment %}
+              </span>
+              <span class="pull-right">
+                <b>Tags:</b>
+                {% for tag in page.tags %}
+                  <a href="{{ site.base_url }}/posts/tags/#{{ tag }}" rel="tooltip" title="Go to Tag" itemprop="keywords">{{ tag }}{% unless forloop.last %}, {% endunless %}</a>
+                {% endfor %}
+              </span>
+            </p>
+          </footer>
+        </article>
+
+        <br>
+        <br>
+
+        {% if page.share %}
+          {% include integrations/post_share_buttons.html %}
+        {% endif %}
+
+        <br>
+        <br>
+
+        <div class="d-flex justify-content-center">
+          <p>
+            This is the <a href="https://www.ampproject.org/"><i class="fa fa-bolt" aria-hidden="true"></i> AMP</a> version of a post on this site. To view the full post, <a href="{{ page.canonical_url }}">click here</a>
+          </p>
+        </div>
+
+      </div>
+
+      <!-- BackToTop Button -->
+      <i id="back2top" class="material-icons icon-3d" rel="tooltip" title="Back to Top">arrow_drop_down_circle</i>
+    </main>
+
+    {% capture footer %}{% include footer.html %}{% endcapture %}
+    <footer>{{ footer | amp_images: false, 24, 24 }}</footer>
+
+  </body>
+
+  {% include foot_scripts.html %}
+
 </html>

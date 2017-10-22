@@ -1,14 +1,13 @@
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
+    <!-- SITE ATTRIBUTES -->
     <link rel="icon" href="{{ site.baseurl }}{{ site.avatar }}">
-    <title>{{ site.title | escape }} - {% if page.title %}{{ page.title | escape }}{% endif %}</title>
-
     <meta name="author" content="{{ site.profile.name }}" />
     <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
 
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
+    <!-- DYNAMIC PAGE ATTRIBUTES -->
+    <title>{{ site.title | escape }} - {% if page.title %}{{ page.title | escape }}{% endif %}</title>
 
     <!-- Style Sheet -->
     <link rel='stylesheet' href='{{ site.baseurl }}/assets/main.css' type='text/css'></style>
@@ -30,7 +29,3 @@
     {% endif %}
 
     {% seo %}
-
-    {% if page.path contains '_posts' %}
-      <link rel="amphtml" href="{{ page.id | prepend: 'amp' | prepend: site.baseurl | prepend: site.url }}">
-    {% endif %}

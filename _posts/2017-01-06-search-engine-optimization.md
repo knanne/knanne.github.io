@@ -43,3 +43,11 @@ Configure Google Analytics
 - register [Google Analytics](https://www.google.com/analytics/)
 
 This site uses a liquid to include the analytics script on every page. A file was created in `/includes` called `google_analytics.html` which is referenced in the site's `head.html`. Note that the actual google analytics id is stored in `config.yml`  
+
+# AMP
+
+[Accelerated Mobile Pages (AMP)](https://www.ampproject.org/) is a project by Google relating to their pursuit to better index, search and display content on the internet.  
+
+> The AMP Project is an open-source initiative aiming to make the web better for all. The project enables the creation of websites and ads that are consistently fast, beautiful and high-performing across devices and distribution platforms. - [website](https://www.ampproject.org/)
+
+Consider making your site posts into AMP pages. For starters, checkout the [amp-jekyll project](https://github.com/juusaw/amp-jekyll).  

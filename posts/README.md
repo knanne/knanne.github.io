@@ -1,7 +1,8 @@
 # Writing Posts Procedure
 
-  1. **create new `.md` file in `/_posts` with format `YYYY-MM-DD-Title.md`**
-    - title and date are inherited from filename
+  1. **create new `.md` file in `/_posts` with format `YYYY-MM-DD-hyphen-delimited-lowercase-title.md`**
+    - title and creation dates are inherited from filename
+    - <mark>NOTE:</mark> use a `hyphen-delimited-lowercase-title` so that the page url is consistent whith the AMP url used by [amp-jekyll](https://github.com/juusaw/amp-jekyll)
     - author is inherited from YAML defaults in `_config.yml`
     - <del>last modified data is inherited from file properties using `_plugins\hook-add-last-modified-date.rb`</del>  
   2. **add category and tags**
@@ -51,3 +52,9 @@ Some more text...
 # Drafts
 
 Utilize `/_drafts` folder for unpublished posts (also ignored by git)  
+
+# AMP
+
+This site utilizes [AMP](https://www.ampproject.org/) to make posts render quicker and hopefully reach further in Google Searches.  
+
+[Amp_Jekyll](https://github.com/juusaw/amp-jekyll) takes care of the heavy lifting, using our own custom `amp.html` template in `~/_layouts`.  

@@ -66,15 +66,9 @@ Packages I use include:
 
 ## Python
 
-[Python](https://www.python.org) is my language of choice for anything from data analysis and manipulation, to web development. The official package manager in Python is called [pip](https://pip.pypa.io/en/stable/)  
+[Python](https://www.python.org) is my language of choice for anything from data analysis and manipulation, to web development. The official package manager in Python is called [pip](https://pip.pypa.io/en/stable/).  
 
-Python Enhancement Proposals (PEP) are standards to follow for writing Python code. For example, use [PEP 8](https://www.python.org/dev/peps/pep-0008/) as a Style Guide for Python, and [PEP 257](https://www.python.org/dev/peps/pep-0257/) for Docstring Conventions.  
-
-Use [flake8](http://flake8.pycqa.org/en/latest/) to adhere to above conventions.  
-
-Find good examples of docstring conventions with the [Numpy Docstring Standard](https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt). Their standard is widely used in the Scientific Python community, which is why [Pandas uses it](http://pandas.pydata.org/pandas-docs/stable/contributing.html#about-the-pandas-documentation).  
-
-Below are a few other useful tools for Python.  
+Below are notes on a few other useful tools for Python.  
 
 ### Anaconda
 
@@ -129,11 +123,21 @@ workon APP
 deactivate
 ```
 
+### Documentation
+
+Always document your code. A good library for a reference is [Pandas](http://pandas.pydata.org/pandas-docs/stable/), which actually uses [NumPy/SciPy documentation standard](https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt).  
+
+Python Enhancement Proposals (PEP) are standards to follow for writing Python code. For example, use [PEP 8](https://www.python.org/dev/peps/pep-0008/) as a Style Guide for Python, and [PEP 257](https://www.python.org/dev/peps/pep-0257/) for Docstring Conventions.  
+
+Use [flake8](http://flake8.pycqa.org/en/latest/) to adhere to above conventions.  
+
+When writing and publishing software, a recommended route to use build you documentation using [Sphinx](http://www.sphinx-doc.org/en/stable/), and host on [Read The Docs](https://docs.readthedocs.io/en/latest/index.html).  
+
 # ETL Workflow Automation
 
 [KNIME](https://www.knime.com/knime-analytics-platform) is an open source software for creating data science workflows without programming.  
 
-KNIME is designed for drag-and-drop people, however it provides a really efficient way to automate data pipelines by combining programming (python) nodes, with their quickform nodes to create simple webapps to run from the browser.  
+KNIME is designed for drag-and-drop people, however it provides a really efficient way to automate data pipelines by combining programming (python) nodes, with their quickform nodes to create simple WebApps to run from the browser.  
 
 # Database
 
@@ -145,7 +149,8 @@ Setup a local instance of [PostgreSQL](https://www.postgresql.org/download/)
 
 [DBeaver](http://dbeaver.jkiss.org/download/) is an open source universal SQL client.
 
-> Free multi-platform database tool for developers, SQL programmers, database administrators and analysts. Supports all popular databases: MySQL, PostgreSQL, SQLite, Oracle, DB2, SQL Server, Sybase, Teradata, MongoDB, Cassandra, Redis, etc. - [website](http://dbeaver.jkiss.org/)
+> Free multi-platform database tool for developers, SQL programmers, database administrators and analysts. Supports all popular databases: MySQL, PostgreSQL, SQLite, Oracle, DB2, SQL Server, Sybase, Teradata, MongoDB, Cassandra, Redis, etc. - [website](http://dbeaver.jkiss.org/)  
+
 # Internet
 
 ## Google Services
