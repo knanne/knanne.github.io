@@ -10,23 +10,6 @@
 	<!-- MathJax -->
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
-<script>
-		// dynamically add navigation button (go to top) if scrolled to bottom
-		$(window).scroll(function(){
-				// if distance from top, plus window height greater than document height minus buffer
-				// i.e. if bottom of screen is within 200 pixels from bottom of document
-				if ($(window).scrollTop() + $(window).height() > $(document).height() - 400) {
-						$('#back2top').fadeIn();
-				} else {
-						$('#back2top').fadeOut();
-				}
-		});
-		$('#back2top').click(function(){
-				$("html, body").animate({ scrollTop: 0 }, 400);
-				return false;
-		});
-</script>
-
 {% if page.is_home %}
 	{% include functions/buildFeedCard.html %}
 	<script>
@@ -134,5 +117,29 @@
 			$(".post-content img").addClass('img-fluid mx-auto d-block');
 
 		};
+
+		// dynamically add navigation button (go to top) if scrolled to bottom
+		$(window).scroll(function(){
+				// if distance from top, plus window height greater than document height minus buffer
+				// i.e. if bottom of screen is within 200 pixels from bottom of document
+				if ($(window).scrollTop() + $(window).height() > $(document).height() - 400) {
+						$('#back2top').fadeIn();
+				} else {
+						$('#back2top').fadeOut();
+				}
+		});
+		$('#back2top').click(function(){
+				$("html, body").animate({ scrollTop: 0 }, 400);
+				return false;
+		});
+
+	</script>
+{% endif %}
+
+{% if page.is_notebook %}
+	<script>
+		$('#toggle_code_blocks').click(function(){
+				$('div.input').toggle();
+		});
 	</script>
 {% endif %}

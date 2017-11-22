@@ -8,6 +8,9 @@
       <p>{{ post.title }}</p>
       &nbsp;&nbsp;&nbsp;&nbsp;
       <small class="text-muted">{{ post.date | date: "%b %-d, %Y" }}</small>
+      {% comment %}
+      <!-- <small class="text-muted">{{ post.last_modified_at | date: "%b %-d, %Y %H:%M" }}</small> -->
+      {% endcomment %}
     </div>
   </li>
   </a>

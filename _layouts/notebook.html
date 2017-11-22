@@ -19,6 +19,10 @@ layout: default
     </header>
 
     <div class="post-content" itemprop="articleBody">
+      <!-- ToggleCode Button -->
+      <div class="d-flex justify-content-end">
+        <button id="toggle_code_blocks" type="button" class="btn btn-primary btn-sm" rel="tooltip" title="Click to toggle code blocks">Toggle Code Blocks</button>
+      </div>
       {{ page.content | remove: page.excerpt }}
     </div>
     <br>

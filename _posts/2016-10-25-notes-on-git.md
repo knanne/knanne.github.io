@@ -126,15 +126,7 @@ git merge master
 
 Below are some scenarios that you may find yourself in, and some helpful tips on how to get out.
 
-## Behind Master
-
-1. commit changes to branch
-2. pull latest master
-3. rebase on master
-4. resolve conflicts if any
-5. force push branch (if already on remote)
-
-I highly recommend using [Atom](https://atom.io/) while resolving conflicts. It is a text editor made by GitHub and therefor contains very handy options to indentify and resolve conflicts with a couple of clicks.  
+I highly recommend using [Atom](https://atom.io/) while resolving conflicts. It is a text editor made by GitHub and therefor contains very handy options to identify and resolve conflicts with a couple of clicks.  
 
 ## Pull with Conflicts
 
@@ -143,7 +135,7 @@ git checkout feature
 git pull
 ```
 
-In case of conflicts and you want to simply **keep the changes on your local feature branch** of a specific file, and apply them on top of the files being pulled in, do the following:  
+In case of conflicts and you want to simply **keep the changes on your local feature branch** (`ours`) of a specific file, and apply them on top of the files being pulled in, do the following:  
 
 ```shell
 git checkout --ours <FILE>.py
@@ -154,16 +146,14 @@ git push
 
 In case of being stuck in vim after commit, type `:wq`  
 
-## Rebase with Conflicts
-
-This resolve is the same as a pull merge, however "ours" and "theirs" are switched.  
+## Rebase Local Master (with Conflicts)
 
 ```shell
-git checkout feature
+git checkout <FEATURE-BRANCH>
 git rebase master
 ```
 
-In case of conflicts and you want to simply **keep the changes from the new feature branch** of a specific file, and apply them on top of master, do the following:  
+This rebase is the same as a pull, however "ours" and "theirs" are switched. In case of conflicts and you want to simply **keep the changes from the new feature branch** (`theirs`) of a specific file, and apply them on top of master, do the following:
 
 ```shell
 git checkout --theirs <FILE>.ipynb
@@ -174,7 +164,20 @@ git rebase --continue
 
 > Note that a rebase merge works by replaying each commit from the working branch on top of the <upstream> branch. Because of this, when a merge conflict happens, the side reported as ours is the so-far rebased series, starting with <upstream>, and theirs is the working branch. In other words, the sides are swapped. [Git docs](https://git-scm.com/docs/git-rebase#git-rebase---merge)  
 
+In case you want to force rebase, **resolving all conflicts using the using new feature branch** (`theirs`), do the following.
+
+```shell
+git checkout <FEATURE-BRANCH>
+git rebase -s recursive -X theirs master
+```
+
 ## Mistakes Were Made
+
+List previous commits, limit 1  
+
+```shell
+git log -n 1
+```
 
 Reset current HEAD and index to last commit
 
@@ -209,12 +212,6 @@ Navigate to branch
 
 ```shell
 git checkout <BRANCH>
-```
-
-List previous commits, limit 1  
-
-```shell
-git log -n 1
 ```
 
 List all committed files  

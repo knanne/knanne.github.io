@@ -24,17 +24,22 @@ Manage your account privacy settings on [myaccount.google.com](https://myaccount
 
   - answer from the [help pages](https://www.facebook.com/help/405183566203254)
 
-**Twitter** allows you to convert your account to a business account and then use Twitter Analytics  
+**Twitter** allows you to convert your account to a business account and then use Twitter Analytics, as well as provides extensive search API's  
 
   - [analytics.twitter.com](https://analytics.twitter.com/)
-  - download archive at [facebook.com/settings](https://www.linkedin.com/settings/data-export-page)
+  - [developer.twitter.com](https://developer.twitter.com/)
 
-**Instagram** has no central page to control your data
+**Instagram** has no central page to control your data  
 
-**Linkedin** does not have a central data dashboard, but instead allows you to download an archive of your data
+**LinkedIn** does not have a central data dashboard, but instead allows you to download an archive of your data  
 
   - answer from the [help pages](https://www.linkedin.com/help/linkedin/answer/50191/accessing-your-account-data)
   - download archive at [linkedin.com/settings/data-export-page](https://www.linkedin.com/settings/data-export-page)
+
+**Strava** allows you to bulk export all your data, or access it via an API  
+
+  - https://support.strava.com/hc/en-us/articles/216918437-Exporting-your-Data-and-Bulk-Export
+  - https://strava.github.io/api/v3/activities/
 
 # Cleaning
 

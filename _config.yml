@@ -88,6 +88,7 @@ defaults:
       path: "_notebooks"
       type: "notebooks"
     values:
+      is_notebook: True # used in _includes/foot_scripts.html to dynamically load scripts
       layout: "notebook"
       author: Kain Nanne
       share: True # include social sharing buttons
@@ -133,10 +134,10 @@ gems:
   - jekyll-gist
   - jekyll-seo-tag
   - jekyll-sitemap
-  - amp-jekyll
+#  - amp-jekyll # not working on GitHub pages (not yet whitelisted)
   - html-proofer
-  - jekyll-last-modified-at
-#  - jekyll-jupyter-notebook # not working on github pages (nbconvert not run)
+#  - jekyll-last-modified-at # not working on GitHub pages (not yet whitelisted)
+#  - jekyll-jupyter-notebook # not working on github pages (not yet whitelisted, nbconvert not run)
 exclude:
   - Gemfile
   - Gemfile.lock

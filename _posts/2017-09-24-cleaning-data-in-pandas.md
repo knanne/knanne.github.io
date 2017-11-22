@@ -16,19 +16,31 @@ I often wish to standardize the header of a dataset after import, because the cr
 
 ```python
 import re
-stdz = lambda s: re.sub('[^0-9a-zA-Z]+', '_', s.lower())
-df.columns = df.columns.map(stdz)
+clean = lambda s: re.sub('[^0-9a-zA-Z]+', '_', s.lower())
+df.columns = df.columns.map(clean)
 ```
 
-# Impute
+# Missing Data
 
-Impute all null values in an entire DataFrame of numeric data to 0.  
+Count how many non-`NULL` values are in each column.  
+
+```python
+df.count()
+```
+
+A fast and effective way to count how many `NULL` values are in each column.  
+
+```python
+df.isnull().sum()
+```
+
+Impute all `NULL` values in an entire DataFrame of numeric data to 0.  
 
 ```python
 df.fillna(0)
 ```
 
-If you need to impute more than `NAN` values (maybe because you divided by 0 and now have infinite), you can chain together a `.replace()` and `.fillna()`.  
+If you need to impute more than `NULL` values (maybe because you divided by 0 and now have infinite), you can chain together a `.replace()` and `.fillna()`.  
 
 ```python
 df.col.replace([-np.inf, np.inf], np.nan).fillna(0)

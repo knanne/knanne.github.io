@@ -39,8 +39,12 @@ The UI of Google Calendar does not provide the best view of tracking X's over ti
 
 # Time Tracking
 
-## Toggle
-
 Time tracking is another effective way to keep yourself on task and make sure to get the important things done before diverging down a rabbit hole of internet links.  
 
 [Toggle](https://toggle.com/) is a popular tool that offers [Google Calendar integration](https://toggl.com/google-calendar-timer-integration) and [beautiful reports](https://support.toggl.com/category/reporting/)  
+
+# Automation
+
+Automation is a great way to simply collect data on background activities.  
+
+[If This Then That](https://ifttt.com/) is a good app for automating tasks and organizing your life. For example, I use it to log an entry in Google Calendar every time I enter or exit the office.  

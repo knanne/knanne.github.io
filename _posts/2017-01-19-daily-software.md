@@ -18,8 +18,15 @@ Cmder is an attractive and portable console emulator for Windows.
 
 > Cmder is a software package created out of pure frustration over the absence of nice console emulators on Windows. It is based on amazing software, and spiced up with the Monokai color scheme and a custom prompt layout, looking sexy from the start. - [website](http://cmder.net/)  
 
-Notable commands:  
+Notable Commands:  
   - open a new tab with `Ctrl + Tab`  
+
+Notable (Linux) Shell Commands:
+
+```shell
+# run a program (global .exe)
+atom
+```
 
 # Text Editor
 
@@ -35,7 +42,8 @@ Common cases I use it for:
   - view special characters by turning on `View > Show All Characters`
   - convert Tabs to Spaces with `Edit > Blank Operations > Tab to Space`
 
-There are endless useful features in this tool that I don't use.  
+Notable Commands:
+  - go to line in file with `Ctrl + G`  
 
 ## Atom
 
@@ -43,7 +51,7 @@ Atom is a text editor made by the guys at GitHub so it has some fancy native int
 
 > Atom is a text editor that's modern, approachable, yet hackable to the core—a tool you can customize to do anything but also use productively without ever touching a config file. - [website](https://atom.io/)
 
-Notable commands:  
+Notable Commands:  
   - open a new window with `Ctrl + Shift + N`  
   - open a project folder with `Ctrl + Shift + A`  
   - unhide auto-hidden menu with `Alt`  
@@ -61,6 +69,7 @@ Alternatively, Go to `Settings > Install > Search`
 Packages I use include:  
   - [autocomplete-python](https://atom.io/packages/autocomplete-python)
   - [editorconfig](https://atom.io/packages/editorconfig)
+  - [multi-cursor](https://atom.io/packages/multi-cursor)
 
 # Programming
 
@@ -177,7 +186,7 @@ Google [source](https://support.google.com/chrome/answer/157179?)
 
 ## Windows
 
-Notable commands:  
+Notable Commands:  
 
   - switch between open apps with `Alt + Tab`
   - open task view with `Windows + Tab`
@@ -186,6 +195,10 @@ Notable commands:
   - lock the computer with `Windows + L`
   - add a virtual desktop with `Windows + Ctrl + D`
   - switch between virtual desktops with `Windows + Ctrl + Arrow Key`
+
+Weird Commands:  
+
+  - `Ctrl`+`Alt`+`Down` flips screen content upside down
 
 Microsoft hotkeys [source](https://support.microsoft.com/en-us/help/12445/windows-keyboard-shortcuts)
 
@@ -200,7 +213,7 @@ tree
 dir /b
 # list all files in subfolders  
 dir /s
-# run a program
+# run a program (global .exe)
 start atom
 ```
 

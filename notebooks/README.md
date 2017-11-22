@@ -33,3 +33,19 @@ A template for creating notebooks...
 # Modifying Notebook Template
 
 This site's custom html template for notebooks, found at `~/_notebooks/jupyter/template.tpl`, is *almost* a carbon copy of the "Full" template provided on [Jupyter's nbconvert GitHub](https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/full.tpl). Minor tweaks were made to allow their template to be embedded inside this site's "page" layout.  
+
+# Snippet to Toggle Code Blocks
+
+An added feature to the site's notebooks is the ability to hide code blocks and view only the output. Below is an example of how to do this in the notebook itself. We alternatively put this code in the page's template.  
+
+```
+%%html
+
+<script>
+    $('#toggle_code_blocks').click(function(){
+        $('div.input').toggle();
+    });
+</script>
+
+<button id="toggle_code_blocks" class="btn-default" rel="tooltip" title="Click to toggle code blocks">Toggle Code Blocks</button>
+```
