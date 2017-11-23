@@ -18,7 +18,7 @@ Some simple differences include:
   - Despite MySQL allowing most group by behavior, PostgreSQL and Oracle SQL will both complain if you do not explicitly list all non-aggregate columns in the group by clause (unless you incude a table's unique identifier). However, this is good practice anyway.  
   - Limiting rows in MySQL is easy as `limit 10` while in Oracle you can do `WHERE ROWNUM <= 10`.  
   - You are allowed to use `#comment` for comment blocks in MySQL, however in PostgreSQL `--comment--` is recommended. Although, in all languages, the standard of `/*comment*/` always works.  
-  - MySQL handles strings with single quotes (`''`) or double (`""`), and reserved words like table names and columns with backticks (` `` `). However, PostgreSQL and Oracle use double quotes for reserved words, single quotes for strings and no backticks.  
+  - MySQL handles strings with single quotes (`' '`) or double (`" "`), and reserved words like table names and columns with backticks (`` ` ` ``). However, PostgreSQL and Oracle use double quotes for reserved words, single quotes for strings and no backticks.  
 
 
 # Use Cases
