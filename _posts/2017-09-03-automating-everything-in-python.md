@@ -234,6 +234,23 @@ r = connection.execute(sql)
 connection.close()
 ```
 
+# Processing
+
+## Progress
+
+[tqdm](https://github.com/tqdm/tqdm) is a super nice library for showing a progress bar when executing loops. They even have a [pandas integration](https://github.com/tqdm/tqdm#pandas-integration).  
+
+It runs in terminal by default, you can also run it in a Jupyter Notebook. Here is good example, using enumerate.  
+
+```python
+from tqdm import tqdm
+from tqdm import tnrange, tqdm_notebook
+
+with tqdm_notebook(total=len(data)) as pbar:
+  for i,file in enumerate(data):
+    pbar.update(1)
+```
+
 # Runtime
 
 Various procedures to consider when building `.py` executables.  

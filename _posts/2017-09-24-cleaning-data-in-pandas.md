@@ -34,6 +34,12 @@ A fast and effective way to count how many `NULL` values are in each column.
 df.isnull().sum()
 ```
 
+Therefore, to get a percent of non-NULL values in your dataframe, do:  
+
+```python
+df.count() / (df.count() + df.isnull().sum())
+```
+
 Impute all `NULL` values in an entire DataFrame of numeric data to 0.  
 
 ```python
@@ -57,7 +63,13 @@ df['phone'] = df['phone'].fillna(df.phone1).fillna(df.phone2).fillna(df.phone3)
 
 # Dedupe
 
-Dropping duplicates using `df.dropduplicates()` is the simplest method of deduplicating records by far. You can give keyword arguments to make it more useful like a subset of columns.  
+Dropping duplicates using `df.drop_duplicates()` is the simplest method of deduplicating records by far. You can give keyword arguments to make it more useful like a only deduplicating on a subset of columns, or a method for which row to take.  
+
+If you need to show the duplicates, you can use "~" to negate the indices of the deduplicated rows.  
+
+```sql
+df.loc[~df.isin(df.drop_duplicates())]
+```
 
 However, you are probably always going to want to apply some sort of logic to your method of keeping records, like keep the record with max value (in col4) for each combination of multiple columns (col1, col2, and col3). Achieve this with the following code, by slicing the your DataFrame on indices of max for each group.  
 

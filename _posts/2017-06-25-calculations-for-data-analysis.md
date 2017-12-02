@@ -84,3 +84,18 @@ df = pd.DataFrame(data=np.random.rand(36,4),
 
 (df.iloc[-1] / df.iloc[0]) ** (1/len(df)) - 1
 ```
+
+# Weighted Average
+
+## Pandas
+
+```python
+df = pd.DataFrame(data=np.random.rand(4,2),
+                  columns=['a','b'])
+
+totals = df.agg({
+  'a': 'mean',
+  'b': 'mean',
+  'b': lambda x: np.average(x , weights=df['a'])
+  }).rename('total').to_frame().T
+```

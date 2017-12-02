@@ -155,3 +155,46 @@ SET id=NULL,
     description=@col7
 ;
 ```
+
+## Cleaning Hidden Characters
+
+Common hidden characters you might see in dirty data may include:  
+
+- Tab, ASCII character 9, showing up as orange horizontal arrow in notepad++
+- Line Feed, ASCII character 10, showing up as `LF` in notepad++
+- Carriage Return, ASCII character 13, showing up as `CR` in notepad++
+
+[ASCII source](https://ascii.cl/control-characters.htm)  
+
+### MySQL
+
+```sql
+REPLACE(REPLACE(REPLACE(TRIM(`string_col`), CHAR(9),''), CHAR(10),''), CHAR(13),'')
+```
+
+### Oracle
+
+```sql
+TRANSLATE(TRANSLATE(TRANSLATE(TRIM(BOTH FROM "string_col"), CHR(9),' '), CHR(10),' '), CHR(13),' ')
+```
+
+NOTE the `' '` (empty space) in above example:
+> You cannot use an empty string for to_string to remove all characters in from_string from the return value. Oracle Database interprets the empty string as null, and if this function has a null argument, then it returns null. - [Oracle Docs](https://docs.oracle.com/cd/B19306_01/server.102/b14200/functions196.htm)  
+
+# Maintenance
+
+In MySQL, show the size of your tables in Mb  
+
+```sql
+select
+	table_schema,
+	table_name,
+	round(((data_length * index_length) / 1024 / 1024), 2) "size (Mb)"
+from information_schema.TABLES
+where
+	table_schema = 'scheme'
+	and table_name like '%keyword%'
+order by
+	round(((data_length * index_length) / 1024 / 1024), 2) desc
+;
+```
