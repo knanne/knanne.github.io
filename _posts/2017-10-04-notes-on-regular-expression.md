@@ -14,7 +14,7 @@ Notes and scripts on Regular Expression that may be useful to others
 
 Regular Expression is some serious magic.  
 
-But, after some time playing around at (regex101.com/)[https://regex101.com/] it is actually starting to make some sense.  
+But, after some time playing around at [regex101.com/](https://regex101.com/) it is actually starting to make some sense.  
 
 # Basics
 
