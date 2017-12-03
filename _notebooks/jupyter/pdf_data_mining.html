@@ -11772,13 +11772,55 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Sample-PDF">Sample PDF<a class="anchor-link" href="#Sample-PDF">&#182;</a></h1>
+<h1 id="Sample-PDF">Sample PDF<a class="anchor-link" href="#Sample-PDF">&#182;</a></h1><p><strong>Let's take a publicly accessible PDF as a sample, and for fun let's use my Master's thesis.</strong></p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/knanne/vu_msc_tweetsumm/master/research/KainNanne_MSc_Thesis_ACM.pdf&#39;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sample.pdf&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out_file</span><span class="p">:</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">copyfileobj</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">out_file</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="s1">&#39;sample.pdf&#39;</span>
@@ -11793,14 +11835,14 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="PDF-to-Text-using-pdfminer">PDF to Text using pdfminer<a class="anchor-link" href="#PDF-to-Text-using-pdfminer">&#182;</a></h1><h4 id="Source-of-Funtion-Below">Source of Funtion Below<a class="anchor-link" href="#Source-of-Funtion-Below">&#182;</a></h4><p><a href="https://stackoverflow.com/a/26495057/5356898">https://stackoverflow.com/a/26495057/5356898</a></p>
+<h1 id="PDF-to-Text-using-pdfminer">PDF to Text using pdfminer<a class="anchor-link" href="#PDF-to-Text-using-pdfminer">&#182;</a></h1><p><strong>Below is a funtion to convert the file to text. Source Credit:</strong> <a href="https://stackoverflow.com/a/26495057/5356898">https://stackoverflow.com/a/26495057/5356898</a></p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pdfminer.pdfinterp</span> <span class="k">import</span> <span class="n">PDFResourceManager</span><span class="p">,</span> <span class="n">PDFPageInterpreter</span>
@@ -11842,7 +11884,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pdf</span> <span class="o">=</span> <span class="n">convert_pdf_to_txt</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
@@ -11853,9 +11895,18 @@ div#notebook {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Now that we have the text of the PDF document as a single string, you may want to apply some fance regular expression to split and parse the text as you wish</strong></p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pdf</span><span class="p">[:</span><span class="mi">2500</span><span class="p">]</span>
@@ -11871,13 +11922,13 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[18]:</div>
+<div class="prompt output_prompt">Out[7]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&#39;\x0c\x0cPython for Data Analysis\n\nWes McKinney\n\nBeijing • Cambridge • Farnham • Köln • Sebastopol • Tokyo\n\n\x0cPython for Data Analysis\nby Wes McKinney\n\nCopyright © 2013 Wes McKinney. All rights reserved.\nPrinted in the United States of America.\n\nPublished by O’Reilly Media, Inc., 1005 Gravenstein Highway North, Sebastopol, CA 95472.\n\nO’Reilly books may be purchased for educational, business, or sales promotional use. Online editions\nare also available for most titles (http://my.safaribooksonline.com). For more information, contact our\ncorporate/institutional sales department: 800-998-9938 or corporate@oreilly.com.\n\nEditors: Julie Steele and Meghan Blanchette\nProduction Editor: Melanie Yarbrough\nCopyeditor: Teresa Exley\nProofreader: BIM Publishing Services\n\nIndexer: BIM Publishing Services\nCover Designer: Karen Montgomery\nInterior Designer: David Futato\nIllustrator: Rebecca Demarest\n\nOctober 2012:\nFirst Edition. \nRevision History for the First Edition:\n\n2012-10-05\n\nFirst release\n\nSee http://oreilly.com/catalog/errata.csp?isbn=9781449319793 for release details.\n\nNutshell Handbook, the Nutshell Handbook logo, and the O’Reilly logo are registered trademarks of\nO’Reilly Media, Inc. Python for Data Analysis, the cover image of a golden-tailed tree shrew, and related\ntrade dress are trademarks of O’Reilly Media, Inc.\n\nMany of the designations used by manufacturers and sellers to distinguish their products are claimed as\ntrademarks. Where those designations appear in this book, and O’Reilly Media, Inc., was aware of a\ntrademark claim, the designations have been printed in caps or initial caps.\n\nWhile every precaution has been taken in the preparation of this book, the publisher and author assume\nno responsibility for errors or omissions, or for damages resulting from the use of the information con-\ntained herein.\n\nISBN: 978-1-449-31979-3\n\n[LSI]\n\n1349356084\n\n\x0cTable of Contents\n\nPreface . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . xi\n\nEssential Python Libraries\n\nNumPy\npandas\nmatplotlib\nIPython\nSciPy\n\nInstallation and Setup\n\nWhat Is This Book About?\nWhy Python for Data Analysis?\n\nPython as Glue\nSolving the “Two-Language” Problem\nWhy Not Python?\n\n1. Preliminaries . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1\n1\n2\n2\n2\n3\n3\n4\n4\n5\n5\n6\n6\n7\n9\n10\n11\n11\n12\n12\n13\n13\n13\n13\n14\n\nWindows\nApple OS X\nGNU/Linux\nPython 2 and Pyth&#39;</pre>
+<pre>&#39;Automating Open Domain Event Summaries by\n\nHarnessing Collective Reactions on Twitter\n\nKain Nanne\n\n∗\n\nVU University Amsterdam\nk.nanne@student.vu.nl\n\nABSTRACT\nMicroblogging sites have become popular platforms for on-\nline news reporting as well as socially participating in and\ninteracting with the discussion of real-time events. This pa-\nper researches an automated solution to the inability of a\nhuman to wholly consume and comprehend the vast amount\nof data surrounding topics online. We introduce the Collec-\ntive Reactions for Event Summarization (CRES) approach,\nwhich uses an original combination of proven algorithms to\nharness signals in online activity, social interactions, con-\ntent metadata, and language overlap to build comprehen-\nsive summaries of events through collective reactions from\nthe crowd. The methodology is open sourced as an end-to-\nend framework exempliﬁed using twelve open domain events.\nOur experiments consider the two questions of: create a\nstandard feature set for consistently classifying newsworthi-\nness in open domain microblog documents, and provide a\nsummary which improves upon the deﬁned baseline when\nevaluated using CrowdTruth. Results show promising re-\nsults towards consistent classiﬁcation on open domain doc-\numents, and signiﬁcant improvements to our baseline for\nautomating event summarization on Twitter.\n\nKeywords\ntwitter, automatic summarization, event detection, text min-\ning, document classiﬁcation\n\n∗MSc. Business Information Systems\n\n1.\n\nINTRODUCTION\n\nMicroblogging is the activity of sharing a small amount of\ninformation over the web. These small documents of infor-\nmation can include combinations of text and media content,\nand are typically shared over the public domain. Microblog-\nging has become increasingly popular for social as well as\nnews reporting. A 2015 survey by the Pew Research Cen-\nter found that over 60% of social media users of Facebook\nand Twitter actively source news from the sites, an increase\nin over 10% for both sites from 2013. [3] Particularly in\nnews, given the short time it takes to write and ability to\nshare with a mass audience instantaneously, it is attractive\nfor organizations to share smaller pieces of information as\nreal-time events unfold. As a result of this, an immense\namount of information surrounding an event is fragmented\nacross sites and accounts making it impossible for a human\nto wholly comprehend. As this information is disconnected\nand drowning in extraneous data, it is a diﬃcult&#39;</pre>
 </div>
 
 </div>
@@ -11890,13 +11941,14 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="PDF-Metadata-using-pdfminer">PDF Metadata using pdfminer<a class="anchor-link" href="#PDF-Metadata-using-pdfminer">&#182;</a></h1>
+<h1 id="PDF-Metadata-using-pdfminer">PDF Metadata using pdfminer<a class="anchor-link" href="#PDF-Metadata-using-pdfminer">&#182;</a></h1><p><strong>You will notice below the metadata in this particular PDF is virtually nonexistent. However, this code is simply a demonstration as to how one would extract such data.</strong></p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pdfminer.pdfparser</span> <span class="k">import</span> <span class="n">PDFParser</span>
@@ -11911,10 +11963,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sample.pdf&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
 <span class="n">parser</span> <span class="o">=</span> <span class="n">PDFParser</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
 <span class="n">doc</span> <span class="o">=</span> <span class="n">PDFDocument</span><span class="p">(</span><span class="n">parser</span><span class="p">)</span>
 </pre></div>
@@ -11926,10 +11978,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)</span> <span class="k">else</span> <span class="n">v</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
 </pre></div>
 
 </div>
@@ -11942,94 +11994,20 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[35]:</div>
+<div class="prompt output_prompt">Out[10]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Author&#39;: b&#39;Wes McKinney&#39;,
- &#39;CreationDate&#39;: b&#34;D:20140408222039Z00&#39;00&#39;&#34;,
- &#39;Creator&#39;: b&#39;XSL Formatter V4.3 R1 (4,3,2008,0424) for Linux&#39;,
- &#39;ModDate&#39;: b&#34;D:20140408222039Z00&#39;00&#39;&#34;,
- &#39;Producer&#39;: b&#39;Mac OS X 10.9.2 Quartz PDFContext&#39;,
- &#39;Title&#39;: b&#39;Python for Data Analysis&#39;}</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">doc</span><span class="o">.</span><span class="n">catalog</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[36]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Outlines&#39;: &lt;PDFObjRef:2&gt;, &#39;Pages&#39;: &lt;PDFObjRef:5678&gt;, &#39;Type&#39;: /&#39;Catalog&#39;}</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">doc</span><span class="o">.</span><span class="n">catalog</span><span class="p">[</span><span class="s1">&#39;Pages&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[47]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Count&#39;: 470,
- &#39;Kids&#39;: [&lt;PDFObjRef:5670&gt;,
-  &lt;PDFObjRef:5671&gt;,
-  &lt;PDFObjRef:5672&gt;,
-  &lt;PDFObjRef:5673&gt;,
-  &lt;PDFObjRef:5674&gt;,
-  &lt;PDFObjRef:5675&gt;,
-  &lt;PDFObjRef:5676&gt;,
-  &lt;PDFObjRef:5677&gt;],
- &#39;MediaBox&#39;: [0, 0, 612, 792],
- &#39;Type&#39;: /&#39;Pages&#39;}</pre>
+<pre>{&#39;Author&#39;: b&#39;&#39;,
+ &#39;CreationDate&#39;: b&#34;D:20160929165748Z00&#39;00&#39;&#34;,
+ &#39;Creator&#39;: b&#39;LaTeX with hyperref package&#39;,
+ &#39;Keywords&#39;: b&#39;&#39;,
+ &#39;ModDate&#39;: b&#34;D:20160929165748Z00&#39;00&#39;&#34;,
+ &#39;Producer&#39;: b&#39;dvips + GPL Ghostscript 9.05&#39;,
+ &#39;Subject&#39;: b&#39;&#39;,
+ &#39;Title&#39;: b&#39;&#39;}</pre>
 </div>
 
 </div>
@@ -12042,18 +12020,32 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Resolve Metadata to XML if exists</strong></p>
+<h2 id="Resolve-Metadata-to-XML-if-exists">Resolve Metadata to XML if exists<a class="anchor-link" href="#Resolve-Metadata-to-XML-if-exists">&#182;</a></h2><p><strong>Depending on in which system your PDF was created, for example if it was electronically signed in something like Docusign, you may have information on the signers here including emails, names, and dates of form completions.</strong></p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">catalog_metadata</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">catalog</span><span class="p">[</span><span class="s1">&#39;Metadata&#39;</span><span class="p">]</span>
 <span class="n">resolved_xml</span> <span class="o">=</span> <span class="n">catalog_metadata</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="k">import</span> <span class="n">BeautifulSoup</span>
+
 <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">resolved_xml</span><span class="o">.</span><span class="n">get_data</span><span class="p">(),</span> <span class="s1">&#39;lxml&#39;</span><span class="p">)</span>
 </pre></div>
 
@@ -12064,13 +12056,142 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">(</span><span class="n">formatter</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;?xpacket begin=&#39;ï»¿&#39; id=&#39;W5M0MpCehiHzreSzNTczkc9d&#39;?&gt;
+&lt;?adobe-xap-filters esc=&#34;CRLF&#34;?&gt;
+&lt;html&gt;
+ &lt;body&gt;
+  &lt;x:xmpmeta x:xmptk=&#34;XMP toolkit 2.9.1-13, framework 1.6&#34; xmlns:x=&#34;adobe:ns:meta/&#34;&gt;
+   &lt;rdf:rdf xmlns:ix=&#34;http://ns.adobe.com/iX/1.0/&#34; xmlns:rdf=&#34;http://www.w3.org/1999/02/22-rdf-syntax-ns#&#34;&gt;
+    &lt;rdf:description rdf:about=&#34;uuid:6631a5c2-be82-11f1-0000-c7fc2c5fefc0&#34; xmlns:pdf=&#34;http://ns.adobe.com/pdf/1.3/&#34;&gt;
+     &lt;pdf:producer&gt;
+      dvips + GPL Ghostscript 9.05
+     &lt;/pdf:producer&gt;
+     &lt;pdf:keywords&gt;
+      ()
+     &lt;/pdf:keywords&gt;
+    &lt;/rdf:description&gt;
+    &lt;rdf:description rdf:about=&#34;uuid:6631a5c2-be82-11f1-0000-c7fc2c5fefc0&#34; xmlns:xmp=&#34;http://ns.adobe.com/xap/1.0/&#34;&gt;
+     &lt;xmp:modifydate&gt;
+      2016-09-29T16:57:48Z
+     &lt;/xmp:modifydate&gt;
+     &lt;xmp:createdate&gt;
+      2016-09-29T16:57:48Z
+     &lt;/xmp:createdate&gt;
+     &lt;xmp:creatortool&gt;
+      LaTeX with hyperref package
+     &lt;/xmp:creatortool&gt;
+    &lt;/rdf:description&gt;
+    &lt;rdf:description rdf:about=&#34;uuid:6631a5c2-be82-11f1-0000-c7fc2c5fefc0&#34; xapmm:documentid=&#34;uuid:6631a5c2-be82-11f1-0000-c7fc2c5fefc0&#34; xmlns:xapmm=&#34;http://ns.adobe.com/xap/1.0/mm/&#34;&gt;
+    &lt;/rdf:description&gt;
+    &lt;rdf:description dc:format=&#34;application/pdf&#34; rdf:about=&#34;uuid:6631a5c2-be82-11f1-0000-c7fc2c5fefc0&#34; xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34;&gt;
+     &lt;dc:title&gt;
+      &lt;rdf:alt&gt;
+       &lt;rdf:li xml:lang=&#34;x-default&#34;&gt;
+        ()
+       &lt;/rdf:li&gt;
+      &lt;/rdf:alt&gt;
+     &lt;/dc:title&gt;
+     &lt;dc:creator&gt;
+      &lt;rdf:seq&gt;
+       &lt;rdf:li&gt;
+        ()
+       &lt;/rdf:li&gt;
+      &lt;/rdf:seq&gt;
+     &lt;/dc:creator&gt;
+     &lt;dc:description&gt;
+      &lt;rdf:seq&gt;
+       &lt;rdf:li&gt;
+        ()
+       &lt;/rdf:li&gt;
+      &lt;/rdf:seq&gt;
+     &lt;/dc:description&gt;
+    &lt;/rdf:description&gt;
+   &lt;/rdf:rdf&gt;
+  &lt;/x:xmpmeta&gt;
+  &lt;?xpacket end=&#39;w&#39;?&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>You may now want to extract certain data by tags and process as you like</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;xmp:createdate&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[15]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;2016-09-29&#39;</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 

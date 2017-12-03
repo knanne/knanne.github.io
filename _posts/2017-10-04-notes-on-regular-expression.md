@@ -31,13 +31,9 @@ Verify string is email with `^([0-9a-zA-Z._-]+)@(?:[0-9a-zA-Z._-]*)$`.
 
 Verify string is a list of emails, separated by comma or semicolon, with `^(([0-9a-zA-Z._-]+)@(?:[0-9a-zA-Z._-]*)(\]?)(\s*(;|,)\s*|\s*$))*$`.  
 
-Use the following to achieve both of these, but also check for a specific email domain, for example a company email address.  
+To achieve both of these and also check for a specific email domain, for example a company email address, use `^([0-9a-zA-Z._-]+)@company.com$`  
 
-```regex
-^([0-9a-zA-Z._-]+)@company.com$
-# or for a comma / semicolon separated list
-^(([0-9a-zA-Z._-]+)@company.com(\]?)(\s*(;|,)\s*|\s*$))*$
-```
+Or for a comma / semicolon separated list `^(([0-9a-zA-Z._-]+)@company.com(\]?)(\s*(;|,)\s*|\s*$))*$`  
 
 # Search
 
