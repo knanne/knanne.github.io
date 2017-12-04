@@ -18,10 +18,12 @@ But, after some time playing around at [regex101.com/](https://regex101.com/) it
 
 # Basics
 
-- `^` means start at beginning of sting
-- `$` means start from end of string
-- anything in `[]` will return exact matches for those characters
-- the combination of `(.*?)` will return virtually everything (except for new line)
+  - `^` means start at beginning of sting
+  - `$` means start from end of string
+  - anything in `[]` will return exact matches for those characters
+  - anything in `()` means capturing group
+  - a non-capturing group is identified by `(?:`+`whatever`+`)`
+  - the combination of `(.*?)` will return virtually everything (except for new line)
 
 # Email
 

@@ -18,9 +18,10 @@ Manipulate files for automating ETL pipelines.
 
 ```python
 import os
+from datetime import datetime
 f = 'file.txt'
 size = os.stat(f).st_size
-last_modified = os.stat(f).st_mtime
+last_modified = datetime.fromtimestamp(os.stat(f).st_mtime)
 ```
 
 ## Creating
@@ -35,10 +36,13 @@ if not os.path.exists(folder):
 ## Copying
 
 ```python
+import os
 import glob
 import shutil
 src_dir = 'folder_in'
 dst_dir = 'folder_out'
+if not os.path.exists(dst_dir):
+  os.makedirs(dst_dir)
 for f in glob.glob(os.path.join(src_dir, '*.txt')):
   shutil.copy(f, dst_dir)
 ```
