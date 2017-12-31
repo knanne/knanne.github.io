@@ -1,4 +1,6 @@
-{% for project in site.data.projects %}
+{% assign projects = site.data.projects | sort: 'date' %}
+{% assign projects = projects | reverse %}
+{% for project in projects %}
 	{% if project.publish == true %}
 		<a href="{{ project.url }}" rel="tooltip" title="View Project">
 			<div class="card card-hover d-inline-flex justify-content-center">
