@@ -1,7 +1,7 @@
 - project: mspandas
   date: December, 2017
   category: Professional
-  publish: False
+  publish: True
   url: https://knanne.github.io/mspandas
   image: /assets/img/projects/mspandas.png
   description: mspandas is a convenience wrapper on top of python-pptx and python-docx which accepts pandas DataFrames for writing tables and charts in Microsoft PowerPoint and Word Documents.
