@@ -38,8 +38,8 @@ Manage your account privacy settings on [myaccount.google.com](https://myaccount
 
 **Strava** allows you to bulk export all your data, or access it via an API  
 
-  - https://support.strava.com/hc/en-us/articles/216918437-Exporting-your-Data-and-Bulk-Export
-  - https://strava.github.io/api/v3/activities/
+  - [Activities bulk export](https://support.strava.com/hc/en-us/articles/216918437-Exporting-your-Data-and-Bulk-Export)
+  - [Strava API](https://strava.github.io/api/v3/activities/)
 
 # Cleaning
 

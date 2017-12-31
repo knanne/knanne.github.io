@@ -38,8 +38,6 @@ Use [GitHub Pages](https://pages.github.com/) to publish a site for a GitHub acc
 
 # Config
 
-Easiest way to start is create a repository on [Github](https://github.com) or [GitLab](https://gitlab.com/), then clone it to local.  
-
 Check install  
 
 ```shell
@@ -62,9 +60,10 @@ ssh-keygen -t rsa -C "kain.nane@gmail.com"
 
 # Start Project
 
-Easiest way to start is create a repository on [Github](https://github.com), then clone it to local.  
+Easiest way to start is create a repository on [Github](https://github.com) or [GitLab](https://gitlab.com/), then clone it to local.  
 
 ```shell
+cd projects
 git clone <URL>
 ```
 
@@ -75,6 +74,7 @@ md repo
 cd repo
 git init
 git remote add origin <URL>
+git push -u origin master
 ```
 
 # Workflow
