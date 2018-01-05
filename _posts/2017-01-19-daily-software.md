@@ -110,11 +110,11 @@ If you are using [Conda](https://conda.io/), there is nice virtual environment f
 
 ```shell
 # create virtual environment
-conda create --n snowflakes
+conda create -n py27 python=2.7
 # list virtual environments
 conda env list
 # activate env
-activate snowflakes
+activate py27
 # deactivate env
 deactivate
 ```
