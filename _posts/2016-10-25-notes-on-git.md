@@ -122,7 +122,7 @@ git checkout <BRANCH>
 git merge master
 ```
 
-# Sticky Situations  
+# Situations  
 
 Below are some scenarios that you may find yourself in, and some helpful tips on how to get out.
 
@@ -193,6 +193,20 @@ git clean -n
 # perform deletion
 git clean -f
 ```
+
+## A Messy Past
+
+"Prune" is the command for cleaning up the log files or `git` database. It will remove old commits and associated file history which do not exist in the current branches' ancestry.  
+
+> Prune all unreachable objects from the object database - [git website](https://git-scm.com/docs/git-prune)  
+
+You can run `git prune` to simply do this locally.  
+
+However, `git remote prune origin` will remove local history no longer on referenced on remote. You will need to `commit` after this.  
+
+Additionally, adding `--prune` to a `git fetch` will do this local cleaning while fetching new objects.  
+
+Note that none of the `prune` commands delete branches, and there is no magical command from `git` to delete old branches which do not have remote references. Therefore it's better to delete old branches individually with `git branch -d <BRANCH>`.  
 
 # Notable Commands
 

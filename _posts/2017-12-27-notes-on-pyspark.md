@@ -3,12 +3,32 @@ categories: [big data]
 tags: [pyspark, spark, databricks]
 ---
 
-Random notes, links, commands or snippets of code related to big data analysis using PySpark on Databricks.
+Random notes, links, commands or snippets of code related to big data analysis using PySpark (on Databricks).
 
 <!-- excerpt separator -->
 
 * AUTO TABLE OF CONTENTS
 {:toc}
+
+# Intro
+
+Official [PySpark docs](https://spark.apache.org/docs/latest/api/python/index.html) are available, and [Databricks](https://docs.databricks.com/) has some good notes, but it can still be confusing for a beginner coming from Pandas.  
+
+# Common Techniques
+
+There are two common ways to select on DataFrames through the Python API of Spark. Either `df.select("myCol")` or `df.selectExp("myCol")`.  
+
+For me `.select()` is the most intuitive coming from Pandas, however I also always do `from pyspark.sql import functions as F` and use `df.select(F.col("myCol").key)` or `df.select(F.explode("myCol"))`.  
+
+While others prefer to use `.selectExp()` which accepts SQL but still returns the DataFrame, and do `df.selectExp("myCol.key")` or `df.selectExp("explode(myCol)")`.  
+
+Group by and aggregation look like this, `df.groupby("myCol1", "myCol2").agg(F.countDistinct("myCol3"))`.  
+
+Chaining functions together works really well, for example: `df.filter(...).select(...).join(...).groupby(...).agg(...)`.  
+
+Also, when dealing with HIVE tables, nested dictionaries and arrays can be utilized quite powerfully, and accessed in natural Pythonic ways. For example, as show above, access dictionaries using `myDictCol.key`, and index arrays simply with `myArrayCol[index]`.  
+
+Common functions to remember are `.withColumn()` to add calculated fields to DatFrames or chain more than one `explode` together, and also `.withColumnRenamed()` to quickly rename that function-applied column.  
 
 # Code Snippets
 
@@ -22,7 +42,7 @@ The below code creates a PySpark `user defined function` which implements `enume
 from pyspark.sql.functions import udf, col, explode
 from pyspark.sql.types import ArrayType, MapType, StringType, IntegerType
 
-explodeWithIndex = udf(lambda x: i:str(v) for i,v in enumerate(x) if x is not None), MapType(IntegerType(),StringType())
+explodeWithIndex = udf(lambda x: i:str(v) for i,v in enumerate(x) if x is not None, MapType(IntegerType(),StringType()))
 
 df2 = df.filter(col("myNestedDict").isNotNull()).select("id", explode(explodeWithIndex("myNestedDict").myNestedCol))
 ```
