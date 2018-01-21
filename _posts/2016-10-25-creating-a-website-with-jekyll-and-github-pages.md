@@ -71,19 +71,19 @@ add a `gem` to your `config.yml` file
 
 ```ruby
 gems:
-  - jekyll-last-modified-at
+  - jekyll-feed
 ```
 and run  
 
 ```shell
-gem install jekyll-last-modified-at
+gem install jekyll-feed
 ```
 
 Or, add gems to `Gemfile`  
 
 ```ruby
 group :jekyll_plugins do
-   gem "jekyll-last-modified-at"
+   gem "jekyll-feed"
 end
 ```
 
@@ -125,10 +125,18 @@ Check out Jekyll's documentation on [Collections](https://jekyllrb.com/docs/coll
 
 Check out Jekyll's documentation on [Data Files](https://jekyllrb.com/docs/datafiles/) for added functionality. This site uses data files to manage added information on collections, like "Projects".  
 
+# Search
+
+This site uses a tool from Google to embed a site-wide Google Search. Find more about how to do this yourself at [google.com/webmasters/](https://www.google.com/webmasters/).  
+
+If you want to find out how I created [knanne.github.io/search](https://knanne.github.io/search/), check out my code at [github.com/knanne/knanne.github.io/search](https://github.com/knanne/knanne.github.io/blob/master/search/index.html).  
+
 ## Search Engine Optimization
 
-- use the [jekyll seo gem](https://help.github.com/articles/search-engine-optimization-for-github-pages/)
-- create a [jekyll sitemap](https://github.com/jekyll/jekyll-sitemap)
+- use the [jekyll seo gem](https://help.github.com/articles/search-engine-optimization-for-github-pages/) to auto-create valuable site properties  
+- create a [jekyll sitemap](https://github.com/jekyll/jekyll-sitemap) to be indexed by search engines. (upload this to Google Search Console)  
+
+[Google Analytics](https://analytics.google.com/) is a great free way to track your sites activity, and learn specifics about your audience and traffic.  
 
 # Blog
 
@@ -139,7 +147,7 @@ Most people use Jekyll for creating a blog, or at least sharing code snippets an
 Of course in a basic HTML page, you have the freedom to create whatever you want. If you are using markdown, which this site uses, to create your posts, it may be a bit more mysterious although possible none the less.  
 
 ### Basic Content
-- use markdown syntax for assing code blocks, quotes, text formatting and the like. Refer to [GitHub's Guide on Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
+- use markdown syntax for adding code blocks, quotes, text formatting and the like. Refer to [GitHub's Guide on Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
 - add latex with math blocks `$$...$$`, enabled by [MathJax](https://www.mathjax.org/)
 - add photos with `![<IMAGE>]({{ site.baseurl }}/path/to/image.png)`
 - embed HTML inside a `<div></div>` container
@@ -156,13 +164,11 @@ Embed a larger code snippet, posted on [GitHub Gists](https://gist.github.com/),
 
 ### Jupyter Notebooks
 
-[Jupyter Notebooks](http://jupyter.org/) are becoming an increasingly popular way to code quickly, as well as share fully documented data science workflows.  
+[Jupyter Notebooks](http://jupyter.org/) are a popular way to code quickly, as well as share fully documented data science workflows. This site has fully embedded Jupyter Notebooks living at [knanne.github.io/notebooks](https://knanne.github.io/notebooks/).  
 
 The easiest way to add a Jupyter notebook to your post is to [convert it to HTML using nbconvert](https://nbconvert.readthedocs.io/en/latest/usage.html), then embed simply use Liquid to include it in your markdown post. The conversion from the command line would like something like this `jupyter nbconvert --to html <NOTEBOOK.ipynb>`, and to include it use `{% raw %}{% include_relative path/to/<NOTEBOOK>.html %}{% endraw %}` making sure the post is in a subdirectory of the post (or use normal `include` if the notebook is in your `_includes` folder)  
 
-Note, you can always link to a free rendering of your notebook on Github using [Jupyter nbviewer](http://nbviewer.jupyter.org/). An example link would look like the following:  
-
-`http://nbviewer.jupyter.org/github/<USERNAME>/<PROJECT>/blob/master/path/to/<NOTEBOOOK>.ipynb`  
+Note, you can always link to a free rendering of your notebook on Github using [Jupyter nbviewer](http://nbviewer.jupyter.org/). An example link would look like the following: `http://nbviewer.jupyter.org/github/<USERNAME>/<PROJECT>/blob/master/path/to/<NOTEBOOOK>.ipynb`.    
 
 ## Site Comments
 
@@ -179,6 +185,16 @@ Other notable options I have seen include:
 - Twitter Tweet [button](https://dev.twitter.com/web/tweet-button)
 - Facebook like [button](https://developers.facebook.com/docs/plugins/like-button)
 - LinkedIn various [buttons](https://developer.linkedin.com/plugins)
+
+## RSS
+
+This site uses the gem [`jekyll-feed`](https://github.com/jekyll/jekyll-feed) for auto-creating a formatted RSS feed with post content. Find this sites RSS feed at [knanne.github.io/feed](https://knanne.github.io/feed).  
+
+# Projects
+
+As mentioned before, this site uses the Jekyll features `Collections` and `Data` to manage projects by adding the projects path to the site, and fetching project information from `site.data.projects` for displaying content. This site's projects lives at [knanne.github.io/projects](https://knanne.github.io/projects/).  
+
+Additionally, I use another nice free feature of GitHub Pages to host project repos, in the site's path. Find out more about this from GitHub [here](https://help.github.com/articles/user-organization-and-project-pages/#project-pages). The key takeaways are: create a new project repo, go to the project's Settings and select GitHub Pages > Source to assign from where you want to publish the project, and then simply view your project at your `https://<username>.github.io/<projectname>`. For example, check out  [knanne.github.io/vu_socialweb_2016/](https://knanne.github.io/vu_socialweb_2016/).  
 
 # Code Snippets
 
@@ -230,6 +246,19 @@ Here are some code snippets that may come in handy when trying to code your own 
     {% endfor %}
   </ul>
 {% endfor %}{% endraw %}
+```
+
+## Customizing the Iteration of Site Content
+
+```html
+{% raw %}{% assign projects = site.data.projects | sort: 'date' %}
+{% assign projects = projects | reverse %}
+{% for project in projects %}
+	{% if project.publish == true %}
+    ...
+  {% endraw %}
+{% endfor %}
+{% endraw %}
 ```
 
 ## Automatic Table of Contents

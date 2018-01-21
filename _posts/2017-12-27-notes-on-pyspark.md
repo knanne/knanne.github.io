@@ -1,6 +1,6 @@
 ---
 categories: [big data]
-tags: [pyspark, spark, databricks]
+tags: [pyspark, spark, python, databricks]
 ---
 
 Random notes, links, commands or snippets of code related to big data analysis using PySpark (on Databricks).
