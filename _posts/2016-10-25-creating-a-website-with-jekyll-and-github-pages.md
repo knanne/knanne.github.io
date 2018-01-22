@@ -256,9 +256,8 @@ Here are some code snippets that may come in handy when trying to code your own 
 {% for project in projects %}
 	{% if project.publish == true %}
     ...
-  {% endraw %}
-{% endfor %}
-{% endraw %}
+  {% endif %}
+{% endfor %}{% endraw %}
 ```
 
 ## Automatic Table of Contents
