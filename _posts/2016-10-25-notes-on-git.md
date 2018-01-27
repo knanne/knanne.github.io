@@ -14,6 +14,7 @@ A quick compilation of notes on Git
 
 - official [Git documentation](https://git-scm.com/)  
 - [download](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) git  
+- official [Book on Pro Git](https://git-scm.com/book/)
 
 # Resources
 
@@ -22,6 +23,7 @@ A quick compilation of notes on Git
 - download the [pdf cheat sheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) from Github  
 - try GitHub's [educational challenge](https://try.github.io/)
 - [GitHub Guides](https://guides.github.com/) has many friendly tutorials
+- Atlassian has some [great visual tutorials](https://www.atlassian.com/git/tutorials)
 
 Most open source projects are on GitHub. Checkout [GitHub Explore](https://github.com/explore) to simply "explore" what's out there. For example you can view a list of top projects for related to [government](https://github.com/showcases/government) or [social impact](https://github.com/showcases/social-impact).  
 
@@ -148,6 +150,12 @@ In case of being stuck in vim after commit, type `:wq`
 
 ## Rebase Local Master (with Conflicts)
 
+> Do not rebase (public) commits that exist outside your repository - [Pro Git Book](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)
+
+For further notes on this issue, check out [this tutorial by Atlassian](https://www.atlassian.com/git/tutorials/merging-vs-rebasing), which has a great visual walkthrough.  
+
+Otherwise, if you still want to do this...  
+
 ```shell
 git checkout <FEATURE-BRANCH>
 git rebase master
@@ -238,4 +246,10 @@ List all uncommitted files
 
 ```shell
 git ls-files --others
+```
+
+Unstage a directory (after staging all with `git add .`)
+
+```shell
+git reset -- _dir
 ```
