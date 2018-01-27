@@ -1,8 +1,7 @@
 # Writing Notebooks Procedure
 
   1. **spin up a `jupyter notebook` server and create a `.ipynb` file in `~/_notebooks/jupyter`**
-  2. **run `jupyter nbconvert --to html --template template.tpl <NOTEBOOK.ipynb>`** (using this site's custom html template)
-    - remove `<!DOCTYPE html>` from the `.html` file
+  2. **run `jupyter nbconvert --to html --template template.tpl <NOTEBOOK.ipynb>`** (using this site's custom nbconvert template)
   3. **create new `.md` file in `/_notebooks`**
     - add `title` to YAML frontmatter (title needs to be same as `.ipynb` filename, "*slugified*" to access file from [nbviewer](nbviewer.jupyter.org))
     - add `date` to YAML frontmatter
@@ -30,13 +29,18 @@ A template for creating notebooks...
 {% include_relative jupyter/pandas_visualization.html %}
 ```
 
-# Modifying Notebook Template
+# Custom Template
 
-This site's custom html template for notebooks, found at `~/_notebooks/jupyter/template.tpl`, is *almost* a carbon copy of the "Full" template provided on [Jupyter's nbconvert GitHub](https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/full.tpl). Minor tweaks were made to allow their template to be embedded inside this site's "page" layout.  
+This site's custom html template for notebooks, found at `~/_notebooks/jupyter/template.tpl`, is *almost* a carbon copy of the "Full" template provided on [Jupyter's nbconvert GitHub](https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/full.tpl). Minor tweaks were made to allow their template to be embedded inside this site's "page" layout.
 
-# Snippet to Toggle Code Blocks
+Running list of everything changed from default template.
+  - remove `<!DOCTYPE html>` from the `.html` file
 
-An added feature to the site's notebooks is the ability to hide code blocks and view only the output. Below is an example of how to do this in the notebook itself. We alternatively put this code in the page's template.  
+The template is utilized by adding `--template` keyword when running `jupyter nbconvert`, to convert the `.ipynb` to `.html`.  
+
+# Toggle Code Blocks
+
+An added feature to the site's notebooks is the ability to hide code blocks and view only the output. Below is an example of how to do this in the notebook itself.  
 
 ```
 %%html
@@ -49,3 +53,10 @@ An added feature to the site's notebooks is the ability to hide code blocks and 
 
 <button id="toggle_code_blocks" class="btn-default" rel="tooltip" title="Click to toggle code blocks">Toggle Code Blocks</button>
 ```
+We alternatively put this code in our notebook layout, at `_layouts/notebook.html`. Below is a screenshot of how the button shows on a published notebook.  
+
+![toggle_code_blocks](../assets/img/notebooks_toggle_code_blocks.jpg)
+
+# Pin
+
+This site pins notebooks to a "Recent Notebooks" section on https://knanne.github.io/notebooks/. As defined in the `_config.yml`, all notebooks have pin set to True by default. Currently only the last 3 most recent notebooks will be shown. To exclude a notebook from being pinned, set `pin: False` in the notebook's YAML frontmatter.   

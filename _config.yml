@@ -72,6 +72,7 @@ defaults:
       author: Kain Nanne
       share: True # include social sharing buttons
       comments: True # include comments section
+      pin: True # include in (latest) pinned bootstrap cards
   -
     scope:
       path: "_drafts"
@@ -94,6 +95,7 @@ defaults:
       share: True # include social sharing buttons
       comments: True # include comments section
       publish: True
+      pin: True # include in (latest) pinned bootstrap cards
   -
     scope:
       path: "_projects"

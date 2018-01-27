@@ -38,3 +38,4 @@ See [Projects](https://github.com/knanne/knanne.github.io/tree/master/projects) 
   - create `tests` procedure
   - implement test for html-proofer
   - add linter
+  - turn this site's skeleton into Jekyll template
