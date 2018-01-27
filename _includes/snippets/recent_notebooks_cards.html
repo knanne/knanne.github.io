@@ -23,7 +23,7 @@
 					</div>
 				</a>
 				{% assign i = i | plus:1 %}
-				{% if i = 3 %}{% break %}{% endif %}
+				{% if i == 3 %}{% break %}{% endif %}
 			{% endif %}
 		{% endif %}
 	{% endfor %}
