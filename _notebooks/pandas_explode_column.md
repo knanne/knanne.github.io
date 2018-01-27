@@ -3,7 +3,7 @@ title: Pandas Explode Column
 date: '2017-10-17'
 ---
 
-Elaborate example of exploding a custom-delimited text column in a Pandas DataFrame
+Elaborate example of exploding a custom-delimited text column, or dictionary column in a Pandas DataFrame
 
 <!-- excerpt separator -->
 

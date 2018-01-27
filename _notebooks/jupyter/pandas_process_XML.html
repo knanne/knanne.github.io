@@ -1,6 +1,6 @@
 <html>
 <head><meta charset="utf-8" />
-<title>pandas_explode_column</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>pandas_process_XML</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11772,8 +11772,18 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Pandas-Explode-Column">Pandas Explode Column<a class="anchor-link" href="#Pandas-Explode-Column">&#182;</a></h1><p>This notebook demonstrates how to explode a column with nested values, either in CSV format or a dictionary (e.g. JSON).</p>
-<p><strong>NOTE:</strong> Method 3 of the CSV explosdion is the most efficient, and skip down to the <a href="#Explode-Dict-Column">Explode Dict Column</a> for a super efficient way of exploding a dictionary of values in a Pandas DataFrame.</p>
+<h1 id="How-To-XML-to-Pandas">How To XML to Pandas<a class="anchor-link" href="#How-To-XML-to-Pandas">&#182;</a></h1><p>This notebook will demonstrate how to process XML data in python using pandas. Specifically, we use a library <a href="https://github.com/martinblech/xmltodict">xmltodict</a>, to parse XML as a dictionary, then read what we want into Pandas.</p>
+<p>We then show how to clean up various data types and nested columns into a format which can be used in analysis.</p>
+<p><strong>NOTE:</strong> The example data provided is very basic, which contains little numerical data for analysis. However the methodology should be able to be copied to a more quantitative analysis (e.g. statistics over reporting periods)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Get-XML">Get XML<a class="anchor-link" href="#Get-XML">&#182;</a></h1><p>For fun let's use the RSS feed of this site</p>
 
 </div>
 </div>
@@ -11783,7 +11793,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 </pre></div>
 
 </div>
@@ -11791,30 +11801,12 @@ div#notebook {
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Data">Data<a class="anchor-link" href="#Data">&#182;</a></h2>
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;csv&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;value1&#39;</span><span class="p">,</span>
-                            <span class="s1">&#39;value1,value2&#39;</span><span class="p">,</span>
-                            <span class="s1">&#39;value1,value2,value3,value4,value5,value6&#39;</span><span class="p">,</span>
-                            <span class="s1">&#39;value1&#39;</span><span class="p">,</span>
-                            <span class="s1">&#39;value1,value2,value3,value4&#39;</span><span class="p">],</span>
-                   <span class="s1">&#39;json&#39;</span> <span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span><span class="s1">&#39;value1&#39;</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">:</span><span class="s1">&#39;value2.1&#39;</span><span class="p">,</span> <span class="s1">&#39;key3&#39;</span><span class="p">:</span><span class="s1">&#39;value3.1&#39;</span><span class="p">,</span> <span class="s1">&#39;key4&#39;</span><span class="p">:</span><span class="s1">&#39;value4.1&#39;</span><span class="p">},</span>
-                             <span class="p">{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span><span class="s1">&#39;value2&#39;</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">:</span><span class="s1">&#39;value2.2&#39;</span><span class="p">,</span> <span class="s1">&#39;key3&#39;</span><span class="p">:</span><span class="s1">&#39;value3.2&#39;</span><span class="p">,</span> <span class="s1">&#39;key4&#39;</span><span class="p">:</span><span class="s1">&#39;value4.2&#39;</span><span class="p">},</span>
-                             <span class="p">{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span><span class="s1">&#39;value3&#39;</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">:</span><span class="s1">&#39;value2.3&#39;</span><span class="p">,</span> <span class="s1">&#39;key3&#39;</span><span class="p">:</span><span class="s1">&#39;value3.3&#39;</span><span class="p">},</span>
-                             <span class="p">{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span><span class="s1">&#39;value4&#39;</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">:</span><span class="s1">&#39;value2.4&#39;</span><span class="p">},</span>
-                             <span class="p">{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span><span class="s1">&#39;value5&#39;</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">:</span><span class="s1">&#39;value2.5&#39;</span><span class="p">}]</span>
-                  <span class="p">})</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://knanne.github.io/feed.xml&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11827,20 +11819,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span><span class="o">.</span><span class="n">ok</span>
 </pre></div>
 
 </div>
@@ -11853,67 +11832,13 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[4]:</div>
+<div class="prompt output_prompt">Out[3]:</div>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>csv</th>
-      <th>json</th>
-    </tr>
-    <tr>
-      <th>id</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>value1</td>
-      <td>{'key1': 'value1', 'key2': 'value2.1', 'key3':...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>value1,value2</td>
-      <td>{'key1': 'value2', 'key2': 'value2.2', 'key3':...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>value1,value2,value3,value4,value5,value6</td>
-      <td>{'key1': 'value3', 'key2': 'value2.3', 'key3':...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>value1</td>
-      <td>{'key1': 'value4', 'key2': 'value2.4'}</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>value1,value2,value3,value4</td>
-      <td>{'key1': 'value5', 'key2': 'value2.5'}</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
 </div>
 
 </div>
@@ -11926,15 +11851,30 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Explode-CSV-Column">Explode CSV Column<a class="anchor-link" href="#Explode-CSV-Column">&#182;</a></h2>
+<h1 id="xmltodict">xmltodict<a class="anchor-link" href="#xmltodict">&#182;</a></h1><p>This is a python library on pip. Install with <code>pip install xmltodict</code></p>
+
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">xmltodict</span>
+<span class="kn">import</span> <span class="nn">json</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Method-1">Method 1<a class="anchor-link" href="#Method-1">&#182;</a></h3>
+<h2 id="Parse-the-XML">Parse the XML<a class="anchor-link" href="#Parse-the-XML">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -11943,47 +11883,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span><span class="n">row</span><span class="o">.</span><span class="n">csv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()}</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_exploded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_exploded</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
-<span class="n">df_exploded</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;csv_sequence&#39;</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_exploded</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
+d = xmltodict.parse(response.content)
 </pre></div>
 
 </div>
@@ -11996,105 +11897,13 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[8]:</div>
+<div class="prompt"></div>
 
 
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th></th>
-      <th>value</th>
-    </tr>
-    <tr>
-      <th>id</th>
-      <th>csv_sequence</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <th>0</th>
-      <td>value1</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">1</th>
-      <th>0</th>
-      <td>value1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>value2</td>
-    </tr>
-    <tr>
-      <th rowspan="6" valign="top">2</th>
-      <th>0</th>
-      <td>value1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>value2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>value3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>value4</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>value5</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>value6</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <th>0</th>
-      <td>value1</td>
-    </tr>
-    <tr>
-      <th rowspan="4" valign="top">4</th>
-      <th>0</th>
-      <td>value1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>value2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>value3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>value4</td>
-    </tr>
-  </tbody>
-</table>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Wall time: 9.83 ms
+</pre>
 </div>
-</div>
-
 </div>
 
 </div>
@@ -12105,7 +11914,82 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Method-2">Method 2<a class="anchor-link" href="#Method-2">&#182;</a></h3>
+<h2 id="Preview-the-JSON">Preview the JSON<a class="anchor-link" href="#Preview-the-JSON">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)[:</span><span class="mi">750</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;.</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{
+  &#34;feed&#34;: {
+    &#34;@xmlns&#34;: &#34;http://www.w3.org/2005/Atom&#34;,
+    &#34;generator&#34;: {
+      &#34;@uri&#34;: &#34;https://jekyllrb.com/&#34;,
+      &#34;@version&#34;: &#34;3.6.2&#34;,
+      &#34;#text&#34;: &#34;Jekyll&#34;
+    },
+    &#34;link&#34;: [
+      {
+        &#34;@href&#34;: &#34;https://knanne.github.io/feed.xml&#34;,
+        &#34;@rel&#34;: &#34;self&#34;,
+        &#34;@type&#34;: &#34;application/atom+xml&#34;
+      },
+      {
+        &#34;@href&#34;: &#34;https://knanne.github.io/&#34;,
+        &#34;@rel&#34;: &#34;alternate&#34;,
+        &#34;@type&#34;: &#34;text/html&#34;
+      }
+    ],
+    &#34;updated&#34;: &#34;2018-01-27T15:24:01+00:00&#34;,
+    &#34;id&#34;: &#34;https://knanne.github.io/&#34;,
+    &#34;title&#34;: {
+      &#34;@type&#34;: &#34;html&#34;,
+      &#34;#text&#34;: &#34;knanne&#34;
+    },
+    &#34;subtitle&#34;: &#34;Expert traveler, amateur farmer, beer / wine enthusiast - with a data science problem&#34;,
+    &#34;author&#34;: {
+      &#34;name&#34;: &#34;Kain Nanne&#34;
+.
+.
+.
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Convert-to-Pandas-DataFrame">Convert to Pandas DataFrame<a class="anchor-link" href="#Convert-to-Pandas-DataFrame">&#182;</a></h1><p>Now this still requires some manual entry.</p>
+<p>Since the JSON is still a series of nested dictionaries, we need to identify what are the recurring "entries" that we are looking for. (e.g. documents, posts, entries etc.)</p>
+<p>If you want to extract metadata from roots of your entries, I would suggest creating another DataFrame for that and merging your "entries" database on your "metadata" database later.</p>
+
 </div>
 </div>
 </div>
@@ -12114,7 +11998,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_exploded</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;csv&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">pat</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 
 </div>
@@ -12127,8 +12011,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_exploded</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
-<span class="n">df_exploded</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;csv_sequence&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;feed&#39;</span><span class="p">][</span><span class="s1">&#39;entry&#39;</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -12141,7 +12024,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_exploded</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
 </div>
@@ -12158,6 +12041,74 @@ div#notebook {
 
 
 
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(10, 9)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[12]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Index([&#39;title&#39;, &#39;link&#39;, &#39;published&#39;, &#39;updated&#39;, &#39;id&#39;, &#39;content&#39;, &#39;author&#39;,
+       &#39;category&#39;, &#39;summary&#39;],
+      dtype=&#39;object&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[13]:</div>
+
+
+
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
 <style>
@@ -12177,76 +12128,77 @@ div#notebook {
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th></th>
-      <th>value</th>
-    </tr>
-    <tr>
+      <th>title</th>
+      <th>link</th>
+      <th>published</th>
+      <th>updated</th>
       <th>id</th>
-      <th>csv_sequence</th>
-      <th></th>
+      <th>content</th>
+      <th>author</th>
+      <th>category</th>
+      <th>summary</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <th>0</th>
-      <td>value1</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">1</th>
-      <th>0</th>
-      <td>value1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>value2</td>
-    </tr>
-    <tr>
-      <th rowspan="6" valign="top">2</th>
-      <th>0</th>
-      <td>value1</td>
+      <td>{'@type': 'html', '#text': 'Notes On Pyspark'}</td>
+      <td>{'@href': 'https://knanne.github.io/posts/note...</td>
+      <td>2017-12-27T00:00:00+00:00</td>
+      <td>2017-12-27T00:00:00+00:00</td>
+      <td>https://knanne.github.io/posts/notes-on-pyspark</td>
+      <td>{'@type': 'html', '@xml:base': 'https://knanne...</td>
+      <td>{'name': 'Kain Nanne'}</td>
+      <td>[{'@term': 'pyspark'}, {'@term': 'spark'}, {'@...</td>
+      <td>{'@type': 'html', '#text': 'Random notes, link...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>value2</td>
+      <td>{'@type': 'html', '#text': 'Random Resources F...</td>
+      <td>{'@href': 'https://knanne.github.io/posts/rand...</td>
+      <td>2017-11-22T00:00:00+00:00</td>
+      <td>2017-11-22T00:00:00+00:00</td>
+      <td>https://knanne.github.io/posts/random-resource...</td>
+      <td>{'@type': 'html', '@xml:base': 'https://knanne...</td>
+      <td>{'name': 'Kain Nanne'}</td>
+      <td>NaN</td>
+      <td>{'@type': 'html', '#text': 'Random notes, link...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>value3</td>
+      <td>{'@type': 'html', '#text': 'Preprocessing Data...</td>
+      <td>{'@href': 'https://knanne.github.io/posts/prep...</td>
+      <td>2017-11-11T00:00:00+00:00</td>
+      <td>2017-11-11T00:00:00+00:00</td>
+      <td>https://knanne.github.io/posts/preprocessing-d...</td>
+      <td>{'@type': 'html', '@xml:base': 'https://knanne...</td>
+      <td>{'name': 'Kain Nanne'}</td>
+      <td>[{'@term': 'python'}, {'@term': 'pandas'}]</td>
+      <td>{'@type': 'html', '#text': 'Notes on preparing...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>value4</td>
+      <td>{'@type': 'html', '#text': 'Notes On Regular E...</td>
+      <td>{'@href': 'https://knanne.github.io/posts/note...</td>
+      <td>2017-10-04T00:00:00+00:00</td>
+      <td>2017-10-04T00:00:00+00:00</td>
+      <td>https://knanne.github.io/posts/notes-on-regula...</td>
+      <td>{'@type': 'html', '@xml:base': 'https://knanne...</td>
+      <td>{'name': 'Kain Nanne'}</td>
+      <td>{'@term': 'regex'}</td>
+      <td>{'@type': 'html', '#text': 'Notes and scripts ...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>value5</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>value6</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <th>0</th>
-      <td>value1</td>
-    </tr>
-    <tr>
-      <th rowspan="4" valign="top">4</th>
-      <th>0</th>
-      <td>value1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>value2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>value3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>value4</td>
+      <td>{'@type': 'html', '#text': 'Cleaning Data In P...</td>
+      <td>{'@href': 'https://knanne.github.io/posts/clea...</td>
+      <td>2017-09-24T00:00:00+00:00</td>
+      <td>2017-09-24T00:00:00+00:00</td>
+      <td>https://knanne.github.io/posts/cleaning-data-i...</td>
+      <td>{'@type': 'html', '@xml:base': 'https://knanne...</td>
+      <td>{'name': 'Kain Nanne'}</td>
+      <td>[{'@term': 'python'}, {'@term': 'pandas'}]</td>
+      <td>{'@type': 'html', '#text': 'Helpful scripts fo...</td>
     </tr>
   </tbody>
 </table>
@@ -12263,43 +12215,26 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Method-3">Method 3<a class="anchor-link" href="#Method-3">&#182;</a></h3>
+<h1 id="Cleaning">Cleaning<a class="anchor-link" href="#Cleaning">&#182;</a></h1><p>Okay, now you may notice how dirty the above DataFrame may look. In fact it is quite detailed, which is very nice, however we will need to transform some columns if we want to apply analysis on them.</p>
+
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_exploded</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">csv</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)))</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Column-with-Dictionary-(single-key)">Column with Dictionary (single key)<a class="anchor-link" href="#Column-with-Dictionary-(single-key)">&#182;</a></h2><p>Consider the <code>"author"</code> column. It is simply a dictionary with a single key, value pair. We can access it simply by applying <code>.get("key")</code> to the column.</p>
 
 </div>
 </div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_exploded</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
-<span class="n">df_exploded</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;csv_sequence&#39;</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_exploded</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -12316,99 +12251,19 @@ div#notebook {
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th></th>
-      <th>value</th>
-    </tr>
-    <tr>
-      <th>id</th>
-      <th>csv_sequence</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <th>0</th>
-      <td>value1</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">1</th>
-      <th>0</th>
-      <td>value1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>value2</td>
-    </tr>
-    <tr>
-      <th rowspan="6" valign="top">2</th>
-      <th>0</th>
-      <td>value1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>value2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>value3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>value4</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>value5</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>value6</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <th>0</th>
-      <td>value1</td>
-    </tr>
-    <tr>
-      <th rowspan="4" valign="top">4</th>
-      <th>0</th>
-      <td>value1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>value2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>value3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>value4</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>0    Kain Nanne
+1    Kain Nanne
+2    Kain Nanne
+3    Kain Nanne
+4    Kain Nanne
+5    Kain Nanne
+6    Kain Nanne
+7    Kain Nanne
+8    Kain Nanne
+9    Kain Nanne
+Name: author, dtype: object</pre>
 </div>
 
 </div>
@@ -12421,7 +12276,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Join">Join<a class="anchor-link" href="#Join">&#182;</a></h2>
+<p>More efficient though, we can convert the column to a <code>pd.Series</code>, which takes care of extracting the value and renaming the column to the key, and simply join it back to our original DataFrame.</p>
+
 </div>
 </div>
 </div>
@@ -12430,7 +12286,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_exploded</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;csv_sequence&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12466,117 +12322,49 @@ div#notebook {
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>csv_sequence</th>
-      <th>csv</th>
-      <th>json</th>
-      <th>value</th>
-    </tr>
-    <tr>
-      <th>id</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>name</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0</td>
-      <td>value1</td>
-      <td>{'key1': 'value1', 'key2': 'value2.1', 'key3':...</td>
-      <td>value1</td>
+      <td>Kain Nanne</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0</td>
-      <td>value1,value2</td>
-      <td>{'key1': 'value2', 'key2': 'value2.2', 'key3':...</td>
-      <td>value1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>value1,value2</td>
-      <td>{'key1': 'value2', 'key2': 'value2.2', 'key3':...</td>
-      <td>value2</td>
+      <td>Kain Nanne</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0</td>
-      <td>value1,value2,value3,value4,value5,value6</td>
-      <td>{'key1': 'value3', 'key2': 'value2.3', 'key3':...</td>
-      <td>value1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>value1,value2,value3,value4,value5,value6</td>
-      <td>{'key1': 'value3', 'key2': 'value2.3', 'key3':...</td>
-      <td>value2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2</td>
-      <td>value1,value2,value3,value4,value5,value6</td>
-      <td>{'key1': 'value3', 'key2': 'value2.3', 'key3':...</td>
-      <td>value3</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>value1,value2,value3,value4,value5,value6</td>
-      <td>{'key1': 'value3', 'key2': 'value2.3', 'key3':...</td>
-      <td>value4</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>4</td>
-      <td>value1,value2,value3,value4,value5,value6</td>
-      <td>{'key1': 'value3', 'key2': 'value2.3', 'key3':...</td>
-      <td>value5</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>5</td>
-      <td>value1,value2,value3,value4,value5,value6</td>
-      <td>{'key1': 'value3', 'key2': 'value2.3', 'key3':...</td>
-      <td>value6</td>
+      <td>Kain Nanne</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0</td>
-      <td>value1</td>
-      <td>{'key1': 'value4', 'key2': 'value2.4'}</td>
-      <td>value1</td>
+      <td>Kain Nanne</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0</td>
-      <td>value1,value2,value3,value4</td>
-      <td>{'key1': 'value5', 'key2': 'value2.5'}</td>
-      <td>value1</td>
+      <td>Kain Nanne</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>1</td>
-      <td>value1,value2,value3,value4</td>
-      <td>{'key1': 'value5', 'key2': 'value2.5'}</td>
-      <td>value2</td>
+      <th>5</th>
+      <td>Kain Nanne</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>2</td>
-      <td>value1,value2,value3,value4</td>
-      <td>{'key1': 'value5', 'key2': 'value2.5'}</td>
-      <td>value3</td>
+      <th>6</th>
+      <td>Kain Nanne</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>3</td>
-      <td>value1,value2,value3,value4</td>
-      <td>{'key1': 'value5', 'key2': 'value2.5'}</td>
-      <td>value4</td>
+      <th>7</th>
+      <td>Kain Nanne</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Kain Nanne</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Kain Nanne</td>
     </tr>
   </tbody>
 </table>
@@ -12585,6 +12373,19 @@ div#notebook {
 
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
 </div>
 </div>
 
@@ -12593,103 +12394,17 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Explode-Dict-Column">Explode Dict Column<a class="anchor-link" href="#Explode-Dict-Column">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>
-</pre></div>
+<p>Preview the last column to verify that worked.</p>
 
 </div>
 </div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[16]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>csv</th>
-      <th>json</th>
-    </tr>
-    <tr>
-      <th>id</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>value1</td>
-      <td>{'key1': 'value1', 'key2': 'value2.1', 'key3':...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>value1,value2</td>
-      <td>{'key1': 'value2', 'key2': 'value2.2', 'key3':...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>value1,value2,value3,value4,value5,value6</td>
-      <td>{'key1': 'value3', 'key2': 'value2.3', 'key3':...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>value1</td>
-      <td>{'key1': 'value4', 'key2': 'value2.4'}</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>value1,value2,value3,value4</td>
-      <td>{'key1': 'value5', 'key2': 'value2.5'}</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">json</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
 </div>
@@ -12706,77 +12421,9 @@ div#notebook {
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>key1</th>
-      <th>key2</th>
-      <th>key3</th>
-      <th>key4</th>
-    </tr>
-    <tr>
-      <th>id</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>value1</td>
-      <td>value2.1</td>
-      <td>value3.1</td>
-      <td>value4.1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>value2</td>
-      <td>value2.2</td>
-      <td>value3.2</td>
-      <td>value4.2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>value3</td>
-      <td>value2.3</td>
-      <td>value3.3</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>value4</td>
-      <td>value2.4</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>value5</td>
-      <td>value2.5</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>(10, 10)</pre>
 </div>
 
 </div>
@@ -12790,7 +12437,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">json</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -12826,68 +12473,1306 @@ div#notebook {
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>csv</th>
-      <th>json</th>
-      <th>key1</th>
-      <th>key2</th>
-      <th>key3</th>
-      <th>key4</th>
-    </tr>
-    <tr>
+      <th>title</th>
+      <th>link</th>
+      <th>published</th>
+      <th>updated</th>
       <th>id</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>content</th>
+      <th>author</th>
+      <th>category</th>
+      <th>summary</th>
+      <th>name</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>value1</td>
-      <td>{'key1': 'value1', 'key2': 'value2.1', 'key3':...</td>
-      <td>value1</td>
-      <td>value2.1</td>
-      <td>value3.1</td>
-      <td>value4.1</td>
+      <td>{'@type': 'html', '#text': 'Notes On Pyspark'}</td>
+      <td>{'@href': 'https://knanne.github.io/posts/note...</td>
+      <td>2017-12-27T00:00:00+00:00</td>
+      <td>2017-12-27T00:00:00+00:00</td>
+      <td>https://knanne.github.io/posts/notes-on-pyspark</td>
+      <td>{'@type': 'html', '@xml:base': 'https://knanne...</td>
+      <td>{'name': 'Kain Nanne'}</td>
+      <td>[{'@term': 'pyspark'}, {'@term': 'spark'}, {'@...</td>
+      <td>{'@type': 'html', '#text': 'Random notes, link...</td>
+      <td>Kain Nanne</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>value1,value2</td>
-      <td>{'key1': 'value2', 'key2': 'value2.2', 'key3':...</td>
-      <td>value2</td>
-      <td>value2.2</td>
-      <td>value3.2</td>
-      <td>value4.2</td>
+      <td>{'@type': 'html', '#text': 'Random Resources F...</td>
+      <td>{'@href': 'https://knanne.github.io/posts/rand...</td>
+      <td>2017-11-22T00:00:00+00:00</td>
+      <td>2017-11-22T00:00:00+00:00</td>
+      <td>https://knanne.github.io/posts/random-resource...</td>
+      <td>{'@type': 'html', '@xml:base': 'https://knanne...</td>
+      <td>{'name': 'Kain Nanne'}</td>
+      <td>NaN</td>
+      <td>{'@type': 'html', '#text': 'Random notes, link...</td>
+      <td>Kain Nanne</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>value1,value2,value3,value4,value5,value6</td>
-      <td>{'key1': 'value3', 'key2': 'value2.3', 'key3':...</td>
-      <td>value3</td>
-      <td>value2.3</td>
-      <td>value3.3</td>
+      <td>{'@type': 'html', '#text': 'Preprocessing Data...</td>
+      <td>{'@href': 'https://knanne.github.io/posts/prep...</td>
+      <td>2017-11-11T00:00:00+00:00</td>
+      <td>2017-11-11T00:00:00+00:00</td>
+      <td>https://knanne.github.io/posts/preprocessing-d...</td>
+      <td>{'@type': 'html', '@xml:base': 'https://knanne...</td>
+      <td>{'name': 'Kain Nanne'}</td>
+      <td>[{'@term': 'python'}, {'@term': 'pandas'}]</td>
+      <td>{'@type': 'html', '#text': 'Notes on preparing...</td>
+      <td>Kain Nanne</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>{'@type': 'html', '#text': 'Notes On Regular E...</td>
+      <td>{'@href': 'https://knanne.github.io/posts/note...</td>
+      <td>2017-10-04T00:00:00+00:00</td>
+      <td>2017-10-04T00:00:00+00:00</td>
+      <td>https://knanne.github.io/posts/notes-on-regula...</td>
+      <td>{'@type': 'html', '@xml:base': 'https://knanne...</td>
+      <td>{'name': 'Kain Nanne'}</td>
+      <td>{'@term': 'regex'}</td>
+      <td>{'@type': 'html', '#text': 'Notes and scripts ...</td>
+      <td>Kain Nanne</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>{'@type': 'html', '#text': 'Cleaning Data In P...</td>
+      <td>{'@href': 'https://knanne.github.io/posts/clea...</td>
+      <td>2017-09-24T00:00:00+00:00</td>
+      <td>2017-09-24T00:00:00+00:00</td>
+      <td>https://knanne.github.io/posts/cleaning-data-i...</td>
+      <td>{'@type': 'html', '@xml:base': 'https://knanne...</td>
+      <td>{'name': 'Kain Nanne'}</td>
+      <td>[{'@term': 'python'}, {'@term': 'pandas'}]</td>
+      <td>{'@type': 'html', '#text': 'Helpful scripts fo...</td>
+      <td>Kain Nanne</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Column-with-Dictionary-(multiple-keys)">Column with Dictionary (multiple keys)<a class="anchor-link" href="#Column-with-Dictionary-(multiple-keys)">&#182;</a></h2><p>Consider the <code>"title"</code> column, which contains a single dictionary with multiple keys. Applying the same method as above, works well and explodes both keys with their respective values.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[19]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>@type</th>
+      <th>#text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>html</td>
+      <td>Notes On Pyspark</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>html</td>
+      <td>Random Resources For Data Analysis</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>html</td>
+      <td>Preprocessing Data In Pandas</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>html</td>
+      <td>Notes On Regular Expression</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>html</td>
+      <td>Cleaning Data In Pandas</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>html</td>
+      <td>Automating Everything In Python</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>html</td>
+      <td>Notes On Sql</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>html</td>
+      <td>Notable Open Source Tools</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>html</td>
+      <td>Calculations For Data Analysis</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>html</td>
+      <td>How To Visualize A Resume In Tableau</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[21]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(10, 12)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[22]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+      <th>link</th>
+      <th>published</th>
+      <th>updated</th>
+      <th>id</th>
+      <th>content</th>
+      <th>author</th>
+      <th>category</th>
+      <th>summary</th>
+      <th>name</th>
+      <th>@type</th>
+      <th>#text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>{'@type': 'html', '#text': 'Notes On Pyspark'}</td>
+      <td>{'@href': 'https://knanne.github.io/posts/note...</td>
+      <td>2017-12-27T00:00:00+00:00</td>
+      <td>2017-12-27T00:00:00+00:00</td>
+      <td>https://knanne.github.io/posts/notes-on-pyspark</td>
+      <td>{'@type': 'html', '@xml:base': 'https://knanne...</td>
+      <td>{'name': 'Kain Nanne'}</td>
+      <td>[{'@term': 'pyspark'}, {'@term': 'spark'}, {'@...</td>
+      <td>{'@type': 'html', '#text': 'Random notes, link...</td>
+      <td>Kain Nanne</td>
+      <td>html</td>
+      <td>Notes On Pyspark</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>{'@type': 'html', '#text': 'Random Resources F...</td>
+      <td>{'@href': 'https://knanne.github.io/posts/rand...</td>
+      <td>2017-11-22T00:00:00+00:00</td>
+      <td>2017-11-22T00:00:00+00:00</td>
+      <td>https://knanne.github.io/posts/random-resource...</td>
+      <td>{'@type': 'html', '@xml:base': 'https://knanne...</td>
+      <td>{'name': 'Kain Nanne'}</td>
+      <td>NaN</td>
+      <td>{'@type': 'html', '#text': 'Random notes, link...</td>
+      <td>Kain Nanne</td>
+      <td>html</td>
+      <td>Random Resources For Data Analysis</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>{'@type': 'html', '#text': 'Preprocessing Data...</td>
+      <td>{'@href': 'https://knanne.github.io/posts/prep...</td>
+      <td>2017-11-11T00:00:00+00:00</td>
+      <td>2017-11-11T00:00:00+00:00</td>
+      <td>https://knanne.github.io/posts/preprocessing-d...</td>
+      <td>{'@type': 'html', '@xml:base': 'https://knanne...</td>
+      <td>{'name': 'Kain Nanne'}</td>
+      <td>[{'@term': 'python'}, {'@term': 'pandas'}]</td>
+      <td>{'@type': 'html', '#text': 'Notes on preparing...</td>
+      <td>Kain Nanne</td>
+      <td>html</td>
+      <td>Preprocessing Data In Pandas</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>{'@type': 'html', '#text': 'Notes On Regular E...</td>
+      <td>{'@href': 'https://knanne.github.io/posts/note...</td>
+      <td>2017-10-04T00:00:00+00:00</td>
+      <td>2017-10-04T00:00:00+00:00</td>
+      <td>https://knanne.github.io/posts/notes-on-regula...</td>
+      <td>{'@type': 'html', '@xml:base': 'https://knanne...</td>
+      <td>{'name': 'Kain Nanne'}</td>
+      <td>{'@term': 'regex'}</td>
+      <td>{'@type': 'html', '#text': 'Notes and scripts ...</td>
+      <td>Kain Nanne</td>
+      <td>html</td>
+      <td>Notes On Regular Expression</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>{'@type': 'html', '#text': 'Cleaning Data In P...</td>
+      <td>{'@href': 'https://knanne.github.io/posts/clea...</td>
+      <td>2017-09-24T00:00:00+00:00</td>
+      <td>2017-09-24T00:00:00+00:00</td>
+      <td>https://knanne.github.io/posts/cleaning-data-i...</td>
+      <td>{'@type': 'html', '@xml:base': 'https://knanne...</td>
+      <td>{'name': 'Kain Nanne'}</td>
+      <td>[{'@term': 'python'}, {'@term': 'pandas'}]</td>
+      <td>{'@type': 'html', '#text': 'Helpful scripts fo...</td>
+      <td>Kain Nanne</td>
+      <td>html</td>
+      <td>Cleaning Data In Pandas</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Clean-Up-Columns">Clean Up Columns<a class="anchor-link" href="#Clean-Up-Columns">&#182;</a></h2><p>Of course at any time, including when joining, you can drop and rename columns to make the necessary clarifications.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;author&#39;</span><span class="p">,</span><span class="s1">&#39;title&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>\
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;author&#39;</span><span class="p">,</span> <span class="s1">&#39;#text&#39;</span><span class="p">:</span><span class="s1">&#39;title&#39;</span><span class="p">})</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Data-Types">Data Types<a class="anchor-link" href="#Data-Types">&#182;</a></h2><p>Similarily, data types can be converted during the above processing when need be. For example, on dates</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;published&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">published</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Column-with-List-of-Dictionaries">Column with List of Dictionaries<a class="anchor-link" href="#Column-with-List-of-Dictionaries">&#182;</a></h2><p>Now consider the column <code>category</code> which is a list of dictionaries containing all the categories associated with a post. However, if there is only 1 category the data type is a dictionary, and if there are none then it is NULL (<code>np.nan</code>). So what happens if we simply try to explode this column into a <code>pd.Series</code>?</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">category</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>C:\Users\Kain\Anaconda3\lib\site-packages\pandas\core\indexes\api.py:77: RuntimeWarning: &#39;&lt;&#39; not supported between instances of &#39;str&#39; and &#39;int&#39;, sort order is undefined for incomparable objects
+  result = result.union(other)
+C:\Users\Kain\Anaconda3\lib\site-packages\pandas\core\indexes\api.py:43: RuntimeWarning: &#39;&lt;&#39; not supported between instances of &#39;str&#39; and &#39;int&#39;, sort order is undefined for incomparable objects
+  union = _union_indexes(indexes)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[25]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>@term</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>{'@term': 'pyspark'}</td>
+      <td>{'@term': 'spark'}</td>
+      <td>{'@term': 'python'}</td>
+      <td>{'@term': 'databricks'}</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>{'@term': 'python'}</td>
+      <td>{'@term': 'pandas'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>value1</td>
-      <td>{'key1': 'value4', 'key2': 'value2.4'}</td>
-      <td>value4</td>
-      <td>value2.4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>regex</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>{'@term': 'python'}</td>
+      <td>{'@term': 'pandas'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>python</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>{'@term': 'sql'}</td>
+      <td>{'@term': 'mysql'}</td>
+      <td>{'@term': 'postgresql'}</td>
+      <td>{'@term': 'oracle'}</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>software</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>{'@term': 'calculations'}</td>
+      <td>{'@term': 'equations'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>{'@term': 'tableau'}</td>
+      <td>{'@term': 'resume'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The above shows there something inconsitent happening with all our different data types. So instead let's wrap the single dictionaries in <code>[]</code> to convert them to lists, to standardize our data.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">category</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">x</span><span class="p">]))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[26]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>{'@term': 'pyspark'}</td>
+      <td>{'@term': 'spark'}</td>
+      <td>{'@term': 'python'}</td>
+      <td>{'@term': 'databricks'}</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>{'@term': 'python'}</td>
+      <td>{'@term': 'pandas'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>{'@term': 'regex'}</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>value1,value2,value3,value4</td>
-      <td>{'key1': 'value5', 'key2': 'value2.5'}</td>
-      <td>value5</td>
-      <td>value2.5</td>
+      <td>{'@term': 'python'}</td>
+      <td>{'@term': 'pandas'}</td>
       <td>NaN</td>
       <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>{'@term': 'python'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>{'@term': 'sql'}</td>
+      <td>{'@term': 'mysql'}</td>
+      <td>{'@term': 'postgresql'}</td>
+      <td>{'@term': 'oracle'}</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>{'@term': 'software'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>{'@term': 'calculations'}</td>
+      <td>{'@term': 'equations'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>{'@term': 'tableau'}</td>
+      <td>{'@term': 'resume'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Okay not bad, now let's stack this data, rename the column, extract the actual value, and add the term index as a second column.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">exploded_column</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">category</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">x</span><span class="p">]))</span>\
+    <span class="o">.</span><span class="n">stack</span><span class="p">()</span>\
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;term&#39;</span><span class="p">)</span>\
+    <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;@term&#39;</span><span class="p">])</span>\
+    <span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>\
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>\
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;level_1&#39;</span><span class="p">:</span><span class="s1">&#39;term_index&#39;</span><span class="p">})</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">exploded_column</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[28]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>term_index</th>
+      <th>term</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>pyspark</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>spark</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>python</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>3</td>
+      <td>databricks</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>python</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>pandas</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>regex</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>python</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>pandas</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>python</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0</td>
+      <td>sql</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1</td>
+      <td>mysql</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2</td>
+      <td>postgresql</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>3</td>
+      <td>oracle</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0</td>
+      <td>software</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0</td>
+      <td>calculations</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1</td>
+      <td>equations</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0</td>
+      <td>tableau</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1</td>
+      <td>resume</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now join this back to our original dataframe to add these categories for each post. (FYI: this JOIN will multiply your data of course, so beware with large datasets)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">exploded_column</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[30]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(20, 12)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[31]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>link</th>
+      <th>published</th>
+      <th>updated</th>
+      <th>id</th>
+      <th>content</th>
+      <th>category</th>
+      <th>summary</th>
+      <th>author</th>
+      <th>@type</th>
+      <th>title</th>
+      <th>term_index</th>
+      <th>term</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>{'@href': 'https://knanne.github.io/posts/note...</td>
+      <td>2017-12-27</td>
+      <td>2017-12-27T00:00:00+00:00</td>
+      <td>https://knanne.github.io/posts/notes-on-pyspark</td>
+      <td>{'@type': 'html', '@xml:base': 'https://knanne...</td>
+      <td>[{'@term': 'pyspark'}, {'@term': 'spark'}, {'@...</td>
+      <td>{'@type': 'html', '#text': 'Random notes, link...</td>
+      <td>Kain Nanne</td>
+      <td>html</td>
+      <td>Notes On Pyspark</td>
+      <td>0.0</td>
+      <td>pyspark</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>{'@href': 'https://knanne.github.io/posts/note...</td>
+      <td>2017-12-27</td>
+      <td>2017-12-27T00:00:00+00:00</td>
+      <td>https://knanne.github.io/posts/notes-on-pyspark</td>
+      <td>{'@type': 'html', '@xml:base': 'https://knanne...</td>
+      <td>[{'@term': 'pyspark'}, {'@term': 'spark'}, {'@...</td>
+      <td>{'@type': 'html', '#text': 'Random notes, link...</td>
+      <td>Kain Nanne</td>
+      <td>html</td>
+      <td>Notes On Pyspark</td>
+      <td>1.0</td>
+      <td>spark</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>{'@href': 'https://knanne.github.io/posts/note...</td>
+      <td>2017-12-27</td>
+      <td>2017-12-27T00:00:00+00:00</td>
+      <td>https://knanne.github.io/posts/notes-on-pyspark</td>
+      <td>{'@type': 'html', '@xml:base': 'https://knanne...</td>
+      <td>[{'@term': 'pyspark'}, {'@term': 'spark'}, {'@...</td>
+      <td>{'@type': 'html', '#text': 'Random notes, link...</td>
+      <td>Kain Nanne</td>
+      <td>html</td>
+      <td>Notes On Pyspark</td>
+      <td>2.0</td>
+      <td>python</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>{'@href': 'https://knanne.github.io/posts/note...</td>
+      <td>2017-12-27</td>
+      <td>2017-12-27T00:00:00+00:00</td>
+      <td>https://knanne.github.io/posts/notes-on-pyspark</td>
+      <td>{'@type': 'html', '@xml:base': 'https://knanne...</td>
+      <td>[{'@term': 'pyspark'}, {'@term': 'spark'}, {'@...</td>
+      <td>{'@type': 'html', '#text': 'Random notes, link...</td>
+      <td>Kain Nanne</td>
+      <td>html</td>
+      <td>Notes On Pyspark</td>
+      <td>3.0</td>
+      <td>databricks</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>{'@href': 'https://knanne.github.io/posts/rand...</td>
+      <td>2017-11-22</td>
+      <td>2017-11-22T00:00:00+00:00</td>
+      <td>https://knanne.github.io/posts/random-resource...</td>
+      <td>{'@type': 'html', '@xml:base': 'https://knanne...</td>
+      <td>NaN</td>
+      <td>{'@type': 'html', '#text': 'Random notes, link...</td>
+      <td>Kain Nanne</td>
+      <td>html</td>
+      <td>Random Resources For Data Analysis</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Analyze">Analyze<a class="anchor-link" href="#Analyze">&#182;</a></h1><p>Now that the data has been processed in a way that is familiar, we can perform typical anlysis</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">published</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">published</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;title&#39;</span><span class="p">:</span><span class="s1">&#39;count&#39;</span><span class="p">})</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[32]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>title</th>
+    </tr>
+    <tr>
+      <th>published</th>
+      <th>published</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="6" valign="top">2017</th>
+      <th>3</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;term&#39;</span><span class="p">:</span> <span class="s1">&#39;nunique&#39;</span><span class="p">})</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[33]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>term</th>
+    </tr>
+    <tr>
+      <th>title</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Automating Everything In Python</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Calculations For Data Analysis</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Cleaning Data In Pandas</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>How To Visualize A Resume In Tableau</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Notable Open Source Tools</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Notes On Pyspark</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>Notes On Regular Expression</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Notes On Sql</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>Preprocessing Data In Pandas</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Random Resources For Data Analysis</th>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
