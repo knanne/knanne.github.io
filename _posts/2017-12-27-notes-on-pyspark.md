@@ -28,7 +28,9 @@ Chaining functions together works really well, for example: `df.filter(...).sele
 
 Also, when dealing with HIVE tables, nested dictionaries and arrays can be utilized quite powerfully, and accessed in natural Pythonic ways. For example, as show above, access dictionaries using `myDictCol.key`, and index arrays simply with `myArrayCol[index]`.  
 
-Common functions to remember are `.withColumn()` to add calculated fields to DatFrames or chain more than one `explode` together, and also `.withColumnRenamed()` to quickly rename that function-applied column.  
+Common functions to remember are `.withColumn()` to add calculated fields to DataFrames or chain more than one `explode` together, and also `.withColumnRenamed()` to quickly rename that function-applied column.  
+
+After `from pyspark.sql import functions as F`, you have access to a lot of basic tools, which can be combined in all sorts of ways to analysis. Consider the example of making SQL-accepted date column by combining a string year and month column. `df.withColumn(F.to_date(F.concat_ws('-', df.year, df.month, F.lit('01')), format='yyyy-mm-dd').alias("date"))`  
 
 # Code Snippets
 

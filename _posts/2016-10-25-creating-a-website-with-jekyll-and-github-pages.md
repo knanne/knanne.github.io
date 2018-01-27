@@ -67,10 +67,12 @@ Jekyll is written in Ruby, a programming language which refers to their librarie
 
 Learn about [Jekyll gems and the bundler](http://jekyll.tips/jekyll-casts/gemfiles-and-the-bundler/)  
 
-add a `gem` to your `config.yml` file  
+Additionally, `plugins` allow you to run some custom code to modify your site content even further. If you are using GitHub Pages, custom plugins are blocked.  
+
+To install a plugin, add the `plugin` to your `config.yml` file.  
 
 ```ruby
-gems:
+plugins:
   - jekyll-feed
 ```
 and run  
@@ -79,7 +81,7 @@ and run
 gem install jekyll-feed
 ```
 
-Or, add gems to `Gemfile`  
+Also, add `gems` to your `Gemfile`  
 
 ```ruby
 group :jekyll_plugins do
@@ -125,7 +127,7 @@ Check out Jekyll's documentation on [Collections](https://jekyllrb.com/docs/coll
 
 Check out Jekyll's documentation on [Data Files](https://jekyllrb.com/docs/datafiles/) for added functionality. This site uses data files to manage added information on collections, like "Projects".  
 
-# Search
+## Search
 
 This site uses a tool from Google to embed a site-wide Google Search. Find more about how to do this yourself at [google.com/webmasters/](https://www.google.com/webmasters/).  
 
@@ -254,7 +256,7 @@ Here are some code snippets that may come in handy when trying to code your own 
 {% raw %}{% assign projects = site.data.projects | sort: 'date' %}
 {% assign projects = projects | reverse %}
 {% for project in projects %}
-	{% if project.publish == true %}
+  {% if project.publish == true %}
     ...
   {% endif %}
 {% endfor %}{% endraw %}
