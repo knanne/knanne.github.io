@@ -1,26 +1,30 @@
 <div class="card-deck d-inline-flex justify-content-center">
 	{% assign notebooks = site.notebooks | sort: 'date' %}
 	{% assign notebooks = notebooks | reverse %}
-	{% for notebook in notebooks limit: 3 %}
-	<!-- skip any files under /_notebooks which are not markdown and contains publish: True -->
+	{% assign i = 0 %}
+	{% for notebook in notebooks %}
 		{% if notebook.publish %}
-			<a href="{{ site.baseurl }}{{ notebook.url }}" rel="tooltip" title="View Notebook">
-				<div class="card card-hover">
-					<div class="card-header text-left">
-						<p><small class="text-muted">Date Published: {{ notebook.date | date: "%b %-d, %Y" }}</small></p>
+			{% if notebook.pin %}
+				<a href="{{ site.baseurl }}{{ notebook.url }}" rel="tooltip" title="View Notebook">
+					<div class="card card-hover">
+						<div class="card-header text-left">
+							<p><small class="text-muted">Date Published: {{ notebook.date | date: "%b %-d, %Y" }}</small></p>
+						</div>
+						<div class="card-block text-center">
+							<h5 class="card-title">{{ notebook.title }}</h5>
+							<span class="badge badge-warning">Jupyter Notebook</span>
+							<p class="card-text text-muted">{{ notebook.excerpt }}</p>
+						</div>
+						<div class="card-footer text-right">
+							<small class="card-tags">
+								<span class="badge badge-primary">python</span>
+							</small>
+						</div>
 					</div>
-					<div class="card-block text-center">
-						<h5 class="card-title">{{ notebook.title }}</h5>
-						<span class="badge badge-warning">Jupyter Notebook</span>
-						<p class="card-text text-muted">{{ notebook.excerpt }}</p>
-					</div>
-					<div class="card-footer text-right">
-						<small class="card-tags">
-							<span class="badge badge-primary">python</span>
-						</small>
-					</div>
-				</div>
-			</a>
+				</a>
+				{% assign i = i | plus:1 %}
+				{% if i = 3 %}{% break %}{% endif %}
+			{% endif %}
 		{% endif %}
 	{% endfor %}
 </div>
