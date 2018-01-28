@@ -18,16 +18,13 @@ This method has also been credited to Jerry Seinfeld according to [this article]
 
 > He said for each day that I do my task of writing, I get to put a big red X over that day. "After a few days you'll have a chain. Just keep at it and the chain will grow longer every day. You'll like seeing that chain, especially when you get a few weeks under your belt. Your only job next is to not break the chain." - Brad Isaac  
 
-- So a subreddit was born [/r/theXeffect](http://www.reddit.com/r/theXeffect)
-- And some scholar came up with [fortyninedays.com](https://www.fortyninedays.com), although it seems it may be [disappearing soon](https://www.fortyninedays.com/Post/View/58)
+- There is a SubReddit dedicated to this idea [/r/theXeffect](http://www.reddit.com/r/theXeffect)
 
-## Popular (Android) Apps Employing The Method
+## Android App Employing The Method
 
-Whether you are tracking Habits, Tasks, Goals, Activities or Achievements many apps now use this "X" chain or streak method to motivate more accomplishments.  
+[Habits](https://play.google.com/store/apps/details?id=org.isoron.uhabits&hl=en) is a good Android App I would recommend.  
 
-- [7 Weeks](https://play.google.com/store/apps/details?id=com.ryan.brooks.sevenweeks.app)
-- [The Habit Hub](http://www.thehabithub.com/)
-- [Habit Bull](http://www.habitbull.com/)
+It works well, is maintained, and has perfectly simple visualizations. Whether you are tracking Habits, Tasks, Goals, Activities or Achievements (e.g. clean house, take medicine, shave, exercise, don't drink/smoke etc.) this "X" chain or streak method.  
 
 ## Simulating The X Effect in Google Calendar
 

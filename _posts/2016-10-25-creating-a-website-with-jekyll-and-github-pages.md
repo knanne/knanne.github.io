@@ -32,15 +32,23 @@ So what is this all about...
 
 <mark>installation of Jekyll on Windows is not so straightforward</mark>
 
-[This](https://jekyllrb.com/docs/windows/#installation) is the best place to find installation instructions  
+[This](https://jekyllrb.com/docs/windows/#installation) is the best place to find installation instructions. However, I have summarized the important bits below.  
 
-Assuming you have Jekyll and GitHub Pages Ruby gems installed, initialize a new site  
+  1. Install [chocolatey](https://chocolatey.org/), by opening `cmd.exe` in Administrator Mode and running:
+  ```shell
+  @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+  ```
+  2. Install [Ruby](https://www.ruby-lang.org/) with `choco install ruby -y` (update Ruby with `choco upgrade ruby`)  
+  3. Install [Bundler](http://bundler.io/) with `gem install bundler` (update Bundler with `gem update bundler`)
+  4. Install [Jekyll](https://jekyllrb.com/) with `gem install jekyll` (update Jekyll with `bundle update jekyll`, or simply all gems with `bundle update`)
+
+Assuming you now have Jekyll installed, initialize a new site  
 
 ```shell
 jekyll new <SITE>
 ```
 
-This will install github-pages default files, including the [minima](https://github.com/jekyll/minima) theme.  
+This will install the GitHub Pages Ruby gem by default, including the included [minima](https://github.com/jekyll/minima) theme.  
 
 Serve the site locally with the following  
 
