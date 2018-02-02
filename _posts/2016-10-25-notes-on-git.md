@@ -38,6 +38,18 @@ Use [GitHub Pages](https://pages.github.com/) to publish a site for a GitHub acc
 - blog or website using jekyll, at `username.github.io` ([source](https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/))  
 - webapp project using the `/docs` folder in project master branch, and find the project at `username.github.io/project` ([source](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/))  
 
+## Contributing to Open Source Projects
+
+Checkout https://opensource.guide/ by GitHub. They have a specific section on [How to submit a contribution](https://opensource.guide/how-to-contribute/#how-to-submit-a-contribution)  
+
+A good accepted standard for making a contribution is:
+  1. Fork the repo (using online GitHub GUI)
+  2. `git clone <URL>` your forked version to local machine
+  3. `git checkout -b <BRANCH>` a new `branch` named after your bug fix or feature
+  4. Make your changes, and **make sure you adhere to project standards, and pass any project tests**
+  6. `git add .` and `git commit -m "YOUR CHANGES EXPLANATION"`, then `git push -u origin <BRANCH>` to add your new branch to your forked repo's origin
+  7. Submit a pull request (using online GitHub GUI) with a description of your changes, referencing the relevant open issues
+
 # Config
 
 Check install  
@@ -222,6 +234,14 @@ Create local branch from remote
 
 ```shell
 git checkout origin/<BRANCH> -b <BRANCH>
+```
+
+Create remote branch from local  
+
+```shell
+git push --set-upstream origin <BRANCH>
+# or
+git push -u origin <BRANCH>
 ```
 
 List branches  
