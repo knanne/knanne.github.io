@@ -36,7 +36,9 @@ After `from pyspark.sql import functions as F`, you have access to a lot of basi
 
 Below is a collection of code samples which I have created and needed to use in my work more than once. They may be helpful to others.  
 
-## Explode Array (or nested dictionary column) with Index
+## Explode with Index
+
+Explode an elements in an array, or a key in an array of nested dictionaries with an index value, to capture the sequence.  
 
 The below code creates a PySpark `user defined function` which implements `enumerate` on a list and returns a dictionary with `{index:value}` as integer and string respectively. I apply this to a dummy column "myNestedDict" which contains a key "myNestedCol" to show that this can work on dictionaries as well as arrays.  
 
@@ -49,7 +51,9 @@ explodeWithIndex = udf(lambda x: i:str(v) for i,v in enumerate(x) if x is not No
 df2 = df.filter(col("myNestedDict").isNotNull()).select("id", explode(explodeWithIndex("myNestedDict").myNestedCol))
 ```
 
-## String Column to Comma Separated Values within a Group (Reverse Explode)
+## Reverse Explode
+
+Convert a column of strings to comma separated values list as a single string within a group by statement.  
 
 The below sample code will group by a dummy id, and roll up a column of string values into a single column of comma separated values. This could also be considered as a reverse explode.  
 

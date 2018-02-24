@@ -24,8 +24,25 @@ But, after some time playing around at [regex101.com/](https://regex101.com/), y
   - anything in `()` means capturing group
   - a non-capturing group is identified by `(?:`+`whatever`+`)`
   - the combination of `(.*?)` will return virtually everything (except for new line)
+  - `{4}` means length of 4
 
-# Email
+# Validation
+
+A good use for regular expression is for validation strings. For example, if you manage some user interface where you want to accept input based on some set criteria.  
+
+## Comma Separated Words
+
+The following will validate only a list of comma separated characters (lowercase, or uppercase).  
+
+`^([a-zA-Z ])+(,[a-zA-Z ]+)*$`
+
+## Comma Separated Numbers
+
+The following will validate a only list of comma separated numbers of length 1 to 10.  
+
+`^([0-9]{1,10})+(,[0-9]{1,10}+)*$`  
+
+## Email
 
 If we consider an email con only contain characters `0-9`, `a-z`, `A-Z`, `-`, `.`, or `_`, we can construct checks for these characters separated by `@`.  
 

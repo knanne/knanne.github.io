@@ -4,7 +4,7 @@
     - title and creation dates are inherited from filename
     - <mark>NOTE:</mark> use a `hyphen-delimited-lowercase-title` so that the page url is consistent whith the AMP url used by [amp-jekyll](https://github.com/juusaw/amp-jekyll)
     - author (along with other meta tags) is inherited from YAML defaults in `_config.yml`
-    - <del>last modified data is inherited from file properties using `_plugins\hook-add-last-modified-date.rb`</del>  
+    - <del>last modified data is created as a liquid property using [jekyll-last-modified-at](https://github.com/gjtorikian/jekyll-last-modified-at)`</del> (Not whitelisted on GitHub Pages, monitor `~/pages-gem/pull/119`)  
   2. **add category and tags**
     - see [/posts/categories](https://knanne.github.io/posts/categories) for list of existing categories
     - see [/posts/tags](https://knanne.github.io/posts/tags) for list of existing tags
@@ -63,4 +63,4 @@ Utilize `/_drafts` folder for unpublished posts (also ignored by git)
 
 <del>[Amp_Jekyll](https://github.com/juusaw/amp-jekyll) takes care of the heavy lifting, using our own custom `amp.html` template in `~/_layouts`.  </del>
 
-Not on GitHub-Pages whitelisted plugins. Monitor Jekyll dev instead, `jekyll/issues/3041`, different post formats could become native feature in Jekyll soon.  
+Not on GitHub-Pages whitelisted plugins. Monitor Jekyll dev instead, `~/jekyll/issues/3041`, different post formats could become native feature in Jekyll soon.  

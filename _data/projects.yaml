@@ -1,5 +1,5 @@
 - project: mspandas
-  date: December, 2017
+  date: 2017-12-01
   category: Professional
   publish: True
   url: https://knanne.github.io/mspandas
@@ -7,7 +7,7 @@
   description: mspandas is a convenience wrapper on top of python-pptx and python-docx which accepts pandas DataFrames for writing tables and charts in Microsoft PowerPoint and Word Documents.
 
 - project: Framework for Personal Financial Monitoring
-  date: March, 2017
+  date: 2017-03-01
   category: Personal
   publish: False
   url: https://knanne.github.io/financial_analysis
@@ -15,7 +15,7 @@
   description: Developing a framework for monitoring personal finances through data analysis and visualization. Inspired by [Mint.com](https://mint.com) and the issue of having bank accounts not supported by the platform, this project provides a template for integrating multiple accounts' transactions into a single standardized dashboard for financial monitoring.
 
 - project: Thesis Project for MSc. Information Sciences
-  date: Aug, 2016
+  date: 2016-08-01
   category: Academic
   publish: True
   url: https://github.com/knanne/vu_msc_tweetsumm
@@ -23,7 +23,7 @@
   description: Automating Open Domain Event Summaries by Harnessing Collective Reactions on Twitter
 
 - project: VU Social Web Course Project
-  date: March, 2016
+  date: 2016-03-01
   category: Academic
   publish: True
   url: https://knanne.github.io/vu_socialweb_2016
@@ -31,7 +31,7 @@
   description: Developed a web app for analyzing social web data, to meet requirements of VU The Social Web Master course project. The dashboard integrates multiple D3 visualizations into a dynamic webpage for exploring connections between members of The Network Institute research group.
 
 - project: UVA Information Visualization Course Project
-  date: March, 2016
+  date: 2016-03-01
   category: Academic
   publish: True
   url: https://knanne.github.io/uva_infoviz_2016
