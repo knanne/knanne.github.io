@@ -12,7 +12,15 @@ Random notes, links, commands or snippets of code related to big data analysis u
 
 # Intro
 
-Official [PySpark docs](https://spark.apache.org/docs/latest/api/python/index.html) are available, and [Databricks](https://docs.databricks.com/) has some good notes, but it can still be confusing for a beginner coming from Pandas.  
+> Apache Spark™ is a fast and general engine for large-scale data processing. - [website](http://spark.apache.org/)
+
+Spark is made accessible to Python users via the Python API, which is virtually as up to date as the Scala and Java API.  
+
+I was introduced to Spark via way of [Databricks](https://databricks.com) (Also Apache) platform through my company. Consider it a commercial version of Jupyter or Zeppelin notebooks, language-agnostic, integrated on top of a Spark with a bunch of fancy runtime features. However, it is super user-friendly and adds a lot of fancy features on top of Spark.  
+
+Going through the registration for a free trial of Databricks and deploying it on a free trial of Amazon AWS takes minutes, and I would highly recommend it as a starting point to getting introduced to Spark. Databricks also has a community edition for learning purposes worth looking into.  
+
+Regarding Python, [Python API docs](https://spark.apache.org/docs/latest/api/python/index.html) are available from Apache, and [Databricks](https://docs.databricks.com/) has some good notes, but not complete and they can both be confusing for a beginner coming from Pandas.  
 
 # Common Techniques
 
@@ -22,11 +30,22 @@ For me `.select()` is the most intuitive coming from Pandas, however I also alwa
 
 While others prefer to use `.selectExp()` which accepts SQL but still returns the DataFrame, and do `df.selectExp("myCol.key")` or `df.selectExp("explode(myCol)")`.  
 
-Group by and aggregation look like this, `df.groupby("myCol1", "myCol2").agg(F.countDistinct("myCol3"))`.  
+Group by and aggregation look like this, `df.groupby("myCol1", "myCol2").agg(F.countDistinct("myCol3"))`.
+
+The below table (stolen from Databricks talk I attended) outlines main SQL functions and their Python API equivalent. The cool thing is these apply the same across Spark APIs (Scala, R, Java etc.)
+
+|SQL|DataFame API|DataFrame example (with String column names)|
+|---|---|---|
+|SELECT|select, selectExpr|myDataFrame.select("someColumn")|
+|WHERE|filter, where|myDataFrame.filter("someColumn > 10")|
+|GROUP BY|groupBy|myDataFrame.groupBy("someColumn")|
+|ORDER BY|orderBy|myDataFrame.orderBy("column")|
+|JOIN|join|myDataFrame.join(otherDataFrame, "innerEquiJoinColumn")|
+|UNION|union|myDataFrame.union(otherDataFrame)|
 
 Chaining functions together works really well, for example: `df.filter(...).select(...).join(...).groupby(...).agg(...)`.  
 
-Also, when dealing with HIVE tables, nested dictionaries and arrays can be utilized quite powerfully, and accessed in natural Pythonic ways. For example, as show above, access dictionaries using `myDictCol.key`, and index arrays simply with `myArrayCol[index]`.  
+Also, when dealing with Spark Datasets (RDDs or HIVE tables), nested dictionaries and arrays can be utilized quite powerfully, and accessed in natural Pythonic ways. For example, as show above, access dictionaries using `myDictCol.key`, and index arrays simply with `myArrayCol[index]`.  
 
 Common functions to remember are `.withColumn()` to add calculated fields to DataFrames or chain more than one `explode` together, and also `.withColumnRenamed()` to quickly rename that function-applied column.  
 
@@ -62,3 +81,7 @@ from pyspark.sql import functions as F
 
 df2 = df.groupby("id").agg(F.concat_ws(",", F.collect_list("myValues"))).withColumnRenamed("concat_ws(,, collect_list(myValues))", "myCSV")
 ```
+
+# Machine Learning
+
+I have a really basic example of how to fully train and evaluate a Linear Regression Model using a Spark DataFrame, you can find it as a notebook at [notebooks/pyspark_linear_regression](https://knanne.github.io/notebooks/pyspark_linear_regression).  

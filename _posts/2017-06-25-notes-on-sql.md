@@ -209,6 +209,16 @@ In MySQL you can `SET FOREIGN_KEY_CHECKS = 0;` and then proceed to drop or trunc
 
 In Oracle, there is no such command, although you can use `CASCADE CONSTRAINTS` to simply remove the references on foreign tables when dropping a table to allow success.
 
+## Convert Encoding
+
+I almost always create a database using `CHARSET utf8mb4`, however, blindly setting this without checking your source files before loading can cause issues if you didn't realize they were in a different encoding before loading it in. For example take a file of global names, this will commonly be stored with Latin characters and usually encoded in `latin-1`.  
+
+Good news is there is a simply trick to revert to back to bytes from original encoding and then into the utf8. For example, the following works in MySQL do convert `latin-1` string column incorrectly stored in a `utf8` database.  
+
+```sql
+UPDATE `schema`.`table` SET `column` = CONVERT(CAST(CONVERT(`column` USING latin1) AS binary) USING utf8)
+```
+
 ## Cleaning Hidden Characters
 
 Common hidden characters you might see in dirty data may include:  
