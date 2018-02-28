@@ -1,6 +1,7 @@
 ---
 title: Pandas Apply Some Function
-date: '2017-10-02'
+date: 2017-10-02
+tags: [python,pandas]
 ---
 
 Example of applying some custom function in various ways on a Pandas DataFrame

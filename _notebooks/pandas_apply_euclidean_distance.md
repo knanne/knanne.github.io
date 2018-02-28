@@ -1,6 +1,7 @@
 ---
 title: Pandas Apply Euclidean Distance
-date: '2017-09-30'
+date: 2017-09-30
+tags: [python,pandas]
 ---
 
 Calculate geographic distance between records in Pandas  

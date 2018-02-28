@@ -12,12 +12,14 @@
 						</div>
 						<div class="card-block text-center">
 							<h5 class="card-title">{{ notebook.title }}</h5>
-							<span class="badge badge-warning">Jupyter Notebook</span>
+							<span class="badge badge-warning">{{ notebook.type }}</span>
 							<p class="card-text text-muted">{{ notebook.excerpt }}</p>
 						</div>
 						<div class="card-footer text-right">
 							<small class="card-tags">
-								<span class="badge badge-primary">python</span>
+								{% for tag in notebook.tags %}
+									<a href=""><span class="badge badge-primary">#{{ tag }} </span></a>
+								{% endfor %}
 							</small>
 						</div>
 					</div>
