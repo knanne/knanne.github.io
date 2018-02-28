@@ -27,6 +27,13 @@ layout: default
       <div class="d-flex justify-content-end">
         <button id="toggle_code_blocks" type="button" class="btn btn-primary btn-sm" rel="tooltip" title="Click to toggle code blocks">Toggle Code Blocks</button>
       </div>
+      <!-- Databricsk explanation -->
+      {% if page.type == 'databricks' %}
+        <p>
+          This Notebook was originally created in Databricks. You can sign up for the <a href="https://community.cloud.databricks.com/">free community edition</a> of Databricks then import this notebook. To learn more about Databricks community edition <a href="https://databricks.com/product/faq/community-edition">read the FAQ here</a>.
+        </p>
+      {% endif %}
+      <!-- Embed Content -->
       {{ page.content | remove: page.excerpt }}
     </div>
     <br>
