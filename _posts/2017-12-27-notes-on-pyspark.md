@@ -84,4 +84,4 @@ df2 = df.groupby("id").agg(F.concat_ws(",", F.collect_list("myValues"))).withCol
 
 # Machine Learning
 
-I have a really basic example of how to fully train and evaluate a Linear Regression Model using a Spark DataFrame, you can find it as a notebook at [notebooks/pyspark_linear_regression](https://knanne.github.io/notebooks/pyspark_linear_regression).  
+I have a really basic example of how to fully train and evaluate a Linear Regression Model using a Spark DataFrame, you can find it as a notebook at [notebooks/pyspark_linear_regression]({{ site.base_url }}/notebooks/pyspark_linear_regression).  

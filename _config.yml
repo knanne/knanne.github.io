@@ -48,6 +48,7 @@ baseurl: "" # root of site, e.g. /blog
 url: "https://knanne.github.io" # https://knanne.github.io
 
 nbviewer: "http://nbviewer.jupyter.org/github/knanne/knanne.github.io/blob/master"
+databricks_public: "https://databricks-prod-cloudfront.cloud.databricks.com/public"
 
 nav-links:
   About: "about"
@@ -96,6 +97,7 @@ defaults:
       comments: True # include comments section
       publish: True
       pin: True # include in (latest) pinned bootstrap cards
+      type: jupyter
   -
     scope:
       path: "_projects"
