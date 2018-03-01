@@ -219,6 +219,8 @@ Good news is there is a simply trick to revert to back to bytes from original en
 UPDATE `schema`.`table` SET `column` = CONVERT(CAST(CONVERT(`column` USING latin1) AS binary) USING utf8)
 ```
 
+*Note, if doing this operation on a `PRIMARY` or `UNIQUE` key use `UPDATE IGNORE`. And if modify a column with `FOREIGN KEY REFERENCES` use `SET FOREIGN_KEY_CHECKS = 0;` to let the operation pass.*  
+
 ## Cleaning Hidden Characters
 
 Common hidden characters you might see in dirty data may include:  
