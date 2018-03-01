@@ -16,11 +16,13 @@ Random notes, links, commands or snippets of code related to big data analysis u
 
 Spark is made accessible to Python users via the Python API, which is virtually as up to date as the Scala and Java API.  
 
-I was introduced to Spark via way of [Databricks](https://databricks.com) (Also Apache) platform through my company. Consider it a commercial version of Jupyter or Zeppelin notebooks, language-agnostic, integrated on top of a Spark with a bunch of fancy runtime features. However, it is super user-friendly and adds a lot of fancy features on top of Spark.  
+I was introduced to Spark via way of [Databricks](https://databricks.com) (Also Apache) platform through my company. Consider it a commercial version of Jupyter or Zeppelin notebooks, language-agnostic, integrated on top of a Spark with a bunch of fancy runtime features.  
 
 Going through the registration for a free trial of Databricks and deploying it on a free trial of Amazon AWS takes minutes, and I would highly recommend it as a starting point to getting introduced to Spark. Databricks also has a community edition for learning purposes worth looking into.  
 
-Regarding Python, [Python API docs](https://spark.apache.org/docs/latest/api/python/index.html) are available from Apache, and [Databricks](https://docs.databricks.com/) has some good notes, but not complete and they can both be confusing for a beginner coming from Pandas.  
+Browse the [Databricks training material](https://docs.databricks.com/spark/latest/training/index.html) and public notebooks for more.  
+
+Regarding Python, [the Python API docs](https://spark.apache.org/docs/latest/api/python/index.html) are available from Apache and the best source for up to date examples. As well, [Databricks](https://docs.databricks.com/) has some good notes, but not complete as they are not trying to replace the official docs.  
 
 # Common Techniques
 
@@ -32,7 +34,7 @@ While others prefer to use `.selectExp()` which accepts SQL but still returns th
 
 Group by and aggregation look like this, `df.groupby("myCol1", "myCol2").agg(F.countDistinct("myCol3"))`.
 
-The below table (stolen from Databricks talk I attended) outlines main SQL functions and their Python API equivalent. The cool thing is these apply the same across Spark APIs (Scala, R, Java etc.)
+The below table (stolen from a Databricks talk I attended) outlines main SQL functions and their Python API equivalent. The cool thing is these apply the same across Spark APIs (Scala, R, Java etc.)
 
 |SQL|DataFame API|DataFrame example (with String column names)|
 |---|---|---|
