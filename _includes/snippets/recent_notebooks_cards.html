@@ -12,11 +12,11 @@
 						</div>
 						<div class="card-block text-center">
 							<h5 class="card-title">{{ notebook.title }}</h5>
-							{{% if notebook.type == 'jupyter' %}}
+							{% if notebook.type == 'jupyter' %}
 								<span class="badge badge-warning">Jupyter</span>
-							{{% elsif notebook.type == 'databricks' %}}
+							{% elsif notebook.type == 'databricks' %}
 								<span class="badge badge-danger">Databricks</span>
-							{{% endif %}}
+							{% endif %}
 							<p class="card-text text-muted">{{ notebook.excerpt }}</p>
 						</div>
 						<div class="card-footer text-right">
