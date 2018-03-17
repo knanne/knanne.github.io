@@ -94,7 +94,9 @@ conda update anaconda
 
 ### Jupyter
 
-[Jupyter Notebook](http://jupyter.org/) (Formerly IpythonNotebook) now supports everything you would ever need for data analysis and visualization, even with interactive charts for some libraries. Read the docs at [jupyter-notebook.readthedocs.io](http://jupyter-notebook.readthedocs.io/en/stable/notebook.html)  
+[Jupyter Notebook](http://jupyter.org/) (Formerly IpythonNotebook) now supports everything you would ever need for data analysis and visualization, even with interactive charts for some libraries. Read the docs at [jupyter-notebook.readthedocs.io](http://jupyter-notebook.readthedocs.io/en/stable/notebook.html).  
+
+More recently, there is now a [Jupyter Lab](http://jupyterlab.readthedocs.io/en/stable/index.html) which combines Jupyter Notebook with other helpful data science related features. Read [this blog post release](https://blog.jupyter.org/jupyterlab-is-ready-for-users-5a6f039b8906) for more on Jupyter Lab.  
 
 If you have multiple python versions (virtual environments), you can toggle which kernel to use from within Jupyter Notebook using the following libary.  
 

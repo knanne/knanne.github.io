@@ -83,7 +83,36 @@ GROUP BY `group_col`
 ;
 ```
 
-If you need to achieve the opposite, you can probably take advantage of `COALESCE` to stack multiple columns into one based on the first non-NULL value.
+If you need to achieve the opposite, by stacking multiple columns into a single column, you can either utilize `UNION` with multiple 'SELECT' statements, or `COALESCE` to combine only the first non-NULL value.  
+
+## HAVING For Efficiency
+
+The SQL command called `HAVING` is similar to `WHERE` although applies the filter on rows after the `SELECT` has taken place instead of before. `HAVING` therefore allows to filter on aggregated metrics directly in the same `SELECT` statement doing the aggregation. This prevents the need to wrap the statement in another `SELECT` statement using `WHERE`, therefore saving code space. For example:  
+
+```sql
+SELECT * FROM
+(
+  SELECT
+    `group`,
+    COUNT(DISTINCT(`id`)) AS "count"
+  FROM schema.table
+  GROUP BY `group`
+)
+WHERE "count" > 10
+;
+```
+
+Is the same as simply doing:  
+
+```sql
+SELECT
+  `group`,
+  COUNT(DISTINCT(`id`)) "count"
+FROM schema.table
+GROUP BY `group`
+HAVING COUNT(DISTINCT(`id`)) > 10
+;
+```
 
 ## WITH Query Integrity
 
@@ -262,4 +291,29 @@ where
 order by
 	round(((data_length * index_length) / 1024 / 1024), 2) desc
 ;
+```
+
+# User Management
+
+In MySQL, create a dummy user and grant it `SELECT` only on a few tables. This is useful for example if you need give limited database access to a production app.  
+
+Note that the `'%'` used below represents access from any host. Change this to a specific IP address to restrict the user's access even further.  
+
+```sql
+CREATE USER 'dummy'@'%' IDENTIFIED BY PASSWORD('dummy_password');
+GRANT SELECT ON `schema`.`dummy_table` TO 'dummy'@'%';
+FLUSH PRIVILEGES;
+SHOW GRANTS FOR 'dummy'@'%';
+```
+
+The user was added to the user table. You can see this by:
+
+```sql
+SELECT * FROM mysql.user;
+```
+
+To reset a password, simply update the users table with:
+
+```sql
+UPDATE mysql.user SET PASSWORD(`new_dummy_password`) WHERE User='dummy';
 ```
