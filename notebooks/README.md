@@ -1,7 +1,7 @@
 # Writing Notebooks Procedure
 
-  1. **spin up a `jupyter notebook` server and create a `.ipynb` file in `~/_notebooks/jupyter`, or create a new notebook on Databricks and export to `.ipynb`**
-  2. **run `jupyter nbconvert --to html --template template.tpl <NOTEBOOK.ipynb>`** (using this site's custom nbconvert template)
+  1. **spin up a `jupyter notebook` (or `jupyter lab`) server and create a `.ipynb` file in `~/_notebooks/jupyter`, or create a new notebook on Databricks and export to `.ipynb`**
+  2. from the command line **run `jupyter nbconvert --to html --template template.tpl <NOTEBOOK.ipynb>`** (using this site's custom nbconvert template)
   3. **create new `.md` file in `/_notebooks`**
     - add `title` to YAML frontmatter (title needs to be same as `.ipynb` filename, "*slugified*" to access file from [nbviewer](nbviewer.jupyter.org))
     - add `date` to YAML frontmatter
@@ -62,3 +62,7 @@ We alternatively put this code in our notebook layout, at `_layouts/notebook.htm
 # Pin
 
 This site pins notebooks to a "Recent Notebooks" section on https://knanne.github.io/notebooks/. As defined in the `_config.yml`, all notebooks have pin set to True by default. Currently only the last 3 most recent notebooks will be shown. To exclude a notebook from being pinned, set `pin: False` in the notebook's YAML frontmatter.   
+
+# Important Caveats
+
+When embedding images in a notebook, using for example a direct link to `img\image.png`, the image will show up fine on GitHub or nbviewer however not on the website. This is because you are viewing the Markdown `.md` of the post on the site, where the path to image is now different. Fixing this by using a dynamic liquid tag to the image would break the image links rendered on GitHub or nbveiwer. Therefore, manually go into the `.html` version of the notebook and correct the path.
