@@ -12,10 +12,10 @@ Helpful SQL tips and commands I use frequently
 
 # Notes
 
-I interact on a daily basis with MySQL, PostgreSQL, and Oracle. However, they all have a few slight differences which can make switching back and forth a frustrating hassle. Most significantly when grouping, or using built-in named functions.  
+I have interacted frequently with MySQL, PostgreSQL, and Oracle. However, they all have a few slight differences which can make switching back and forth a frustrating hassle. Most significantly when grouping, or using built-in named functions. Also, there are plenty of analytic features included in Oracle and PostgreSQL which are not included in MySQL (until release of 8.0).  
 
 Some simple differences include:
-  - Despite MySQL allowing most group by behavior, PostgreSQL and Oracle SQL will both complain if you do not explicitly list all non-aggregate columns in the group by clause (unless you incude a table's unique identifier). However, this is good practice anyway.  
+  - Despite MySQL allowing most naive group by behavior, PostgreSQL and Oracle SQL will both complain if you do not explicitly list all non-aggregate columns in the group by clause (unless you include a table's unique identifier). However, this is good practice anyway.  
   - Limiting rows in MySQL is easy as `limit 10` while in Oracle you can do `WHERE ROWNUM <= 10`.  
   - You are allowed to use `#comment` for comment blocks in MySQL, however in PostgreSQL `--comment--` is recommended. Although, in all languages, the standard of `/*comment*/` always works.  
   - MySQL handles strings with single quotes (`' '`) or double (`" "`), and reserved words like table names and columns with backticks (`` ` ` ``). However, PostgreSQL and Oracle use double quotes for reserved words, single quotes for strings and no backticks.
@@ -120,7 +120,7 @@ Commonly in query data for reporting, you may need to join multiple queries cont
 
 For example, imagine a table of accounts and transactions to those accounts over time, which can either be debits or credits, and some various other attributes. You may want to report on statistics based of the rows of debits and credits differently. In this case, it's helpful to create a base table of the account ids, and all reporting periods (e.g. months), and then optionally join the metrics from either the separated debits query and credits query when applicable. Below is how to accomplish this in Oracle (or PostgreSQL).  
 
-Similar functionality is included in MySQL 8.0 as an added Common Table Expression (CTE) https://dev.mysql.com/doc/refman/8.0/en/with.html  
+This functionality of Common Table Expressions (CTE) is included in [PostgreSQL](https://www.postgresql.org/docs/current/static/queries-with.html), and will be included in [MySQL 8.0](https://dev.mysql.com/doc/refman/8.0/en/with.html)  
 
 ```sql
 WITH base_table AS (
@@ -151,6 +151,36 @@ LEFT JOIN (
 ORDER BY base_table.transaction_id ASC, base_table.reporting_month ASC
 ;
 ```
+
+## Window Functions
+
+Window functions are great way to make complex calculations fairly simple. Oracle SQL groups these into the various [Analytical Functions](https://docs.oracle.com/cloud/latest/db112/SQLRF/functions004.htm).  
+
+A practical example of valuable window functions would be difference calculation between rows. Imagine a scenario where you have a table of financial data, where each row contains a year, month, and total. And now you want to add a column as the difference in total from previous month, restarting each year. Below is an example of how to do this in Oracle SQL.
+
+```sql
+SELECT
+  year,
+  month,
+  total,
+  total - LAG(total) OVER (PARTITION BY year ORDER BY month)
+FROM schema.table
+;
+```
+
+Similarly you could utilize the same window concept to calculate a cumulative sum for each year, restarting each year.  
+
+```sql
+SELECT
+  year,
+  month,
+  total,
+  SUM(total) OVER (PARTITION BY year ORDER BY month)
+FROM schema.table
+;
+```
+
+Similar functionality as Window Functions are included in [PostgreSQL](https://www.postgresql.org/docs/current/static/functions-window.html#FUNCTIONS-WINDOW-TABLE), and will be included in [MySQL 8.0](https://dev.mysql.com/doc/refman/8.0/en/window-function-descriptions.html)  
 
 # Random Code Snippets
 
@@ -274,6 +304,26 @@ TRANSLATE(TRANSLATE(TRANSLATE(TRIM(BOTH FROM "string_col"), CHR(9),' '), CHR(10)
 
 NOTE the `' '` (empty space) in above example:
 > You cannot use an empty string for to_string to remove all characters in from_string from the return value. Oracle Database interprets the empty string as null, and if this function has a null argument, then it returns null. - [Oracle Docs](https://docs.oracle.com/cd/B19306_01/server.102/b14200/functions196.htm)  
+
+## Searching Comma Separated Values
+
+Use the function `FIND_IN_SET` to search for a string in another string of comma separated values. Imagine a scenario where you need to search an ID column to be in a comma separated values list of IDs (although really why not upload this into a temporary table with a proper index?)...or potentially more valuable, imagine a scenario where you have some string column made up of a csv list of strings, and need to search if some value exists in this column. Both examples are outlined below in this order.  
+
+You use this to either filter where a column is in a csv string: (in this case you can utilize a normal index on the left-hand column to be filtered)  
+
+```sql
+SELECT *
+FROM schema.table
+WHERE FIND_IN_SET(`myStringColumn`, 'random,comma,separated,values');
+```
+
+Or you can search for a string in a csv column: (in this case no index required or allowed for the right-hand column)  
+
+```sql
+SELECT *
+FROM schema.table
+WHERE FIND_IN_SET('random_string',`myCSVColumn`);
+```
 
 # Maintenance
 

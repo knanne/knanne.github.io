@@ -4,7 +4,7 @@ date: 2018-03-17
 tags: [python,pandas,excel]
 ---
 
-Simply tutorial on how to write multple Pandas DataFrames to Excel with a Table of Contents and links
+Simple tutorial on how to write multiple Pandas DataFrames to Excel with a Table of Contents and links
 
 <!-- excerpt separator -->
 
