@@ -97,7 +97,7 @@ This will print out: `[(' brown fox ', ' over the ', ' dog.')]`
 
 ## Date Endings
 
-Regular expression can have many applications in data analysis for searching or cleaning text data. A great example for something common, is a simple implementation of cleaning date text, from this StackOverflow post and answer](https://stackoverflow.com/a/14478473/5356898)  
+Regular expression can have many applications in data analysis for searching or cleaning text data. A great example for something common, is a simple implementation of cleaning date text, from [this StackOverflow post and answer](https://stackoverflow.com/a/14478473/5356898)  
 
 Imagine parsing text with a date that looks like: "24th of April, 2018". Wish there was a way to identify these number endings to remove them? Enter `(?<=\d)(st|nd|rd|th)\b`.  
 
