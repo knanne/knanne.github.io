@@ -330,16 +330,28 @@ WHERE FIND_IN_SET('random_string',`myCSVColumn`);
 In MySQL, show the size of your tables in Mb  
 
 ```sql
-select
+SELECT
 	table_schema,
 	table_name,
-	round(((data_length * index_length) / 1024 / 1024), 2) "size (Mb)"
-from information_schema.TABLES
-where
+	ROUND(((data_length + index_length) / 1024 / 1024), 2) "size (Mb)"
+FROM information_schema.tables
+WHERE
 	table_schema = 'scheme'
-	and table_name like '%keyword%'
-order by
-	round(((data_length * index_length) / 1024 / 1024), 2) desc
+	AND table_name LIKE '%keyword%'
+ORDER BY
+	ROUND(((data_length * index_length) / 1024 / 1024), 2) DESc
+;
+```
+
+In MySQL, get various other table information for automated management.
+
+```sql
+SELECT
+    create_time,
+    table_name,
+    table_rows
+FROM information_schema.tables
+WHERE table_schema = 'schema'
 ;
 ```
 
@@ -348,6 +360,8 @@ order by
 In MySQL, create a dummy user and grant it `SELECT` only on a few tables. This is useful for example if you need give limited database access to a production app.  
 
 Note that the `'%'` used below represents access from any host. Change this to a specific IP address to restrict the user's access even further.  
+
+**NOTE:** Methods of creating and updating user passwords changed at MySQL v 5.7.6, better to consult the official [MySQL docs on account management](https://dev.mysql.com/doc/refman/8.0/en/account-management-sql.html) if unsure.
 
 ```sql
 CREATE USER 'dummy'@'%' IDENTIFIED BY PASSWORD('dummy_password');
@@ -365,5 +379,5 @@ SELECT * FROM mysql.user;
 To reset a password, simply update the users table with:
 
 ```sql
-UPDATE mysql.user SET PASSWORD(`new_dummy_password`) WHERE User='dummy';
+UPDATE mysql.user SET password = PASSWORD(`new_dummy_password`) WHERE User='dummy';
 ```

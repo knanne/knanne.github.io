@@ -77,6 +77,8 @@ Packages I use include:
 
 [Python](https://www.python.org) is my language of choice for anything from data analysis and manipulation, to web development. The official package manager in Python is called [pip](https://pip.pypa.io/en/stable/).  
 
+Install most python packages with `pip install <PACKAGE>`, update most python packages with `pip install <PACKAGE> --upgrade`. If you have multiple versions of python/pip or are running into permissions errors on Windows, it is recommended to use `python -m pip install <PACKAGE>.  
+
 Below are notes on a few other useful tools for Python.  
 
 ### Anaconda

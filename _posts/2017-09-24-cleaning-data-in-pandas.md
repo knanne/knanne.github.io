@@ -67,11 +67,17 @@ Dropping duplicates using `df.drop_duplicates()` is the simplest method of dedup
 
 If you need to show the duplicates, you can use "~" to negate the indices of the deduplicated rows.  
 
-```sql
+```python
 df.loc[~df.isin(df.drop_duplicates())]
 ```
 
-However, you are probably always going to want to apply some sort of logic to your method of keeping records, like keep the record with max value (in col4) for each combination of multiple columns (col1, col2, and col3). Achieve this with the following code, by slicing the your DataFrame on indices of max for each group.  
+To show all rows within duplicated records based on some subset of columns, use the following. This can help isolate duplicated data to then figure out the logic for keeping the desired record.  
+
+```python
+df[df.duplicated(subset=['col1','col2','col3'],keep=False)].sort_values(by='col4',ascending=False)
+```
+
+Instead of keeping the first or last, we can apply more complex logic to for keeping records. For example, keep the record with max value (in col4) for each combination of multiple columns (col1, col2, and col3). Achieve this with the following code, by slicing the your DataFrame on indices of max for each group.  
 
 ```python
 df.iloc[df.groupby(['col1', 'col2', 'col3']).col4.idxmax()]

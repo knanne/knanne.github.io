@@ -18,13 +18,19 @@ But, after some time playing around at [regex101.com/](https://regex101.com/), y
 
 # Basics
 
+Here is a short list of some common regex code and their meanings.  
+
   - `^` means start at beginning of sting
   - `$` means start from end of string
   - anything in `[]` will return exact matches for those characters
   - anything in `()` means capturing group
   - a non-capturing group is identified by `(?:`+`whatever`+`)`
   - the combination of `(.*?)` will return virtually everything (except for new line)
-  - `{4}` means length of 4
+  - chain logic together with logical OR using pipe operator `|`
+  - `{4}` following a pattern means with length of 4
+  - `\b` will match a "word boundary"
+  - `(?=)` is used as a "positive look ahead", see [this simple explanation](https://stackoverflow.com/a/2973495/5356898)
+  - `(?<=)` is used as a "positive look behind", see [this simple explanation](https://stackoverflow.com/a/2973495/5356898)
 
 # Validation
 
@@ -86,3 +92,30 @@ print(r)
 ```
 
 This will print out: `[(' brown fox ', ' over the ', ' dog.')]`  
+
+# Random Code Snippets
+
+## Date Endings
+
+Regular expression can have many applications in data analysis for searching or cleaning text data. A great example for something common, is a simple implementation of cleaning date text, from this StackOverflow post and answer](https://stackoverflow.com/a/14478473/5356898)  
+
+Imagine parsing text with a date that looks like: "24th of April, 2018". Wish there was a way to identify these number endings to remove them? Enter `(?<=\d)(st|nd|rd|th)\b`.  
+
+By adding more logic or chaining other cleaning methods in python, you could try and capture many once dirty date text chunks into datetimes types.  
+
+```python
+import pandas as pd
+import re
+
+s = "24th of April, 2018"
+s = re.sub(r"(?<=\d)(st|nd|rd|th)\b", '', s)
+s = ' '.join(s.replace(',','').replace('of','').split())
+d = pd.to_datetime(s, infer_datetime_format=True)
+d
+```
+
+This will result in:  
+
+```python
+Timestamp('2018-04-24 00:00:00')`
+```
