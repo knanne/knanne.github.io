@@ -51,7 +51,7 @@ Also, when dealing with Spark Datasets (RDDs or HIVE tables), nested dictionarie
 
 Common functions to remember are `.withColumn()` to add calculated fields to DataFrames or chain more than one `explode` together, and also `.withColumnRenamed()` to quickly rename that function-applied column.  
 
-After `from pyspark.sql import functions as F`, you have access to a lot of basic tools, which can be combined in all sorts of ways to analysis. Consider the example of making SQL-accepted date column by combining a string year and month column. `df.withColumn(F.to_date(F.concat_ws('-', df.year, df.month, F.lit('01')), format='yyyy-mm-dd').alias("date"))`  
+After `from pyspark.sql import functions as F`, you have access to a lot of basic tools, which can be combined in all sorts of ways to analysis. Consider the example of making SQL-accepted date column by combining a string year and month column. `df.withColumn(F.to_date(F.concat_ws('-', df.year, df.month, F.lit('01')), format='yyyy-MM-dd').alias("date"))`.  
 
 # Code Snippets
 

@@ -154,9 +154,14 @@ Most people use Jekyll for creating a blog, or at least sharing code snippets an
 
 ## Embedding Content
 
-Of course in a basic HTML page, you have the freedom to create whatever you want. If you are using markdown, which this site uses, to create your posts, it may be a bit more mysterious although possible none the less.  
+Of course in a basic HTML page, you have the freedom to create and embed whatever you want. If you are using markdown to create posts, it may be a bit more mysterious although possible none the less.  
+
+I have more detailed notes for my own reference on how to create posts for this site [here](https://github.com/knanne/knanne.github.io/tree/master/posts).  
+
+And similar instructions for myself on [creating notebooks](https://github.com/knanne/knanne.github.io/tree/master/notebooks).  
 
 ### Basic Content
+
 - use markdown syntax for adding code blocks, quotes, text formatting and the like. Refer to [GitHub's Guide on Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
 - add latex with math blocks `$$...$$`, enabled by [MathJax](https://www.mathjax.org/)
 - add photos with `![<IMAGE>]({{ site.baseurl }}/path/to/image.png)`

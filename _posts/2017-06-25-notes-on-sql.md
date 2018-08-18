@@ -182,6 +182,23 @@ FROM schema.table
 
 Similar functionality as Window Functions are included in [PostgreSQL](https://www.postgresql.org/docs/current/static/functions-window.html#FUNCTIONS-WINDOW-TABLE), and will be included in [MySQL 8.0](https://dev.mysql.com/doc/refman/8.0/en/window-function-descriptions.html)  
 
+## CASE Statement in WHERE Clause
+
+It may be desirable to add some more complexity to a `WHERE` clause, which can be done with a `CASE` statement. However, it is best to organize the logic in a way that is most interpretable, by isolating the CASE statment and checking if it evaluates to TRUE (or 1 in SQL).  
+
+```sql
+SELECT
+    `col1`,
+    `col2`,
+    `col3`
+FROM schema.table
+WHERE
+    (CASE
+        WHEN `col1` = 'value1' AND `col2` = `col3` THEN 1 --RANDOM LOGIC
+        WHEN `col3` IN ('value2','value3','value4') THEN 1 --RANDOM LOGIC
+    ELSE 0) = 1
+```
+
 # Random Code Snippets
 
 ## Efficient Date Filtering
@@ -211,7 +228,9 @@ Relevant date functions docs for each are here:
 
 ## MySQL Load Local Infile Dynamically
 
-Consider you have a datafile that contains more than what you want in the database, and that this file is large enough that you do not want to read and preprocess it. Below is an extensive example on how to dynamically load a tab separated text file, mapping specific data columns into table columns. We also add an auto-increment id column, ignore the datafile header, and ignoring duplicates on our primary key.  
+Consider you have a datafile that contains more than what you want in the database, and that this file is large enough that you do not want to read and preprocess it. Below is an extensive example on how to dynamically load a tab separated text file, mapping specific data columns into table columns. We also add an auto-increment id column, add a timestamp of the load as `created_at` and correct a boolean column during the load. As well the load statement specifies utf8 encoding (not default until MySQL 8), ignores the datafile header, and replaces duplicates on the primary key.  
+
+Note that to read NULL values from a file correctly into a table in MySQL, the required value is `\N`. This is exemplified in the table below. This means in an ETL job you must impute your data correctly before loading the file into the database, for example in Python Pandas do `df.fillna('\\N')`.  
 
 **Create table**  
 
@@ -222,9 +241,12 @@ CREATE TABLE IF NOT EXISTS schema.table
   `last_updated` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `title` VARCHAR(100) NOT NULL,
   `attribute1` MEDIUMINT(10) UNSINGED DEFAULT 0,
+  `some_bool_col` BOOLEAN DEFAULT FALSE,
   `attribute2` VARCHAR(50) DEFAULT NULL,
   `description` TEXT DEFAULT NULL,
   PRIMARY KEY (`title`),
+  KEY `created_at` (`created_at`),
+  KEY `some_bool_col` (`some_bool_col`),
   KEY `attribute1` (`attribute1`),
   KEY `attribute2` (`attribute2`)
 ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
@@ -235,17 +257,18 @@ ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
 
 | col1         | col2 | col3     | col4 | col5           | col6 | col7                                                                           |
 | ------------ | ---- | -------- | ---- | -------------- | ---- | ------------------------------------------------------------------------------ |
-| Lorem Ipsum1 | NULL | 82310    | NULL | Lorem ipsum    | NULL | Omnis et maxime tenetur adipisci, aut commodi debitis                          |
-| Lorem Ipsum2 | NULL | 02163549 | NULL | dolor sit amet | NULL | Sint laborum quisquam reiciendis delectus numquam est ea architecto            |
-| Lorem Ipsum3 | NULL | 97436134 | NULL | Lorem ipsum    | NULL | Obcaecati illo tempora laborum porro odit quia et pariatur iste enim facilis   |
-| Lorem Ipsum4 | NULL | 00173462 | NULL | dolor sit amet | NULL | Fuga dignissimos quas est culpa temporibus incidunt voluptatem unde beatae sit |
-| Lorem Ipsum5 | NULL | 87413    | NULL | Lorem ipsum    | NULL | libero dolorum pariatur fugit sit officia ducimus laborum                      |
+| Lorem Ipsum1 | \N | 82310    | true | Lorem ipsum    | \N | Omnis et maxime tenetur adipisci, aut commodi debitis                          |
+| Lorem Ipsum2 | \N | 02163549 | false | dolor sit amet | \N | Sint laborum quisquam reiciendis delectus numquam est ea architecto            |
+| Lorem Ipsum3 | \N | 97436134 | true | Lorem ipsum    | \N | Obcaecati illo tempora laborum porro odit quia et pariatur iste enim facilis   |
+| Lorem Ipsum4 | \N | 00173462 | \N | dolor sit amet | \N | Fuga dignissimos quas est culpa temporibus incidunt voluptatem unde beatae sit |
+| Lorem Ipsum5 | \N | 87413    | false | Lorem ipsum    | \N | libero dolorum pariatur fugit sit officia ducimus laborum                      |
 
 **Load**  
 
 ```sql
 LOAD DATA LOCAL INFILE 'C:/path/to/data.txt'
-IGNORE INTO schema.table
+REPLACE INTO schema.table
+CHARACTER SET utf8
 FIELDS SEPARATED BY '\t'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
@@ -255,6 +278,7 @@ SET id=NULL,
     last_updated=NULL,
     title=@col1,
     attribute1=@col3,
+    some_bool_col=(@col4='true'),
     attribute2=@col5,
     description=@col7
 ;

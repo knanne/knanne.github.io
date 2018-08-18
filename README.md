@@ -27,8 +27,9 @@ See [Projects](https://github.com/knanne/knanne.github.io/tree/master/projects) 
 
 ## Publishing Procedure
 
+  - first be sure NOT to publish sensitive content (use `.gitignore`)  
+  - run `fetch_latest_instagram.sh [SHORTCODE]` to update latest instagram embed HTML on About page
   - commit and push to remote repo (no need to `jekll build`, GitHub pages takes care of this)  
-  - be sure NOT to publish sensitive content (use `.gitignore`)  
   - wait for [Travis CI build](https://travis-ci.org/knanne/knanne.github.io) to pass  
 
 ## To Do (IDEAS):

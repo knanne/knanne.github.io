@@ -23,6 +23,7 @@ Here is a short list of some common regex code and their meanings.
   - `^` means start at beginning of sting
   - `$` means start from end of string
   - anything in `[]` will return exact matches for those characters
+  - adding a `^` inside the square brackets negates those characters, and returns anything but the given characters, for example: `[^0-9]` will return non-numeric characters  
   - anything in `()` means capturing group
   - a non-capturing group is identified by `(?:`+`whatever`+`)`
   - the combination of `(.*?)` will return virtually everything (except for new line)
@@ -62,6 +63,8 @@ Or for a comma / semicolon separated list `^(([0-9a-zA-Z._-]+)@company.com(\]?)(
 
 # Search
 
+Regular expression can have many applications in data analysis for searching text data.  
+
 ## Between
 
 Just use `prefix(.*?)suffix`.  
@@ -93,11 +96,38 @@ print(r)
 
 This will print out: `[(' brown fox ', ' over the ', ' dog.')]`  
 
+# Find and Replace
+
+Another common problem to solve may be finding and replacing certain text, using more complicated logic than the traditional method.  
+
+## Replace Leading or Trailing Characters
+
+Instead of doing a find and replace of an extract string, regex allows you create a logical search for certain characters based on their position in relation to other characters.  
+
+For example, imagine the case of have the string `"$ 10,000.00 USD"`, and we want to remove the leading or trailing non-numeric characters and keep only the numeric characters, as this is the valid data we want to store.  
+
+Use the positive look ahead/behind concepts in regex to apply the following logic.  
+
+`^[^0-9 ]+(?=[0-9,\.])` will match leading non-numeric characters preceding a pattern of numeric characters which may also include comma or period  
+
+`(?<=[0-9,\.])[^0-9]+$` will similarly match the trailing non-numeric following a pattern of numeric characters which may also include comma or period  
+
+Wrapping this up in Python, with the `re.sub()` function looks like:  
+
+```python
+s = "$ 10,000.00 USD"
+print(s)
+s = re.sub(r'^[^0-9]+(?=[0-9,\.])','',s)
+print(s)
+s = re.sub(r'(?<=[0-9,\.])[^0-9]+$','',s)
+print(s)
+```
+
 # Random Code Snippets
 
-## Date Endings
+## Clean Date Text
 
-Regular expression can have many applications in data analysis for searching or cleaning text data. A great example for something common, is a simple implementation of cleaning date text, from [this StackOverflow post and answer](https://stackoverflow.com/a/14478473/5356898)  
+Here is a simple implementation of cleaning date text, from [this StackOverflow post and answer](https://stackoverflow.com/a/14478473/5356898)  
 
 Imagine parsing text with a date that looks like: "24th of April, 2018". Wish there was a way to identify these number endings to remove them? Enter `(?<=\d)(st|nd|rd|th)\b`.  
 
