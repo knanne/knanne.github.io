@@ -342,3 +342,26 @@ for f in attachments:
 s = smtplib.SMTP('smtp-server.yourcompany')
 s.sendmail(from_email, to_email, msg.as_string())
 ```
+
+# Jupyter
+
+Jupyter Notebooks are a great place to write and debug code on the fly and interactively. Here are a few added magic functions or tricks to make going back and forth a bit more convenient.  
+
+Run a python file from within a Jupyter Notebook with:  
+
+```shell
+!python program.py -h
+```
+
+Load a python file into a Jupyter cell with the following.  
+
+```shell
+%load program.py
+```
+
+And if running some code inside a Jupyter Notebook, which utilizes `argparse` and thus undesirable breaks execution, you can allow Jupyter Notebook to pass this section by doing the following.  
+
+```python
+if get_ipython().__class__.__name__ == 'ZMQInteractiveShell'
+    sys.argv = ['-f']
+```
