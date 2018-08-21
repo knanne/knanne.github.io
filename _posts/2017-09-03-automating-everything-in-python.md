@@ -198,6 +198,8 @@ with open('creds_file') as f:
 
 from sqlalchemy import create_engine
 # create appropriate database connection engine
+
+#postgresql
 db = create_engine('postgresql+psycopg2://{}:{}@{}:{}/{}'.format(
   creds['user'],
   creds['password'],
@@ -206,6 +208,7 @@ db = create_engine('postgresql+psycopg2://{}:{}@{}:{}/{}'.format(
   creds['database']),
     encoding='utf8')
 
+#mysql
 db = create_engine('mysql+mysqldb://{}:{}@{}:{}/{}?charset=utf8&local_infile=1'.format(
     creds['user'],
     creds['password'],
@@ -214,6 +217,7 @@ db = create_engine('mysql+mysqldb://{}:{}@{}:{}/{}?charset=utf8&local_infile=1'.
     creds['database']),
       encoding='utf8')
 
+#oracle
 db = create_engine('oracle+cx_oracle://{}:{}@{}:{}/{}'.format(
   creds['user'],
   creds['password'],
@@ -222,13 +226,20 @@ db = create_engine('oracle+cx_oracle://{}:{}@{}:{}/{}'.format(
   creds['tns']),
     encoding='utf8')
 
+#write some data to file from pandas
+#(format NULLs for MySQL acceptance)
+df.fillna('\\N').to_csv('datafile.txt', sep='\t', encoding='utf8', quotechar='"', line_terminator='\n')
+
 # define some sql statement
 sql = """
   LOAD DATA LOCAL INFILE '{data}'
   INTO TABLE {schema}.{table}
+  CHARACTER  SET utf8
   FIELDS TERMINATED BY '\t'
+  OPTIONALLY] ENCLOSED BY '"'
+  LINES TERMINATED BY '\n'
   IGNORE 1 LINES
-""".format(data='file.txt',
+""".format(data='datafile.txt',
            schema='db',
            table='data')
 
@@ -291,4 +302,43 @@ logging.info('My custom logging message')
 logging.disable(logging.INFO)
 
 logging.info('My second custom logging message')
+```
+
+# SMTP Email
+
+Find a full working example of how to send emails with attachments, in python, using the SMTP protocol.   
+
+```python
+import smtplib
+from email.message import EmailMessage
+from email.mime.application import MIMEApplication
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+message_text = """
+    automated message
+
+    {custom}
+""".format(custom="some custom message")
+
+msg = MIMEMultipart()
+msg.attach(MIMEText(message_text))
+
+msg['Subject'] = 'Python Job Finished'
+from_email = 'your_email@domain.com'
+msg['From'] = from_email
+to_email = 'their_email@domain.com'
+msg['To'] = to_email
+
+for f in attachments:
+    with open(f,'rb') as b:
+        part = MIMEApplication(
+            b.read(),
+            Name=os.path.basename(f)
+        )
+        part['Content-Disposition'] = 'attachment; filename="{}"'.format(os.path.basename(f))
+        msg.attach(part)
+
+s = smtplib.SMTP('smtp-server.yourcompany')
+s.sendmail(from_email, to_email, msg.as_string())
 ```

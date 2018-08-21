@@ -201,6 +201,25 @@ WHERE
 
 # Random Code Snippets
 
+## Generate List of Months
+
+Commonly it is good practice to join data onto some base or anchor table for reporting so that all reporting combinations are first show, even if they do not have some attributes or metrics. Use the below sample code to generate a list of months in the last 5 years. This is in MySQL, it is much easier in PostgreSQL or Oracle to use a `CROSS JOIN` instead.  
+
+```sql
+SELECT
+    STR_TO_DATE(DATE_FORMAT(CURDATE(), '%Y-%m-01'), '%Y-%m-%d') - INTERVAL series.number MONTH) AS "datemonth"
+FROM
+    (
+        SELECT
+            @i := @i + 1 AS `number`
+        FROM
+        (SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6) AS years,
+        (SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS months,
+        (SELECT @i:=0) as t_init
+    ) AS series
+HAVING YEAR(`datemonth`) >= YEAR(CURDATE()) - 5
+```
+
 ## Efficient Date Filtering
 
 Indexes or keys are necessary in SQL to return results most efficiently. When you have an indexed date column, use the column itself when filtering instead of extracting and comparing parts of it which are not indexed, like `YEAR` for example.  
@@ -225,6 +244,52 @@ Relevant date functions docs for each are here:
   - https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html
   - https://www.postgresql.org/docs/8.0/static/functions-datetime.html
   - https://docs.oracle.com/cd/B19306_01/server.102/b14200/functions001.htm
+
+## Maintain Database on Unique Text Column
+
+If you have database where the required key is in fact a text column, the key is to convert the text into a hash value and then index that. In MySQL a full example of creating and updating such data would look like the following:   
+
+```mysql
+CREATE TEMPORARY TABLE `schema`.`_tmp_data` (
+    `column1` TEXT,
+    `column2` TEXT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+;
+
+LOAD DATA LOCAL INFILE 'datafile.txt'
+INTO TABLE `schema`.`_tmp_data`
+;
+
+CREATE TABLE IF NOT EXISTS `schema`.`data` (
+    `id` MEDIUMINT(9) NOT NULL AUTO_INCREMENT,
+    `column1` TEXT,
+    `column1_hash` CHAR(32),
+    `column2` TEXT,
+    PRIMARY KEY `id` (`id`),
+    UNIQUE KEY `column1_hash` (column1_hash)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4
+;
+
+INSERT INTO `schema`.`data`
+SELECT
+    NULL,
+    `column1`,
+    MD5(`column1`),
+    `column2`
+FROM `schema`.`_tmp_data`
+ON DUPLICATE KEY UPDATE
+    # id is auto incremented
+    column1 = VALUES(column1),
+    # column1_hash is unique
+    column2 = VALUES(column2)
+;
+```
+
+
+
+The steps are first load the data into a temporary table, Create a temporary table with no keys.
+2. Load data
+3. Insert select into main database using md5
 
 ## MySQL Load Local Infile Dynamically
 
