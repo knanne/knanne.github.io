@@ -12,13 +12,13 @@ Random notes on the Unix command line (e.g. bash)
 
 # Intro
 
-The following is a compilation of commands and notes on using the command line. Specifically `bash`. Bash commands are available on Linux/Unix based systems like Ubuntu and Mac OSX. While they are not easily available on Windows.  
+The following is a compilation of commands and notes on using the command line. Specifically `bash`. Bash commands, or the corresponding ELF executables, are available on Linux/Unix based systems like Ubuntu and Mac OSX.
 
-If you are on Windows, you can achieve partial access to many bash commands via Git Bash. I strongly recommend using [Cmdr](http://cmder.net/) to get the power of Git bash and a nice console emulator in one go.  
+While they are not easily available on Windows, it is possible to run some commands via [console emulators like Cmder with Git Bash](http://cmder.net/), or more recently the [Windows Subsystem for Linux](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux) which gives full access to ELF binaries.  
 
 For an introduction on the command line, there is a great practical book by Jeroen Janssens called Data Science at the Command Line, which can be read online [here](https://www.datascienceatthecommandline.com/).  
 
-Generally speaking, the notes provided here are practical data science examples on the collection of tools exposed via the Unix command line (i.e. bash, shell, console). This can include the defaults or commonly used extensions.
+Generally speaking, the notes provided here are practical data science examples on the collection of tools exposed via the Unix command line (i.e. bash, shell, console). This can include the defaults or commonly used extensions.  
 
 # Advantages
 

@@ -24,6 +24,21 @@ size = os.stat(f).st_size
 last_modified = datetime.fromtimestamp(os.stat(f).st_mtime)
 ```
 
+## Temporary
+```python
+from tempfile import TemporaryDirectory
+with TemporaryDirectory() as tmpdir:
+    # do stuff
+    # context manager cleans up after itself
+# OR
+import tempfile
+import shutil
+tmpdir = tempfile.mkdtemp()
+# do stuff
+# and clean up after yourself
+shutil.rmtree(tmpdir)
+```
+
 ## Creating
 
 ```python
@@ -124,6 +139,22 @@ password = os.environ['PASSWORD']
 # System
 
 Access and use system settings in a workflow.  
+
+## Time
+
+```python
+import time
+from datetime import datetime
+
+start = datetime.now()
+# do something
+time.sleep(2)
+# or sleep two seconds
+end = datetime.now()
+
+time_delta = end - start
+processing_speed = time_delta.seconds
+```
 
 ## OS
 
@@ -278,8 +309,14 @@ Pass command line arguments to a .py during execution. Simply copy the below to 
 import argparse
 parser = argparse.ArgumentParser(description='Example on how to use ArgumentParser', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-parser.add_argument('-a', '--argument', dest='myargument', type=str, help='Example argument', default='test')
-parser.add_argument('-b', '--boolean', dest='myboolean', type=bool, help='Example boolean argument', default=False)
+def bool_string_input(s):
+    if s in ['True','False']:
+        return s == 'True'
+    else:
+        raise ValueError('Incorrect boolean value provided. Please specify one of "True" or "False"')
+
+parser.add_argument('-a', '--argument', dest='myargument', type=str, help='Example argument description.', default='test')
+parser.add_argument('-b', '--boolean', dest='myboolean', type=bool_string_input, help='Example boolean argument description.', default=False)
 
 args = parser.parse_args()
 
@@ -289,19 +326,23 @@ myboolean = args.myboolean
 
 ## Logging
 
-Setup a basic logging configuration when running time consuming operations.  
+Setup a basic logging configuration for outputting log messages to console during runtime.  
 
 ```python
 import Logging
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)-15s %(message)s')
+logger = logging.getLogger('MyScript')
 
-logging.info('My custom logging message')
+ch = logging.StreamHandler()
+ch.setLevel(logging.INFO)
 
-# disable logging to a certain level
-logging.disable(logging.INFO)
+formatter = logging.Formatter('%(asctime)-15s - %(name)s - %(levelname)s - %(message)s')
+ch.setFormatter(formatter)
 
-logging.info('My second custom logging message')
+logger.addHandler(ch)
+
+logger.info('Doing stuff')
+logger.info('Doing other stuff')
 ```
 
 # SMTP Email
@@ -316,13 +357,29 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 message_text = """
-    automated message
+Automated message sent form Python job.
 
-    {custom}
+{custom}
 """.format(custom="some custom message")
 
-msg = MIMEMultipart()
-msg.attach(MIMEText(message_text))
+message_html = """
+<html>
+  <head></head>
+  <body>
+      <p>Automated message sent form Python job.</p>
+      <br><br>
+      <p>{custom}</p>
+  </body>
+</html>
+""".format(custom="some custom message")
+
+msg = MIMEMultipart('alternative')
+
+msg_text_part = MIMEText(message_text, 'plain')
+msg_html_part = MIMEText(message_html, 'html')
+
+msg.attach(msg_text_part)
+msg.attach(msg_html_part)
 
 msg['Subject'] = 'Python Job Finished'
 from_email = 'your_email@domain.com'

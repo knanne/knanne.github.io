@@ -13,6 +13,12 @@ Random notes on using Excel
 
 I know, I know...but sometimes it's just easier.  
 
+Here are some basic things which are handy to know in Excel.  
+
+# Pivot Tables
+
+# Filtering Data
+
 # Highlight Non-NULL Cells
 
 Example of how to highlight non-blank cells in column A.  

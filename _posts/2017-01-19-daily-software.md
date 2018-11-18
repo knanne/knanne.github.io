@@ -223,7 +223,7 @@ start atom
 
 ### Windows Bash
 
-Windows 10 now features a full Ubuntu installation, with Linux bash, on top of Windows. Read about it [here.](https://msdn.microsoft.com/en-us/commandline/wsl/about)  
+Windows 10 now features a full Ubuntu installation, with a Linux bash for running ELF binaries, on top of Windows. Read about it [here.](https://msdn.microsoft.com/en-us/commandline/wsl/about)  
 
 > Bash on Windows provides developers with a familiar Bash shell and Linux environment in which you can run most Linux command-line tools, directly on Windows, UNMODIFIED, without needing an entire Linux virtual machine!
 
@@ -232,3 +232,7 @@ The installation process, is more of [turning it on within Windows developer mod
 You may also want to unhide the Ubuntu system after getting it. Do so with `attrib -s -h lxss`. Refer to [this Q&A thread](http://askubuntu.com/questions/759880/where-is-the-ubuntu-file-system-root-directory-in-windows-nt-subsystem-and-vice).
 
 The installation is located at `C:\Users\<USER>\AppData\Local\lxss\`. Be very careful with playing around here, **you can easily corrupt any file simply by opening it in a Windows program.**
+
+### Hyper-V
+
+Latest versions of Windows comes with a feature that allows you to build and run virtual machines. This can be super handy for those wishing to run Linux. Read more about it [here] (https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/about/)  

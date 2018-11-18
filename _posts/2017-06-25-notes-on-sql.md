@@ -184,7 +184,7 @@ Similar functionality as Window Functions are included in [PostgreSQL](https://w
 
 ## CASE Statement in WHERE Clause
 
-It may be desirable to add some more complexity to a `WHERE` clause, which can be done with a `CASE` statement. However, it is best to organize the logic in a way that is most interpretable, by isolating the CASE statment and checking if it evaluates to TRUE (or 1 in SQL).  
+It may be desirable to add some more complexity to a `WHERE` clause, which can be done with a `CASE` statement. However, it is best to organize the logic in a way that is most interpretable, by isolating the CASE statement and checking if it evaluates to TRUE (or 1 in SQL).  
 
 ```sql
 SELECT
@@ -194,12 +194,41 @@ SELECT
 FROM schema.table
 WHERE
     (CASE
-        WHEN `col1` = 'value1' AND `col2` = `col3` THEN 1 --RANDOM LOGIC
-        WHEN `col3` IN ('value2','value3','value4') THEN 1 --RANDOM LOGIC
-    ELSE 0) = 1
+        WHEN `col1` = 'value1' AND `col2` = `col3` THEN 1 --RANDOM LOGIC TO EVALUATE TO TRUE
+        WHEN `col3` IN ('value2','value3','value4') THEN 1 --RANDOM LOGIC TO EVALUATE TO TRUE
+        ELSE 0 -- FALSE
+    END) = 1 -- COMPARE AGAINST TRUE
 ```
 
 # Random Code Snippets
+
+## Selecting and Removing Duplicates
+
+Select the duplicated IDs in an example table.  
+
+```sql
+SELECT *
+FROM schema.table
+GROUP BY `id`
+HAVING COUNT(*) > 1
+```
+
+Delete records for duplicated ids, and keep the most recent updated record.  
+
+```sql
+DELETE schema.table
+FROM schema.table
+JOIN
+(
+    SELECT
+        MAX(`last_updated`) AS "max_last_updated",
+        `id` AS "duplicated_id"
+    FROM schema.table
+    GROUP BY `id`
+    HAVING COUNT(*) > 1
+) duplicates ON id = duplicated_id
+WHERE last_updated < duplicates.max_last_updated
+```
 
 ## Generate List of Months
 
@@ -247,9 +276,9 @@ Relevant date functions docs for each are here:
 
 ## Maintain Database on Unique Text Column
 
-If you have database where the required key is in fact a text column, the key is to convert the text into a hash value and then index that. In MySQL a full example of creating and updating such data would look like the following:   
+If you have database where the required key is in fact a text column (or you need unique key of multiple columns beyond the maximum limit), the "key" is to convert the unique text into a hash value and then index on that. You can do this simply with the `MD5()` function. In MySQL a full example of creating and updating such data would look like the following:   
 
-```mysql
+```sql
 CREATE TEMPORARY TABLE `schema`.`_tmp_data` (
     `column1` TEXT,
     `column2` TEXT
@@ -284,8 +313,6 @@ ON DUPLICATE KEY UPDATE
     column2 = VALUES(column2)
 ;
 ```
-
-
 
 The steps are first load the data into a temporary table, Create a temporary table with no keys.
 2. Load data
@@ -393,6 +420,43 @@ TRANSLATE(TRANSLATE(TRANSLATE(TRIM(BOTH FROM "string_col"), CHR(9),' '), CHR(10)
 
 NOTE the `' '` (empty space) in above example:
 > You cannot use an empty string for to_string to remove all characters in from_string from the return value. Oracle Database interprets the empty string as null, and if this function has a null argument, then it returns null. - [Oracle Docs](https://docs.oracle.com/cd/B19306_01/server.102/b14200/functions196.htm)  
+
+## Concatenate Columns with Separator
+
+Easily turn  
+
+| value1   | value2   | value3     |
+| :------- | :------- | :--------- |
+| Item One | Item Two | Item Three |
+
+...into `Item One,Item Two,Item Three` with...  
+
+```sql
+SELECT CONCAT_WS(',',`value1`,`value2`,`value3`) FROM schema.table
+```
+
+## Roll up Values into Comma Separated List
+
+Do the same as above, this time with rows in a group by statement. Imagine the following table  
+
+| value1    | value2     |
+| :-------- | :--------- |
+| Group One | Item One   |
+| Group One | Item Two   |
+| Group One | Item Three |
+| Group One | Item Four  |
+| Group One | Item Five  |
+
+You can easily rollup the second column into a list using the following code  
+
+```sql
+SELECT
+    `value1`
+    GROUP_CONCAT(`Value2` SEPARATOR ',') AS "CSVvalues2"
+FROM schema.table
+GROUP BY `value1`
+;    
+```
 
 ## Searching Comma Separated Values
 

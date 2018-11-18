@@ -12,3 +12,7 @@ Gemfile.lock
 
 # extras
 /_notebooks/jupyter/data
+/_notebooks/jupyter/swagger_client
+
+# api
+swagger_client

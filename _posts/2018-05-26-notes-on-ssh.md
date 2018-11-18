@@ -1,6 +1,7 @@
 ---
 categories: [data engineering]
 tags: [ssh]
+pin: False
 ---
 
 Random notes on using SSH
