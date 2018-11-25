@@ -15,4 +15,4 @@ Gemfile.lock
 /_notebooks/jupyter/swagger_client
 
 # api
-swagger_client
+swagger

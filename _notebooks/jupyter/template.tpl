@@ -15,6 +15,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/vega@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@3"></script>
+
 {% for css in resources.inlining.css -%}
     <style type="text/css">
     {{ css }}
@@ -64,6 +68,18 @@ div#notebook-container{
 <body>
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
+        {%- block data_priority scoped -%}
+        {% if 'application/vnd.vegalite.v2+json' in output.data %}
+            <div id="vis{{cell['execution_count']}}"></div>
+            <script type="text/javascript">
+                var spec = {{ output.data['application/vnd.vegalite.v2+json'] }};
+                var opt = {"renderer": "canvas", "actions": false};
+                vegaEmbed("#vis{{cell['execution_count']}}", spec, opt);
+            </script>
+        {% else %}
+            {{super()}}
+        {% endif %}
+        {%- endblock data_priority -%}
 {{ super() }}
     </div>
   </div>
