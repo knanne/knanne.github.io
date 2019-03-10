@@ -3,7 +3,7 @@ categories: [programming]
 tags: [sql, mysql, postgresql, oracle]
 ---
 
-Helpful SQL tips and commands I use frequently  
+Helpful SQL tips and commands  
 
 <!-- excerpt separator -->
 
@@ -32,8 +32,8 @@ SELECT tmp1.* FROM
 (
   SELECT
     tmp.*,
-    @grp := tmp.`group_col` AS "dummy",
-    @num := IF(@grp = tmp.`group_col`, @num + 1, 1) AS "rank"
+    @num := IF(@grp = tmp.`group_col`, @num + 1, 1) AS "rank",
+    @grp := tmp.`group_col` AS "dummy"
   FROM
   (
     SELECT `group_col`, SUM(`values_col`) AS "values_col"
@@ -200,8 +200,6 @@ WHERE
     END) = 1 -- COMPARE AGAINST TRUE
 ```
 
-# Random Code Snippets
-
 ## Selecting and Removing Duplicates
 
 Select the duplicated IDs in an example table.  
@@ -273,6 +271,25 @@ Relevant date functions docs for each are here:
   - https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html
   - https://www.postgresql.org/docs/8.0/static/functions-datetime.html
   - https://docs.oracle.com/cd/B19306_01/server.102/b14200/functions001.htm
+
+# ETL Jobs
+
+## Migrate Development to Production
+
+Below is a simply example of migration one table from a single schema to another. This is a useful practice in data engineering if you have a staging or development environment (e.g. data access layer (DAL) or user access testing (UAT)) and a different production schema.  
+
+This procedure will work on transaction safe tables (e.g. INNODB). You can alternatively specify `SET AUTOCOMMIT=0` to disable autocommiting for current transaction.  
+
+```sql
+-- assuming development table is ready for migration
+BEGIN;
+DROP TABLE IF EXISTS prd_schema.table_name;
+CREATE TABLE prd_schema.table_name LIKE dev_schema.table_name;
+INSERT INTO prd_schema.table_name SELECT * FROM dev_schema.table_name;
+-- do any last minute quality checks here
+-- update your ETL audit information here (e.g. last modified date, row counts, type conversions, null counts etc.)
+COMMIT; -- or ROLLBACK if the job did not pass your tests
+```
 
 ## Maintain Database on Unique Text Column
 

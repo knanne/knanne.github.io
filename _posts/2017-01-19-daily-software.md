@@ -77,7 +77,7 @@ Packages I use include:
 
 [Python](https://www.python.org) is my language of choice for anything from data analysis and manipulation, to web development. The official package manager in Python is called [pip](https://pip.pypa.io/en/stable/).  
 
-Install most python packages with `pip install <PACKAGE>`, update most python packages with `pip install <PACKAGE> --upgrade`. If you have multiple versions of python/pip or are running into permissions errors on Windows, it is recommended to use `python -m pip install <PACKAGE>.  
+Install most python packages with `pip install <PACKAGE>`, update most python packages with `pip install <PACKAGE> --upgrade`. If you have multiple versions of python/pip or are running into permissions errors on Windows, use syntax `python -m pip install <PACKAGE>` which ensures you run the command from global Python executable.  
 
 Below are notes on a few other useful tools for Python.  
 
@@ -94,16 +94,21 @@ conda update python
 conda update anaconda
 ```
 
+Installing and updating libraries with Anaconda package manager (instead of pip) is just `conda install <PACKAGE>` and `conda update <PACKAGE>`  
+
 ### Jupyter
 
 [Jupyter Notebook](http://jupyter.org/) (Formerly IpythonNotebook) now supports everything you would ever need for data analysis and visualization, even with interactive charts for some libraries. Read the docs at [jupyter-notebook.readthedocs.io](http://jupyter-notebook.readthedocs.io/en/stable/notebook.html).  
 
-More recently, there is now a [Jupyter Lab](http://jupyterlab.readthedocs.io/en/stable/index.html) which combines Jupyter Notebook with other helpful data science related features. Read [this blog post release](https://blog.jupyter.org/jupyterlab-is-ready-for-users-5a6f039b8906) for more on Jupyter Lab.  
+More recently, there is now a [Jupyter Lab](http://jupyterlab.readthedocs.io/en/stable/index.html) which combines Jupyter Notebook with other helpful data science related features. Read [this blog post release](https://blog.jupyter.org/jupyterlab-is-ready-for-users-5a6f039b8906) for more on Jupyter Lab. FYI, it has a [fantastic interface](https://jupyterlab.readthedocs.io/en/stable/user/interface.html) for all data science-related work.  
 
-If you have multiple python versions (virtual environments), you can toggle which kernel to use from within Jupyter Notebook using the following libary.  
+If you have multiple python versions (virtual environments), you can toggle which kernel to use from within Jupyter Notebook using the libary `ipykernel`.  
+
+To make a conda environment in Jupyter, use the below commands as per [ipython docs here](https://ipython.readthedocs.io/en/stable/install/kernel_install.html#kernels-for-different-environments)  
 
 ```shell
-pip install ipykernel
+activate project-env
+python -m ipykernel install --user --name myenv --display-name "Project Env"
 ```
 
 ### Virtual Environments for Development
@@ -235,4 +240,4 @@ The installation is located at `C:\Users\<USER>\AppData\Local\lxss\`. Be very ca
 
 ### Hyper-V
 
-Latest versions of Windows comes with a feature that allows you to build and run virtual machines. This can be super handy for those wishing to run Linux. Read more about it [here] (https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/about/)  
+Latest versions of Windows comes with a feature that allows you to build and run virtual machines. This can be super handy for those wishing to run Linux. Read more about it [here](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/about/)  

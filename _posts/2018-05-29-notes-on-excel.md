@@ -17,7 +17,11 @@ Here are some basic things which are handy to know in Excel.
 
 # Pivot Tables
 
+Select the rows / columns you want, and go to `Insert` > `Pivot Table`. Then logically put the columns in appropriate data categories. For a more detailed description [see this tutorial by Microsoft](https://support.office.com/en-gb/article/create-a-pivottable-to-analyze-worksheet-data-a9a84538-bfe9-40a9-a8e9-f99134456576).  
+
 # Filtering Data
+
+Filter all columns in a sheet? Select the first cell with data and go to `Data` > `Filter`. Seriously, [it's that easy](https://support.office.com/en-us/article/filter-data-in-a-range-or-table-01832226-31b5-4568-8806-38c37dcc180e).  
 
 # Highlight Non-NULL Cells
 
