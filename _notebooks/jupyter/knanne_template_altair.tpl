@@ -9,20 +9,28 @@
   {{super()}}
 {% endblock header %}
 
-{% block data_priority scoped %}
 {% block data_png scoped %}
-{% for mimetype in ('application/vnd.vegalite.v1+json','application/vnd.vega.v2+json','application/vnd.vegalite.v2+json','application/vnd.vega.v3+json') %}
-    {% if mimetype in output.data %}
-        {% if altair.update({'vis_number': altair.vis_number+1}) %}{% endif %}
-        <div id="vis{{cell['execution_count']}}_{{ altair.vis_number }}"></div>
-        <script type="text/javascript">
-            var spec = {{ output.data[mimetype] }};
-            var opt = {"renderer": "canvas", "actions": false};
-            vegaEmbed("#vis{{cell['execution_count']}}_{{ altair.vis_number }}", spec, opt);
-        </script>
-    {% elif loop.index == 1 %}
+    {% if 'application/vnd.vegalite.v1+json' in output.data %}
+    {% elif 'application/vnd.vega.v2+json' in output.data %}
+    {% elif 'application/vnd.vegalite.v2+json' in output.data %}
+    {% elif 'application/vnd.vega.v3+json' in output.data %}
+    {% else %}
         {{super()}}
     {% endif %}
-{% endfor %}
 {% endblock data_png %}
+
+{% block data_priority scoped %}
+    {% for mimetype in ('application/vnd.vegalite.v1+json','application/vnd.vega.v2+json','application/vnd.vegalite.v2+json','application/vnd.vega.v3+json') %}
+        {% if mimetype in output.data %}
+            {% if altair.update({'vis_number': altair.vis_number+1}) %}{% endif %}
+            <div id="vis{{cell['execution_count']}}_{{ altair.vis_number }}"></div>
+            <script type="text/javascript">
+                var spec = {{ output.data[mimetype] }};
+                var opt = {"renderer": "canvas", "actions": false};
+                vegaEmbed("#vis{{cell['execution_count']}}_{{ altair.vis_number }}", spec, opt);
+            </script>
+        {% elif loop.index == 1 %}
+            {{super()}}
+        {% endif %}
+    {% endfor %}
 {% endblock data_priority %}
