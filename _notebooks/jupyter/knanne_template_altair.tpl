@@ -10,6 +10,7 @@
 {% endblock header %}
 
 {% block data_priority scoped %}
+{% block data_png scoped %}
 {% for mimetype in ('application/vnd.vegalite.v1+json','application/vnd.vega.v2+json','application/vnd.vegalite.v2+json','application/vnd.vega.v3+json') %}
     {% if mimetype in output.data %}
         {% if altair.update({'vis_number': altair.vis_number+1}) %}{% endif %}
@@ -19,9 +20,9 @@
             var opt = {"renderer": "canvas", "actions": false};
             vegaEmbed("#vis{{cell['execution_count']}}_{{ altair.vis_number }}", spec, opt);
         </script>
-        {% block data_png scoped %}{% endblock data_png %}
     {% elif loop.index == 1 %}
         {{super()}}
     {% endif %}
 {% endfor %}
+{% endblock data_png %}
 {% endblock data_priority %}
