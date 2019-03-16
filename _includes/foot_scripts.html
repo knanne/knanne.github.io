@@ -11,50 +11,52 @@
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 {% if page.is_home %}
-	{% include functions/buildFeedCard.html %}
-	<script>
-		feeds = [
-			// TECHNOLOGY
-			// 'https://news.google.com/news/rss/headlines/section/topic/TECHNOLOGY',
-			// 'https://medium.com/feed/topic/technology',
-			// 'https://www.technologyreview.com/stories.rss',
-			// 'http://www.npr.org/rss/rss.php?id=1019',
-			// 'https://www.reddit.com/r/technology/.rss',
-			// COMPANIES
-			// 'https://www.blog.google/rss/',
-			// 'http://feeds.feedburner.com/GDBcode', // google developers blog
-			// 'https://blogs.microsoft.com/feed/',
-			// 'http://feeds.feedburner.com/AmazonWebServicesBlog',
-			// 'https://developer.amazon.com/blogs',
-			// 'https://blog.twitter.com/api/blog.rss', // add "?name=data" (or engineering)
-			// 'https://github.com/blog.atom', // github blog
-			// 'https://stackoverflow.blog/feed/', //stack overflow blog (ALL)
-			// ANDROID
-			// 'https://www.xda-developers.com/feed/',
-			// PYTHON
-			// 'http://planetpython.org/rss20.xml',
-			// RESEARCH PAPERS
-			// 'http://feeds.feedburner.com/blogspot/gJZg', // google research blog
-			// 'https://blog.acolyer.org/feed/', // the morning paper
-			// DATA SCIENCE MISC
-			'https://news.google.com/news/rss/headlines/section/q/data%20science/data%20science',
-			'https://medium.com/feed/topic/data-science',
-			// 'http://www.datasciencecentral.com/profiles/blog/feed?promoted=1&xn_auth=no',
-			'https://opendatascience.com/feed/',
-			'https://www.datacamp.com/community/rss.xml',
-			'http://news.mit.edu/rss/topic/data-management-and-statistics'
-		]
+	{# DEPRECATED
+		{% include functions/buildFeedCard.html %}
+		<script>
+			feeds = [
+				// TECHNOLOGY
+				// 'https://news.google.com/news/rss/headlines/section/topic/TECHNOLOGY',
+				// 'https://medium.com/feed/topic/technology',
+				// 'https://www.technologyreview.com/stories.rss',
+				// 'http://www.npr.org/rss/rss.php?id=1019',
+				// 'https://www.reddit.com/r/technology/.rss',
+				// COMPANIES
+				// 'https://www.blog.google/rss/',
+				// 'http://feeds.feedburner.com/GDBcode', // google developers blog
+				// 'https://blogs.microsoft.com/feed/',
+				// 'http://feeds.feedburner.com/AmazonWebServicesBlog',
+				// 'https://developer.amazon.com/blogs',
+				// 'https://blog.twitter.com/api/blog.rss', // add "?name=data" (or engineering)
+				// 'https://github.com/blog.atom', // github blog
+				// 'https://stackoverflow.blog/feed/', //stack overflow blog (ALL)
+				// ANDROID
+				// 'https://www.xda-developers.com/feed/',
+				// PYTHON
+				// 'http://planetpython.org/rss20.xml',
+				// RESEARCH PAPERS
+				// 'http://feeds.feedburner.com/blogspot/gJZg', // google research blog
+				// 'https://blog.acolyer.org/feed/', // the morning paper
+				// DATA SCIENCE MISC
+				'https://news.google.com/news/rss/headlines/section/q/data%20science/data%20science',
+				'https://medium.com/feed/topic/data-science',
+				// 'http://www.datasciencecentral.com/profiles/blog/feed?promoted=1&xn_auth=no',
+				'https://opendatascience.com/feed/',
+				'https://www.datacamp.com/community/rss.xml',
+				'http://news.mit.edu/rss/topic/data-management-and-statistics'
+			]
 
-		function get_feeds() {
-			$('#feeds').empty();
-			feeds.forEach(function (url, i) {
-				buildFeedCard(url, '#feeds', i);
+			function get_feeds() {
+				$('#feeds').empty();
+				feeds.forEach(function (url, i) {
+					buildFeedCard(url, '#feeds', i);
+				});
+			};
+			$(document).ready(function() {
+				get_feeds();
 			});
-		};
-		$(document).ready(function() {
-			get_feeds();
-		});
-	</script>
+		</script>
+	#}
 {% endif %}
 
 {% if page.is_post %}
