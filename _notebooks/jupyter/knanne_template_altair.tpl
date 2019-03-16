@@ -19,6 +19,7 @@
             var opt = {"renderer": "canvas", "actions": false};
             vegaEmbed("#vis{{cell['execution_count']}}_{{ altair.vis_number }}", spec, opt);
         </script>
+        {% block data_png scoped %}{% endblock data_png %}
     {% elif loop.index == 1 %}
         {{super()}}
     {% endif %}
