@@ -16,7 +16,7 @@ Random notes, links, commands or snippets of code related to big data analysis u
 
 Spark is made accessible to Python users via the Python API, which is virtually as up to date as the Scala and Java API.  
 
-I was introduced to Spark via way of [Databricks](https://databricks.com) (Also Apache) platform through my company. Consider it a commercial version of Jupyter or Zeppelin notebooks, language-agnostic, integrated on top of a Spark with a bunch of fancy runtime features.  
+I was introduced to Spark via way of [Databricks](https://databricks.com) (Also Apache) cloud platform through my company. Consider it a commercial version of Jupyter or Zeppelin notebooks, language-agnostic, integrated on top of a Spark with a bunch of fancy runtime features.  
 
 Going through the registration for a free trial of Databricks and deploying it on a free trial of Amazon AWS takes minutes, and I would highly recommend it as a starting point to getting introduced to Spark. Databricks also has a community edition for learning purposes worth looking into.  
 

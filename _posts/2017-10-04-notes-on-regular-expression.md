@@ -61,6 +61,14 @@ To achieve both of these and also check for a specific email domain, for example
 
 Or for a comma / semicolon separated list `^(([0-9a-zA-Z._-]+)@company.com(\]?)(\s*(;|,)\s*|\s*$))*$`  
 
+## Date
+
+Validate a date in `YYYY-MM-DD` format. Credit to [StackOverflow](https://stackoverflow.com/a/22061879/5356898)  
+
+```
+^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$
+```
+
 # Search
 
 Regular expression can have many applications in data analysis for searching text data.  

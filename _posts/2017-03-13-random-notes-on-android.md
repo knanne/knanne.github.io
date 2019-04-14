@@ -42,33 +42,40 @@ The rest of the examples given below are from the context of using TWRP.
 3. `fastboot reboot bootloader`
 4. Select "Reboot Recovery" from options (using volume down for menu and power to select)
 
-## Copy Files and Flash
+### Copy to PC for Backing Up
+
+1. Reboot into Recovery
+2. Select "Backup" > swipe to backup
+3. from PC, run `adb pull /sdcard/TRWP/`, this will copy the entire TWRP directory with all backups
+
+## Copy to Device for Flashing
 
 1. Reboot into recovery  
 2. `adb push PATH-TO-LOCAL-FILE.zip /sdcard/`
 3. Select "Install", find file, and swipe to install
 
-## Install Directly from PC
+## Flash Directly from PC
 
 1. Reboot into Recovery
-2. (TRWP) Select Advanced > ADB Sideload
+2. (TRWP) Select "Advanced" > "ADB Sideload"
 3. from PC, run `adb sideload PATH-TO-LOCAL-FILE.zip`
 
 source: https://twrp.me/faq/ADBSideload.html
 
-## Done Screwed Up
+## No OS?
 
-https://twrp.me/faq/noos.html
+Here is some helpful advice from TWRP https://twrp.me/faq/noos.html  
 
-Recently I had an issue with the latest version of multiple ROMS being stuck in bootloop after a CLEAN install. The issue seemed to be due to encryption of the internal storage, standard in new Android versions with lockscreen lock, and the new ROM not being able to decrypt during boot. The solution was to reformat the internal storage and do a fresh install by sideloading the ROM.  
+# Fix Encryption Issue
+
+I had an issue with the latest version of multiple ROMS being stuck in bootloop after a CLEAN install. The issue seemed to be due to encryption of the internal storage, standard in new Android versions with lockscreen lock, and the new ROM not being able to decrypt during boot. The solution was to reformat the internal storage and do a fresh install by sideloading the ROM.  
 
 1. Reboot recovery
-2. Factory Reset
-3. Format Data
-4. Reboot Recovery
-5. ADB Sideload latest version
+2. Format Data
+3. Reboot Recovery
+4. ADB Sideload latest version
 
-# Restore a Google Device to Factory
+# Google Device Factory Reset
 
 I recently needed to restore my Nexus 5x back to factory settings. Below are my notes on how I did this.  
 
@@ -142,6 +149,12 @@ push file from pc to device
 
 ```shell
 adb push <LOCAL> <REMOTE>
+```
+
+pull file from device to pc  
+
+```shell
+adb pull <REMOTE> <LOCAL>
 ```
 
 wipe user data and cache  
