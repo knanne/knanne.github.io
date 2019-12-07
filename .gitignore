@@ -2,6 +2,7 @@
 .sass-cache
 .jekyll-metadata
 .ipynb_checkpoints
+.jekyll-cache
 
 # folders
 _site

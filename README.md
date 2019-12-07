@@ -25,6 +25,8 @@ See [Projects](https://github.com/knanne/knanne.github.io/tree/master/projects) 
   - run `rake test`  
   - run `rake serve`  
 
+Navigate to [localhost:4000](http://127.0.0.1:4000/) to view the site  
+
 ## Publishing Procedure
 
   - first be sure NOT to publish sensitive content (use `.gitignore`)  

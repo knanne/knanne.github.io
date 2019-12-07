@@ -64,8 +64,6 @@ The rest of the examples given below are from the context of using TWRP.
 
 source: [https://twrp.me/faq/ADBSideload.html](https://twrp.me/faq/ADBSideload.html)
 
-### 
-
 ### No OS?
 
 Here is some helpful advice from TWRP [https://twrp.me/faq/noos.html](https://twrp.me/faq/noos.html)  

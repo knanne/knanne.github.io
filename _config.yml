@@ -120,6 +120,13 @@ excerpt_separator: <!-- excerpt separator -->
 
 theme: minima
 
+minima:
+  social_links:
+    twitter: kanne
+    github: knanne
+    instagram: knanne
+    linkedin: kainnanne
+
 sass:
   sass_dir: _sass # @import "minima" comes from gem
   style: compressed
