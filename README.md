@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/knanne/knanne.github.io.svg?branch=master)](https://travis-ci.org/knanne/knanne.github.io)  
+![powered by Jekyll](https://img.shields.io/badge/powered_by-Jekyll-blue.svg)  [![Build Status](https://travis-ci.org/knanne/knanne.github.io.svg?branch=master)](https://travis-ci.org/knanne/knanne.github.io)  
 
 # About
 
