@@ -18,6 +18,7 @@ A quick compilation of notes on Git
 
 # Resources
 
+- [GitHub's documentation](https://help.github.com/en/github)
 - great easy documentation from [GitLab](https://docs.gitlab.com/ce/gitlab-basics)  
 - check out this online [interactive](http://ndpsoftware.com/git-cheatsheet.html) cheat sheet  
 - download the [pdf cheat sheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) from Github  
@@ -275,3 +276,11 @@ git reset
 git reset <FILE>
 git reset -- <DIR>
 ```
+
+Edit last commit message before pushing.  
+
+```shell
+git commit --amend
+```
+
+You will be in VIM. Hit `Esc` then type `:wq` to write and quit
