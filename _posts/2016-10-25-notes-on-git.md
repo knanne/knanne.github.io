@@ -268,8 +268,10 @@ List all uncommitted files
 git ls-files --others
 ```
 
-Unstage a directory (after staging all with `git add .`)
+Unstage everything, a specific file, or a directory (after staging all with `git add .`)
 
 ```shell
-git reset -- _dir
+git reset
+git reset <FILE>
+git reset -- <DIR>
 ```
