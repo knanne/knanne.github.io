@@ -36,9 +36,6 @@ Navigate to [localhost:4000](http://127.0.0.1:4000/) to view the site
 
 ## To Do (IDEAS):
 
-  - create `gh-pages` branch and auto push travis-approved build
   - use bower to manage assets
   - create `tests` procedure
-  - implement test for html-proofer
   - add linter
-  - turn this site's skeleton into Jekyll template
