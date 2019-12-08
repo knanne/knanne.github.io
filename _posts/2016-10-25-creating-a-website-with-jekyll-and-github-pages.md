@@ -30,18 +30,13 @@ So what is this all about...
 
 # Getting Started
 
-<mark>installation of Jekyll on Windows is not so straightforward</mark>
+To install Jekyll you will need Ruby. If you are on Windows see [jekyllrb.com/docs/installation/windows/.](https://jekyllrb.com/docs/installation/windows/)  
 
-[This](https://jekyllrb.com/docs/windows/#installation) is the best place to find installation instructions. However, I have summarized the important bits below.  
+Once Ruby is installed with all relevant platform dependencies, then install Jekyll and Bundler.  
 
-  1. Install [chocolatey](https://chocolatey.org/), by opening `cmd.exe` in Administrator Mode and running:
-  ```shell
-  @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
-  ```
-  2. Install [Ruby](https://www.ruby-lang.org/) with `choco install ruby -y` (update Ruby with `choco upgrade ruby`)  
-  3. Install [Bundler](http://bundler.io/) with `gem install bundler` (update Bundler with `gem update bundler`)
-  4. Install [Jekyll](https://jekyllrb.com/) with `gem install jekyll` (update Jekyll with `bundle update jekyll`, or simply all gems with `bundle update`)
-
+```shell
+gem install jekyll bundler
+```
 Assuming you now have Jekyll installed, initialize a new site  
 
 ```shell
@@ -187,7 +182,7 @@ Note, you can always link to a free rendering of your notebook on Github using [
 
 ## Site Comments
 
-This blog implements the comments powered by Google Plus (see bottom of post). I have not found any official documentation on their [web API site](https://developers.google.com/+/web/), but found sample code [here](https://gist.github.com/chuckbutler/fce8077a0161cff6b489), and a blog post describing the implementation [here](https://floaternet.com/gcomments).
+<del>This blog implements the comments powered by Google Plus (see bottom of post). I have not found any official documentation on their [web API site](https://developers.google.com/+/web/), but found sample code [here](https://gist.github.com/chuckbutler/fce8077a0161cff6b489), and a blog post describing the implementation [here](https://floaternet.com/gcomments).</del>
 
 Other notable options I have seen include:
 - [Disqus](https://disqus.com/)

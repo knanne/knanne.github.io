@@ -25,6 +25,7 @@ logo: "/assets/img/ic_android_black_24dp_2x.ico"
 twitter_username: knanne
 github_username: knanne
 linkedin_username: kainnanne
+stackoverflow_username: knanne
 
 twitter:
   username: knanne
@@ -122,7 +123,7 @@ theme: minima
 
 minima:
   social_links:
-    twitter: kanne
+    twitter: knanne
     github: knanne
     instagram: knanne
     linkedin: kainnanne
