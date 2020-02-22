@@ -27,7 +27,7 @@ E:\
 ```
 4. Connect Pi to Router via LAN, and connect power. Pi should boot and flash red power light, and green internet light.
 5. Scan Network to identify IP address of PI, probably corresponding to "Raspberry Pi Foundation". If on Windows, can use [advanced-ip-scanner](https://www.advanced-ip-scanner.com/)
-6. SSH into the PI's IP address using *u:* `pi` *p:* `raspberry`. If on Windows, can use [this program.](https://www.putty.org/)
+6. SSH into the PI's IP address using *u:* `pi` *p:* `raspberry`. If on Windows, can use [putty.](https://www.putty.org/)
 7. Change the default password by running the command `passwd`. [docs on users](https://www.raspberrypi.org/documentation/linux/usage/users.md)
 
 # Pi Config
@@ -59,6 +59,12 @@ static domain_name_servers=[YOUR ROUTER IP ADDRESS]
 - Hit Enter to confirm file for writing and complete exit
 - Reboot the Pi with `sudo reboot`
 
+# Setup DDNS Dynamic Update Client (DUC)
+
+> Keep your current IP address in sync with your No-IP host or domain with our Dynamic Update Client (DUC). - [no-ip](https://www.noip.com/)  
+
+Full instructions for no-ip service here: https://www.noip.com/support/knowledgebase/install-ip-duc-onto-raspberry-pi/  
+
 # Setup OpenVPN Client
 
 Using [PiVPN](http://www.pivpn.io/)  
@@ -69,11 +75,13 @@ Using [PiVPN](http://www.pivpn.io/)
 4. Create a new client certificate by running `pivpn add` and giving it a password
 5. Copy the certificate file from pi to the device you want to connect from. If on Windows, can use [filezilla](https://filezilla-project.org/)
 7. Next, [configure your DDNS service on your router.](https://www.noip.com/support/knowledgebase/how-to-configure-ddns-in-router/) If you are using a two router setup (modem/router), do this on the router acting as a modem where the internet comes in first.
-8. Lastly, [forward the OpenVPN service port on your router,](http://www.noip.com/support/knowledgebase/general-port-forwarding-guide/) the default port from piVPN is *1194*. If you are using a two router setup (modem/router) you may need to first forward traffic on that port to the second router, to then be forwarded to the pi.
+8. Lastly, [forward the OpenVPN service port on your router,](http://www.noip.com/support/knowledgebase/general-port-forwarding-guide/) the default port from piVPN is *1194*. Important note here, OpenVPN uses UDP as the protocol. If you are using a two router setup (modem/router) you may need to first forward traffic on that port to the second router, to then be forwarded to the pi.
 
 Useful PiVPN commands:  
 - List certificates with `pivpn list`
 - Revoke a compromised certificate with `pivpn revoke`
+- Add a new certificate with `pivpn add` optionally with `nopass` for no password
 - List connected clients with `pivpn -c`
+- Reboot the openvpn server with `sudo service openvpn reboot`
 
 * Note that the VPN server automatically starts after a reboot, so nothing is needed if power to the pi cuts out temporarily

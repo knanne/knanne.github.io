@@ -42,6 +42,14 @@ Below is just a short list of notable commands I have found useful, and want to 
 - `uniq` will deduplicate data, however the duplicates must be adjacent (use `sort` first). Use flag `-c` to count the number of duplications. Also pass `-d` flag to show duplicated data only.
 - `wc` command on a file by default will return the number of lines, words, and characters.
 
+## Text Editors
+
+### Nano
+
+`nano file.txt`  
+
+Save a file with `Ctrl`+`o`, exit a file with `Ctrl`+`x`  
+
 ## For Loops
 
 A one line for loop looks like `for i in {1..10}; do echo "Hello World!"; done`
